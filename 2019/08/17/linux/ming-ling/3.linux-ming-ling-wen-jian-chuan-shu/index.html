@@ -1,0 +1,1020 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="3.Linux命令（文件传输）, yoyo，LHL001">
+    <meta name="description" content="Linux命令（文件传输）1.lprm​         lprm命令用于将一个工作由打印机贮列中移除
+尚未完成的打印机工作会被放在打印机贮列之中，这个命令可用来将常未送到打印机的工作取消。由于每一个打印机都有一个独立的贮列，你可以用 -P">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>3.Linux命令（文件传输） | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        3.Linux命令（文件传输）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux命令/" target="_blank">
+                                <span class="chip bg-color">Linux命令</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                Linux笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-08-17
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.7k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Linux命令（文件传输）"><a href="#Linux命令（文件传输）" class="headerlink" title="Linux命令（文件传输）"></a>Linux命令（文件传输）</h1><h2 id="1-lprm"><a href="#1-lprm" class="headerlink" title="1.lprm"></a>1.lprm</h2><p>​         lprm命令用于将一个工作由打印机贮列中移除</p>
+<p>尚未完成的打印机工作会被放在打印机贮列之中，这个命令可用来将常未送到打印机的工作取消。由于每一个打印机都有一个独立的贮列，你可以用 -P 这个命令设定想要作用的印列机。如果没有设定的话，会使用系统预设的打印机。</p>
+<p>　</p>
+<p>　　这个命令会检查使用者是否有足够的权限删除指定的档案，一般而言，只有档案的拥有者或是系统管理员才有这个权限。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>/usr/bin/lprm [P] [file...]</code></pre><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>将打印机 hpprinter 中的第 1123 号工作移除</p>
+<pre><code>lprm -Phpprinter 1123</code></pre><p>将第 1011 号工作由预设印表机中移除</p>
+<pre><code>lprm 1011</code></pre><h2 id="2-lpr"><a href="#2-lpr" class="headerlink" title="2.lpr"></a>2.lpr</h2><p>​        lpr(line printer，按行打印)实用程序用来将一个或多个文件放入打印队列等待打印。</p>
+<p>lpr 可以用来将料资送给本地或是远端的主机来处理。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><pre><code>lpr [ -P printer ]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-p Printer: 将资料送至指定的打印机 Printer，预设值为 lp。</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>下面的命令行将在名为mailroom的打印机上打印report文件：</p>
+<pre><code>$ lpr -P mailroom report </code></pre><p>使用一条打印命令可打印多个文件，下面的命令行在名为laser1的打印机上打印3个文件：</p>
+<pre><code>$ lpr -P laser1 05.txt 108.txt 12.txt </code></pre><h2 id="3-lpq"><a href="#3-lpq" class="headerlink" title="3.lpq"></a>3.lpq</h2><p>​         lpq命令用于查看一个打印队列的状态，该程序可以查看打印机队列状态及其所包含的打印任务。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p>lpq [l] [P] [用户]</p>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>-P指定一个打印机，否则使用默认打印机或环境变量PRINTER指定的打印机</li>
+<li>-l打印组成作业的所有文件的信息..</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>为系统默认的打印机打印的一个空队列。</p>
+<pre><code>$ lpq  
+打印机准备好了  
+没有条目 </code></pre><p>如果事先并未指定打印机（使用-P选项），系统便会显示默认的打印机。如果向打印机发送打印任务，然后查看打印队列，便会看到如下列表。</p>
+<pre><code>$ ls * .txt | pr -3 | 唱片  
+请求ID是printer-603（1个文件）  
+[me @ linuxbox~] $ lpq  
+打印机准备好并打印  
+排名所有者工作文件总大小  
+活跃我603（stdin）        </code></pre><h2 id="4-lpd"><a href="#4-lpd" class="headerlink" title="4.lpd"></a>4.lpd</h2><pre><code>     lpd命令 是一个常驻的打印机管理程序，它会根据 /etc/printcap 的内容来管理本地或远端的打印机。</code></pre><p>/etc/printcap 中定义的每一个打印机必须在 /var/lpd 中有一个相对应的目录，目录中以 cf 开头的档案表示一个等待送到适当装置的印表工作。这个档案通常是由 lpr 所产生。</p>
+<p>lpr 和 lpd 组成了一个可以离线工作的系统，当你使用 lpr 时，打印机不需要能立即可用，甚至不用存在。</p>
+<p>lpd 会自动监视打印机的状况，当打印机上线后，便立即将档案送交处理。这个得所有的应用程序不必等待打印机完成前一工作。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><pre><code>lpd [-l] [#port]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-l: 将一些除错讯息显示在标准输出上。</li>
+<li>#port: 一般而言，lpd 会使用 getservbyname 取得适当的 TCP/IP port，你可以使用这个参数强迫 lpd 使用指定的 port。</li>
+</ul>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>这个程序通常是由 /etc/rc.d 中的程序在系统启始阶段执行。</p>
+<h2 id="5-bye"><a href="#5-bye" class="headerlink" title="5.bye"></a>5.bye</h2><p> bye命令用于中断FTP连线并结束程序。</p>
+<p>在ftp模式下，输入bye即可中断目前的连线作业，并结束ftp的执行。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><pre><code>bye</code></pre><h2 id="6-ftp"><a href="#6-ftp" class="headerlink" title="6.ftp"></a>6.ftp</h2><p>​        ftp命令设置文件系统相关功能。</p>
+<p>FTP是ARPANet的标准文件传输协议，该网络就是现今Internet的前身。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><pre><code>ftp [-dignv][主机名称或IP地址]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-d 详细显示指令执行过程，便于排错或分析程序执行的情形。</li>
+<li>-i 关闭互动模式，不询问任何问题。</li>
+<li>-g 关闭本地主机文件名称支持特殊字符的扩充特性。</li>
+<li>-n 不使用自动登陆。</li>
+<li>-v 显示指令执行过程。</li>
+</ul>
+<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>例如使用ftp命令匿名登录ftp.kernel.org服务器，该服务是Linux 内核的官方服务器，可以使用如下命令：</p>
+<pre><code>ftp ftp.kernel.org #发起链接请求 </code></pre><h2 id="7-uuto"><a href="#7-uuto" class="headerlink" title="7.uuto"></a>7.uuto</h2><p>​         uuto命令将文件传送到远端的UUCP主机。</p>
+<p>uuto为script文件，它实际上会执行uucp，用来将文件传送到远端UUCP主机，并在完成工作后，以邮件通知远端主机上的用户。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><pre><code>uuto [文件][目的]</code></pre><p><strong>参数</strong>：</p>
+<p>相关参数请参考 <a href="https://www.runoob.com/linux/linux-comm-uucp.html" target="_blank" rel="noopener">uucp指令</a>。</p>
+<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>将文件传送到远程UUCP主机localhost的tmp 目录，在命令提示符中直接输入如下命令：</p>
+<pre><code>uuto./testfile localhost/tmp #将文件传送到远程UUCP 主机localhost的tmp目录 </code></pre><p>该命令通常没有输出。</p>
+<h2 id="8-uupick"><a href="#8-uupick" class="headerlink" title="8.uupick"></a>8.uupick</h2><p> uupick命令处理传送进来的文件。</p>
+<p>当其他主机通过UUCP将文件传送进来时，可利用uupick指令取出这些文件。</p>
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><pre><code>uupick [-v][-I&lt;配置文件&gt;][-s&lt;主机&gt;][-x&lt;层级&gt;][--help]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-I&lt;配置文件&gt;或–config&lt;配置文件&gt; 指定配置文件。</li>
+<li>-s&lt;主机&gt;或–system&lt;主机&gt; 处理由指定主机传送过来的文件。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>–help 显示帮助。</li>
+</ul>
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>处理由主机localhost传送过来的文件。在命令行直接输入如下命令：</p>
+<pre><code>uupick-s localhost</code></pre><p>该命令通常没有输出。</p>
+<h2 id="9-uucp"><a href="#9-uucp" class="headerlink" title="9.uucp"></a>9.uucp</h2><p>​        uucp命令用于在Unix系统之间传送文件。</p>
+<p>UUCP为Unix系统之间，通过序列线来连线的协议。uucp使用UUCP协议，主要的功能为传送文件。</p>
+<h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><pre><code>uucp [-cCdfjmrRtvW][-g&lt;等级&gt;][-I&lt;配置文件&gt;][-n&lt;用户&gt;][-x&lt;类型&gt;][--help][...来源][目的]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-c或–nocopy 不用将文件复制到缓冲区。</li>
+<li>-C或–copy 将文件复制到缓冲区。</li>
+<li>-d或–directiories 在传送文件时，自动在[目的]建立必要的目录。</li>
+<li>-f或–nodirectiories 在传送文件时，若需要在[目的]建立目录，则放弃执行该作业。</li>
+<li>-g&lt;等级&gt;或–grade&lt;等级&gt; 指定文件传送作业的优先顺序。</li>
+<li>-I&lt;配置文件&gt;或–config&lt;配置文件&gt; 指定uucp配置文件。</li>
+<li>-j或–jobid 显示作业编号。</li>
+<li>-m或–mail 作业结束后，以电子邮件报告作业是否顺利完成。</li>
+<li>-n&lt;用户&gt;或–notify&lt;用户&gt; 作业结束后，以电子邮件向指定的用户报告作业是否顺利完成。</li>
+<li>-r或–nouucico 不要立即启动uucico服务程序，仅将作业送到队列中，待稍后再执行。</li>
+<li>-R或–recursive 若[来源]为目录，则将整个目录包含子目录复制到[目的]。</li>
+<li>-t或–uuto 将最后一个参数视为”主机名!用户”。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>-W或–noexpand 不要将目前所在的目录加入路径。</li>
+<li>-x&lt;类型&gt;或–debug&lt;类型&gt;启动指定的排错模式。</li>
+<li>–help 显示帮助。</li>
+<li>[源…] 指定源文件或路径。</li>
+<li>[目的] 指定目标文件或路径。</li>
+</ul>
+<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>将temp/目录下所有文件传送到远程主机localhost的uucp公共目录下的Public/目录下。在命令行中输入如下命令：</p>
+<pre><code>uucp-d-R temp localhost ~/Public/ </code></pre><p>该命令通常没有输出</p>
+<h2 id="10-uucico"><a href="#10-uucico" class="headerlink" title="10.uucico"></a>10.uucico</h2><p>​         uucico命令UUCP文件传输服务程序。</p>
+<p>uucico是用来处理uucp或uux送到队列的文件传输工具。uucico有两种工作模式：主动模式和附属模式。当在主动模式下时，uucico会调用远端主机；在附属模式下时，uucico则接受远端主机的调用。</p>
+<h3 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h3><pre><code>uucico [-cCDefqvwz][-i&lt;类型&gt;][-I&lt;文件&gt;][-p&lt;连接端口号码&gt;][-][-rl][-s&lt;主机&gt;][-S&lt;主机&gt;][-u&lt;用户&gt;][-x&lt;类型&gt;][--help]</code></pre><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
+<li>-c或–quiet 当不执行任何工作时，不要更改记录文件的内容及更新目前的状态。</li>
+<li>-C或–ifwork 当有工作要执行时，才调用-s或-S参数所指定主机。</li>
+<li>-D或–nodetach 不要与控制终端机离线。</li>
+<li>-e或–loop 在附属模式下执行，并且出现要求登入的提示画面。</li>
+<li>-f或–force 当执行错误时，不等待任何时间即重新调用主机。</li>
+<li>-i&lt;类型&gt;或–stdin&lt;类型&gt; 当使用到标准输入设备时，指定连接端口的类型。</li>
+<li>-I&lt;文件&gt;–config&lt;文件&gt; 指定使用的配置文件。</li>
+<li>-l或–prompt 出现要求登入的提示画面。</li>
+<li>-p&lt;连接端口号码&gt;或-port&lt;连接端口号码&gt; 指定连接端口号码。</li>
+<li>-q或–quiet 不要启动uuxqt服务程序。</li>
+<li>-r0或–slave 以附属模式启动。</li>
+<li>-s&lt;主机&gt;或–system&lt;主机&gt; 调用指定的主机。</li>
+<li>-u&lt;用户&gt;或–login&lt;用户&gt; 指定登入的用户帐号，而不允许输入任意的登入帐号。</li>
+<li>-v或–version 显示版本信息，并且结束程序。</li>
+<li>-w或–wait 在主动模式下，当执行调用动作时，则出现要求登入的提示画面。</li>
+<li>-x&lt;类型&gt;或-X&lt;类型&gt;或outgoing-debug&lt;类型&gt; 启动指定的排错模式。</li>
+<li>-z或–try-next 当执行不成功时，尝试下一个选择而不结束程序。</li>
+<li>–help 显示帮助，并且结束程序。</li>
+</ul>
+<h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>使用主动模式启动uucico服务。在命令提示符下直接输入如下命令：</p>
+<pre><code>uucico-r1</code></pre><p>提示：该命令一般没有输出。</p>
+<h2 id="11-tftp"><a href="#11-tftp" class="headerlink" title="11.tftp"></a>11.tftp</h2><pre><code>     tftp命令用于传输文件。</code></pre><p>FTP让用户得以下载存放于远端主机的文件，也能将文件上传到远端主机放置.tftp是简单的文字模式的FTP程序，它所使用的指令和FTP类似。</p>
+<h3 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h3><pre><code>tftp [主机名称或IP地址]</code></pre><p><strong>操作说明：</strong></p>
+<ul>
+<li>连接：连接到远程TFTP服务器</li>
+<li>模式：文件传输模式</li>
+<li>放：上传文件</li>
+<li>得到：下载文件</li>
+<li>退出：退出</li>
+<li>详细：显示详细的处理信息</li>
+<li>追踪：显示包路径</li>
+<li>状态：显示当前状态信息</li>
+<li>二进制：二进制传输模式</li>
+<li>ascii：ascii传送模式</li>
+<li>REXMT：设置包传输的超时时间</li>
+<li>超时：设置重传的超时时间</li>
+<li>帮助：帮助信息</li>
+<li>？：帮助信息</li>
+</ul>
+<h3 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h3><p>连接远程服务器“218.28.188.288”，然后使用put命令下载其中根目录下的文件“README”，可使用命令如下：</p>
+<pre><code>tftp 218.28.188.288＃连接远程服务器 </code></pre><p>连接服务器之后可进行相应的操作，具体如下：</p>
+<pre><code>$ tftp 218.28.188.228＃连接远程服务器  
+tftp&gt;？＃使用？，参考帮助  
+命令可以缩写。命令是：＃帮助命令列表  
+连接到远程tftp  
+模式设置文件传输模式  
+把发送文件  
+获取接收文件  
+退出tftp  
+详细切换详细模式  
+跟踪切换数据包跟踪  
+状态显示当前状态  
+二进制设置模式为八位字节  
+ascii将模式设置为netascii  
+rexmt设置每包重传超时  
+超时设置总重传超时  
+？打印帮助信息  
+tftp&gt; get README＃远程下载README文件  
+从218.28.188.288到/ home / cmd  
+在1.5秒内恢复168236个字节[112157 bit / s]  
+tftp&gt;退出＃离开tftp </code></pre><h2 id="12-ncftp"><a href="#12-ncftp" class="headerlink" title="12.ncftp"></a>12.ncftp</h2><p>​        ncftp命令用于传输文件。</p>
+<p>FTP让用户得以下载存放于服务器主机的文件，也能将文件上传到远端主机放置。</p>
+<p>NcFTP是文字模式FTP程序的佼佼者，它具备多样特色，包括显示传输速率，下载进度，自动续传，标住书签，可通过防火墙和代理服务器等。</p>
+<p>当不指定用户名时，ncftp命令会自动尝试使用匿名账户匿名去连接远程FTP服务器，不需要用户输入账号和密码。</p>
+<h3 id="语法-11"><a href="#语法-11" class="headerlink" title="语法"></a>语法</h3><pre><code>ncftp [主机或IP地址]</code></pre><p><strong>参数说明：</strong></p>
+<ul>
+<li>-u &lt;用户名&gt;指定登录FTP服务器的用户名</li>
+<li>-p &lt;密码&gt;设置用户密码</li>
+<li>-P &lt;端口号&gt;指定FTP端口号，默认为21</li>
+<li>-j &lt;账号&gt;指定账号</li>
+<li>-h帮助信息</li>
+<li>-v版本信息</li>
+</ul>
+<h3 id="实例-10"><a href="#实例-10" class="headerlink" title="实例"></a>实例</h3><p>使用的ncftp命令匿名连接FTP服务器。</p>
+<p>例如想匿名连接ftp.kernel.org服务器，同时不想输入匿名等匿名用户名，可直接使用的ncftp命令：</p>
+<pre><code>ncftp ftp.kernel.org</code></pre><p>得到如下信息：</p>
+<pre><code>$ ncftp ftp.kernel.org＃匿名连接ftp.kernel.org服务器  
+NcFTP 3。3。1（2007年7月29日）作者：Mike Gleason（http://www.NcFTP.com/contact/）。  
+#ncftp版权，版本等信息  
+Mike Gleason版权所有（c）1992-2005。  
+版权所有。  
+连接到149.20.20.133 ...＃连接服务器  
+欢迎来到ftp.kernel.org。  
+登录...＃匿名登录  
+欢迎来到＃欢迎信息  
+LINUX KERNEL档案  
+ftp.kernel.org  
+“不仅仅是内核”  
+如果您通过WEB浏览器访问本网站  
+请使用以下的HTTP URL！  
+----&gt;如果您正在寻找镜像站点，请转到&lt;---- 
+----&gt;到mirrors.kernel.org而不是&lt;---- 
+该站点由Linux内核提供为公共服务  
+组织，一家加州非营利性公司。带宽是  
+由Internet Software Consortium，Inc。提供。我们的服务器是  
+位于旧金山和加利福尼亚州帕洛阿尔托; 俄勒冈州科瓦利斯;  
+阿姆斯特丹，荷兰和瑞典，瑞典; 使用违反任何  
+严格禁止适用法律。  
+由于美国出口法规，所有加密软件都在此  
+网站受以下法律声明的约束：  
+此站点包含公开可用的加密源代码  
+这与编译时产生的目标代码一起  
+公开可用的源代码，可以从美国出口  
+根据15 CFR部分的许可例外“TSU”的国家  
+740.13（e）中。  
+本法律声明仅适用于加密软件。请参阅  
+工业和安全局（http://www.bis.doc.gov/）了解更多信息  
+有关美国现行法规的信息。  
+Linux内核组织及其赞助商都没有提供任何内容  
+关于本网站内容的明示或暗示保证。  
+使用风险由您自己承担。  
+可通过以下机制访问此站点：  
+FTP ftp://ftp.kernel.org/pub/  
+HTTP http://www.kernel.org/pub/  
+RSYNC rsync：//rsync.kernel.org/pub/  
+NFS和SMB / CIFS不再可用。  
+有关本网站的评论，请联系&lt;ftpadmin@kernel.org&gt;。  
+请不要将此地址用于与之无关的问题  
+这个网站的运作。请访问我们的主页  
+http://www.kernel.org/获取Linux文档资源的链接。  
+登陆成功。  
+登录到ftp.kernel.org。  
+ncftp /&gt; </code></pre><p>提示：ncftp的命令提示符为“ncftp /&gt;”，而不是ftp中的“ftp /&gt;”。</p>
+<p>使用的ncftp命令操作，下载文件。</p>
+<p>的ncftp的命令基本上与FTP相同，例如可以使用 “CD” 命令切换在FTP服务器中的当前目录，使用 “LS” 命令列出当前目录内容，使用 “获取” 命令下载 “/酒馆” 目录下的自述文件，使用 “退出” 离开的ncftp等操作结果如下：</p>
+<pre><code>ncftp /&gt; pwd＃查看当前路径  
+ftp://ftp.kernel.org＃当前路径为根目录  
+ncftp /&gt; ls＃查看当前目录列表  
+bin / for_mirrors_only / pub /  
+dev / lib / usr @  
+etc / lost + found / welcome.msg @  
+ncftp /&gt; cd pub＃切换目录到pub子目录  
+目录已成功更改。  
+ncftp / pub&gt; ls＃查看pub的目录列表  
+dist / media / scm /  
+index.html RCS / site /  
+linux / README软件/  
+lost + found / README_ABOUT_BZ2_FILES工具/  
+ncftp / pub&gt; get README #download README文件  
+自述文件：1.87 KB 10.39 KB / s  
+ncftp / pub&gt;退出＃离开ncftp </code></pre><p>与FTP不同的是，的ncftp此时会提示用户是否将FTP服务器保存为书签，以便于下次登录，用户可以进行自定义书签名等操作，如下所示：</p>
+<pre><code>您尚未保存此网站的书签。＃离开提示信息  
+您要将书签保存到：  
+ftp://ftp.kernel.org/pub/  
+保存？（是/否）是＃确认是否保存  
+输入此书签的名称，或按“Enter”输入“kernel”：kernel＃输入书签名  
+书签“内核”已保存。 </code></pre><h2 id="13-ftpshut"><a href="#13-ftpshut" class="headerlink" title="13.ftpshut"></a>13.ftpshut</h2><p>​        ftpshut命令在指定的时间关闭FTP服务器。</p>
+<p>本指令提供系统管理者在设置的时间关闭FTP服务器，且能在关闭之前发出警告信息通知用户。关闭时间若设置后为”none”，则会马上关闭服务器。如果采用”+30”的方式来设置表示服务器在30分钟之后关闭。依次类推，假设使用”1130”的格式则代表服务器会在每日的11时30分关闭，时间格式为24小时制。FTP服务器关闭后，在/etc目录下会产生一个名称为shutmsg的文件，把它删除后即可再度启动FTP服务器的功能。</p>
+<h3 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h3><pre><code>ftpshut [-d&lt;分钟&gt;][-l&lt;分钟&gt;][关闭时间][&quot;警告信息&quot;]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-d&lt;分钟&gt; 切断所有FTP连线时间。</li>
+<li>-l&lt;分钟&gt; 停止接受FTP登入的时间。</li>
+</ul>
+<h3 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h3><p>在晚上11:00 关闭FTP服务器，并在关闭前5 分钟拒绝新的FTP登录，前3 分钟关闭所有ftp的链接，且给出警告信息，可使用如下命令：</p>
+<pre><code>ftpshut-d 3 -1 5 1100 &quot;Server will be shutdown at 23:00:00&quot; </code></pre><h2 id="14-ftpwho"><a href="#14-ftpwho" class="headerlink" title="14.ftpwho"></a>14.ftpwho</h2><p>​        ftpwho命令用于显示目前所有以FTP登入的用户信息。</p>
+<p>执行这项指令可得知目前用FTP登入系统的用户有那些人，以及他们正在进行的操作。</p>
+<h3 id="语法-13"><a href="#语法-13" class="headerlink" title="语法"></a>语法</h3><pre><code>ftpwho</code></pre><p><strong>参数说明：</strong></p>
+<ul>
+<li>-v 显示版本信息</li>
+</ul>
+<h3 id="实例-12"><a href="#实例-12" class="headerlink" title="实例"></a>实例</h3><p>查询当前有哪些用户正在登录FTP服务器，可直接使用如下命令：</p>
+<pre><code>ftpwho</code></pre><p>该命令有如下输出结果：</p>
+<pre><code>$ ftpwho              #查询当前正在登录FTP 服务器的用户  
+standalone FTP daemon[2085]：  
+3547 wyw [1m20s] 1m25s(idle)  
+Service class - 1 user #当前有一个用户登录FTP服务器 </code></pre><h2 id="15-ftpcount"><a href="#15-ftpcount" class="headerlink" title="15.ftpcount"></a>15.ftpcount</h2><p>​        ftpcount命令用于显示目前以FTP登入的用户人数。</p>
+<p>执行这项指令可得知目前用FTP登入系统的人数以及FTP登入人数的上限。</p>
+<h3 id="语法-14"><a href="#语法-14" class="headerlink" title="语法"></a>语法</h3><pre><code>ftpcount</code></pre><p><strong>参数说明：</strong></p>
+<ul>
+<li>-f&lt;设定文件&gt; : 指定设定文件的路径。</li>
+<li>-h，–help ：显示帮助信息。</li>
+</ul>
+<h3 id="实例-13"><a href="#实例-13" class="headerlink" title="实例"></a>实例</h3><p>ftpcount 可以直接查询FTP服务器上用户的人数，可直接使用如下命令：</p>
+<pre><code>ftpcount              #查询当前FTP用户的人数 </code></pre><p>该命令有如下输出结果：</p>
+<pre><code>$ ftpcount             #查询当前FTP用户的人数  
+Master proftpd process 2085:  
+Service class - 6 user #当前共6个用户登录到服务器 </code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
+<li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
+</ul>
+<p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/08/17/linux/ming-ling/3.linux-ming-ling-wen-jian-chuan-shu/" class="b-link-green">3.Linux命令（文件传输）</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/08/17/linux/ming-ling/linux-chang-yong-ming-ling-quan-pin/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux常用命令全拼">
+                        
+                        <span class="card-title">Linux常用命令全拼</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux常用命令全拼
+pwd：打印工作目录打印当前目录显示出当前工作目录的绝对路径
+
+ps：进程状态（进程状态，类似于windows的任务管理器）
+  常用参数：-auxf
+  ps -auxf显示进程状态
+
+df：disk free其功</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/08/12/javascript/02-web-api/02-web-api/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="02-Web API">
+                        
+                        <span class="card-title">02-Web API</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary"> 本文非原创 学习目标:
+
+掌握API和Web API的概念
+掌握常见浏览器提供的API的调用方式
+能通过Web API开发常见的页面交互功能
+能够利用搜索引擎解决问题
+
+
+Web APIWeb API介绍API的概念API（Applica</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/笔记/" class="post-category" target="_blank">
+                                    笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/02-Web-API/" target="_blank">
+                        <span class="chip bg-color">02-Web API</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2019 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">221k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 80000;
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + /*diffYears + " 年 " + */ diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

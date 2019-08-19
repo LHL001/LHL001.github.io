@@ -1,0 +1,987 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="10.Linux磁盘管理, yoyo，LHL001">
+    <meta name="description" content="Linux磁盘管理Linux的磁盘管理好坏直接关系到整个系统的性能问题。
+Linux的磁盘管理常用三个命令为DF，du和FDISK。
+
+DF：列出文件系统的整体磁盘使用量
+du：检查磁盘空间使用量
+FDISK：用于磁盘分区
+
+
+DFDF命令">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>10.Linux磁盘管理 | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        10.Linux磁盘管理
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/" target="_blank">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                Linux笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-07-10
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Linux磁盘管理"><a href="#Linux磁盘管理" class="headerlink" title="Linux磁盘管理"></a>Linux磁盘管理</h1><p>Linux的磁盘管理好坏直接关系到整个系统的性能问题。</p>
+<p>Linux的磁盘管理常用三个命令为DF，du和FDISK。</p>
+<ul>
+<li>DF：列出文件系统的整体磁盘使用量</li>
+<li>du：检查磁盘空间使用量</li>
+<li>FDISK：用于磁盘分区</li>
+</ul>
+<hr>
+<h2 id="DF"><a href="#DF" class="headerlink" title="DF"></a>DF</h2><p>DF命令参数功能：检查文件系统的磁盘空间占用情况可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。</p>
+<p>语法：</p>
+<pre><code>df [-ahikHTm] [目录或文件名]</code></pre><p>选项与参数：</p>
+<ul>
+<li>-a：列出所有的文件系统，包括系统特有的/ proc等文件系统;</li>
+<li>-k：以KBytes的容量显示各文件系统;</li>
+<li>-m：以MBytes的容量显示各文件系统;</li>
+<li>-h：以人们较易阅读的GBytes，MBytes，KBytes等格式自行显示;</li>
+<li>-H：以M = 1000K取代M = 1024K的进位方式;</li>
+<li>-T：显示文件系统类型，连同该分区的文件系统名称（例如ext3）也列出;</li>
+<li>-i：不用硬盘容量，而以inode的数量来显示</li>
+</ul>
+<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><p>将系统内所有的文件系统列出来！</p>
+<pre><code>[root @ www~] #df
+文件系统1K块使用可用使用％挂载
+/ dev / hdc2 9920624 3823112 5585444 41％/
+/ dev / hdc3 4956316 141376 4559108 4％/ home
+/ dev / hdc1 101086 11126 84741 12％/ boot
+tmpfs 371332 0 371332 0％/ dev / shm371332 0 371332 0 ％/ dev / shm                 </code></pre><p>在Linux底下如果df没有加任何选项，那么默认会将系统内所有的（不含特殊内存内的文件系统与交换）都以1千字的容量来列出来！</p>
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><p>将容量结果以易读的容量格式显示出来</p>
+<pre><code>[root @ www~] #df -hroot @ www ~] #df - h
+使用的文件系统大小可用使用％挂载文件系统大小用于担保条件使用％安装在                 
+/ dev / hdc2 9.5G 3.7G 5.4G 41％// dev / hdc2              9.5G 3.7G 5.4G 41 ％/       
+/ dev / hdc3 4.8G 139M 4.4G 4％/ home的/ dev / hdc3上              4.8G 139M 4.4G 4 ％/ 家        
+/ dev / hdc1 99M 11M 83M 12％/ boot/ dev / hdc1               99M 11M 83M 12 ％/ boot         
+tmpfs 363M 0 363M 0％/ dev / shm363M 0 363M 0 ％/ dev / shm           </code></pre><h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><p>将系统内的所有特殊文件格式及名称都列出来</p>
+<pre><code>[root @ www~] #df -aTroot @ www ~] #df - aT
+文件系统类型1K块使用可用使用％挂载文件系统类型1K - 块     使用可用使用％安装在        
+/ dev / hdc2 ext3 9920624 3823112 5585444 41％// dev / hdc2 ext3    9920624 3823112 5585444 41 ％/       
+proc proc 0 0 0  -  / proc0 0 0 - / proc                     
+sysfs sysfs 0 0 0  -  / sys0 0 0 - / sys                     
+devpts devpts 0 0 0  -  / dev / pts0 0 0 - / dev / pts                     
+/ dev / hdc3 ext3 4956316 141376 4559108 4％/ home/ dev / hdc3 ext3    4956316 141376 4559108 4 ％/ home         
+/ dev / hdc1 ext3 101086 11126 84741 12％/ boot/ dev / hdc1 ext3     101086 11126 84741 12 ％/ boot           
+tmpfs tmpfs 371332 0 371332 0％/ dev / shm371332 0 371332 0 ％/ dev / shm               
+none binfmt_misc 0 0 0  -  / proc / sys / fs / binfmt_misc0 0 0 - / proc / sys / fs / binfmt_misc                     
+sunrpc rpc_pipefs 0 0 0  -  / var / lib / nfs / rpc_pipefs0 0 0 - / var / lib / nfs / rpc_pipefs                     </code></pre><h3 id="实例4"><a href="#实例4" class="headerlink" title="实例4"></a>实例4</h3><p>将/ etc底下的可用的磁盘容量以易读的容量格式显示</p>
+<pre><code>[root @ www~] #df -h / etcroot @ www ~] #df - h / etc
+使用的文件系统大小可用使用％挂载文件系统大小用于担保条件使用％安装在                 
+/ dev / hdc2 9.5G 3.7G 5.4G 41％// dev / hdc2              9.5G 3.7G 5.4G 41 ％/       </code></pre><hr>
+<h2 id="杜"><a href="#杜" class="headerlink" title="杜"></a>杜</h2><p>Linux du命令也是查看使用空间的，但是与df命令不同的是Linux du命令是对文件和目录磁盘使用的空间的查看，还是和df命令有一些区别的，这里介绍Linux du命令。</p>
+<p>语法：</p>
+<pre><code>du [-ahskm]文件或目录名称
+[ - ahskm ] 文件或目录名称 </code></pre><p>选项与参数：</p>
+<ul>
+<li>-a：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已。</li>
+<li>-h：以人们较易读的容量格式（G / M）显示;</li>
+<li>-s：列出总量而已，而不列出每个各别的目录占用容量;</li>
+<li>-S：不包括子目录下的总计，与-s有点差别。</li>
+<li>-k：以KBytes列出容量显示;</li>
+<li>-m：以MBytes列出容量显示;</li>
+</ul>
+<h3 id="实例1-1"><a href="#实例1-1" class="headerlink" title="实例1"></a>实例1</h3><p>列出目前目录下的所有文件容量</p>
+<pre><code>[root @ www~] #duroot @ www ~] #du
+8 ./test4 &lt;==每个目录都会列出来8 ./ test4      &lt;==每个目录都会列出来       
+8 ./test28 ./ test2       
+....中间省略........中间省略....
+12 ./.gconfd &lt;==包括隐藏文件的目录12 ./。gconfd    &lt;==包括隐藏文件的目录      
+220。&lt;==这个目录（。）所占用的总量220 。&lt;==这个目录（。）所占用的总量                </code></pre><p>直接输入du没有加任何选项时，则du会分析当前所在目录的文件与目录所占用的硬盘空间。</p>
+<h3 id="实例2-1"><a href="#实例2-1" class="headerlink" title="实例2"></a>实例2</h3><p>将文件的容量也列出来</p>
+<pre><code>[root @ www~] #du -aroot @ www ~] #du - a
+12 ./install.log.syslog &lt;==有文件的列表了12 ./ 安装。记录。syslog    &lt;==有文件的列表了      
+8 ./.bash_logout8 ./。bash_logout       
+8 ./test48个./ TEST4       
+8 ./test28 ./ test2       
+....中间省略........中间省略....
+12 ./.gconfd12 ./。进程gconfd      
+220。220 。     </code></pre><h3 id="实例3-1"><a href="#实例3-1" class="headerlink" title="实例3"></a>实例3</h3><p>检查根目录底下每个目录所占用的容量</p>
+<pre><code>[root @ www~] #dusm / *root @ www ~] #du - sm / *
+7 / bin
+6 /开机
+.....中间省略....
+0 / proc
+.....中间省略....
+1 / tmp
+3859 / usr &lt;==系统初期最大就是他了啦！
+77 / var</code></pre><p>通配符*来代表每个目录。</p>
+<p>与df不一样的是，du这个命令其实会直接到文件系统内去搜寻所有的文件数据。</p>
+<hr>
+<h2 id="FDISK"><a href="#FDISK" class="headerlink" title="FDISK"></a>FDISK</h2><p>fdisk是Linux的磁盘分区表操作工具。</p>
+<p>语法：</p>
+<pre><code>fdisk [-l]装置名称
+[ - l ] 装置名称 </code></pre><p>选项与参数：</p>
+<ul>
+<li>-l：输出后面接的装置所有的分区内容。若仅有fdisk -l时，则系统将会把整个系统内能够搜寻到的装置的分区均列出来。</li>
+</ul>
+<h3 id="实例1-2"><a href="#实例1-2" class="headerlink" title="实例1"></a>实例1</h3><p>列出所有分区信息</p>
+<pre><code>[root @ AY120919111755c246621 tmp] #fdisk -l根@ AY120919111755c246621 TMP ]＃fdisk的- 升
+
+磁盘/ dev / xvda：21.5 GB，21474836480字节磁盘/ dev / xvda ：21.5 GB ，21474836480 字节   
+255个头，63个扇区/轨道，2610个气缸255 个头，63个扇区/ 轨道，2610个气缸  
+单位= 16065 * 512 = 8225280字节的柱面单位= 气缸16065 * 512 = 8225280个字节     
+扇区大小（逻辑/物理）：512字节/ 512字节扇区大小（逻辑/ 物理）：512 字节/ 512 字节  
+I / O大小（最小/最佳）：512字节/ 512字节/ O大小（最小/ 最佳）：512 字节/ 512 字节  
+磁盘标识符：0x00000000磁盘标识符：0x00000000 
+
+    设备启动开始结束块ID系统设备启动开始结束块ID 系统                           
+/ dev / xvda1 * 1 2550 20480000 83 Linux/ dev / xvda1    * 1 2550 20480000 83 Linux                            
+/ dev / xvda2 2550 2611 490496 82 Linux swap / Solaris/ dev / xvda2             2550 2611 490496 82 Linux swap / Solaris                    
+
+磁盘/ dev / xvdb：21.5 GB，21474836480字节磁盘/ dev / xvdb ：21.5 GB ，21474836480 字节   
+255个头，63个扇区/轨道，2610个气缸255 个头，63个扇区/ 轨道，2610个气缸  
+单位= 16065 * 512 = 8225280字节的柱面单位= 气缸16065 * 512 = 8225280个字节     
+扇区大小（逻辑/物理）：512字节/ 512字节扇区大小（逻辑/ 物理）：512 字节/ 512 字节  
+I / O大小（最小/最佳）：512字节/ 512字节/ O大小（最小/ 最佳）：512 字节/ 512 字节  
+磁盘标识符：0x56f40944磁盘标识符：0x56f40944 
+
+    设备启动开始结束块ID系统设备启动开始结束块ID 系统                           
+/ dev / xvdb2 1 2610 20964793+ 83 Linux/ dev / xvdb2                1 2610 20964793 + 83 Linux                </code></pre><h3 id="实例2-2"><a href="#实例2-2" class="headerlink" title="实例2"></a>实例2</h3><p>找出你系统中的根目录所在磁盘，并查阅该硬盘内的相关信息</p>
+<pre><code>[root @ www~] #df / &lt;==注意：重点在找出磁盘文件名而已根@ WWW 〜]＃DF / &lt;==注意：重点在找出磁盘文件名而已            
+文件系统1K块使用可用使用％挂载文件系统1K - 块       二手可使用％安装在              
+/ dev / hdc2 9920624 3823168 5585388 41％// dev / hdc2               9920624 3823168 5585388 41 ％/         
+
+[root @ www~] #fdisk / dev / hdc &lt;==仔细看，不要加上数字喔！[ 根@ WWW 〜]＃fdisk的/ dev的/ HDC   &lt;==仔细看，不要加上数字喔！
+此磁盘的柱面数设置为5005。该汽缸数量为这盘被设置到5005。  
+这没有什么不对，但这大于1024，有是没有错与那个，但是这是大于1024 ，  
+并且可能在某些设置中导致以下问题：并且可以在某些设置会导致问题与：
+1）在启动时运行的软件（例如，LILO的旧版本）1 ）运行在系统启动时软件（ē 。摹，旧版本的LILO ）
+2）从其他操作系统启动和分区软件2 ）从其他操作系统启动和分区软件
+   （例如，DOS FDISK，OS / 2 FDISK）（É 。克。，DOS FDISK ，OS / 2 FDISK ）
+
+命令（m求助）：&lt;==等待你的输入！命令（米为帮助）：&lt;==等待你的输入！      </code></pre><p>输入m后，就会看到底下这些命令介绍</p>
+<pre><code>命令（m求助）：m &lt;==输入m后，就会看到底下这些命令介绍 （米为帮助）：米    &lt;== 输入米后，就会看到底下这些命令介绍 
+命令行动命令行动
+   a切换可引导标志
+   b编辑bsd disklabel
+   c切换dos兼容性标志
+   d删除分区&lt;==删除一个分区删除分区             &lt;==删除一个分区
+   l列出已知的分区类型
+   m打印此菜单打印此菜单 
+   n添加一个新分区&lt;==新增一个分区新分区            &lt;==新增一个分区
+   o创建一个新的空DOS分区表新的空DOS分区表
+   p打印分区表&lt;==在屏幕上显示分割表打印分区表      &lt;==在屏幕上显示分割表
+   q退出而不保存更改&lt;==不储存离开fdisk程序&lt;==不储存离开fdisk的程序
+   创建一个新的空的Sun磁盘标签新的空太阳标签
+   t更改分区的系统ID的系统ID
+   你改变显示/输入单位
+   v验证分区表
+   w将表写入磁盘并退出&lt;==将刚刚的动作写入分割表
+   x额外功能（仅限专家）</code></pre><p>离开fdisk时按下<code>q</code>，那么所有的动作都不会生效！相反的，按下<code>w</code>就是动作生效的意思。</p>
+<pre><code>命令（m求救）：p &lt;==这里可以输出目前磁盘的状态 （米为帮助）：p   &lt;== 这里可以输出目前磁盘的状态 
+
+磁盘/ dev / hdc：41.1 GB，41174138880字节&lt;==这个磁盘的文件名与容量磁盘/ dev / hdc ：41.1 GB ，41174138880 字节         &lt;==这个磁盘的文件名与容量   
+255个头，63个扇区/轨道，5005个圆柱&lt;==磁头，扇区与磁柱大小255 个头，63个扇区/ 轨道，5005个圆柱       &lt;==磁头，扇区与磁柱大小  
+单位= 16065 * 512 = 8225280字节的柱面&lt;==每个磁柱的大小单位= 气缸16065 * 512 = 8225280个字节&lt;==每个磁柱的大小     
+
+   设备启动开始结束块ID系统设备启动开始结束块ID 系统                           
+/ dev / hdc1 * 1 13 104391 83 Linux/ dev / hdc1    * 1 13 104391 83 Linux                                
+/ dev / hdc2 14 1288 10241437+ 83 Linux/ dev / hdc2               14 1288 10241437 + 83 Linux                
+/ dev / hdc3 1289 1925 5116702+ 83 Linux/ dev / hdc3             1289 1925 5116702 + 83 Linux                 
+/ dev / hdc4 1926 5005 24740100 5扩展/ dev / hdc4             1926 5005 24740100 5 扩展                  
+/ dev / hdc5 1926 2052 1020096 82 Linux swap / Solaris/ dev / hdc5             1926 2052 1020096 82 Linux swap / Solaris                   
+＃装置文件名启动区否开始磁柱结束磁柱1K大小容量磁盘分区槽内的系统＃装置文件名启动区否开始磁柱结束磁柱1K大小容量磁盘分区槽内的系统
+
+命令（m求助）：q命令（米为帮助）：q </code></pre><p>想要不储存离开吗？按下q就对了！不要随便按w啊！</p>
+<p>使用<code>p</code>可以列出目前这颗磁盘的分割表信息，这个信息的上半部在显示整体磁盘的状态。</p>
+<hr>
+<h3 id="磁盘格式化"><a href="#磁盘格式化" class="headerlink" title="磁盘格式化"></a>磁盘格式化</h3><p>磁盘分割完毕后自然就是要进行文件系统的格式化，格式化的命令非常的简单，使用<code>mkfs</code>（make filesystem）命令。</p>
+<p>语法：</p>
+<pre><code>mkfs [-t文件系统格式]装置文件名
+[ - t 文件系统格式] 装置文件名 </code></pre><p>选项与参数：</p>
+<ul>
+<li>-t：可以接文件系统格式，例如ext3，ext2，vfat等（系统有支持才会生效）</li>
+</ul>
+<h3 id="实例1-3"><a href="#实例1-3" class="headerlink" title="实例1"></a>实例1</h3><p>查看mkfs支持的文件格式</p>
+<pre><code>[root @ www~] #mkfs [tab] [tab]root @ www ~] #mkfs [ tab ] [ tab ]
+mkfs mkfs.cramfs mkfs.ext2 mkfs.ext3 mkfs.msdos mkfs.vfat。cramfs mkfs 。ext2 mkfs 。ext3 mkfs 。msdos mkfs 。VFAT</code></pre><p>按下两个[tab]，会发现mkfs支持的文件格式如上所示。</p>
+<h3 id="实例2-3"><a href="#实例2-3" class="headerlink" title="实例2"></a>实例2</h3><p>将分区/ dev / hdc6（可指定你自己的分区）格式化为ext3文件系统：</p>
+<pre><code>[root @ www~] #mkfs -t ext3 / dev / hdc6根@ WWW 〜]＃的mkfs - 吨EXT3 / dev的/ hdc6
+mke2fs 1.39（2006年5月29日）1.39 （29 - 月- 2006年） 
+Filesystem label = &lt;==这里指的是分割槽的名称（标签）Filesystem label = &lt;==这里指的是分割槽的名称（标签）                
+操作系统类型：Linux：Linux 
+块大小= 4096（log = 2）&lt;== block的大小配置为4K 块大小= 4096 （log = 2 ）&lt;== block 的大小配置为4K             
+片段大小= 4096（log = 2）片段大小= 4096 （log = 2 ） 
+251392 inodes，502023 blocks &lt;==由此配置决定的inode / block数量251392 inodes ，502023 blocks      &lt;==由此配置决定的inode / block 数量 
+为超级用户保留25101块（5.00％）25101 块（5.00 ％）保留用于该超级用户
+第一个数据块= 0第一个数据块= 0
+最大文件系统块= 515899392最大文件系统块= 515899392
+16个街区组16个街区组
+每组32768个块，每组32768个片段32768个每块组，32768个每片段组 
+每组15712个inode每组15712个inode
+存储在块上的超级块备份：存储在块上的超级块备份：
+        32768,98304,163840,229376,29491232768 ，98304 ，163840 ，229376 ，294912    
+
+编写inode表：完成编写inode表：完成 
+创建期刊（8192块）：完成&lt;==有日志记录创建期刊（8192 块）：完成&lt;==有日志记录  
+编写超级块和文件系统会计信息：完成编写超级块和文件系统会计信息：完成 
+
+该文件系统将每34次安装或自动检查该文件系统将每34次安装或自动检查
+180天，以先到者为准。使用tune2fs -c或-i覆盖。180 天，以先到者为准。使用tune2fs - c 或- i 覆盖。   
+＃这样就创建起来我们所需要的Ext3文件系统了！简单明了！＃这样就创建起来我们所需要的Ext3文件系统了！简单明了！</code></pre><hr>
+<h2 id="磁盘检验"><a href="#磁盘检验" class="headerlink" title="磁盘检验"></a>磁盘检验</h2><p>fsck（文件系统检查）用来检查和维护不一致的文件系统。</p>
+<p>若系统掉电或磁盘发生问题，可利用的fsck命令对文件系统进行检查。</p>
+<p>语法：</p>
+<pre><code>fsck [-t文件系统] [-ACay]装置名称
+[ - t 文件系统] [ - ACay ] 装置名称  </code></pre><p>选项与参数：</p>
+<ul>
+<li>-t：给定档案系统的型式，若在/ etc / fstab中已有定义或内核本身已支援的则不需加上此参数</li>
+<li>-s：依序一个一个地执行fsck的指令来检查</li>
+<li>-A：对/ etc / fstab中所有列出来的分区（partition）做检查</li>
+<li>-C：显示完整的检查进度</li>
+<li>-d：打印出e2fsck的调试结果</li>
+<li>-p：同时有-A条件时，同时有多个fsck的检查一起执行</li>
+<li>-R：同时有-A条件时，省略/不检查</li>
+<li>-V：详细显示模式</li>
+<li>-a：如果检查有错则自动修复</li>
+<li>-r：如果检查有错则由使用者回答是否修复</li>
+<li>-y：选项指定检测每个文件是自动输入是，在不确定那些是不正常的时候，可以执行#fsck -y全部检查修复。</li>
+</ul>
+<h3 id="实例1-4"><a href="#实例1-4" class="headerlink" title="实例1"></a>实例1</h3><p>查看系统有多少文件系统支持的fsck命令：</p>
+<pre><code>[root @ www~] #fsck [tab] [tab]root @ www ~] #fsck [ tab ] [ tab ]
+fsck fsck.cramfs fsck.ext2 fsck.ext3 fsck.msdos fsck.vfat。cramfs fsck 。ext2 fsck 。ext3 fsck 。msdos fsck 。VFAT</code></pre><h3 id="实例2-4"><a href="#实例2-4" class="headerlink" title="实例2"></a>实例2</h3><p>强制检测/ dev / hdc6分区：</p>
+<pre><code>[root @ www~] #fsck -C -f -t ext3 / dev / hdc6 根@ WWW 〜]＃的fsck - Ç - ˚F - 吨EXT3 / dev的/ hdc6
+fsck 1。39（2006年5月29日）1.39 （29 - 月- 2006年） 
+e2fsck 1。39（2006年5月29日）1.39 （29 - 月- 2006年） 
+通过1：检查inode，块和大小传1 ：检查索引节点，块，和大小   
+通过2：检查目录结构通过2 ：检查目录结构  
+通过3：检查目录连接通过3 ：检查目录连接  
+通过4：检查参考计数通过4 ：检查参考计数  
+通过5：检查组摘要信息通过5 ：检查组摘要信息   
+vbird_logical：11/251968个文件（9.1％非连续），36926/1004046个块：11 / 二五一九六八文件（9.1 ％非- 连续的），36926 / 一〇 〇四〇四六块  </code></pre><p>如果没有加上-f的选项，则由于这个文件系统不曾出现问题，检查的经过非常快速！若加上-f强制检查，才会一项一项的显示过程。</p>
+<hr>
+<h2 id="磁盘挂载与卸除"><a href="#磁盘挂载与卸除" class="headerlink" title="磁盘挂载与卸除"></a>磁盘挂载与卸除</h2><p>Linux的磁盘挂载使用<code>mount</code>命令，卸载使用<code>umount</code>命令。</p>
+<p>磁盘挂载语法：</p>
+<pre><code>mount [-t文件系统] [-L Label name] [-o额外选项] [-n]装置文件名挂载点</code></pre><h3 id="实例1-5"><a href="#实例1-5" class="headerlink" title="实例1"></a>实例1</h3><p>用默认的方式，将刚刚创建的/ dev / hdc6挂载到/ mnt / hdc6上面！</p>
+<pre><code>[root @ www~] #mkdir / mnt / hdc6
+[root @ www~] #mount / dev / hdc6 / mnt / hdc6
+[root @ www~] #df
+文件系统1K块使用可用使用％挂载
+.....中间省略.....
+/ dev / hdc6 1976312 42072 1833836 3％/ mnt / hdc6</code></pre><p>卸载磁盘命令<code>umount</code>语法：</p>
+<pre><code>umount [-fn]装置文件名或挂载点</code></pre><p>选项与参数：</p>
+<ul>
+<li>-f：强制卸除！可用在类似网络文件系统（NFS）无法读取到的情况下;</li>
+<li>-n：不升级/ etc / mtab情况下卸除。</li>
+</ul>
+<p>卸载的/ dev / hdc6</p>
+<pre><code>[root @ www~] #umount / dev / hdc6     </code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
+<li><a href="https://www.runoob.com/linux/linux-filesystem.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-filesystem.html</a></li>
+</ul>
+<p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/07/10/linux/10.linux-ci-pan-guan-li/" class="b-link-green">10.Linux磁盘管理</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/07/11/linux/11.linux-vivim/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="11.Linux vi/vim">
+                        
+                        <span class="card-title">11.Linux vi/vim</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux vi/vim所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。
+但是目前我们使用比较多的是 vim 编辑器。
+vim 具有程序编辑的能力，可以主动的以字体颜色辨别语法的正确性，方便程序设</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/09/linux/9.linux-yong-hu-he-yong-hu-zu-guan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="9.Linux 用户和用户组管理">
+                        
+                        <span class="card-title">9.Linux 用户和用户组管理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux 用户和用户组管理Linux系统是一个多用户多任务的分时操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，然后以这个账号的身份进入系统。
+用户的账号一方面可以帮助系统管理员对使用系统的用户进行跟踪，并控制</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2019 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">221k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 80000;
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + /*diffYears + " 年 " + */ diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
