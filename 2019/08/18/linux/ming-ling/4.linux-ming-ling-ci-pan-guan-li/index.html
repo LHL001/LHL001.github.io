@@ -1154,7 +1154,7 @@ home  lost+found  mnt    proc  selinux  tmp  var</code></pre><p>列出目前工�
         var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
         var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
         var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + /*diffYears + " 年 " + */ diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
     }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
     siteTime();
 </script>
