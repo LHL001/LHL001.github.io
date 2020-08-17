@@ -1,0 +1,1446 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="5.Linux命令（磁盘维护）, yoyo，LHL001">
+    <meta name="description" content="Linux命令（磁盘维护）1.badblocks​        badblocks命令用于检查磁盘装置中损坏的区块。
+执行指令时须指定所要检查的磁盘装置，及此装置的磁盘区块数。
+语法badblocks [-svw][-b &amp;lt;区块大小">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>5.Linux命令（磁盘维护） | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LHL001" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Visit Github
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LHL001" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Visit Github" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        5.Linux命令（磁盘维护）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux命令/" target="_blank">
+                                <span class="chip bg-color">Linux命令</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                Linux笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-08-17
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        10.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        40 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Linux命令（磁盘维护）"><a href="#Linux命令（磁盘维护）" class="headerlink" title="Linux命令（磁盘维护）"></a>Linux命令（磁盘维护）</h1><h2 id="1-badblocks"><a href="#1-badblocks" class="headerlink" title="1.badblocks"></a>1.badblocks</h2><p>​        badblocks命令用于检查磁盘装置中损坏的区块。</p>
+<p>执行指令时须指定所要检查的磁盘装置，及此装置的磁盘区块数。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>badblocks [-svw][-b &lt;区块大小&gt;][-o &lt;输出文件&gt;][磁盘装置][磁盘区块数][启始区块]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-b&lt;区块大小&gt; 指定磁盘的区块大小，单位为字节。</li>
+<li>-o&lt;输出文件&gt; 将检查的结果写入指定的输出文件。</li>
+<li>-s 在检查时显示进度。</li>
+<li>-v 执行时显示详细的信息。</li>
+<li>-w 在检查时，执行写入测试。</li>
+<li>[磁盘装置] 指定要检查的磁盘装置。</li>
+<li>[磁盘区块数] 指定磁盘装置的区块总数。</li>
+<li>[启始区块] 指定要从哪个区块开始检查。</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>查看系统当前硬盘信息。</p>
+<pre><code># fdisk -l</code></pre><p>例如，显示信息如下：</p>
+<pre><code>Disk /dev/sda: 298.9 GB, 298999349248 bytes
+255 heads, 63 sectors/track, 36351 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+
+  Device Boot      Start         End      Blocks   Id  System
+/dev/sda1               1         262     2104483+  82  Linux swap / Solaris
+/dev/sda2   *         263       32898   262148670   83  Linux
+/dev/sda3           32899       36351    27736222+  83  Linux
+
+Disk /dev/sdb: 42.9 GB, 42949672960 bytes
+64 heads, 32 sectors/track, 40960 cylinders
+Units = cylinders of 2048 * 512 = 1048576 bytes</code></pre><p>通过命令扫描硬盘。</p>
+<pre><code># badblocks -s -v /dev/sdnx</code></pre><p>其中n表示硬盘设备名，x表示硬盘对应的分区号。例如需要检查”/dev/sda2”，执行命令如下：</p>
+<pre><code># badblocks -s -v /dev/sda2
+
+Checking blocks 0 to 30681000
+Checking for bad blocks (read-only test): 306809600674112/ 306810000000
+30680964
+30680965
+30680966
+30680967
+30680968
+30680969
+30680970
+30680971
+30680972
+30680973
+...
+done
+Pass completed, 37 bad blocks found.其中，“37 bad blocks found”表示硬盘存在37个坏块。</code></pre><h2 id="2-cfdisk"><a href="#2-cfdisk" class="headerlink" title="2.cfdisk"></a>2.cfdisk</h2><p>​        cfdisk命令用于磁盘分区。</p>
+<p>cfdisk是用来磁盘分区的程序，它十分类似DOS的fdisk，具有互动式操作界面而非传统fdisk的问答式界面，您可以轻易地利用方向键来操控分区操作。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><pre><code>cfdisk [-avz][-c &lt;柱面数目&gt;-h &lt;磁头数目&gt;-s &lt;盘区数目&gt;][-P &lt;r,s,t&gt;][外围设备代号]</code></pre><h3 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h3><ul>
+<li>-a 在程序里不用反白代表选取，而以箭头表示。</li>
+<li>-c&lt;柱面数目&gt; 忽略BIOS的数值，直接指定磁盘的柱面数目。</li>
+<li>-h&lt;磁头数目&gt; 忽略BIOS的数值，直接指定磁盘的磁头数目。</li>
+<li>-P&lt;r,s,t&gt; 显示分区表的内容，附加参数”r”会显示整个分区表的详细资料，附加参数”s”会依照磁区的顺序显示相关信息，附加参数”t”则会以磁头，磁区，柱面的方式来显示资料。</li>
+<li>-s&lt;磁区数目&gt; 忽略BIOS的数值，直接指定磁盘的磁区数目。</li>
+<li>-v 显示版本信息。</li>
+<li>-z 不读取现有的分区，直接当作没有分区的新磁盘使用。</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>进行磁盘分区：</p>
+<pre><code># cfsik</code></pre><p>进行磁盘分区，使用箭头进行操作，而不使用反白表示：</p>
+<pre><code># cfsik -a</code></pre><p>进行磁盘分区，使用箭头进行操作，而不使用反白表示：</p>
+<pre><code># cfsik -s 3</code></pre><h2 id="3-dd"><a href="#3-dd" class="headerlink" title="3.dd"></a>3.dd</h2><p>​        dd命令用于读取、转换并输出数据。</p>
+<p>dd可从标准输入或文件中读取数据，根据指定的格式来转换数据，再输出到文件、设备或标准输出。</p>
+<p><strong>参数说明:</strong></p>
+<ul>
+<li><p>if=文件名：输入文件名，默认为标准输入。即指定源文件。</p>
+</li>
+<li><p>of=文件名：输出文件名，默认为标准输出。即指定目的文件。</p>
+</li>
+<li><p>ibs=bytes：一次读入bytes个字节，即指定一个块大小为bytes个字节。</p>
+<p>  obs=bytes：一次输出bytes个字节，即指定一个块大小为bytes个字节。<br>  bs=bytes：同时设置读入/输出的块大小为bytes个字节。</p>
+</li>
+<li><p>cbs=bytes：一次转换bytes个字节，即指定转换缓冲区大小。</p>
+</li>
+<li><p>skip=blocks：从输入文件开头跳过blocks个块后再开始复制。</p>
+</li>
+<li><p>seek=blocks：从输出文件开头跳过blocks个块后再开始复制。</p>
+</li>
+<li><p>count=blocks：仅拷贝blocks个块，块大小等于ibs指定的字节数。</p>
+</li>
+<li><p>conv=&lt;关键字&gt;，关键字可以有以下11种：</p>
+<ul>
+<li>conversion：用指定的参数转换文件。</li>
+<li>ascii：转换ebcdic为ascii</li>
+<li>ebcdic：转换ascii为ebcdic</li>
+<li>ibm：转换ascii为alternate ebcdic</li>
+<li>block：把每一行转换为长度为cbs，不足部分用空格填充</li>
+<li>unblock：使每一行的长度都为cbs，不足部分用空格填充</li>
+<li>lcase：把大写字符转换为小写字符</li>
+<li>ucase：把小写字符转换为大写字符</li>
+<li>swab：交换输入的每对字节</li>
+<li>noerror：出错时不停止</li>
+<li>notrunc：不截短输出文件</li>
+<li>sync：将每个输入块填充到ibs个字节，不足部分用空（NUL）字符补齐。</li>
+</ul>
+</li>
+<li><p>–help：显示帮助信息</p>
+</li>
+<li><p>–version：显示版本信息</p>
+</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>在Linux 下制作启动盘，可使用如下命令：</p>
+<pre><code>dd if=boot.img of=/dev/fd0 bs=1440k </code></pre><p>将testfile文件中的所有英文字母转换为大写，然后转成为testfile_1文件，在命令提示符中使用如下命令：</p>
+<pre><code>dd if=testfile_2 of=testfile_1 conv=ucase </code></pre><p>其中testfile_2 的内容为：</p>
+<pre><code>$ cat testfile_2 #testfile_2的内容  
+HELLO LINUX!  
+Linux is a free unix-type opterating system.  
+This is a linux testfile!  
+Linux test </code></pre><p>转换完成后，testfile_1 的内容如下：</p>
+<pre><code>$ dd if=testfile_2 of=testfile_1 conv=ucase #使用dd 命令，大小写转换记录了0+1 的读入  
+记录了0+1 的写出  
+95字节（95 B）已复制，0.000131446 秒，723 KB/s  
+cmd@hdd-desktop:~$ cat testfile_1 #查看转换后的testfile_1文件内容  
+HELLO LINUX!  
+LINUX IS A FREE UNIX-TYPE OPTERATING SYSTEM.  
+THIS IS A LINUX TESTFILE!  
+LINUX TEST #testfile_2中的所有字符都变成了大写字母 </code></pre><p>由标准输入设备读入字符串，并将字符串转换成大写后，再输出到标准输出设备，使用的命令为：</p>
+<pre><code>dd conv=ucase </code></pre><p>输入以上命令后按回车键，输入字符串，再按回车键，按组合键Ctrl+D 退出，出现以下结果：</p>
+<pre><code>$ dd conv=ucase 
+Hello Linux! #输入字符串后按回车键  
+HELLO LINUX! #按组合键Ctrl+D退出，转换成大写结果  
+记录了0+1 的读入  
+记录了0+1 的写出  
+13字节（13 B）已复制，12.1558 秒，0.0 KB/s </code></pre><h2 id="4-e2fsck"><a href="#4-e2fsck" class="headerlink" title="4.e2fsck"></a>4.e2fsck</h2><p>e2fsck命令用于检查使用 Linux ext2 档案系统的 partition 是否正常工作。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><pre><code>e2fsck [-pacnydfvFV] [-b superblock] [-B blocksize] [-l|-L bad_blocks_file] [-C fd] device</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>device ： 预备检查的硬盘 partition，例如：/dev/sda1</li>
+<li>-a : 对 partition 做检查，若有问题便自动修复，等同 -p 的功能</li>
+<li>-b : 设定存放 superblock 的位置</li>
+<li>-B : 设定单位 block 的大小</li>
+<li>-c : 检查该partition 是否有坏轨</li>
+<li>-C file : 将检查的结果存到 file 中以便查看</li>
+<li>-d : 列印 e2fsck 的 debug 结果</li>
+<li>-f : 强制检查</li>
+<li>-F : 在开始检查前，将device 的 buffer cache 清空，避免有错误发生</li>
+<li>-l bad_blocks_file : 将有坏轨的block资料加到 bad_blocks_file 里面</li>
+<li>-L bad_blocks_file : 设定坏轨的block资料存到 bad_blocks_file 里面，若无该档则自动产生</li>
+<li>-n : 将档案系统以[唯读]方式开启</li>
+<li>-p : 对 partition 做检查，若有问题便自动修复</li>
+<li>-v : 详细显示模式</li>
+<li>-V : 显示出目前 e2fsck 的版本</li>
+<li>-y : 预先设定所有检查时的问题均回答[是]</li>
+</ul>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>检查 /dev/hda5 是否正常，如果有异常便自动修复，并且设定若有问答，均回答[是] :</p>
+<pre><code>e2fsck -a -y /dev/hda5</code></pre><p><strong>注意</strong> :</p>
+<p>大部份使用 e2fsck 来检查硬盘 partition 的情况时，通常都是情形特殊，因此最好先将该 partition umount，然后再执行 e2fsck 来做检查，若是要非要检查 / 时，则请进入 singal user mode 再执行。</p>
+<h2 id="5-ext2ed"><a href="#5-ext2ed" class="headerlink" title="5.ext2ed"></a>5.ext2ed</h2><p>​        ext2ed命令是ext2文件系统编辑程序。</p>
+<p>ext2ed可直接处理硬盘分区上的数据，这指令只有Red Hat Linux才提供。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><pre><code>ext2ed</code></pre><p>一般指令：</p>
+<ul>
+<li>setdevice[设备名称] 指定要处理的设备。</li>
+<li>disablewrite 将ext2ed设为只读的状态。</li>
+<li>enablewrite 将ext2ed设为可读写的状态。</li>
+<li>help[指令] 显示个别指令的帮助。</li>
+<li>next 移至下一个单位，单位会依目前所在的模式而异。</li>
+<li>prev 移至前一个单位，单位会依目前所在的模式而异。</li>
+<li>pgup 移至下一页。</li>
+<li>pgdn 移至上一页。</li>
+<li>set 修改目前的数据，参数会依目前所在的模式而异。</li>
+<li>writedata 在执行此指令之后，才会实际修改分区中的数据。</li>
+<li>ext2进入3种模式的指令</li>
+<li>super 进入main superblock,即Superblock模式。</li>
+<li>group&lt;编号&gt; 进入指定的group，即Group模式。</li>
+<li>cd&lt;目录或文件&gt; 在inode模式下，进入指定的目录或文件，即Inode模式。</li>
+<li>Superblock模式</li>
+<li>gocopy&lt;备份编号&gt; 进入指定的superblock备份。</li>
+<li>setactivecopy 将目前所在的superblock，复制到main superblock。</li>
+<li>Group模式</li>
+<li>blockbitmap 显示目前groupo的区块图。</li>
+<li>inode 进入目前group的第一个inode。</li>
+<li>inodebitmap 显示目前group的inode二进制码。</li>
+<li>Inode模式</li>
+<li>dir 进入目录模式。</li>
+<li>file 进入文件模式。</li>
+</ul>
+<h2 id="6-fsck"><a href="#6-fsck" class="headerlink" title="6.fsck"></a>6.fsck</h2><p>​        fsck命令用于 检查与修复 Linux 档案系统，可以同时检查一个或多个 Linux 档案系统。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><pre><code>fsck [-sACVRP] [-t fstype] [--] [fsck-options] filesys [...]</code></pre><p><strong>参数</strong> ：</p>
+<ul>
+<li>filesys ： device 名称(eg./dev/sda1)，mount 点 (eg. / 或 /usr)</li>
+<li>-t : 给定档案系统的型式，若在 /etc/fstab 中已有定义或 kernel 本身已支援的则不需加上此参数</li>
+<li>-s : 依序一个一个地执行 fsck 的指令来检查</li>
+<li>-A : 对/etc/fstab 中所有列出来的 partition 做检查</li>
+<li>-C : 显示完整的检查进度</li>
+<li>-d : 列印 e2fsck 的 debug 结果</li>
+<li>-p : 同时有 -A 条件时，同时有多个 fsck 的检查一起执行</li>
+<li>-R : 同时有 -A 条件时，省略 / 不检查</li>
+<li>-V : 详细显示模式</li>
+<li>-a : 如果检查有错则自动修复</li>
+<li>-r : 如果检查有错则由使用者回答是否修复</li>
+</ul>
+<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>检查 msdos 档案系统的 /dev/hda5 是否正常，如果有异常便自动修复 :</p>
+<pre><code>fsck -t msdos -a /dev/hda5</code></pre><p><strong>注意</strong> 此指令可与 /etc/fstab 相互参考操作来加以了解。</p>
+<h2 id="7-fsck-minix"><a href="#7-fsck-minix" class="headerlink" title="7.fsck.minix"></a>7.fsck.minix</h2><p>fsck.minix命令用于检查文件系统并尝试修复错误。</p>
+<p>当minix文件系统发生错误时，可用fsck.minix指令尝试加以参考。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><pre><code>fsck.minix [-aflmrsv][外围设备代号]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-a 自动修复文件系统，不询问任何问题。</li>
+<li>-f 强制对该文件系统进行完整检查，纵然该文件系统在慨略检查下没有问题。</li>
+<li>-l 列出所有文件名称。</li>
+<li>-m 使用类似MINIX操作系统的警告信息。</li>
+<li>-r 采用互动模式，在执行修复时询问问题，让用户得以确认并决定处理方式。</li>
+<li>-s 显示该分区第一个磁区的相关信息。</li>
+<li>-v 显示指令执行过程。</li>
+</ul>
+<h2 id="8-fsconf"><a href="#8-fsconf" class="headerlink" title="8.fsconf"></a>8.fsconf</h2><p>fsconf命令用于设置文件系统相关功能。</p>
+<p>fsconf是Red Hat Linux发行版专门用来调整Linux各项设置的程序。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><pre><code>fsconf [--check]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>–chedk 检查特定文件的权限。</li>
+</ul>
+<h2 id="9-fdformat"><a href="#9-fdformat" class="headerlink" title="9.fdformat"></a>9.fdformat</h2><pre><code>     fdformat命令用于对指定的软碟机装置进行低阶格式化。</code></pre><p>使用这个指令对软碟格式化的时候，最好指定像是下面的装置：</p>
+<ul>
+<li>/dev/fd0d360 磁碟机 A: ，磁片为 360KB 磁碟</li>
+<li>/dev/fd0h1440 磁碟机 A: ，磁片为 1.4MB 磁碟</li>
+<li>/dev/fd1h1200 磁碟机 B: ，磁片为 1.2MB 磁碟</li>
+</ul>
+<p>如果使用像是 /dev/fd0 之类的装置，如果里面的磁碟不是标准容量，格式化可能会失败。在这种情况之下，使用者可以用 setfdprm 指令先行指定必要参数。</p>
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><pre><code>fdformat [-n] device</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-n 关闭确认功能。这个选项会关闭格式化之后的确认步骤。</li>
+</ul>
+<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><pre><code>fdformat -n /dev/fd0h1440</code></pre><p>将磁碟机 A 的磁片格式化成 1.4MB 的磁片。并且省略确认的步骤。</p>
+<h2 id="10-hdparm"><a href="#10-hdparm" class="headerlink" title="10.hdparm"></a>10.hdparm</h2><p>​        hdparm命令用于显示与设定硬盘的参数。</p>
+<p>hdparm可检测，显示与设定IDE或SCSI硬盘的参数。</p>
+<h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><pre><code>hdparm [-CfghiIqtTvyYZ][-a &lt;快取分区&gt;][-A &lt;0或1&gt;][-c &lt;I/O模式&gt;][-d &lt;0或1&gt;][-k &lt;0或1&gt;][-K &lt;0或1&gt;][-m &lt;分区数&gt;][-n &lt;0或1&gt;][-p &lt;PIO模式&gt;][-P &lt;分区数&gt;][-r &lt;0或1&gt;][-S &lt;时间&gt;][-u &lt;0或1&gt;][-W &lt;0或1&gt;][-X &lt;传输模式&gt;][设备]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a&lt;快取分区&gt; 设定读取文件时，预先存入块区的分区数，若不加上&lt;快取分区&gt;选项，则显示目前的设定。</li>
+<li>-A&lt;0或1&gt; 启动或关闭读取文件时的快取功能。</li>
+<li>-c&lt;I/O模式&gt; 设定IDE32位I/O模式。</li>
+<li>-C 检测IDE硬盘的电源管理模式。</li>
+<li>-d&lt;0或1&gt; 设定磁盘的DMA模式。</li>
+<li>-f 将内存缓冲区的数据写入硬盘，并清楚缓冲区。</li>
+<li>-g 显示硬盘的磁轨，磁头，磁区等参数。</li>
+<li>-h 显示帮助。</li>
+<li>-i 显示硬盘的硬件规格信息，这些信息是在开机时由硬盘本身所提供。</li>
+<li>-I 直接读取硬盘所提供的硬件规格信息。</li>
+<li>-k&lt;0或1&gt; 重设硬盘时，保留-dmu参数的设定。</li>
+<li>-K&lt;0或1&gt; 重设硬盘时，保留-APSWXZ参数的设定。</li>
+<li>-m&lt;磁区数&gt; 设定硬盘多重分区存取的分区数。</li>
+<li>-n&lt;0或1&gt; 忽略硬盘写入时所发生的错误。</li>
+<li>-p&lt;PIO模式&gt; 设定硬盘的PIO模式。</li>
+<li>-P&lt;磁区数&gt; 设定硬盘内部快取的分区数。</li>
+<li>-q 在执行后续的参数时，不在屏幕上显示任何信息。</li>
+<li>-r&lt;0或1&gt; 设定硬盘的读写模式。</li>
+<li>-S&lt;时间&gt; 设定硬盘进入省电模式前的等待时间。</li>
+<li>-t 评估硬盘的读取效率。</li>
+<li>-T 评估硬盘快取的读取效率。</li>
+<li>-u&lt;0或1&gt; 在硬盘存取时，允许其他中断要求同时执行。</li>
+<li>-v 显示硬盘的相关设定。</li>
+<li>-W&lt;0或1&gt; 设定硬盘的写入快取。</li>
+<li>-X&lt;传输模式&gt; 设定硬盘的传输模式。</li>
+<li>-y 使IDE硬盘进入省电模式。</li>
+<li>-Y 使IDE硬盘进入睡眠模式。</li>
+<li>-Z 关闭某些Seagate硬盘的自动省电功能。</li>
+</ul>
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>显示硬盘的相关设置：</p>
+<pre><code># hdparm /dev/sda
+ /dev/sda:
+ IO_support = 0 (default 16-bit)
+ readonly = 0 (off)
+ readahead = 256 (on)
+ geometry = 19929［柱面数］/255［磁头数］/63［扇区数］, sectors = 320173056［总扇区数］, start = 0［起始扇区数］</code></pre><p>显示硬盘的柱面、磁头、扇区数</p>
+<pre><code># hdparm -g /dev/sda
+ /dev/sda:
+ geometry = 19929［柱面数］/255［磁头数］/63［扇区数］, sectors = 320173056［总扇区数］, start = 0［起始扇区数］</code></pre><p>评估硬盘的读取效率</p>
+<pre><code> hdparm -t /dev/sda
+ /dev/sda:
+ Timing buffered disk reads: 166 MB in 3.03 seconds = 54.85 MB/sec
+ [root@linuxso.com ~]# hdparm -t /dev/sda
+ /dev/sda:
+ Timing buffered disk reads: 160 MB in 3.01 seconds = 53.11 MB/sec
+ [root@linuxso.com ~]# hdparm -t /dev/sda
+ /dev/sda:
+ Timing buffered disk reads: 166 MB in 3.00 seconds = 55.31 MB/sec</code></pre><h2 id="11-mformat"><a href="#11-mformat" class="headerlink" title="11.mformat"></a>11.mformat</h2><p>​        mformat命令用于对MS-DOS文件系统的磁盘进行格式化。</p>
+<p>在已经做过低阶格式化的磁片上建立 DOS 档案系统。如果在编程 mtools 的时候把 USE_2M 的参数打开，部分与 2M 格式相关的参数就会发生作用。否则这些参数（像是 S,2,1,M）不会发生作用。</p>
+<h3 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h3><pre><code>mformat [-t cylinders] [-h heads] [-s sectors] [-l volume_label] [-F] [-I fsVer-sion] [-S sizecode] [-2 sectors_on_track_0] [-M software_sector_size] [-a] [-X] [-C] [-H hidden_sectors] [-r root_sectors] [-B boot_sector] [-0 rate_on_track_0] [-A rate_on_other_tracks] [-1] [-k] drive:</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-t 磁柱（synlider）数</li>
+<li>-h 磁头（head）数</li>
+<li>-s 每一磁轨的磁区数</li>
+<li>-l 标签</li>
+<li>-F 将磁碟格式化为 FAT32 格式，不过这个参数还在实验中。</li>
+<li>-I 设定 FAT32 中的版本号。这当然也还在实验中。</li>
+<li>-S 磁区大小代码，计算方式为 sector = 2^(大小代码+7)</li>
+<li>-c 磁丛（cluster）的磁区数。如果所给定的数字会导致磁丛数超过 FAT 表的限制，mformat 会自动放大磁区数。</li>
+<li>-s</li>
+<li>-M 软件磁区大小。这个数字就是系统回报的磁区大小。通常是和实际的大小相同。</li>
+<li>-a 如果加上这个参数，mformat 会产生一组 Atari 系统的序号给这块软碟。</li>
+<li>-X 将软碟格式化成 XDF 格式。使用前必须先用 xdfcopy 指令对软碟作低阶格式化的动作。</li>
+<li>-C 产生一个可以安装 MS-DOS 档案系统的磁碟影像档（disk image）。当然对一个实体磁碟机下这个参数是没有意义的。</li>
+<li>-H 隐藏磁区的数目。这通常适用在格式化硬盘的分割区时，因为通常一个分割区的前面还有分割表。这个参数未经测试，能不用就不用。</li>
+<li>-n 磁碟序号</li>
+<li>-r 根目录的大小，单位是磁区数。这个参数只对 FAT12 和 FAT16 有效。</li>
+<li>-B 使用所指定的档案或是设备的开机磁区做为这片磁片或分割区的开机磁区。当然当中的硬件参数会随之更动。</li>
+<li>-k 尽量保持原有的开机磁区。</li>
+<li>-0 第 0 轨的资料传输率</li>
+<li>-A 第 0 轨以外的资料传输率</li>
+<li>-2 使用 2m 格式</li>
+<li>-1 不使用 2m 格式</li>
+</ul>
+<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>用预设值把 a: （就是 /dev/fd0）里的磁碟片格式化。</p>
+<pre><code>mformat a:</code></pre><h2 id="12-mkbootdisk"><a href="#12-mkbootdisk" class="headerlink" title="12.mkbootdisk"></a>12.mkbootdisk</h2><p>​        mkbootdisk命令用于建立目前系统的启动盘。</p>
+<p>mkbootdisk可建立目前系统的启动盘。</p>
+<h3 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h3><pre><code>mkbootdisk [--noprompt][--verbose][--version][--device &lt;设备&gt;][--mkinitrdargs &lt;参数&gt;][kernel 版本]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>–device&lt;设备&gt; 指定设备。</li>
+<li>–mkinitrdargs&lt;参数&gt; 设置mkinitrd的参数。</li>
+<li>–noprompt 不会提示用户插入磁盘。</li>
+<li>–verbose 执行时显示详细的信息。</li>
+<li>–version 显示版本信息。</li>
+</ul>
+<h2 id="13-mkdosfs"><a href="#13-mkdosfs" class="headerlink" title="13.mkdosfs"></a>13.mkdosfs</h2><p>​        mkdosfs命令用于建立DOS文件系统。</p>
+<p>device 指你想要建立 DOS 档案系统的装置代号。像是 /dev/hda1 等等。 block_count 则是你希望配置的区块数。如果 block_count 没有指定则系统会自动替你计算符合该装置大小的区块数。</p>
+<pre><code>mkdosfs [ -c | -l filename ]
+　　 [ -f number_of_FATs ]
+　　 [ -F FAT_size ]
+　　 [ -i volume_id ]
+　　 [ -m message_file ]
+　　 [ -n volume_name ]
+　　 [ -r root_dir_entry ]
+　　 [ -s sector_per_cluster ]
+　　 [ -v ]
+　　 device
+　　 [ block_count ]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c 建立档案系统之前先检查是否有坏轨。</li>
+<li>-l 从得定的档案中读取坏轨记录。</li>
+<li>-f 指定档案配置表（FAT , File Allocation Table)的数量。预设值为 2 。目前 Linux 的 FAT 档案系统不支援超过 2 个 FAT 表。通常这个不需要改。</li>
+<li>-F 指定 FAT 表的大小，通常是 12 或是 16 个位元组。12 位元组通常用于磁碟片，16 位元组用于一般硬盘的分割区，也就是所谓的 FAT16 格式。这个值通常系统会自己选定适当的值。在磁碟片上用 FAT16 通常不会发生作用，反之在硬盘上用 FAT12 亦然。</li>
+<li>-i 指定 Volume ID。一般是一个 4 个位元组的数字，像是 2e203a47 。如果不给系统会自己产生。</li>
+<li>-m 当使用者试图用这片磁片或是分割区开机，而上面没有操作系统时，系统会给使用者一段警告讯息。这个参数就是用来变更这个讯息的。你可以先用档案编辑好，然后用这个参数指定，或是用</li>
+<li>-m -</li>
+<li>这样系统会要求你直接输入这段文字。要特别注意的是，档案里的字串长度不要超过 418 个字，包括展开的跳栏符号（TAB）和换行符号（换行符号在 DOS 底下算两个字元！）</li>
+<li>-n 指定 Volume Name，就是磁碟标签。如同在 DOS 底下的 format 指令一样，给不给都可以。没有预设值。</li>
+<li>-r 指定根目录底下的最大档案数。这里所谓的档案数包括目录。预设值是在软碟上是 112 或是 224 ，在硬盘上是 512。没事不要改这个数字。</li>
+<li>-s 每一个磁丛（cluster）的磁区数。必须是 2 的次方数。不过除非你知道你在作什么，这个值不要乱给。</li>
+<li>-v 提供额外的讯息</li>
+</ul>
+<h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>将 A 槽里的磁碟片格式化为 DOS 格式，并将标签设为 Tester</p>
+<pre><code>mkdosfs -n Tester /dev/fd0</code></pre><h2 id="14-mke2fs"><a href="#14-mke2fs" class="headerlink" title="14.    mke2fs"></a>14.    mke2fs</h2><p>​        mke2fs命令用于建立ext2文件系统。</p>
+<h3 id="语法-11"><a href="#语法-11" class="headerlink" title="语法"></a>语法</h3><pre><code>mke2fs [-cFMqrSvV][-b &lt;区块大小&gt;][-f &lt;不连续区段大小&gt;][-i &lt;字节&gt;][-N &lt;inode数&gt;][-l &lt;文件&gt;][-L &lt;标签&gt;][-m &lt;百分比值&gt;][-R=&lt;区块数&gt;][ 设备名称][区块数]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-b&lt;区块大小&gt; 指定区块大小，单位为字节。</li>
+<li>-c 检查是否有损坏的区块。</li>
+<li>-f&lt;不连续区段大小&gt; 指定不连续区段的大小，单位为字节。</li>
+<li>-F 不管指定的设备为何，强制执行mke2fs。</li>
+<li>-i&lt;字节&gt; 指定”字节/inode”的比例。</li>
+<li>-N&lt;inode数&gt; 指定要建立的inode数目。</li>
+<li>-l&lt;文件&gt; 从指定的文件中，读取文件西中损坏区块的信息。</li>
+<li>-L&lt;标签&gt; 设置文件系统的标签名称。</li>
+<li>-m&lt;百分比值&gt; 指定给管理员保留区块的比例，预设为5%。</li>
+<li>-M 记录最后一次挂入的目录。</li>
+<li>-q 执行时不显示任何信息。</li>
+<li>-r 指定要建立的ext2文件系统版本。</li>
+<li>-R=&lt;区块数&gt; 设置磁盘阵列参数。</li>
+<li>-S 仅写入superblock与group descriptors，而不更改inode able inode bitmap以及block bitmap。</li>
+<li>-v 执行时显示详细信息。</li>
+<li>-V 显示版本信息。</li>
+</ul>
+<h2 id="15-mkfs-ext2"><a href="#15-mkfs-ext2" class="headerlink" title="15.mkfs.ext2"></a>15.mkfs.ext2</h2><p>功能说明：与<a href="https://www.runoob.com/linux/linux-comm-mke2fs.html" target="_blank" rel="noopener"> mke2fs命令</a> 相同</p>
+<h2 id="16-mkfs-msdos"><a href="#16-mkfs-msdos" class="headerlink" title="16.mkfs.msdos"></a>16.mkfs.msdos</h2><p>功能说明：与 <a href="https://www.runoob.com/linux/linux-comm-mkdosfs.html" target="_blank" rel="noopener">mkdosfs 命令</a> 相同。</p>
+<h2 id="17-mkinitrd"><a href="#17-mkinitrd" class="headerlink" title="17.    mkinitrd"></a>17.    mkinitrd</h2><pre><code>     mkinitrd命令用于建立要载入ramdisk的映像文件。</code></pre><p>mkinitrd可建立映像文件，以供Linux开机时载入ramdisk。</p>
+<h3 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h3><pre><code>mkinitrd [-fv][--omit-scsi-modules][--version][--preload=&lt;模块名称&gt;][--with=&lt;模块名称&gt;][映像文件][Kernel 版本]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-f 若指定的映像问家名称与现有文件重复，则覆盖现有的文件。</li>
+<li>-v执行时显示详细的信息。</li>
+<li>–omit-scsi-modules 不要载入SCSI模块。</li>
+<li>–preload=&lt;模块名称&gt; 指定要载入的模块。</li>
+<li>–with=&lt;模块名称&gt; 指定要载入的模块。</li>
+<li>–version 显示版本信息。</li>
+</ul>
+<h2 id="18-mkisofs"><a href="#18-mkisofs" class="headerlink" title="18.mkisofs"></a>18.mkisofs</h2><p>​        mkisofs命令用于建立ISO 9660映像文件。</p>
+<p>mkisofs可将指定的目录与文件做成ISO 9660格式的映像文件，以供刻录光盘。</p>
+<h3 id="语法-13"><a href="#语法-13" class="headerlink" title="语法"></a>语法</h3><pre><code>mkisofs [-adDfhJlLNrRTvz][-print-size][-quiet][-A &lt;应用程序ID&gt;][-abstract &lt;摘要文件&gt;][-b &lt;开机映像文件&gt;][-biblio &lt;ISBN文件&gt;][-c &lt;开机文件名称&gt;][-C &lt;盘区编号，磁区编号&gt;][-copyright &lt;版权信息文件&gt;][-hide &lt;目录或文件名&gt;][-hide-joliet &lt;文件或目录名&gt;][-log-file &lt;记录文件&gt;][-m &lt;目录或文件名&gt;][-M &lt;开机映像文件&gt;][-o &lt;映像文件&gt;][-p &lt;数据处理人&gt;][-P &lt;光盘发行人&gt;][-sysid &lt;系统ID &gt;][-V &lt;光盘ID &gt;][-volset &lt;卷册集ID&gt;][-volset-size &lt;光盘总数&gt;][-volset-seqno &lt;卷册序号&gt;][-x &lt;目录&gt;][目录或文件]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-a或–all mkisofs通常不处理备份文件。使用此参数可以把备份文件加到映像文件中。</li>
+<li>-A&lt;应用程序ID&gt;或-appid&lt;应用程序ID&gt; 指定光盘的应用程序ID。</li>
+<li>-abstract&lt;摘要文件&gt; 指定摘要文件的文件名。</li>
+<li>-b&lt;开机映像文件&gt;或-eltorito-boot&lt;开机映像文件&gt; 指定在制作可开机光盘时所需的开机映像文件。</li>
+<li>-biblio&lt;ISBN文件&gt; 指定ISBN文件的文件名，ISBN文件位于光盘根目录下，记录光盘的ISBN。</li>
+<li>-c&lt;开机文件名称&gt; 制作可开机光盘时，mkisofs会将开机映像文件中的全-eltorito-catalog&lt;开机文件名称&gt;全部内容作成一个文件。</li>
+<li>-C&lt;盘区编号，盘区编号&gt; 将许多节区合成一个映像文件时，必须使用此参数。</li>
+<li>-copyright&lt;版权信息文件&gt; 指定版权信息文件的文件名。</li>
+<li>-d或-omit-period 省略文件后的句号。</li>
+<li>-D或-disable-deep-relocation ISO 9660最多只能处理8层的目录，超过8层的部分，RRIP会自动将它们设置成ISO 9660兼容的格式。使用-D参数可关闭此功能。</li>
+<li>-f或-follow-links 忽略符号连接。</li>
+<li>-h 显示帮助。</li>
+<li>-hide&lt;目录或文件名&gt; 使指定的目录或文件在ISO 9660或Rock RidgeExtensions的系统中隐藏。</li>
+<li>-hide-joliet&lt;目录或文件名&gt; 使指定的目录或文件在Joliet系统中隐藏。</li>
+<li>-J或-joliet 使用Joliet格式的目录与文件名称。</li>
+<li>-l或-full-iso9660-filenames 使用ISO 9660 32字符长度的文件名。</li>
+<li>-L或-allow-leading-dots 允许文件名的第一个字符为句号。</li>
+<li>-log-file&lt;记录文件&gt; 在执行过程中若有错误信息，预设会显示在屏幕上。</li>
+<li>-m&lt;目录或文件名&gt;或-exclude&lt;目录或文件名&gt; 指定的目录或文件名将不会房入映像文件中。</li>
+<li>-M&lt;映像文件&gt;或-prev-session&lt;映像文件&gt; 与指定的映像文件合并。</li>
+<li>-N或-omit-version-number 省略ISO 9660文件中的版本信息。</li>
+<li>-o&lt;映像文件&gt;或-output&lt;映像文件&gt; 指定映像文件的名称。</li>
+<li>-p&lt;数据处理人&gt;或-preparer&lt;数据处理人&gt; 记录光盘的数据处理人。</li>
+<li>-print-size 显示预估的文件系统大小。</li>
+<li>-quiet 执行时不显示任何信息。</li>
+<li>-r或-rational-rock 使用Rock Ridge Extensions，并开放全部文件的读取权限。</li>
+<li>-R或-rock 使用Rock Ridge Extensions。</li>
+<li>-sysid&lt;系统ID&gt; 指定光盘的系统ID。</li>
+<li>-T或-translation-table 建立文件名的转换表，适用于不支持Rock Ridge Extensions的系统上。</li>
+<li>-v或-verbose 执行时显示详细的信息。</li>
+<li>-V&lt;光盘ID&gt;或-volid&lt;光盘ID&gt; 指定光盘的卷册集ID。</li>
+<li>-volset-size&lt;光盘总数&gt; 指定卷册集所包含的光盘张数。</li>
+<li>-volset-seqno&lt;卷册序号&gt; 指定光盘片在卷册集中的编号。</li>
+<li>-x&lt;目录&gt; 指定的目录将不会放入映像文件中。</li>
+<li>-z 建立通透性压缩文件的SUSP记录，此记录目前只在Alpha机器上的Linux有效。</li>
+</ul>
+<h2 id="19-mkswap"><a href="#19-mkswap" class="headerlink" title="19.    mkswap"></a>19.    mkswap</h2><p>​        mkswap命令用于设置交换区(swap area)。</p>
+<p>mkswap可将磁盘分区或文件设为Linux的交换区。</p>
+<h3 id="语法-14"><a href="#语法-14" class="headerlink" title="语法"></a>语法</h3><pre><code>mkswap [-cf][-v0][-v1][设备名称或文件][交换区大小]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c 建立交换区前，先检查是否有损坏的区块。</li>
+<li>-f 在SPARC电脑上建立交换区时，要加上此参数。</li>
+<li>-v0 建立旧式交换区，此为预设值。</li>
+<li>-v1 建立新式交换区。</li>
+<li>[交换区大小] 指定交换区的大小，单位为1024字节。</li>
+</ul>
+<h2 id="20-mpartition"><a href="#20-mpartition" class="headerlink" title="20. mpartition"></a>20. mpartition</h2><p> mpartition命令用于建立或删除MS-DOS的分区。</p>
+<p>mpartition为mtools工具指令，可建立或删除磁盘分区。</p>
+<h3 id="语法-15"><a href="#语法-15" class="headerlink" title="语法"></a>语法</h3><pre><code>mpartition [-acdfIprv][-b &lt;磁区数&gt;][-h &lt;磁头数&gt;][l &lt;磁区数&gt;][-s &lt;磁区数&gt;][-t &lt;柱面数&gt;][驱动器代号]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-a 将分区设置为可开机分区。</li>
+<li>-b&lt;磁区数&gt; 建立分区时，指定要从第几个磁区开始建立分区。</li>
+<li>-c 建立分区。</li>
+<li>-d 将分区设置为无法开机的分区。</li>
+<li>-f 强制地修改分区而不管检查时发生的错误信息。</li>
+<li>-h&lt;磁头数&gt; 建立分区时，指定分区的磁头数。</li>
+<li>-I 删除全部的分区。</li>
+<li>-l&lt;磁区数&gt; 建立分区时，指定分区的容量大小，单位为磁区数。</li>
+<li>-p 当要重新建立分区时，显示命令列。</li>
+<li>-r 删除分区。</li>
+<li>-s&lt;磁区数&gt; 建立分区时，指定每个磁轨的磁区数。</li>
+<li>-t&lt;柱面数&gt; 建立分区时，指定分区的柱面数。</li>
+<li>-v 与-p参数一并使用，若没有同时下达修改分区的命令，则显示目前分区的状态。</li>
+</ul>
+<h2 id="21-swapon"><a href="#21-swapon" class="headerlink" title="21.swapon"></a>21.swapon</h2><p>​        swapon命令用于激活Linux系统中交换空间，Linux系统的内存管理必须使用交换区来建立虚拟内存。</p>
+<h3 id="语法-16"><a href="#语法-16" class="headerlink" title="语法"></a>语法</h3><pre><code>/sbin/swapon -a [-v]
+/sbin/swapon [-v] [-p priority] specialfile ...
+/sbin/swapon [-s]</code></pre><p><strong>参数说明：</strong></p>
+<ul>
+<li>-h 请帮帮我</li>
+<li>-V 显示版本讯息</li>
+<li>-s 显示简短的装置讯息</li>
+<li>-a 自动启动所有SWAP装置</li>
+<li>-p 设定优先权，你可以在0到32767中间选一个数字给他。或是在 /etc/fstab 里面加上 pri=[value] ([value]就是0~32767中间一个数字)，然后你就可以很方便的直接使用 swapon -a 来启动他们，而且有优先权设定。</li>
+</ul>
+<p>swapon 是开启swap.</p>
+<p>相对的,便有一个关闭swap的指令,swapoff.</p>
+<h2 id="22-symlinks"><a href="#22-symlinks" class="headerlink" title="22.symlinks"></a>22.symlinks</h2><p>​        symlinks命令用于维护符号连接的工具程序。</p>
+<p>symlinks可检查目录中的符号连接，并显示符号连接类型。以下为symlinks可判断的符号连接类型：</p>
+<ul>
+<li>absolute：符号连接使用了绝对路径。</li>
+<li>dangling：原始文件已经不存在。</li>
+<li>lengthy：符号连接的路径中包含了多余的”../“。</li>
+<li>messy：符号连接的路径中包含了多余的”/“。</li>
+<li>other_fs：原始文件位于其他文件系统中。</li>
+<li>relative：符号连接使用了相对路径。</li>
+</ul>
+<h3 id="语法-17"><a href="#语法-17" class="headerlink" title="语法"></a>语法</h3><pre><code>symlinks [-cdrstv][目录]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c 将使用绝对路径的符号连接转换为相对路径。</li>
+<li>-d 移除dangling类型的符号连接。</li>
+<li>-r 检查目录下所有子目录中的符号连接。</li>
+<li>-s 检查lengthy类型的符号连接。</li>
+<li>-t 与-c一并使用时，会显示如何将绝对路径的符号连接转换为相对路径，但不会实际转换。</li>
+<li>-v 显示所有类型的符号连接。</li>
+</ul>
+<h2 id="23-sync"><a href="#23-sync" class="headerlink" title="23.sync"></a>23.sync</h2><p>​        sync命令用于数据同步,sync命令是在关闭Linux系统时使用的。</p>
+<p>Linux 系统中欲写入硬盘的资料有的时候会了效率起见，会写到 filesystem buffer 中，这个 buffer 是一块记忆体空间，如果欲写入硬盘的资料存于此 buffer 中，而系统又突然断电的话，那么资料就会流失了，sync 指令会将存于 buffer 中的资料强制写入硬盘中。</p>
+<h3 id="语法-18"><a href="#语法-18" class="headerlink" title="语法"></a>语法</h3><pre><code>sync</code></pre><h2 id="24-mbadblocks"><a href="#24-mbadblocks" class="headerlink" title="24. mbadblocks"></a>24. mbadblocks</h2><p>​         mbadblocks命令用于检查MS-DOS文件系统的磁盘是否有损坏的磁区。</p>
+<p>mbadblocks为mtools工具指令，可用来扫描MS-DOS文件系统的磁盘驱动器，并标示出损坏的磁区。</p>
+<h3 id="语法-19"><a href="#语法-19" class="headerlink" title="语法"></a>语法</h3><pre><code>mbadblocks [驱动器代号]</code></pre><h2 id="25-mkfs-minix"><a href="#25-mkfs-minix" class="headerlink" title="25.mkfs.minix"></a>25.mkfs.minix</h2><p>​        mkfs.minix命令用于建立Minix文件系统。</p>
+<p>mkfs.minix可建立Minix文件系统。</p>
+<h3 id="语法-20"><a href="#语法-20" class="headerlink" title="语法"></a>语法</h3><pre><code>mkfs.minix [-cv][-i &lt;inode数目&gt;][-l &lt;文件&gt;][-n &lt;文件名长度&gt;][设备名称][区块数]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c 检查是否有损坏的区块。</li>
+<li>-i&lt;inode数目&gt; 指定文件系统的inode总数。</li>
+<li>-l&lt;文件&gt; 从指定的文件中，读取文件系统中损坏区块的信息。</li>
+<li>-n&lt;文件名长度&gt; 指定文件名称长度的上限。</li>
+<li>-v 建立第2版的Minix文件系统。</li>
+</ul>
+<h2 id="26-fsck-ext2"><a href="#26-fsck-ext2" class="headerlink" title="26.fsck.ext2"></a>26.fsck.ext2</h2><p>​        fsck.ext2命令用于检查文件系统并尝试修复错误。</p>
+<p>当ext2文件系统发生错误时，可用fsck.ext2指令尝试加以修复。</p>
+<h3 id="语法-21"><a href="#语法-21" class="headerlink" title="语法"></a>语法</h3><pre><code>fsck.ext2 [-acdfFnprsStvVy][-b &lt;分区第一个磁区地址&gt;][-B &lt;区块大小&gt;][-C &lt;反叙述器&gt;][-I &lt;inode缓冲区块数&gt;][-l/L &lt;损坏区块文件&gt;][-P &lt;处理inode大小&gt;][外围设备代号]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-a 自动修复文件系统，不询问任何问题。</li>
+<li>-b&lt;分区第一个磁区地址&gt; 指定分区的第一个磁区的起始地址，也就是Super Block。</li>
+<li>-B&lt;区块大小&gt; 设置该分区每个区块的大小。</li>
+<li>-c 检查指定的文件系统内，是否存在有损坏的区块。</li>
+<li>-C&lt;反叙述器&gt; 指定反叙述器，fsck.ext2指令会把全部的执行过程，都交由其逆向叙述，便于排错或监控程序执行的情形。</li>
+<li>-d 详细显示指令执行过程，便于排错或分析程序执行的情形。</li>
+<li>-f 强制对该文件系统进行完整检查，纵然该文件系统在慨略检查下没有问题。</li>
+<li>-F 检查文件系统之前，先清理该保存设备块区内的数据。</li>
+<li>-I&lt;inode缓冲区块数&gt; 设置欲检查的文件系统，其inode缓冲区的区块数目。</li>
+<li>-l&lt;损坏区块文件&gt; 把文件中所列出的区块，视为损坏区块并将其标示出来，避免应用程序使用该区块。</li>
+<li>-L&lt;损坏区块文件&gt; 此参数的效果和指定”-l”参数类似，但在参考损坏区块文件标示损坏区块之前，会先将原来标示成损坏区块者统统清楚，即全部重新设置，而非仅是加入新的损坏区块标示。</li>
+<li>-n 把欲检查的文件系统设成只读，并关闭互动模式，否决所有询问的问题。</li>
+<li>-p 此参数的效果和指定”-a”参数相同。</li>
+<li>-P&lt;处理inode大小&gt; 设置fsck.ext2指令所能处理的inode大小为多少。</li>
+<li>-r 此参数将忽略不予处理，仅负责解决兼容性的问题。</li>
+<li>-s 检查文件系统时，交换每对字节的内容。</li>
+<li>-S 此参数的效果和指定”-s”参数类似，但不论该文件系统是否已是标准位顺序，一律交换每对字节的内容。</li>
+<li>-t 显示fsck.ext2指令的时序信息。</li>
+<li>-v 详细显示指令执行过程。</li>
+<li>-V 显示版本信息。</li>
+<li>-y 关闭互动模式，且同意所有询问的问题。</li>
+</ul>
+<h2 id="27-fdisk"><a href="#27-fdisk" class="headerlink" title="27.fdisk"></a>27.fdisk</h2><p>​        fdisk是一个创建和维护分区表的程序，它兼容DOS类型的分区表，BSD或者SUN类型的磁盘列表。</p>
+<h3 id="语法-22"><a href="#语法-22" class="headerlink" title="语法"></a>语法</h3><pre><code>fdisk [必要参数] [选择参数]</code></pre><p><strong>必要参数：</strong></p>
+<ul>
+<li>-l列出素所有分区表</li>
+<li>-u与“-l”搭配使用，显示分区数目</li>
+</ul>
+<p><strong>选择参数：</strong></p>
+<ul>
+<li>-s &lt;分区编号&gt;指定分区</li>
+<li>-v版本信息</li>
+</ul>
+<p><strong>菜单操作说明</strong></p>
+<ul>
+<li>m：显示菜单和帮助信息</li>
+<li>a：活动分区标记/引导分区</li>
+<li>d：删除分区</li>
+<li>l：显示分区类型</li>
+<li>n：新建分区</li>
+<li>p：显示分区信息</li>
+<li>q：退出不保存</li>
+<li>t：设置分区号</li>
+<li>v：进行分区检查</li>
+<li>w：保存修改</li>
+<li>x：扩展应用，高级功能</li>
+</ul>
+<h3 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h3><p>显示当前分区情况：</p>
+<pre><code>#fdisk -l
+
+磁盘/ dev / sda：10.7 GB，10737418240字节
+255个头，63个扇区/轨道，1305个柱面
+单位= 16065 * 512 = 8225280字节的柱面
+
+  设备启动开始结束块ID系统
+/ dev / sda1 * 1 13 104391 83 Linux
+/ dev / sda2 14 1305 10377990 8e Linux LVM
+
+磁盘/ dev / sdb：5368 MB，5368709120字节
+255个头，63个扇区/轨道，652个柱面
+单位= 16065 * 512 = 8225280字节的柱面
+
+磁盘/ dev / sdb不包含有效的分区表</code></pre><p>显示SCSI硬盘的每个分区情况</p>
+<pre><code>#fdisk -lu  
+
+磁盘/ dev / sda：10.7 GB，10737418240字节
+255个头，63个扇区/轨道，1305个气缸，总共20971520个扇区
+单位= 1 * 512 = 512字节的扇区
+
+  设备启动开始结束块ID系统
+/ dev / sda1 * 63 208844 104391 83 Linux
+/ dev / sda2 208845 20964824 10377990 8e Linux LVM
+
+磁盘/ dev / sdb：5368 MB，5368709120字节
+255个头，63个扇区/轨道，652个气缸，总共10485760个扇区
+单位= 1 * 512 = 512字节的扇区
+
+磁盘/ dev / sdb不包含有效的分区表</code></pre><h2 id="28-losetup"><a href="#28-losetup" class="headerlink" title="28.losetup"></a>28.losetup</h2><p>​        losetup命令用于设置循环设备。</p>
+<p>循环设备可把文件虚拟成区块设备，籍以模拟整个文件系统，让用户得以将其视为硬盘驱动器，光驱或软驱等设备，并挂入当作目录来使用。</p>
+<h3 id="语法-23"><a href="#语法-23" class="headerlink" title="语法"></a>语法</h3><pre><code>losetup [-d][-e &lt;加密方式&gt;][-o &lt;平移数目&gt;][循环设备代号][文件]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-d 卸除设备。</li>
+<li>-e&lt;加密方式&gt; 启动加密编码。</li>
+<li>-o&lt;平移数目&gt; 设置数据平移的数目。</li>
+</ul>
+<h3 id="实例-10"><a href="#实例-10" class="headerlink" title="实例"></a>实例</h3><p>（1）创建空的磁盘镜像文件，这里创建一个1.44M的软盘</p>
+<pre><code>$ dd if=/dev/zero of=floppy.img bs=512 count=2880</code></pre><p>（2）使用 losetup将磁盘镜像文件虚拟成快设备</p>
+<pre><code>$ losetup /dev/loop1 floppy.img</code></pre><p>（3）挂载块设备</p>
+<pre><code>$ mount /dev/loop0 /tmp</code></pre><p>经过上面的三步之后，我们就可以通过/tmp目录，像访问真实快设备一样来访问磁盘镜像文件floppy.img。</p>
+<p>（4） 卸载loop设备</p>
+<pre><code>$ umount /tmp
+$ losetup -d /dev/loop1</code></pre><p>一个完整测试实例</p>
+<p>\1. 首先创建一个 1G 大小的空文件：</p>
+<pre><code># dd if=/dev/zero of=loopfile.img bs=1G count=1
+1+0 records in
+1+0 records out
+1073741824 bytes (1.1 GB) copied, 69.3471 s, 15.5 MB/s</code></pre><p>\2. 对该文件格式化为 ext4 格式：</p>
+<pre><code># mkfs.ext4 loopfile.img
+。。。。</code></pre><p>\3. 用 file 命令查看下格式化后的文件类型：</p>
+<pre><code># file loopfile.img
+loopfile.img: Linux rev 1.0 ext4 filesystem data, UUID=a9dfb4a0-6653-4407-ae05-7044d92c1159 (extents) (large files) (huge files)</code></pre><p>\4. 准备将上面的文件挂载起来：</p>
+<pre><code># mkdir /mnt/loopback
+# mount -o loop loopfile.img /mnt/loopback</code></pre><p>mount 命令的 -o loop 选项可以将任意一个 loopback 文件系统挂载。</p>
+<p>上面的 mount 命令实际等价于下面两条命令：</p>
+<pre><code># losetup /dev/loop0 loopfile.img
+# mount /dev/loop0 /mnt/loopback</code></pre><p>因此实际上，mount -o loop 在内部已经默认的将文件和 /dev/loop0 挂载起来了。</p>
+<p>然而对于第一种方法(mount -o loop)并不能适用于所有的场景。比如，我们想创建一个硬盘文件，然后对该文件进行分区，接着挂载其中一个子分区，这时就不能用 -o loop 这种方法了。因此必须如下做：</p>
+<pre><code># losetup /dev/loop1 loopfile.img
+# fdisk /dev/loop1</code></pre><p>\6. 卸载挂载点：</p>
+<pre><code># umount /mnt/loopback</code></pre><h2 id="29-mkfs"><a href="#29-mkfs" class="headerlink" title="29.mkfs"></a>29.mkfs</h2><p><strong>使用方式</strong> : mkfs [-V] [-t fstype] [fs-options] filesys [blocks]</p>
+<p>mkfs命令用于在特定的分区上建立 linux 文件系统</p>
+<p><strong>参数</strong> ：</p>
+<ul>
+<li>device ： 预备检查的硬盘分区，例如：/dev/sda1</li>
+<li>-V : 详细显示模式</li>
+<li>-t : 给定档案系统的型式，Linux 的预设值为 ext2</li>
+<li>-c : 在制做档案系统前，检查该partition 是否有坏轨</li>
+<li>-l bad_blocks_file : 将有坏轨的block资料加到 bad_blocks_file 里面</li>
+<li>block : 给定 block 的大小</li>
+</ul>
+<h3 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h3><p>在 /dev/hda5 上建一个 msdos 的档案系统，同时检查是否有坏轨存在，并且将过程详细列出来 :</p>
+<pre><code>mkfs -V -t msdos -c /dev/hda5</code></pre><p>将sda6分区格式化为ext3格式</p>
+<pre><code>mfks -t ext3 /dev/sda6  </code></pre><p><strong>注意</strong>：这里的文件系统是要指定的，比如 ext3 ；reiserfs ；ext2 ；fat32 ；msdos 等。</p>
+<h2 id="30-sfdisk"><a href="#30-sfdisk" class="headerlink" title="30.sfdisk"></a>30.sfdisk</h2><p>​        sfdisk命令是硬盘分区工具程序。</p>
+<p>了sfdisk为硬盘分区工具程序，可显示分区的设置信息，并检查分区是否正常。</p>
+<h3 id="语法-24"><a href="#语法-24" class="headerlink" title="语法"></a>语法</h3><pre><code>sfdisk [ - ？Tvx] [ -  d &lt;硬盘&gt;] [ -  g &lt;硬盘&gt;] [ -  l &lt;硬盘&gt;] [ -  s &lt;分区&gt;] [ -  V &lt;硬盘&gt;]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>- ？或–help显示帮助。</li>
+<li>-d &lt;硬盘&gt;显示硬盘分区的设置。</li>
+<li>-g &lt;硬盘&gt;或–show-geometry &lt;硬盘&gt;显示硬盘的CHS参数。</li>
+<li>-l &lt;硬盘&gt;显示后硬盘分区的相关设置。</li>
+<li>-s &lt;分区&gt;显示分区的大小，单位为区块。</li>
+<li>-T或–list-types显示所有sfdisk能辨识的文件系统ID。</li>
+<li>-v或–version显示版本信息。</li>
+<li>-V &lt;硬盘&gt;或–verify &lt;硬盘&gt;检查硬盘分区是否正常。</li>
+<li>-x或–show-extend显示扩展分区中的逻辑分区。</li>
+</ul>
+<h3 id="实例-12"><a href="#实例-12" class="headerlink" title="实例"></a>实例</h3><p>显示分区信息：</p>
+<pre><code>#sfdisk -l
+
+磁盘/ dev / sda：1305个柱面，255个磁头，63个扇区/磁道
+单位= 8225280字节的柱面，1024字节的块，从0开始计数
+
+设备启动开始结束#cyls #blocks Id系统
+/ dev / sda1 * 0+ 12 13- 104391 83 Linux
+/ dev / sda2 13 1304 1292 10377990 8e Linux LVM
+/ dev / sda3 0  -  0 0 0空
+/ dev / sda4 0  -  0 0 0空
+
+磁盘/ dev / sdb：652个柱面，255个磁头，63个扇区/磁道
+
+sfdisk：错误：扇区0没有msdos签名
+/ dev / sdb：无法识别的分区
+找不到分区</code></pre><h2 id="31-swapoff"><a href="#31-swapoff" class="headerlink" title="31.swapoff"></a>31.swapoff</h2><pre><code>     swapoff命令用于关闭系统交换区（swap area）。</code></pre><p>使用swapoff实际上为swapon命令的符号连接，可用来关闭系统的交换区。</p>
+<h3 id="语法-25"><a href="#语法-25" class="headerlink" title="语法"></a>语法</h3><pre><code>swapoff [设备]</code></pre><p><strong>参数：</strong></p>
+<ul>
+<li>-a将/ etc / fstab文件中所有设置为swap的设备关闭</li>
+<li>-h帮助信息</li>
+<li>-V版本信息</li>
+</ul>
+<h3 id="实例-13"><a href="#实例-13" class="headerlink" title="实例"></a>实例</h3><p>显示分区信息：</p>
+<pre><code>#sfdisk -l //显示分区信息
+
+磁盘/ dev / sda：1305个柱面，255个磁头，63个扇区/磁道
+单位= 8225280字节的柱面，1024字节的块，从0开始计数
+
+  设备启动开始结束#cyls #blocks Id系统
+/ dev / sda1 * 0+ 12 13- 104391 83 Linux
+/ dev / sda2 13 1304 1292 10377990 8e Linux LVM
+/ dev / sda3 0  -  0 0 0空
+/ dev / sda4 0  -  0 0 0空
+
+磁盘/ dev / sdb：652个柱面，255个磁头，63个扇区/磁道
+
+sfdisk：错误：扇区0没有msdos签名
+/ dev / sdb：无法识别的分区
+找不到分区</code></pre><p>关闭交换分区。</p>
+<pre><code>#subtoff / dev / sda2 //关闭交换分区</code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
+<li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
+</ul>
+<p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/08/17/linux/ming-ling/5.linux-ming-ling-ci-pan-wei-hu/" class="b-link-green">5.Linux命令（磁盘维护）</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/08/17/linux/ming-ling/6.linux-ming-ling-wang-luo-tong-xun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="6.Linux命令（网络通讯）">
+                        
+                        <span class="card-title">6.Linux命令（网络通讯）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux命令（网络通讯）1.apachect     apachectl命令可用来控制Apache HTTP服务器的程序。apachectl是slackware内附Apache HTTP服务器的script文件，可供管理员控制服务器，但在</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/08/17/linux/ming-ling/linux-chang-yong-ming-ling-quan-pin/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux常用命令全拼">
+                        
+                        <span class="card-title">Linux常用命令全拼</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux常用命令全拼
+pwd：打印工作目录打印当前目录显示出当前工作目录的绝对路径
+
+ps：进程状态（进程状态，类似于windows的任务管理器）
+  常用参数：-auxf
+  ps -auxf显示进程状态
+
+df：disk free其功</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">221k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 80000;
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
