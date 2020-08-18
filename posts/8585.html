@@ -338,7 +338,7 @@ so">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        247
+                        295
                     </div>
                     
 
@@ -373,7 +373,7 @@ source filename</code></pre><h3 id="实例"><a href="#实例" class="headerlink"
 # author:菜鸟教程
 # url:www.runoob.com
 
-url=&quot;http://www.runoob.com&quot;</code></pre><p>test2.sh 代码如下：</p>
+url="http://www.runoob.com"</code></pre><p>test2.sh 代码如下：</p>
 <pre><code>#!/bin/bash
 # author:菜鸟教程
 # url:www.runoob.com
@@ -384,7 +384,7 @@ url=&quot;http://www.runoob.com&quot;</code></pre><p>test2.sh 代码如下：</p
 # 或者使用以下包含文件代码
 # source ./test1.sh
 
-echo &quot;菜鸟教程官网地址：$url&quot;</code></pre><p>接下来，我们为 test2.sh 添加可执行权限并执行：</p>
+echo "菜鸟教程官网地址：$url"</code></pre><p>接下来，我们为 test2.sh 添加可执行权限并执行：</p>
 <pre><code>$ chmod +x test2.sh 
 $ ./test2.sh 
 菜鸟教程官网地址：http://www.runoob.com</code></pre><blockquote>
@@ -394,7 +394,25 @@ $ ./test2.sh
 <li><a href="https://www.runoob.com/linux/linux-shell-include-file.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-include-file.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -613,7 +631,7 @@ Shell 是指一种应用程序，这个应用程序提供了一个界面，用�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -802,7 +820,7 @@ Shell 是指一种应用程序，这个应用程序提供了一个界面，用�
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

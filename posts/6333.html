@@ -601,13 +601,13 @@ ftp://ftp.kernel.org/pub/
 输入此书签的名称，或按“Enter”输入“kernel”：kernel＃输入书签名  
 书签“内核”已保存。 </code></pre><h2 id="13-ftpshut"><a href="#13-ftpshut" class="headerlink" title="13.ftpshut"></a>13.ftpshut</h2><p>​        ftpshut命令在指定的时间关闭FTP服务器。</p>
 <p>本指令提供系统管理者在设置的时间关闭FTP服务器，且能在关闭之前发出警告信息通知用户。关闭时间若设置后为”none”，则会马上关闭服务器。如果采用”+30”的方式来设置表示服务器在30分钟之后关闭。依次类推，假设使用”1130”的格式则代表服务器会在每日的11时30分关闭，时间格式为24小时制。FTP服务器关闭后，在/etc目录下会产生一个名称为shutmsg的文件，把它删除后即可再度启动FTP服务器的功能。</p>
-<h3 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h3><pre><code>ftpshut [-d&lt;分钟&gt;][-l&lt;分钟&gt;][关闭时间][&quot;警告信息&quot;]</code></pre><p><strong>参数</strong>：</p>
+<h3 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h3><pre><code>ftpshut [-d&lt;分钟&gt;][-l&lt;分钟&gt;][关闭时间]["警告信息"]</code></pre><p><strong>参数</strong>：</p>
 <ul>
 <li>-d&lt;分钟&gt; 切断所有FTP连线时间。</li>
 <li>-l&lt;分钟&gt; 停止接受FTP登入的时间。</li>
 </ul>
 <h3 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h3><p>在晚上11:00 关闭FTP服务器，并在关闭前5 分钟拒绝新的FTP登录，前3 分钟关闭所有ftp的链接，且给出警告信息，可使用如下命令：</p>
-<pre><code>ftpshut-d 3 -1 5 1100 &quot;Server will be shutdown at 23:00:00&quot; </code></pre><h2 id="14-ftpwho"><a href="#14-ftpwho" class="headerlink" title="14.ftpwho"></a>14.ftpwho</h2><p>​        ftpwho命令用于显示目前所有以FTP登入的用户信息。</p>
+<pre><code>ftpshut-d 3 -1 5 1100 "Server will be shutdown at 23:00:00" </code></pre><h2 id="14-ftpwho"><a href="#14-ftpwho" class="headerlink" title="14.ftpwho"></a>14.ftpwho</h2><p>​        ftpwho命令用于显示目前所有以FTP登入的用户信息。</p>
 <p>执行这项指令可得知目前用FTP登入系统的用户有那些人，以及他们正在进行的操作。</p>
 <h3 id="语法-13"><a href="#语法-13" class="headerlink" title="语法"></a>语法</h3><pre><code>ftpwho</code></pre><p><strong>参数说明：</strong></p>
 <ul>
@@ -633,7 +633,25 @@ Service class - 6 user #当前共6个用户登录到服务器 </code></pre><h2 i
 <li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -866,7 +884,7 @@ Web APIWeb API介绍API的概念API（Applica</div>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1055,7 +1073,7 @@ Web APIWeb API介绍API的概念API（Applica</div>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

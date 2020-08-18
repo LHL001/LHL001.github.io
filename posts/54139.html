@@ -334,7 +334,7 @@ Shell 数组用括号来表示，元素用”空格”符号">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        509
+                        541
                     </div>
                     
 
@@ -364,7 +364,7 @@ Shell 数组用括号来表示，元素用”空格”符号">
 # author:菜鸟教程
 # url:www.runoob.com
 
-my_array=(A B &quot;C&quot; D)</code></pre><p>我们也可以使用下标来定义数组:</p>
+my_array=(A B "C" D)</code></pre><p>我们也可以使用下标来定义数组:</p>
 <pre><code>array_name[0]=value0
 array_name[1]=value1
 array_name[2]=value2</code></pre><h3 id="读取数组"><a href="#读取数组" class="headerlink" title="读取数组"></a>读取数组</h3><p>读取数组元素值的一般格式是：</p>
@@ -372,12 +372,12 @@ array_name[2]=value2</code></pre><h3 id="读取数组"><a href="#读取数组" c
 # author:菜鸟教程
 # url:www.runoob.com
 
-my_array=(A B &quot;C&quot; D)
+my_array=(A B "C" D)
 
-echo &quot;第一个元素为: ${my_array[0]}&quot;
-echo &quot;第二个元素为: ${my_array[1]}&quot;
-echo &quot;第三个元素为: ${my_array[2]}&quot;
-echo &quot;第四个元素为: ${my_array[3]}&quot;</code></pre><p>执行脚本，输出结果如下所示：</p>
+echo "第一个元素为: ${my_array[0]}"
+echo "第二个元素为: ${my_array[1]}"
+echo "第三个元素为: ${my_array[2]}"
+echo "第四个元素为: ${my_array[3]}"</code></pre><p>执行脚本，输出结果如下所示：</p>
 <pre><code>$ chmod +x test.sh 
 $ ./test.sh
 第一个元素为: A
@@ -393,8 +393,8 @@ my_array[1]=B
 my_array[2]=C
 my_array[3]=D
 
-echo &quot;数组的元素为: ${my_array[*]}&quot;
-echo &quot;数组的元素为: ${my_array[@]}&quot;</code></pre><p>执行脚本，输出结果如下所示：</p>
+echo "数组的元素为: ${my_array[*]}"
+echo "数组的元素为: ${my_array[@]}"</code></pre><p>执行脚本，输出结果如下所示：</p>
 <pre><code>$ chmod +x test.sh 
 $ ./test.sh
 数组的元素为: A B C D
@@ -408,8 +408,8 @@ my_array[1]=B
 my_array[2]=C
 my_array[3]=D
 
-echo &quot;数组元素个数为: ${#my_array[*]}&quot;
-echo &quot;数组元素个数为: ${#my_array[@]}&quot;</code></pre><p>执行脚本，输出结果如下所示：</p>
+echo "数组元素个数为: ${#my_array[*]}"
+echo "数组元素个数为: ${#my_array[@]}"</code></pre><p>执行脚本，输出结果如下所示：</p>
 <pre><code>$ chmod +x test.sh 
 $ ./test.sh
 数组元素个数为: 4
@@ -417,7 +417,25 @@ $ ./test.sh
 <li><a href="https://www.runoob.com/linux/linux-shell-array.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-array.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -650,7 +668,7 @@ $ ./test.sh
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -839,7 +857,7 @@ $ ./test.sh
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

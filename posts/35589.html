@@ -339,7 +339,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        6 分
                     </div>
                     
                 
@@ -411,11 +411,11 @@
 _mbsetupuser console  Oct 31 17:35 
 tianqixin    console  Oct 31 17:35 
 tianqixin    ttys000  Dec  1 11:33 </code></pre><p>输出重定向会覆盖文件内容，请看下面的例子：</p>
-<pre><code>$ echo &quot;菜鸟教程：www.runoob.com&quot; &gt; users
+<pre><code>$ echo "菜鸟教程：www.runoob.com" &gt; users
 $ cat users
 菜鸟教程：www.runoob.com
 $</code></pre><p>如果不希望文件内容被覆盖，可以使用 &gt;&gt; 追加到文件末尾，例如：</p>
-<pre><code>$ echo &quot;菜鸟教程：www.runoob.com&quot; &gt;&gt; users
+<pre><code>$ echo "菜鸟教程：www.runoob.com" &gt;&gt; users
 $ cat users
 菜鸟教程：www.runoob.com
 菜鸟教程：www.runoob.com
@@ -489,7 +489,25 @@ www.runoob.com</code></pre><hr>
 <li><a href="https://www.runoob.com/linux/linux-shell-io-redirections.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-io-redirections.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -721,7 +739,7 @@ shell中函数的定义格式如下：
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -910,7 +928,7 @@ shell中函数的定义格式如下：
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

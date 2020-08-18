@@ -333,7 +333,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.2k
                     </div>
                     
 
@@ -379,7 +379,7 @@
 &lt;pre&gt;
 # loadkeys 
 control alt keycode 88 = F80 //现确定键代码
-string F80=&quot;runoob.com&quot; //给变变量设定值
+string F80="runoob.com" //给变变量设定值
 //按下 Ctrl + D键 确定输入
 
 //效果：按下 Ctrl +Alt + F12 输出 Lx138.Com
@@ -387,33 +387,33 @@ string F80=&quot;runoob.com&quot; //给变变量设定值
 # dumpkeys --funcs-only //显示功能键
 
 ……省略部分结果
-string F3 = &quot;\033[[C&quot;
-string F4 = &quot;\033[[D&quot;
-string F5 = &quot;\033[[E&quot;
-string F6 = &quot;\033[17~&quot;
-string F7 = &quot;\033[18~&quot;
-string F8 = &quot;\033[19~&quot;
-string F9 = &quot;\033[20~&quot;
-string F10 = &quot;\033[21~&quot;
-string F11 = &quot;\033[23~&quot;
-string F12 = &quot;\033[24~&quot;
-string F13 = &quot;\033[25~&quot;
-string F14 = &quot;\033[26~&quot;
-string F15 = &quot;\033[28~&quot;
-string F16 = &quot;\033[29~&quot;
-string F17 = &quot;\033[31~&quot;
-string F18 = &quot;\033[32~&quot;
-string F19 = &quot;\033[33~&quot;
-string F20 = &quot;\033[34~&quot;
-string Find = &quot;\033[1~&quot;
-string Insert = &quot;\033[2~&quot;
-string Remove = &quot;\033[3~&quot;
-string Select = &quot;\033[4~&quot;
-string Prior = &quot;\033[5~&quot;
-string Next = &quot;\033[6~&quot;
-string Macro = &quot;\033[M&quot;
-string Pause = &quot;\033[P&quot;
-string F80 = &quot;runoob.com&quot;</code></pre><h2 id="3-rdev"><a href="#3-rdev" class="headerlink" title="3.rdev"></a>3.rdev</h2><p>rdev命令可以用来查询/设置内核映像文件的根设备，RAM 磁盘大小或视频模式。</p>
+string F3 = "\033[[C"
+string F4 = "\033[[D"
+string F5 = "\033[[E"
+string F6 = "\033[17~"
+string F7 = "\033[18~"
+string F8 = "\033[19~"
+string F9 = "\033[20~"
+string F10 = "\033[21~"
+string F11 = "\033[23~"
+string F12 = "\033[24~"
+string F13 = "\033[25~"
+string F14 = "\033[26~"
+string F15 = "\033[28~"
+string F16 = "\033[29~"
+string F17 = "\033[31~"
+string F18 = "\033[32~"
+string F19 = "\033[33~"
+string F20 = "\033[34~"
+string Find = "\033[1~"
+string Insert = "\033[2~"
+string Remove = "\033[3~"
+string Select = "\033[4~"
+string Prior = "\033[5~"
+string Next = "\033[6~"
+string Macro = "\033[M"
+string Pause = "\033[P"
+string F80 = "runoob.com"</code></pre><h2 id="3-rdev"><a href="#3-rdev" class="headerlink" title="3.rdev"></a>3.rdev</h2><p>rdev命令可以用来查询/设置内核映像文件的根设备，RAM 磁盘大小或视频模式。</p>
 <p>不带任何参数的 rdev 命令将输出当前根文件系统的 /etc/mtab 文件行。不带任何参数的 ramsize, vidmode, 和 rootflags 将显示帮助信息。</p>
 <h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><pre><code>rdev [-rsvh ] [-o offset ] [ image [value [ offset ] ] ]&lt;/p&gt;</code></pre><p>但是随著使用者想要设定的参数的不同，底下的方式也是一样：</p>
 <pre><code>rdev [ -o offset ] [ image [ root_device [ offset ] ] ]
@@ -442,34 +442,34 @@ rootflags [ -o offset ] [ image [ flags [ offset ] ] ]</code></pre><p><strong>�
 </ul>
 <h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>显示功能键信息</p>
 <pre><code># dumpkeys --funcs-only 
-string F1 = &quot;\033[[A&quot;
-string F2 = &quot;\033[[B&quot;
-string F3 = &quot;\033[[C&quot;
-string F4 = &quot;\033[[D&quot;
-string F5 = &quot;\033[[E&quot;
-string F6 = &quot;\033[17~&quot;
-string F7 = &quot;\033[18~&quot;
-string F8 = &quot;\033[19~&quot;
-string F9 = &quot;\033[20~&quot;
-string F10 = &quot;\033[21~&quot;
-string F11 = &quot;\033[23~&quot;
-string F12 = &quot;\033[24~&quot;
-string F13 = &quot;\033[25~&quot;
-string F14 = &quot;\033[26~&quot;
-string F15 = &quot;\033[28~&quot;
-string F16 = &quot;\033[29~&quot;
-string F17 = &quot;\033[31~&quot;
-string F18 = &quot;\033[32~&quot;
-string F19 = &quot;\033[33~&quot;
-string F20 = &quot;\033[34~&quot;
-string Find = &quot;\033[1~&quot;
-string Insert = &quot;\033[2~&quot;
-string Remove = &quot;\033[3~&quot;
-string Select = &quot;\033[4~&quot;
-string Prior = &quot;\033[5~&quot;
-string Next = &quot;\033[6~&quot;
-string Macro = &quot;\033[M&quot;
-string Pause = &quot;\033[P&quot;
+string F1 = "\033[[A"
+string F2 = "\033[[B"
+string F3 = "\033[[C"
+string F4 = "\033[[D"
+string F5 = "\033[[E"
+string F6 = "\033[17~"
+string F7 = "\033[18~"
+string F8 = "\033[19~"
+string F9 = "\033[20~"
+string F10 = "\033[21~"
+string F11 = "\033[23~"
+string F12 = "\033[24~"
+string F13 = "\033[25~"
+string F14 = "\033[26~"
+string F15 = "\033[28~"
+string F16 = "\033[29~"
+string F17 = "\033[31~"
+string F18 = "\033[32~"
+string F19 = "\033[33~"
+string F20 = "\033[34~"
+string Find = "\033[1~"
+string Insert = "\033[2~"
+string Remove = "\033[3~"
+string Select = "\033[4~"
+string Prior = "\033[5~"
+string Next = "\033[6~"
+string Macro = "\033[M"
+string Pause = "\033[P"
 root@snail-hnlinux:~# </code></pre><p>显示驱动信息</p>
 <pre><code># dumpkeys -i
 键值码范围被内核支持: 1 - 255
@@ -501,7 +501,25 @@ MAKEDEV [ -n ] [ -v ] [ -d ] device ...</code></pre><h2 id="参考文章："><a 
 <li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -729,7 +747,7 @@ ar可让您集合许多文件，成为单一的备存文件。在备存文件中
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -918,7 +936,7 @@ ar可让您集合许多文件，成为单一的备存文件。在备存文件中
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

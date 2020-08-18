@@ -354,7 +354,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        605
+                        635
                     </div>
                     
 
@@ -416,9 +416,9 @@
 num2=100
 if test $[num1] -eq $[num2]
 then
-    echo &#39;两个数相等！&#39;
+    echo '两个数相等！'
 else
-    echo &#39;两个数不相等！&#39;
+    echo '两个数不相等！'
 fi</code></pre><p>输出结果：</p>
 <pre><code>两个数相等！</code></pre><p>代码中的 [] 执行基本的算数运算，如：</p>
 <pre><code>#!/bin/bash
@@ -427,7 +427,7 @@ a=5
 b=6
 
 result=$[a+b] # 注意等号两边不能有空格
-echo &quot;result 为： $result&quot;</code></pre><p>结果为:</p>
+echo "result 为： $result"</code></pre><p>结果为:</p>
 <pre><code>result 为： 11</code></pre><hr>
 <h2 id="字符串测试"><a href="#字符串测试" class="headerlink" title="字符串测试"></a>字符串测试</h2><table>
 <thead>
@@ -454,13 +454,13 @@ echo &quot;result 为： $result&quot;</code></pre><p>结果为:</p>
 </tr>
 </tbody></table>
 <p>实例演示：</p>
-<pre><code>num1=&quot;ru1noob&quot;
-num2=&quot;runoob&quot;
+<pre><code>num1="ru1noob"
+num2="runoob"
 if test $num1 = $num2
 then
-    echo &#39;两个字符串相等!&#39;
+    echo '两个字符串相等!'
 else
-    echo &#39;两个字符串不相等!&#39;
+    echo '两个字符串不相等!'
 fi</code></pre><p>输出结果：</p>
 <pre><code>两个字符串不相等!</code></pre><hr>
 <h2 id="文件测试"><a href="#文件测试" class="headerlink" title="文件测试"></a>文件测试</h2><table>
@@ -511,23 +511,41 @@ fi</code></pre><p>输出结果：</p>
 <pre><code>cd /bin
 if test -e ./bash
 then
-    echo &#39;文件已存在!&#39;
+    echo '文件已存在!'
 else
-    echo &#39;文件不存在!&#39;
+    echo '文件不存在!'
 fi</code></pre><p>输出结果：</p>
 <pre><code>文件已存在!</code></pre><p>另外，Shell还提供了与( -a )、或( -o )、非( ! )三个逻辑操作符用于将测试条件连接起来，其优先级为：”!”最高，”-a”次之，”-o”最低。例如：</p>
 <pre><code>cd /bin
 if test -e ./notFile -o -e ./bash
 then
-    echo &#39;至少有一个文件存在!&#39;
+    echo '至少有一个文件存在!'
 else
-    echo &#39;两个文件都不存在&#39;
+    echo '两个文件都不存在'
 fi</code></pre><p>输出结果：</p>
 <pre><code>至少有一个文件存在!</code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
 <li><a href="https://www.runoob.com/linux/linux-shell-test.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-test.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -609,10 +627,11 @@ fi</code></pre><p>输出结果：</p>
                 <div class="card-content article-content">
                     <div class="summary">Shell 流程控制和Java、PHP等语言不一样，sh的流程控制不可为空，如(以下为PHP流程控制写法)：
 &lt;?php
-if (isset($_GET[&quot;q&quot;])) {
+if (isset($_GET["q"])) {
     search(q);
 }
-else</div>
+else {
+    // </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-23
@@ -752,7 +771,7 @@ print</div>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -941,7 +960,7 @@ print</div>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

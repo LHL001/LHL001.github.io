@@ -501,8 +501,8 @@ $ chkconfig --level 35 mysqld on</code></pre><p>6，启动MySQL的服务器</p>
 <pre><code>$ service mysqld start</code></pre><p><img src="https://www.runoob.com/wp-content/uploads/2015/01/mysql4.png" alt="mysql4"></p>
 <pre><code>$ / usr / local / webserver / mysql / bin / mysql -u root -p</code></pre><p><img src="https://www.runoob.com/wp-content/uploads/2015/01/mysql5.png" alt="MYSQL5"></p>
 <pre><code>mysqladmin -u用户名-p旧密码密码新密码</code></pre><p>或进入mysql的命令行</p>
-<pre><code>为&#39;用户名&#39;设置密码@&#39;主机&#39;= PASSWORD（&#39;密码&#39;）;</code></pre><p>创建新用户并授权：</p>
-<pre><code>将*。*的所有权限授予由&#39;密码&#39;用授权选项标识的用户名@&#39;％&#39;;</code></pre><h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><ul>
+<pre><code>为'用户名'设置密码@'主机'= PASSWORD（'密码'）;</code></pre><p>创建新用户并授权：</p>
+<pre><code>将*。*的所有权限授予由'密码'用授权选项标识的用户名@'％';</code></pre><h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><ul>
 <li>启动：service mysqld start</li>
 <li>停止：服务mysqld停止</li>
 <li>重启：service mysqld restart</li>
@@ -512,7 +512,25 @@ $ chkconfig --level 35 mysqld on</code></pre><p>6，启动MySQL的服务器</p>
 <li><a href="https://www.runoob.com/linux/mysql-install-setup.html" target="_blank" rel="noopener">https://www.runoob.com/linux/mysql-install-setup.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -741,7 +759,7 @@ Nginx（“引擎x”）是一款是由俄罗斯的程序设计师Igor Sysoev所
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -930,7 +948,7 @@ Nginx（“引擎x”）是一款是由俄罗斯的程序设计师Igor Sysoev所
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

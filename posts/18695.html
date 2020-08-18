@@ -7,7 +7,7 @@
     <meta name="keywords" content="6.hell echo命令, yoyo，LHL001">
     <meta name="description" content="hell echo命令Shell 的 echo 指令与 PHP 的 echo 指令类似，都是用于字符串的输出。命令格式：
 echo string您可以使用echo实现更复杂的输出格式控制。
-1.显示普通字符串:echo &amp;quot;It i">
+1.显示普通字符串:echo &#34;It is a t">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -334,7 +334,7 @@ echo string您可以使用echo实现更复杂的输出格式控制。
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        405
+                        433
                     </div>
                     
 
@@ -359,30 +359,48 @@ echo string您可以使用echo实现更复杂的输出格式控制。
             <div id="articleContent">
                 <h2 id="hell-echo命令"><a href="#hell-echo命令" class="headerlink" title="hell echo命令"></a>hell echo命令</h2><p>Shell 的 echo 指令与 PHP 的 echo 指令类似，都是用于字符串的输出。命令格式：</p>
 <pre><code>echo string</code></pre><p>您可以使用echo实现更复杂的输出格式控制。</p>
-<h3 id="1-显示普通字符串"><a href="#1-显示普通字符串" class="headerlink" title="1.显示普通字符串:"></a>1.显示普通字符串:</h3><pre><code>echo &quot;It is a test&quot;</code></pre><p>这里的双引号完全可以省略，以下命令与上面实例效果一致：</p>
-<pre><code>echo It is a test</code></pre><h3 id="2-显示转义字符"><a href="#2-显示转义字符" class="headerlink" title="2.显示转义字符"></a>2.显示转义字符</h3><pre><code>echo &quot;\&quot;It is a test\&quot;&quot;</code></pre><p>结果将是:</p>
-<pre><code>&quot;It is a test&quot;</code></pre><p>同样，双引号也可以省略</p>
+<h3 id="1-显示普通字符串"><a href="#1-显示普通字符串" class="headerlink" title="1.显示普通字符串:"></a>1.显示普通字符串:</h3><pre><code>echo "It is a test"</code></pre><p>这里的双引号完全可以省略，以下命令与上面实例效果一致：</p>
+<pre><code>echo It is a test</code></pre><h3 id="2-显示转义字符"><a href="#2-显示转义字符" class="headerlink" title="2.显示转义字符"></a>2.显示转义字符</h3><pre><code>echo "\"It is a test\""</code></pre><p>结果将是:</p>
+<pre><code>"It is a test"</code></pre><p>同样，双引号也可以省略</p>
 <h3 id="3-显示变量"><a href="#3-显示变量" class="headerlink" title="3.显示变量"></a>3.显示变量</h3><p>read 命令从标准输入中读取一行,并把输入行的每个字段的值指定给 shell 变量</p>
 <pre><code>#!/bin/sh
 read name 
-echo &quot;$name It is a test&quot;</code></pre><p>以上代码保存为 test.sh，name 接收标准输入的变量，结果将是:</p>
+echo "$name It is a test"</code></pre><p>以上代码保存为 test.sh，name 接收标准输入的变量，结果将是:</p>
 <pre><code>[root@www ~]# sh test.sh
 OK                     #标准输入
-OK It is a test        #输出</code></pre><h3 id="4-显示换行"><a href="#4-显示换行" class="headerlink" title="4.显示换行"></a>4.显示换行</h3><pre><code>echo -e &quot;OK! \n&quot; # -e 开启转义
-echo &quot;It is a test&quot;</code></pre><p>输出结果：</p>
+OK It is a test        #输出</code></pre><h3 id="4-显示换行"><a href="#4-显示换行" class="headerlink" title="4.显示换行"></a>4.显示换行</h3><pre><code>echo -e "OK! \n" # -e 开启转义
+echo "It is a test"</code></pre><p>输出结果：</p>
 <pre><code>OK!
 
 It is a test</code></pre><h3 id="5-显示不换行"><a href="#5-显示不换行" class="headerlink" title="5.显示不换行"></a>5.显示不换行</h3><pre><code>#!/bin/sh
-echo -e &quot;OK! \c&quot; # -e 开启转义 \c 不换行
-echo &quot;It is a test&quot;</code></pre><p>输出结果：</p>
-<pre><code>OK! It is a test</code></pre><h3 id="6-显示结果定向至文件"><a href="#6-显示结果定向至文件" class="headerlink" title="6.显示结果定向至文件"></a>6.显示结果定向至文件</h3><pre><code>echo &quot;It is a test&quot; &gt; myfile</code></pre><h3 id="7-原样输出字符串，不进行转义或取变量-用单引号"><a href="#7-原样输出字符串，不进行转义或取变量-用单引号" class="headerlink" title="7.原样输出字符串，不进行转义或取变量(用单引号)"></a>7.原样输出字符串，不进行转义或取变量(用单引号)</h3><pre><code>echo &#39;$name\&quot;&#39;</code></pre><p>输出结果：</p>
-<pre><code>$name\&quot;</code></pre><h3 id="8-显示命令执行结果"><a href="#8-显示命令执行结果" class="headerlink" title="8.显示命令执行结果"></a>8.显示命令执行结果</h3><pre><code>echo `date`</code></pre><p><strong>注意：</strong> 这里使用的是反引号 <strong>`</strong>, 而不是单引号 <strong>‘</strong>。</p>
+echo -e "OK! \c" # -e 开启转义 \c 不换行
+echo "It is a test"</code></pre><p>输出结果：</p>
+<pre><code>OK! It is a test</code></pre><h3 id="6-显示结果定向至文件"><a href="#6-显示结果定向至文件" class="headerlink" title="6.显示结果定向至文件"></a>6.显示结果定向至文件</h3><pre><code>echo "It is a test" &gt; myfile</code></pre><h3 id="7-原样输出字符串，不进行转义或取变量-用单引号"><a href="#7-原样输出字符串，不进行转义或取变量-用单引号" class="headerlink" title="7.原样输出字符串，不进行转义或取变量(用单引号)"></a>7.原样输出字符串，不进行转义或取变量(用单引号)</h3><pre><code>echo '$name\"'</code></pre><p>输出结果：</p>
+<pre><code>$name\"</code></pre><h3 id="8-显示命令执行结果"><a href="#8-显示命令执行结果" class="headerlink" title="8.显示命令执行结果"></a>8.显示命令执行结果</h3><pre><code>echo `date`</code></pre><p><strong>注意：</strong> 这里使用的是反引号 <strong>`</strong>, 而不是单引号 <strong>‘</strong>。</p>
 <p>结果将显示当前日期</p>
 <pre><code>Thu Jul 24 10:08:46 CST 2014</code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
 <li><a href="https://www.runoob.com/linux/linux-shell-echo.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-echo.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -610,7 +628,7 @@ print</div>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -799,7 +817,7 @@ print</div>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

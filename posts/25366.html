@@ -333,7 +333,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        6.1k
+                        6.2k
                     </div>
                     
 
@@ -654,7 +654,7 @@ mount [-fnrsvw] [-t vfstype] [-o options] device dir</code></pre><p><strong>参�
 <p># stat testfile</p>
 <p>执行以上命令输出结果：</p>
 <pre><code># stat testfile                #输入命令
-  File: `testfile&#39;
+  File: `testfile'
   Size: 102             Blocks: 8          IO Block: 4096   regular file
 Device: 807h/2055d      Inode: 1265161     Links: 1
 Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
@@ -833,7 +833,25 @@ home  lost+found  mnt    proc  selinux  tmp  var</code></pre><p>列出目前工�
 <li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1052,7 +1070,7 @@ home  lost+found  mnt    proc  selinux  tmp  var</code></pre><p>列出目前工�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1241,7 +1259,7 @@ home  lost+found  mnt    proc  selinux  tmp  var</code></pre><p>列出目前工�
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

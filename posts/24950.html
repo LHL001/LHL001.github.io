@@ -745,7 +745,7 @@ num <span class="token operator">+</span><span class="token operator">=</span> <
     <span class="token keyword">break</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <pre><code>break可以省略，如果省略，代码会继续执行下一个case
-switch 语句在比较值时使用的是全等操作符, 因此不会发生类型转换（例如，字符串&#39;10&#39; 不等于数值 10）</code></pre><p>案例：<br>    显示星期几<br>    素质教育（把分数变成ABCDE）千万不要写100个case哟</p>
+switch 语句在比较值时使用的是全等操作符, 因此不会发生类型转换（例如，字符串'10' 不等于数值 10）</code></pre><p>案例：<br>    显示星期几<br>    素质教育（把分数变成ABCDE）千万不要写100个case哟</p>
 <h3 id="布尔类型的隐式转换"><a href="#布尔类型的隐式转换" class="headerlink" title="布尔类型的隐式转换"></a>布尔类型的隐式转换</h3><p>流程控制语句会把后面的值隐式转换成布尔类型</p>
 <pre><code>转换为true   非空字符串  非0数字  true 任何对象
 转换成false  空字符串  0  false  null  undefined</code></pre><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 结果是什么？</span>
@@ -795,7 +795,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//循环条件</span></code></pre>
 <p>案例：</p>
 <pre><code>求100以内所有3的倍数的和
-使用do-while循环：输出询问“我爱你，嫁给我吧？”，选择“你喜欢我吗？(y/n):&quot;，如果输入为y则打印”我们形影不离“，若输入为n,则继续询问 </code></pre><h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><blockquote>
+使用do-while循环：输出询问“我爱你，嫁给我吧？”，选择“你喜欢我吗？(y/n):"，如果输入为y则打印”我们形影不离“，若输入为n,则继续询问 </code></pre><h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><blockquote>
 <p> while和do…while一般用来解决无法确认次数的循环。for循环一般在循环次数确定的时候比较方便</p>
 </blockquote>
 <p>for循环语法：</p>
@@ -820,31 +820,31 @@ console<span class="token punctuation">.</span><span class="token function">log<
 // 使用拼字符串的方法的原因
 // console.log 输出重复内容的问题
 // console.log 默认输出内容介绍后有换行
-var start = &#39;&#39;;
+var start = '';
 for (var i = 0; i &lt; 10; i++) {
   for (var j = 0; j &lt; 10; j++) {
-    start += &#39;* &#39;;
+    start += '* ';
   }
-  start += &#39;\n&#39;;
+  start += '\n';
 }
 console.log(start);
 打印直角三角形
-var start = &#39;&#39;;
+var start = '';
 for (var i = 0; i &lt; 10; i++) {
   for (var j = i; j &lt; 10; j++) {
-    start += &#39;* &#39;;
+    start += '* ';
   }
-  start += &#39;\n&#39;;
+  start += '\n';
 }
 console.log(start);
 
 打印9*9乘法表
-var str = &#39;&#39;;
+var str = '';
 for (var i = 1; i &lt;= 9; i++) {
   for (var j = i; j &lt;=9; j++) {
-    str += i + &#39; * &#39; + j + &#39; = &#39; + i * j + &#39;\t&#39;;
+    str += i + ' * ' + j + ' = ' + i * j + '\t';
   }
-  str += &#39;\n&#39;;
+  str += '\n';
 }
 console.log(str);</code></pre><p>作业：</p>
 <pre><code>求1-100之间所有数的乘积
@@ -1109,7 +1109,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     函数 的名称一般用动词
 2.变量规范   
     操作符的前后要有空格
-    var name = &#39;zs&#39;;      5 + 6
+    var name = 'zs';      5 + 6
 3.注释规范
     // 这里是注释
 4.空格规范
@@ -1826,7 +1826,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 5、 截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
 6、 找出以上字符串中出现次数最多的字符和出现的次数 
 7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。 </code></pre><p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2065,7 +2083,7 @@ Web APIWeb API介绍API的概念API（Applica</div>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -2254,7 +2272,7 @@ Web APIWeb API介绍API的概念API（Applica</div>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

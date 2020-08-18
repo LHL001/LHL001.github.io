@@ -427,7 +427,7 @@ TERM xterm-debian
 #FILE 00＃常规文件：根本不使用任何颜色
 RESET 0＃重置为“正常”颜色
 DIR 01; 34＃目录
-LINK 01; 36＃符号链接。（如果将其设置为&#39;target&#39;而不是a
+LINK 01; 36＃符号链接。（如果将其设置为'target'而不是a
 ＃数值，颜色与指向的文件相同。）
 HARDLINK 44; 37＃常规文件，带有多个链接
 FIFO 40; 33＃管道
@@ -435,7 +435,7 @@ SOCK 01; 35＃插座
 DOOR 01; 35＃门
 BLK 40; 33; 01＃阻止设备驱动程序
 CHR 40; 33; 01＃字符设备驱动程序
-ORPHAN 40; 31; 01＃符号链接到不存在的文件或非stat&#39;able文件
+ORPHAN 40; 31; 01＃符号链接到不存在的文件或非stat'able文件
 SETUID 37; 41＃setuid文件（u + s）
 SETGID 30; 43＃setgid文件（g + s）
 CAPABILITY 30; 41＃文件具有功能
@@ -444,9 +444,9 @@ OTHER_WRITABLE 34; 42＃dir是其他可写（o + w）且不粘
 STICKY 37; 44＃dir，粘滞位设置（+ t）而不是其他可写的
 ＃这适用于具有执行权限的文件：
 执行01; 32
-＃列出您想要的任何文件扩展名，例如&#39;.gz&#39;或&#39;.tar&#39;
+＃列出您想要的任何文件扩展名，例如'.gz'或'.tar'
 ＃在下面着色。放置扩展名，空格和颜色初始化字符串。
-＃（和&#39;＃&#39;之后要添加的任何评论）
+＃（和'＃'之后要添加的任何评论）
 ＃如果使用DOS样式的后缀，则可能需要取消注释以下内容：
 ＃.cmd 01; 32＃可执行文件（亮绿色）
 ＃.exe 01; 32
@@ -802,7 +802,7 @@ set bind-tty-special-chars on
 <h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>改变根目录</p>
 <pre><code># chroot /mnt/ls //改变根目录</code></pre><h2 id="8-clock"><a href="#8-clock" class="headerlink" title="8.clock"></a>8.clock</h2><p>clock命令用于调整 RTC 时间。</p>
 <p>RTC 是电脑内建的硬件时间，执行这项指令可以显示现在时刻，调整硬件时钟的时间，将系统时间设成与硬件时钟之时间一致，或是把系统时间回存到硬件时钟。</p>
-<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><pre><code>clock [--adjust][--debug][--directisa][--getepoch][--hctosys][--set --date=&quot;&lt;日期时间&gt;&quot;][--setepoch --epoch=&lt; &gt;][--show][--systohc][--test][--utc][--version]</code></pre><p><strong>参数说明</strong>：</p>
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><pre><code>clock [--adjust][--debug][--directisa][--getepoch][--hctosys][--set --date="&lt;日期时间&gt;"][--setepoch --epoch=&lt; &gt;][--show][--systohc][--test][--utc][--version]</code></pre><p><strong>参数说明</strong>：</p>
 <ul>
 <li>–adjust 　第一次使用”–set”或”–systohc”参数设置硬件时钟，会在/etc目录下产生一个名称为adjtime的文件。当再次使用这两个参数调整硬件时钟，此文件便会记录两次调整间之差异，日后执行clock指令加上”–adjust”参数时，程序会自动根 据记录文件的数值差异，计算出平均值，自动调整硬件时钟的时间。</li>
 <li>–debug 　详细显示指令执行过程，便于排错或了解程序执行的情形。</li>
@@ -849,8 +849,8 @@ set bind-tty-special-chars on
 <h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>每月每天每小时的第 0 分钟执行一次 /bin/ls</p>
 <pre><code>0 * * * * /bin/ls</code></pre><p>在 12 月内, 每天的早上 6 点到 12 点，每隔 3 个小时 0 分钟执行一次 /usr/bin/backup</p>
 <pre><code>0 6-12/3 * 12 * /usr/bin/backup</code></pre><p>周一到周五每天下午 5:00 寄一封信给 <a href="mailto:alex@domain.name" target="_blank" rel="noopener">alex@domain.name</a></p>
-<pre><code>0 17 * * 1-5 mail -s &quot;hi&quot; alex@domain.name &lt; /tmp/maildata</code></pre><p>每月每天的午夜 0 点 20 分, 2 点 20 分, 4 点 20 分….执行 echo “haha”</p>
-<pre><code>20 0-23/2 * * * echo &quot;haha&quot;</code></pre><p>下面再看看几个具体的例子：</p>
+<pre><code>0 17 * * 1-5 mail -s "hi" alex@domain.name &lt; /tmp/maildata</code></pre><p>每月每天的午夜 0 点 20 分, 2 点 20 分, 4 点 20 分….执行 echo “haha”</p>
+<pre><code>20 0-23/2 * * * echo "haha"</code></pre><p>下面再看看几个具体的例子：</p>
 <pre><code>0 */2 * * * /sbin/service httpd restart  意思是每两个小时重启一次apache 
 
 50 7 * * * /sbin/service sshd start  意思是每天7：50开启ssh服务 
@@ -861,7 +861,7 @@ set bind-tty-special-chars on
 
 1 * * * * /home/bruce/backup  每小时的第一分执行 /home/bruce/backup这个文件 
 
-00 03 * * 1-5 find /home &quot;*.xxx&quot; -mtime +4 -exec rm {} \;  每周一至周五3点钟，在目录/home中，查找文件名为*.xxx的文件，并删除4天前的文件。
+00 03 * * 1-5 find /home "*.xxx" -mtime +4 -exec rm {} \;  每周一至周五3点钟，在目录/home中，查找文件名为*.xxx的文件，并删除4天前的文件。
 
 30 6 */10 * * ls  意思是每月的1、11、21、31日是的6：30执行一次ls命令</code></pre><p><strong>注意：</strong>当程序在你所指定的时间执行后，系统会寄一封信给你，显示该程序执行的内容，若是你不希望收到这样的信，请在每一行空一格之后加上 &gt; /dev/null 2&gt;&amp;1 即可</p>
 <h2 id="10-declare"><a href="#10-declare" class="headerlink" title="10.declare"></a>10.declare</h2><p>Linux declare命令用于声明 shell 变量。</p>
@@ -883,11 +883,11 @@ set bind-tty-special-chars on
 # ef=1  //变量赋值（整数值）
 # echo $ef //显示变量内容
 1
-# ef=&quot;wer&quot; //变量赋值（文本值）
+# ef="wer" //变量赋值（文本值）
 # echo $ef 
 0
 # declare +i ef //取消变量属性
-# ef=&quot;wer&quot;
+# ef="wer"
 # echo $ef
 wer</code></pre><p>设置变量只读</p>
 <pre><code># declare -r ab //设置变量为只读
@@ -895,7 +895,7 @@ wer</code></pre><p>设置变量只读</p>
 -bash: ab: 只读变量
 # echo $ab //显示变量内容
 56</code></pre><p>声明数组变量</p>
-<pre><code># declare -a cd=&#39;([0]=&quot;a&quot; [1]=&quot;b&quot; [2]=&quot;c&quot;)&#39; //声明数组变量
+<pre><code># declare -a cd='([0]="a" [1]="b" [2]="c")' //声明数组变量
 # echo ${cd[1]}
 b //显示变量内容
 
@@ -1434,8 +1434,8 @@ BASH_ARGC=()
 BASH_ARGV=()
 BASH_LINENO=()
 BASH_SOURCE=()
-BASH_VERSINFO=([0]=&quot;3&quot; [1]=&quot;00&quot; [2]=&quot;15&quot; [3]=&quot;1&quot; [4]=&quot;release&quot; [5]=&quot;i386-redhat-linux-gnu&quot;)
-BASH_VERSION=&#39;3.00.15(1)-release&#39;
+BASH_VERSINFO=([0]="3" [1]="00" [2]="15" [3]="1" [4]="release" [5]="i386-redhat-linux-gnu")
+BASH_VERSION='3.00.15(1)-release'
 COLORS=/etc/DIR_COLORS.xterm
 COLUMNS=99
 DIRSTACK=()
@@ -1448,11 +1448,11 @@ HISTSIZE=1000
 HOME=/root
 HOSTNAME=hnlinux
 HOSTTYPE=i386
-IFS=$&#39; &#39;
+IFS=$' '
 INPUTRC=/etc/inputrc
 KDEDIR=/usr
 LANG=zh_CN.GB2312
-LESSOPEN=&#39;|/usr/bin/lesspipe.sh %s&#39;
+LESSOPEN='|/usr/bin/lesspipe.sh %s'
 LINES=34
 L
 MAIL=/var/spool/mail/root
@@ -1462,9 +1462,9 @@ OPTERR=1
 OPTIND=1
 OSTYPE=linux-gnu
 PATH=/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/root/bin:/opt/crosstools/gcc-3.4.6-glibc-2.3.6/bin
-PIPESTATUS=([0]=&quot;2&quot;)
+PIPESTATUS=([0]="2")
 PPID=26005
-PROMPT_COMMAND=&#39;echo -ne &quot;</code></pre><h2 id="26-modprobe"><a href="#26-modprobe" class="headerlink" title="26.modprobe"></a>26.modprobe</h2><p>modprobe命令用于自动处理可载入模块。</p>
+PROMPT_COMMAND='echo -ne "</code></pre><h2 id="26-modprobe"><a href="#26-modprobe" class="headerlink" title="26.modprobe"></a>26.modprobe</h2><p>modprobe命令用于自动处理可载入模块。</p>
 <p>modprobe可载入指定的个别模块，或是载入一组相依的模块。modprobe会根据depmod所产生的相依关系，决定要载入哪些模块。若在载入过程中发生错误，在modprobe会卸载整组的模块。</p>
 <h3 id="语法-25"><a href="#语法-25" class="headerlink" title="语法"></a>语法</h3><pre><code>modprobe [-acdlrtvV][--help][模块文件][符号名称 = 符号值]</code></pre><p><strong>参数</strong>：</p>
 <ul>
@@ -1552,8 +1552,8 @@ passwd: password expiry information changed.</code></pre><h2 id="30-pwconv"><a h
 <h3 id="实例-28"><a href="#实例-28" class="headerlink" title="实例"></a>实例</h3><p>使用 C shell</p>
 <pre><code>[root@linux runoob]# resize -c
 set noglob;
-setenv COLUMNS &#39;99&#39;;
-setenv LINES &#39;34&#39;;
+setenv COLUMNS '99';
+setenv LINES '34';
 unset noglob;</code></pre><p>使用 Bourne shell</p>
 <pre><code>[root@hnlinux runoob]# resize -u
 COLUMNS=99;
@@ -1814,7 +1814,7 @@ cpu时间（秒，-t）无限制
 <li>-v 　仅删除变量。</li>
 </ul>
 <h3 id="实例-37"><a href="#实例-37" class="headerlink" title="实例"></a>实例</h3><p>删除环境变量</p>
-<pre><code>[root@runoob.com ~]# lx=&quot;ls -lh&quot; //设定环境变量
+<pre><code>[root@runoob.com ~]# lx="ls -lh" //设定环境变量
 [root@runoob.com ~]# $lx //使用环境变量
 总用量 116K
 -rw-r--r-- 1 root root 2.1K 2008-03-30 anaconda-ks.cfg
@@ -1827,10 +1827,10 @@ BASH=/bin/bash
 BASH_ARGC=()
 BASH_ARGV=()
 ……省略部分内容
-PROMPT_COMMAND=&#39;echo -ne &quot;33]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}07&quot;&#39;
-PS1=&#39;[u@h W]$ &#39;
-PS2=&#39;&gt; &#39;
-PS4=&#39;+ &#39;
+PROMPT_COMMAND='echo -ne "33]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}07"'
+PS1='[u@h W]$ '
+PS2='&gt; '
+PS4='+ '
 PWD=/root
 QTDIR=/usr/lib/qt-3.3
 SHELL=/bin/bash
@@ -1841,17 +1841,17 @@ TERM=xterm
 UID=0
 USER=root
 _=-lh
-lx=&#39;ls -lh&#39;
+lx='ls -lh'
 [root@runoob.com ~]# unset lx //删除环境变量
 [root@runoob.com ~]# set //显示当前环境变量
 BASH=/bin/bash
 BASH_ARGC=()
 BASH_ARGV=()
 ……省略部分内容
-PROMPT_COMMAND=&#39;echo -ne &quot;33]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}07&quot;&#39;
-PS1=&#39;[u@h W]$ &#39;
-PS2=&#39;&gt; &#39;
-PS4=&#39;+ &#39;
+PROMPT_COMMAND='echo -ne "33]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}07"'
+PS1='[u@h W]$ '
+PS2='&gt; '
+PS4='+ '
 PWD=/root
 QTDIR=/usr/lib/qt-3.3
 SHELL=/bin/bash
@@ -1951,7 +1951,7 @@ hwclock from util-linux-2.12a</code></pre><h2 id="47-mkkickstart"><a href="#47-m
 [root@runoob.com ~]# lx
 anaconda-ks.cfg Desktop install.log install.log.syslog qte</code></pre><p>删除别名</p>
 <pre><code>[root@runoob.com ~]# alias lx //显示别名
-alias lx=&#39;ls&#39;
+alias lx='ls'
 [root@runoob.com ~]# unalias lx //删除别名
 [root@runoob.com ~]# lx
 -bash: lx: command not found</code></pre><h2 id="50-SVGATextMode"><a href="#50-SVGATextMode" class="headerlink" title="50.SVGATextMode"></a>50.SVGATextMode</h2><p>SVGATextMode命令用于加强文字模式的显示画面。</p>
@@ -1975,7 +1975,25 @@ alias lx=&#39;ls&#39;
 <li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -2196,7 +2214,7 @@ ar可让您集合许多文件，成为单一的备存文件。在备存文件中
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -2385,7 +2403,7 @@ ar可让您集合许多文件，成为单一的备存文件。在备存文件中
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

@@ -337,7 +337,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.9k
+                        3.8k
                     </div>
                     
 
@@ -360,7 +360,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Hexo-博客搭建指南"><a href="#Hexo-博客搭建指南" class="headerlink" title="Hexo 博客搭建指南"></a>Hexo 博客搭建指南</h3><p><img src="https://s1.ax1x.com/2020/08/17/dmN8HJ.jpg" alt></p>
+                <h3 id="Hexo-博客搭建指南"><a href="#Hexo-博客搭建指南" class="headerlink" title="Hexo 博客搭建指南"></a>Hexo 博客搭建指南</h3><p><img src="https://s1.ax1x.com/2020/08/17/dmN8HJ.jpg" alt=""></p>
 <h5 id="参照"><a href="#参照" class="headerlink" title="参照"></a>参照</h5><ul>
 <li><a href="https://blog.csdn.net/jspnetcn/article/details/104111651" target="_blank" rel="noopener">基于Hexo的matery主题搭建博客并优化</a></li>
 </ul>
@@ -377,7 +377,7 @@
 <li><p>将 Hexo 所在的目录下的 node_modules 添加到环境变量之中即可直接使用 hexo:</p>
 </li>
 </ol>
-<p><code>echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></p>
+<p><code>echo 'PATH="$PATH:./node_modules/.bin"' &gt;&gt; ~/.profile</code></p>
 <h4 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h4><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
 <pre><code>hexo init &lt;folder&gt;
 cd &lt;folder&gt;
@@ -397,67 +397,67 @@ INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</code></p
 <h5 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h5><p>修改 Hexo 目录下的 <code>_config.yml</code> 的 <code>theme</code> 的值为：<code>theme: hexo-theme-matery</code></p>
 <h6 id="config-yml-文件的其它修改建议"><a href="#config-yml-文件的其它修改建议" class="headerlink" title="_config.yml 文件的其它修改建议:"></a><code>_config.yml</code> 文件的其它修改建议:</h6><p>请修改 _config.yml 的 url 的值为你的网站主 <code>URL</code>（如：<a href="http://xxx.github.io）。" target="_blank" rel="noopener">http://xxx.github.io）。</a><br>建议修改两个 per_page 的分页条数值为 <code>6</code> 的倍数，如：12、18 等，这样文章列表在各个屏幕下都能较好的显示。<br>如果是中文用户，则建议修改 language 的值为 <code>zh-CN</code>。</p>
 <h6 id="新建分类-categories-页"><a href="#新建分类-categories-页" class="headerlink" title="新建分类 categories 页"></a>新建分类 categories 页</h6><p>categories 页是用来展示所有分类的页面，如果 source 目录下还没有 <code>categories/index.md</code> 文件，那么就需要新建一个，命令如下</p>
-<pre><code>hexo new page &quot;categories&quot;</code></pre><p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
+<pre><code>hexo new page "categories"</code></pre><p>编辑刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
 <pre><code>---
 title: categories
 date: 2020/8/17 19:09:03 
-type: &quot;categories&quot;
-layout: &quot;categories&quot;
+type: "categories"
+layout: "categories"
 ---</code></pre><h6 id="新建标签-tags-页"><a href="#新建标签-tags-页" class="headerlink" title="新建标签 tags 页"></a>新建标签 tags 页</h6><p>tags 页是用来展示所有标签的页面，如果 source 目录下还没有 <code>tags/index.md</code> 文件，那么就需要新建一个，命令如下：</p>
-<pre><code>hexo new page &quot;tags&quot;</code></pre><p>编辑刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
+<pre><code>hexo new page "tags"</code></pre><p>编辑刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
 <pre><code>---
 title: tags
 date: 2020/8/17 19:10:26 
-type: &quot;tags&quot;
-layout: &quot;tags&quot;
+type: "tags"
+layout: "tags"
 ---</code></pre><h6 id="新建关于我-about-页"><a href="#新建关于我-about-页" class="headerlink" title="新建关于我 about 页"></a>新建关于我 about 页</h6><p>about 页是用来展示关于我和我的博客信息的页面，如果 source 目录下还没有 <code>about/index.md</code> 文件，那么就需要新建一个，命令如下：</p>
 <pre><code>---
 title: about
 date: 2020/8/17 19:11:17 
-type: &quot;about&quot;
-layout: &quot;about&quot;
+type: "about"
+layout: "about"
 ---</code></pre><h6 id="新建友情连接-friends-页（可选的）"><a href="#新建友情连接-friends-页（可选的）" class="headerlink" title="新建友情连接 friends 页（可选的）"></a>新建友情连接 friends 页（可选的）</h6><p>friends 页是用来展示友情连接信息的页面，如果 source 目录下还没有 <code>friends/index.md</code> 文件，那么就需要新建一个，命令如下：</p>
-<pre><code>hexo new page &quot;friends&quot;</code></pre><p>编辑刚刚新建的页面文件<code>/source/friends/index.md</code>，至少需要以下内容：</p>
+<pre><code>hexo new page "friends"</code></pre><p>编辑刚刚新建的页面文件<code>/source/friends/index.md</code>，至少需要以下内容：</p>
 <pre><code>---
 title: friends
 date: 2020/8/17 19:12:12 
-type: &quot;friends&quot;
-layout: &quot;friends&quot;
+type: "friends"
+layout: "friends"
 ---</code></pre><p>同时，在 source 目录下新建 _data 目录，在 _data 目录中新建 <code>friends.json</code> 文件，文件内容如下所示：</p>
 <pre><code>[{
-    &quot;avatar&quot;: &quot;http://image.luokangyuan.com/1_qq_27922023.jpg&quot;,
-    &quot;name&quot;: &quot;码酱&quot;,
-    &quot;introduction&quot;: &quot;我不是大佬，只是在追寻大佬的脚步&quot;,
-    &quot;url&quot;: &quot;http://luokangyuan.com/&quot;,
-    &quot;title&quot;: &quot;前去学习&quot;
+    "avatar": "http://image.luokangyuan.com/1_qq_27922023.jpg",
+    "name": "码酱",
+    "introduction": "我不是大佬，只是在追寻大佬的脚步",
+    "url": "http://luokangyuan.com/",
+    "title": "前去学习"
 }, {
-    &quot;avatar&quot;: &quot;http://static.blinkfox.com/20190601.png&quot;,
-    &quot;name&quot;: &quot;码农&quot;,
-    &quot;introduction&quot;: &quot;这里不隐含扭曲的价值观，而是整合并充盈正能量&quot;,
-    &quot;url&quot;: &quot;https://www.90c.vip/&quot;,
-    &quot;title&quot;: &quot;前去学习&quot;
+    "avatar": "http://static.blinkfox.com/20190601.png",
+    "name": "码农",
+    "introduction": "这里不隐含扭曲的价值观，而是整合并充盈正能量",
+    "url": "https://www.90c.vip/",
+    "title": "前去学习"
 }, {
-    &quot;avatar&quot;: &quot;https://jiangliuhong.gitee.io/images/avatar.jpg&quot;,
-    &quot;name&quot;: &quot;编程常青树&quot;,
-    &quot;introduction&quot;: &quot;平凡的脚步也可以走出伟大的行程&quot;,
-    &quot;url&quot;: &quot;https://jiangliuhong.gitee.io/&quot;,
-    &quot;title&quot;: &quot;前去学习&quot;
+    "avatar": "https://jiangliuhong.gitee.io/images/avatar.jpg",
+    "name": "编程常青树",
+    "introduction": "平凡的脚步也可以走出伟大的行程",
+    "url": "https://jiangliuhong.gitee.io/",
+    "title": "前去学习"
 }]</code></pre><h4 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h4><p>由于 Hexo 自带的代码高亮主题显示不好看，所以主题中使用到了 <code>hexo-prism-plugin</code> 的 Hexo 插件来做代码高亮，安装命令如下:</p>
 <pre><code>npm i -S hexo-prism-plugin</code></pre><p>然后，修改 Hexo 根目录下 _config.yml 文件中 highlight.enable 的值为 <code>false</code>，并新增 prism 插件相关的配置，主要配置如下 :</p>
 <pre><code>highlight:
   enable: false
 
 prism_plugin:
-  mode: &#39;preprocess&#39;# realtime/preprocess
-  theme: &#39;tomorrow&#39;
+  mode: 'preprocess'# realtime/preprocess
+  theme: 'tomorrow'
   line_number: false# default false
   custom_css:</code></pre><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><p>本主题中还使用到了 <code>hexo-generator-search</code> 的 Hexo 插件来做内容搜索，安装命令如下：</p>
 <pre><code>npm install hexo-generator-search --save</code></pre><p>在 Hexo 根目录下的 _config.yml 文件中，新增以下的配置项：</p>
 <pre><code>search:
   path: search.xml
   field: post</code></pre><h4 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚"></a>修改页脚</h4><p>页脚信息可能需要做定制化修改，而且它不便于做成配置信息，所以可能需要你自己去再修改和加工。修改的地方在主题文件的 <code>/layout/_partial/footer.ejs</code> 文件中，包括站点、使用的主题、访问量等。</p>
-<pre><code>&lt;a href=&quot;https://github.com/lhl001&quot; class=&quot;tooltipped&quot; target=&quot;_blank&quot; data-tooltip=&quot;访问我的GitHub&quot; data-position=&quot;top&quot; data-delay=&quot;50&quot;&gt;
-&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;
+<pre><code>&lt;a href="https://github.com/lhl001" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50"&gt;
+&lt;i class="fa fa-github"&gt;&lt;/i&gt;
 &lt;/a&gt;</code></pre><p>其中，社交图标（如：fa-github）可以在 Font Awesome 中搜索找到。以下是常用社交图标的标识，供参考：</p>
 <ul>
 <li>Facebook: fa-facebook</li>
@@ -503,7 +503,7 @@ abbrlink:
   hub:
   content:
   content_limit: 140
-  content_limit_delim: &#39; &#39;
+  content_limit_delim: ' '
   order_by: -date</code></pre><p>执行 <code>hexo clean &amp;&amp; hexo g</code> 重新生成博客文件，然后在 public 文件夹中即可看到 atom.xml 文件，说明已经安装成功了。</p>
 <h4 id="自定制修改"><a href="#自定制修改" class="headerlink" title="自定制修改"></a>自定制修改</h4><p>在本主题的 <code>_config.yml</code> 中可以修改部分自定义信息，有以下几个部分：</p>
 <ul>
@@ -539,7 +539,7 @@ abbrlink:
 @keyframes rainbow {
     /* 动态切换背景颜色. */
 }</code></pre><h4 id="修改-banner-图和文章特色图"><a href="#修改-banner-图和文章特色图" class="headerlink" title="修改 banner 图和文章特色图"></a>修改 banner 图和文章特色图</h4><p>可以直接在 /source/medias/banner 文件夹中更换喜欢的 banner 图片，主题代码中是每天动态切换一张，只需 7 张即可。如果会 JavaScript 代码，可以修改成自己喜欢切换逻辑，如：随机切换等，banner 切换的代码位置在 <code>/layout/_partial/bg-cover-content.ejs</code> 文件的 <script></script> 代码中：</p>
-<pre><code>$(&#39;.bg-cover&#39;).css(&#39;background-image&#39;, &#39;url(/medias/banner/&#39; + new Date().getDay() + &#39;.jpg)&#39;);</code></pre><p>在 <code>/source/medias/featureimages</code> 文件夹中默认有 24 张特色图片，你可以再增加或者减少，并需要在 _config.yml 做同步修改。</p>
+<pre><code>$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');</code></pre><p>在 <code>/source/medias/featureimages</code> 文件夹中默认有 24 张特色图片，你可以再增加或者减少，并需要在 _config.yml 做同步修改。</p>
 <h4 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h4><h5 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h5><p>Front-matter 选项中的所有内容均为非必填的。但仍然建议至少填写 title 和 date 的值。</p>
 <table>
 <thead>
@@ -658,7 +658,7 @@ tags:
 <p><code>npm -v</code> #查看npm版本号</p>
 <p><code>git --version</code> #查看git版本号</p>
 <p><code>hexo -v</code> #查看hexo版本号</p>
-<h3 id="简写指令"><a href="#简写指令" class="headerlink" title="简写指令"></a>简写指令</h3><pre><code>hexo n &quot;我的第一篇文章&quot;` 等价于 `hexo new &quot;我的第一篇文章&quot;` 还等价于 `hexo new post &quot;我的第一篇文章&quot;
+<h3 id="简写指令"><a href="#简写指令" class="headerlink" title="简写指令"></a>简写指令</h3><pre><code>hexo n "我的第一篇文章"` 等价于 `hexo new "我的第一篇文章"` 还等价于 `hexo new post "我的第一篇文章"
 hexo p` 等价于 `hexo publish
 hexo g` 等价于 `hexo generate
 hexo s`等价于 `hexo server
@@ -681,7 +681,25 @@ cat .git/logs/HEAD</code></pre><ul>
 <pre class=" language-bash"><code class="language-bash">  <span class="token function">git</span> reset --hard f085038efdf79546c09641d37b2a2429c1ae8e60 <span class="token comment" spellcheck="true">#github上最新的提交标识</span></code></pre>
 </li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -906,7 +924,7 @@ cat .git/logs/HEAD</code></pre><ul>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1095,7 +1113,7 @@ cat .git/logs/HEAD</code></pre><ul>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

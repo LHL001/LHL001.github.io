@@ -7,10 +7,11 @@
     <meta name="keywords" content="9.Shell 流程控制, yoyo，LHL001">
     <meta name="description" content="Shell 流程控制和Java、PHP等语言不一样，sh的流程控制不可为空，如(以下为PHP流程控制写法)：
 &amp;lt;?php
-if (isset($_GET[&amp;quot;q&amp;quot;])) {
+if (isset($_GET[&#34;q&#34;])) {
     search(q);
 }
-else">
+else {
+    // ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -362,7 +363,7 @@ else">
             <div id="articleContent">
                 <h1 id="Shell-流程控制"><a href="#Shell-流程控制" class="headerlink" title="Shell 流程控制"></a>Shell 流程控制</h1><p>和Java、PHP等语言不一样，sh的流程控制不可为空，如(以下为PHP流程控制写法)：</p>
 <pre><code>&lt;?php
-if (isset($_GET[&quot;q&quot;])) {
+if (isset($_GET["q"])) {
     search(q);
 }
 else {
@@ -377,7 +378,7 @@ then
     ...
     commandN 
 fi</code></pre><p>写成一行（适用于终端命令提示符）：</p>
-<pre><code>if [ $(ps -ef | grep -c &quot;ssh&quot;) -gt 1 ]; then echo &quot;true&quot;; fi</code></pre><p>末尾的fi就是if倒过来拼写，后面还会遇到类似的。</p>
+<pre><code>if [ $(ps -ef | grep -c "ssh") -gt 1 ]; then echo "true"; fi</code></pre><p>末尾的fi就是if倒过来拼写，后面还会遇到类似的。</p>
 <h3 id="if-else-1"><a href="#if-else-1" class="headerlink" title="if else"></a>if else</h3><p>if else 语法格式：</p>
 <pre><code>if condition
 then
@@ -401,24 +402,24 @@ fi</code></pre><p>以下实例判断两个变量是否相等：</p>
 b=20
 if [ $a == $b ]
 then
-   echo &quot;a 等于 b&quot;
+   echo "a 等于 b"
 elif [ $a -gt $b ]
 then
-   echo &quot;a 大于 b&quot;
+   echo "a 大于 b"
 elif [ $a -lt $b ]
 then
-   echo &quot;a 小于 b&quot;
+   echo "a 小于 b"
 else
-   echo &quot;没有符合的条件&quot;
+   echo "没有符合的条件"
 fi</code></pre><p>输出结果：</p>
 <pre><code>a 小于 b</code></pre><p>if else语句经常与test命令结合使用，如下所示：</p>
 <pre><code>num1=$[2*3]
 num2=$[1+5]
 if test $[num1] -eq $[num2]
 then
-    echo &#39;两个数字相等!&#39;
+    echo '两个数字相等!'
 else
-    echo &#39;两个数字不相等!&#39;
+    echo '两个数字不相等!'
 fi</code></pre><p>输出结果：</p>
 <pre><code>两个数字相等!</code></pre><hr>
 <h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p>与其他编程语言类似，Shell支持for循环。</p>
@@ -435,14 +436,14 @@ done</code></pre><p>写成一行：</p>
 <p>例如，顺序输出当前列表中的数字：</p>
 <pre><code>for loop in 1 2 3 4 5
 do
-    echo &quot;The value is: $loop&quot;
+    echo "The value is: $loop"
 done</code></pre><p>输出结果：</p>
 <pre><code>The value is: 1
 The value is: 2
 The value is: 3
 The value is: 4
 The value is: 5</code></pre><p>顺序输出字符串中的字符：</p>
-<pre><code>for str in &#39;This is a string&#39;
+<pre><code>for str in 'This is a string'
 do
     echo $str
 done</code></pre><p>输出结果：</p>
@@ -457,7 +458,7 @@ int=1
 while(( $int&lt;=5 ))
 do
     echo $int
-    let &quot;int++&quot;
+    let "int++"
 done</code></pre><p>运行脚本，输出：</p>
 <pre><code>1
 2
@@ -466,11 +467,11 @@ done</code></pre><p>运行脚本，输出：</p>
 5</code></pre><p>以上实例使用了 Bash let 命令，它用于执行一个或多个表达式，变量计算中不需要加上 $ 来表示变量，具体可查阅：<a href="https://www.runoob.com/linux/linux-comm-let.html" target="_blank" rel="noopener">Bash let 命令</a></p>
 <p>。</p>
 <p>while循环可用于读取键盘信息。下面的例子中，输入信息被设置为变量FILM，按<ctrl-d>结束循环。</ctrl-d></p>
-<pre><code>echo &#39;按下 &lt;CTRL-D&gt; 退出&#39;
-echo -n &#39;输入你最喜欢的网站名: &#39;
+<pre><code>echo '按下 &lt;CTRL-D&gt; 退出'
+echo -n '输入你最喜欢的网站名: '
 while read FILM
 do
-    echo &quot;是的！$FILM 是一个好网站&quot;
+    echo "是的！$FILM 是一个好网站"
 done</code></pre><p>运行脚本，输出类似下面：</p>
 <pre><code>按下 &lt;CTRL-D&gt; 退出
 输入你最喜欢的网站名:菜鸟教程
@@ -530,19 +531,19 @@ done</code></pre><p>运行结果：</p>
 esac</code></pre><p>case工作方式如上所示。取值后面必须为单词in，每一模式必须以右括号结束。取值可以为变量或常数。匹配发现取值符合某一模式后，其间所有命令开始执行直至 ;;。</p>
 <p>取值将检测匹配的每一个模式。一旦模式匹配，则执行完匹配模式相应命令后不再继续其他模式。如果无一匹配模式，使用星号 * 捕获该值，再执行后面的命令。</p>
 <p>下面的脚本提示输入1到4，与每一种模式进行匹配：</p>
-<pre><code>echo &#39;输入 1 到 4 之间的数字:&#39;
-echo &#39;你输入的数字为:&#39;
+<pre><code>echo '输入 1 到 4 之间的数字:'
+echo '你输入的数字为:'
 read aNum
 case $aNum in
-    1)  echo &#39;你选择了 1&#39;
+    1)  echo '你选择了 1'
     ;;
-    2)  echo &#39;你选择了 2&#39;
+    2)  echo '你选择了 2'
     ;;
-    3)  echo &#39;你选择了 3&#39;
+    3)  echo '你选择了 3'
     ;;
-    4)  echo &#39;你选择了 4&#39;
+    4)  echo '你选择了 4'
     ;;
-    *)  echo &#39;你没有输入 1 到 4 之间的数字&#39;
+    *)  echo '你没有输入 1 到 4 之间的数字'
     ;;
 esac</code></pre><p>输入不同的内容，会有不同的结果，例如：</p>
 <pre><code>输入 1 到 4 之间的数字:
@@ -555,12 +556,12 @@ esac</code></pre><p>输入不同的内容，会有不同的结果，例如：</p
 <pre><code>#!/bin/bash
 while :
 do
-    echo -n &quot;输入 1 到 5 之间的数字:&quot;
+    echo -n "输入 1 到 5 之间的数字:"
     read aNum
     case $aNum in
-        1|2|3|4|5) echo &quot;你输入的数字为 $aNum!&quot;
+        1|2|3|4|5) echo "你输入的数字为 $aNum!"
         ;;
-        *) echo &quot;你输入的数字不是 1 到 5 之间的! 游戏结束&quot;
+        *) echo "你输入的数字不是 1 到 5 之间的! 游戏结束"
             break
         ;;
     esac
@@ -573,14 +574,14 @@ done</code></pre><p>执行以上代码，输出结果为：</p>
 <pre><code>#!/bin/bash
 while :
 do
-    echo -n &quot;输入 1 到 5 之间的数字: &quot;
+    echo -n "输入 1 到 5 之间的数字: "
     read aNum
     case $aNum in
-        1|2|3|4|5) echo &quot;你输入的数字为 $aNum!&quot;
+        1|2|3|4|5) echo "你输入的数字为 $aNum!"
         ;;
-        *) echo &quot;你输入的数字不是 1 到 5 之间的!&quot;
+        *) echo "你输入的数字不是 1 到 5 之间的!"
             continue
-            echo &quot;游戏结束&quot;
+            echo "游戏结束"
         ;;
     esac
 done</code></pre><p>运行代码发现，当输入大于5的数字时，该例中的循环不会结束，语句 <strong>echo “游戏结束”</strong> 永远不会被执行。</p>
@@ -590,7 +591,25 @@ done</code></pre><p>运行代码发现，当输入大于5的数字时，该例�
 <li><a href="https://www.runoob.com/linux/linux-shell-process-control.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-process-control.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -838,7 +857,7 @@ shell中函数的定义格式如下：
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1027,7 +1046,7 @@ shell中函数的定义格式如下：
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

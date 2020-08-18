@@ -332,7 +332,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.4k
                     </div>
                     
 
@@ -427,10 +427,10 @@
 </tbody></table>
 <h2 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h2><h3 id="任务列表使用格式"><a href="#任务列表使用格式" class="headerlink" title="任务列表使用格式"></a>任务列表使用格式</h3><p>- [ ] 文字 （注：注意用空格隔开）</p>
 <h3 id="任务列表在typora中的显示形式"><a href="#任务列表在typora中的显示形式" class="headerlink" title="任务列表在typora中的显示形式"></a>任务列表在typora中的显示形式</h3><ul>
-<li><input checked disabled type="checkbox"> JAVA</li>
-<li><input disabled type="checkbox"> C</li>
-<li><input disabled type="checkbox"> C++</li>
-<li><input disabled type="checkbox"> Python</li>
+<li><input checked="" disabled="" type="checkbox"> JAVA</li>
+<li><input disabled="" type="checkbox"> C</li>
+<li><input disabled="" type="checkbox"> C++</li>
+<li><input disabled="" type="checkbox"> Python</li>
 </ul>
 <p>（注意：在CSDN博客上未显示，但是在Typora上显示如下图：<br><img src="https://img-blog.csdn.net/20180108114342465?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU0lNQkExOTQ5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>）</p>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表的使用格式"><a href="#列表的使用格式" class="headerlink" title="列表的使用格式"></a>列表的使用格式</h3><p>+ 、- 、* 创建无序列，任意数字开始+空格创建有序列表</p>
@@ -457,7 +457,7 @@
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h3 id="注释的使用格式"><a href="#注释的使用格式" class="headerlink" title="注释的使用格式"></a>注释的使用格式</h3><p>要添加注释的文字[1](<a href="https://blog.csdn.net/SIMBA1949/article/details/79001226#fn" target="_blank" rel="noopener">https://blog.csdn.net/SIMBA1949/article/details/79001226#fn</a>:)</p>
 <h3 id="注释在typora中显示形式"><a href="#注释在typora中显示形式" class="headerlink" title="注释在typora中显示形式"></a>注释在typora中显示形式</h3><p>中国<a href="https://blog.csdn.net/SIMBA1949/article/details/79001226#fn:" target="_blank" rel="noopener">2</a></p>
 <h2 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h2><h3 id="表情的使用格式"><a href="#表情的使用格式" class="headerlink" title="表情的使用格式"></a>表情的使用格式</h3><p>:单词</p>
-<h3 id="表情在typora中的显示形式"><a href="#表情在typora中的显示形式" class="headerlink" title="表情在typora中的显示形式"></a>表情在typora中的显示形式</h3><p>:smiley:<br>（注意：在CSDN博客上未显示，但是在Typora上显示如下图：<br><img src="https://img-blog.csdn.net/20180108114531939?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU0lNQkExOTQ5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>）</p>
+<h3 id="表情在typora中的显示形式"><a href="#表情在typora中的显示形式" class="headerlink" title="表情在typora中的显示形式"></a>表情在typora中的显示形式</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f603.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f603.png?v8">😃</span><br>（注意：在CSDN博客上未显示，但是在Typora上显示如下图：<br><img src="https://img-blog.csdn.net/20180108114531939?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU0lNQkExOTQ5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>）</p>
 <h2 id="Typora快捷键"><a href="#Typora快捷键" class="headerlink" title="Typora快捷键"></a>Typora快捷键</h2><table>
 <thead>
 <tr>
@@ -529,7 +529,25 @@
 </tr>
 </tbody></table>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -760,7 +778,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -949,7 +967,7 @@
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

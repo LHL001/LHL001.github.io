@@ -479,8 +479,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ul>
 <li>HTML转义符</li>
 </ul>
-<pre><code>&quot;        &amp;quot;
-&#39;        &amp;apos;
+<pre><code>"        &amp;quot;
+'        &amp;apos;
 &amp;        &amp;amp;
 &lt;        &amp;lt;   // less than  小于
 &gt;        &amp;gt;   // greater than  大于
@@ -781,9 +781,9 @@ host:主机
 port:端口号
     整数，可选，省略时使用方案的默认端口，如http的默认端口为80。
 path:路径
-    由零或多个&#39;/&#39;符号隔开的字符串，一般用来表示主机上的一个目录或文件地址。
+    由零或多个'/'符号隔开的字符串，一般用来表示主机上的一个目录或文件地址。
 query:查询
-    可选，用于给动态网页传递参数，可有多个参数，用&#39;&amp;&#39;符号隔开，每个参数的名和值用&#39;=&#39;符号隔开。例如：name=zs
+    可选，用于给动态网页传递参数，可有多个参数，用'&amp;'符号隔开，每个参数的名和值用'='符号隔开。例如：name=zs
 fragment:信息片断
     字符串，锚点.</code></pre><h4 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h4><p>解析URL中的query，并返回对象的形式</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">getQuery</span><span class="token punctuation">(</span>queryStr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -846,7 +846,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="元素的类型"><a href="#元素的类型" class="headerlink" title="元素的类型"></a>元素的类型</h3><p><img src="media/1497169919418.png" alt="1497169919418"></p>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1072,7 +1090,7 @@ JavaScript基础HTML和CSS   京东
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1261,7 +1279,7 @@ JavaScript基础HTML和CSS   京东
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

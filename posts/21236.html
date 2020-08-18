@@ -335,7 +335,7 @@ adduser是增">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        15.3k
+                        15.4k
                     </div>
                     
 
@@ -465,21 +465,21 @@ Finger information changed.</code></pre><h2 id="3-useradd"><a href="#3-useradd" 
 <h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>显示当前时间</p>
 <pre><code># date
 三 5月 12 14:08:12 CST 2010
-# date &#39;+%c&#39; 
+# date '+%c' 
 2010年05月12日 星期三 14时09分02秒
-# date &#39;+%D&#39; //显示完整的时间
+# date '+%D' //显示完整的时间
 05/12/10
-# date &#39;+%x&#39; //显示数字日期，年份两位数表示
+# date '+%x' //显示数字日期，年份两位数表示
 2010年05月12日
-# date &#39;+%T&#39; //显示日期，年份用四位数表示
+# date '+%T' //显示日期，年份用四位数表示
 14:09:31
-# date &#39;+%X&#39; //显示24小时的格式
+# date '+%X' //显示24小时的格式
 14时09分39秒</code></pre><p>按自己的格式输出</p>
-<pre><code># date &#39;+usr_time: $1:%M %P -hey&#39;
+<pre><code># date '+usr_time: $1:%M %P -hey'
 usr_time: $1:16 下午 -hey</code></pre><p>显示时间后跳行，再显示目前日期</p>
-<pre><code>date &#39;+%T%n%D&#39;</code></pre><p>显示月份与日数</p>
-<pre><code>date &#39;+%B %d&#39;</code></pre><p>显示日期与设定时间(12:34:56)</p>
-<pre><code>date --date &#39;12:34:56&#39;</code></pre><h2 id="5-exit"><a href="#5-exit" class="headerlink" title="5.exit"></a>5.exit</h2><p>exit命令用于退出目前的shell。</p>
+<pre><code>date '+%T%n%D'</code></pre><p>显示月份与日数</p>
+<pre><code>date '+%B %d'</code></pre><p>显示日期与设定时间(12:34:56)</p>
+<pre><code>date --date '12:34:56'</code></pre><h2 id="5-exit"><a href="#5-exit" class="headerlink" title="5.exit"></a>5.exit</h2><p>exit命令用于退出目前的shell。</p>
 <p>执行exit可使shell以指定的状态值退出。若不设置状态值参数，则shell以预设值退出。状态值0代表执行成功，其他值代表执行失败。exit也可用在script，离开正在执行的script，回到shell。</p>
 <h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><pre><code>exit [状态值]</code></pre><h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>退出终端</p>
 <pre><code># exit</code></pre><h2 id="6-finger"><a href="#6-finger" class="headerlink" title="6.finger"></a>6.finger</h2><p>​        finger命令可以让使用者查询一些其他使用者的资料。会列出来的资料有：</p>
@@ -982,7 +982,7 @@ main ()
 
 }
 
-&quot;~/mail.c&quot;       0,0-1    
+"~/mail.c"       0,0-1    
 
 在 screen 终端 下 按下 Ctrl+a d键</code></pre><p>重新连接离开的 screen 终端</p>
 <pre><code># screen -ls  //显示已创建的screen终端 
@@ -1054,7 +1054,7 @@ syslog：如果syslog用于记录，则为Syslog工具
 syslog_goodpri：用户成功进行身份验证时使用的Syslog优先级
 syslog_badpri：用户进行身份验证失败时使用的Syslog优先级
 long_otp_prompt：将OTP提示放在自己的行上
-ignore_dot：忽略&#39;。&#39; 在$ PATH
+ignore_dot：忽略'。' 在$ PATH
 mail_always：在运行sudo时始终发送邮件
 mail_badpass：如果用户身份验证失败，则发送邮件
 mail_no_user：如果用户不在sudoers中，则发送邮件
@@ -1104,11 +1104,11 @@ secure_path：用于覆盖用户的$ PATH的值
 编辑器：visudo使用的编辑器的路径
 listpw：何时需要“list”伪命令的密码
 verifypw：何时需要密码“verify”伪命令
-noexec：预加载&#39;noexec_file&#39;中包含的虚拟exec函数
+noexec：预加载'noexec_file'中包含的虚拟exec函数
 noexec_file：包含虚拟exec函数的文件
 ignore_local_sudoers：如果LDAP目录已启动，我们是否忽略本地sudoers文件
 closefrom：文件描述符&gt; =％d将在执行命令之前关闭
-closefrom_override：如果设置，用户可以使用-C选项覆盖`closefrom&#39;的值
+closefrom_override：如果设置，用户可以使用-C选项覆盖`closefrom'的值
 setenv：允许用户设置任意环境变量
 env_reset：将环境重置为一组默认变量
 env_check：用于检查健全性的环境变量
@@ -1677,7 +1677,25 @@ Swap: 524280 65116 459164</code></pre><h2 id="参考文章："><a href="#参考�
 <li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1897,7 +1915,7 @@ Swap: 524280 65116 459164</code></pre><h2 id="参考文章："><a href="#参考�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -2086,7 +2104,7 @@ Swap: 524280 65116 459164</code></pre><h2 id="参考文章："><a href="#参考�
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

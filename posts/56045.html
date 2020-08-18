@@ -434,7 +434,7 @@ lrwxrwxrwx 1 root root 10 Sep  4 17:54 /var/mail -&gt; spool/mail
 <pre><code>[root@www ~]# cd /tmp
 [root@www tmp]# mkdir test    &lt;==创建一名为 test 的新目录
 [root@www tmp]# mkdir test1/test2/test3/test4
-mkdir: cannot create directory `test1/test2/test3/test4&#39;: 
+mkdir: cannot create directory `test1/test2/test3/test4': 
 No such file or directory       &lt;== 没办法直接创建此目录啊！
 [root@www tmp]# mkdir -p test1/test2/test3/test4</code></pre><p>加了这个 -p 的选项，可以自行帮你创建多层目录！</p>
 <p>实例：创建权限为 <strong>rwx–x–x</strong> 的目录。</p>
@@ -457,7 +457,7 @@ drwxr-xr-x  3 root  root 4096 Jul 18 12:53 test1
 drwx--x--x  2 root  root 4096 Jul 18 12:54 test2
 [root@www tmp]# rmdir test   &lt;==可直接删除掉，没问题
 [root@www tmp]# rmdir test1  &lt;==因为尚有内容，所以无法删除！
-rmdir: `test1&#39;: Directory not empty
+rmdir: `test1': Directory not empty
 [root@www tmp]# rmdir -p test1/test2/test3/test4
 [root@www tmp]# ls -l        &lt;==您看看，底下的输出中test与test1不见了！
 drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</code></pre><p>利用 -p 这个选项，立刻就可以将 test1/test2/test3/test4 一次删除。</p>
@@ -480,7 +480,7 @@ drwx--x--x  2 root  root 4096 Jul 18 12:54 test2</code></pre><p>利用 -p 这个
 <p>用 root 身份，将 root 目录下的 .bashrc 复制到 /tmp 下，并命名为 bashrc</p>
 <pre><code>[root@www ~]# cp ~/.bashrc /tmp/bashrc
 [root@www ~]# cp -i ~/.bashrc /tmp/bashrc
-cp: overwrite `/tmp/bashrc&#39;? n  &lt;==n不覆盖，y为覆盖</code></pre><h3 id="rm-移除文件或目录"><a href="#rm-移除文件或目录" class="headerlink" title="rm (移除文件或目录)"></a>rm (移除文件或目录)</h3><p>语法：</p>
+cp: overwrite `/tmp/bashrc'? n  &lt;==n不覆盖，y为覆盖</code></pre><h3 id="rm-移除文件或目录"><a href="#rm-移除文件或目录" class="headerlink" title="rm (移除文件或目录)"></a>rm (移除文件或目录)</h3><p>语法：</p>
 <pre><code> rm [-fir] 文件或目录</code></pre><p>选项与参数：</p>
 <ul>
 <li>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</li>
@@ -490,7 +490,7 @@ cp: overwrite `/tmp/bashrc&#39;? n  &lt;==n不覆盖，y为覆盖</code></pre><h
 </ul>
 <p>将刚刚在 cp 的实例中创建的 bashrc 删除掉！</p>
 <pre><code>[root@www tmp]# rm -i bashrc
-rm: remove regular file `bashrc&#39;? y</code></pre><p>如果加上 -i 的选项就会主动询问喔，避免你删除到错误的档名！</p>
+rm: remove regular file `bashrc'? y</code></pre><p>如果加上 -i 的选项就会主动询问喔，避免你删除到错误的档名！</p>
 <h3 id="mv-移动文件与目录，或修改名称"><a href="#mv-移动文件与目录，或修改名称" class="headerlink" title="mv (移动文件与目录，或修改名称)"></a>mv (移动文件与目录，或修改名称)</h3><p>语法：</p>
 <pre><code>[root@www ~]# mv [-fiu] source destination
 [root@www ~]# mv [options] source1 source2 source3 .... directory</code></pre><p>选项与参数：</p>
@@ -602,7 +602,25 @@ CentOS release 6.4 (Final)</code></pre><h3 id="nl"><a href="#nl" class="headerli
 <li><a href="https://www.runoob.com/linux/linux-file-content-manage.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-file-content-manage.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -822,7 +840,7 @@ CentOS release 6.4 (Final)</code></pre><h3 id="nl"><a href="#nl" class="headerli
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1011,7 +1029,7 @@ CentOS release 6.4 (Final)</code></pre><h3 id="nl"><a href="#nl" class="headerli
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

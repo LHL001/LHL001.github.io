@@ -429,7 +429,7 @@ JS 引擎 则是解析 Javascript 语言，执行 javascript语言来实现网�
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span> 我是加粗的字体 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span></code></pre>
 <p>   注意：   体会 文本    标签    语言   几个词语  </p>
 <h2 id="HTML骨架格式"><a href="#HTML骨架格式" class="headerlink" title="HTML骨架格式"></a>HTML骨架格式</h2><p>日常生活的书信，我们要遵循共同的约定。 </p>
-<img src="media/mess.png" alt>
+<img src="media/mess.png" alt="">
 
 <p>同理：HTML 有自己的语言语法骨架格式：</p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HTML</span><span class="token punctuation">></span></span>   
@@ -512,9 +512,9 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <pre><code>再页面中输入 以下2个单词
 1.  html: 5   
 2.  !
-在sublime里面然后按下tab键盘即可生成HTML骨架</code></pre><h1 id="文档类型-lt-DOCTYPE-gt"><a href="#文档类型-lt-DOCTYPE-gt" class="headerlink" title="文档类型&lt;!DOCTYPE&gt;"></a>文档类型&lt;!DOCTYPE&gt;</h1><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span></code></pre>
+在sublime里面然后按下tab键盘即可生成HTML骨架</code></pre><h1 id="文档类型-lt-DOCTYPE-gt"><a href="#文档类型-lt-DOCTYPE-gt" class="headerlink" title="文档类型<!DOCTYPE>"></a>文档类型&lt;!DOCTYPE&gt;</h1><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span></code></pre>
 <p>这句话就是告诉我们使用哪个html版本？  我们使用的是 html 5 的版本。  html有很多版本，那我们应该告诉用户和浏览器我们使用的版本号。</p>
-<!DOCTYPE><p> 标签位于文档的最前面，用于向浏览器说明当前文档使用哪种 HTML 或 XHTML 标准规范，必需在开头处使用&lt;!DOCTYPE&gt;标签为所有的XHTML文档指定XHTML版本和类型，只有这样浏览器才能按指定的文档类型进行解析。</p>
+<p> 标签位于文档的最前面，用于向浏览器说明当前文档使用哪种 HTML 或 XHTML 标准规范，必需在开头处使用&lt;!DOCTYPE&gt;标签为所有的XHTML文档指定XHTML版本和类型，只有这样浏览器才能按指定的文档类型进行解析。</p>
 <p>注意：  一些老网站可能用的还是老版本的文档类型比如 XHTML之类的，但是我们学的是HTML5,而且HTML5的文档类型兼容很好(向下兼容的原则)，所以大家放心的使用HTML5的文档类型就好了。</p>
 <h1 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h1><meta charset="UTF-8">
 
@@ -554,7 +554,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>  文本内容  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>是HTML文档中最常见的标签，默认情况下，文本在一个段落中会根据浏览器窗口的大小自动换行。</p>
 <h3 id="水平线标签-认识"><a href="#水平线标签-认识" class="headerlink" title="水平线标签(认识)"></a>水平线标签(认识)</h3><p>单词缩写：  horizontal  横线</p>
-<p>在网页中常常看到一些水平线将段落与段落之间隔开，使得文档结构清晰，层次分明。这些水平线可以通过插入图片实现，也可以简单地通过标签来完成，<hr>就是创建横跨网页水平线的标签。其基本语法格式如下：</p>
+<p>在网页中常常看到一些水平线将段落与段落之间隔开，使得文档结构清晰，层次分明。这些水平线可以通过插入图片实现，也可以简单地通过标签来完成，</p><hr>就是创建横跨网页水平线的标签。其基本语法格式如下：<p></p>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span> <span class="token punctuation">/></span></span>是单标签</code></pre>
 <p> 在网页中显示默认样式的水平线。</p>
 <p>课堂练习2：    新闻页面</p>
@@ -611,7 +611,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 
 2.使用相应的id名标注跳转目标的位置。</code></pre>
 <h3 id="base-标签"><a href="#base-标签" class="headerlink" title="base 标签"></a>base 标签</h3><p>base 可以设置整体链接的打开状态   </p>
-<p>base 写到  <head><meta name="generator" content="Hexo 3.9.0">  <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>  之间</p>
+<p>base 写到  <meta name="generator" content="Hexo 3.9.0">  <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">  之间</p>
  <img src="media/base.png">
 
 
@@ -836,12 +836,12 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 </tr>
 <tr>
 <td><strong>autofocus</strong></td>
-<td><input type="text" autofocus></td>
+<td><input type="text" autofocus=""></td>
 <td>规定当页面加载时 input 元素应该自动获得焦点</td>
 </tr>
 <tr>
 <td><strong>multiple</strong></td>
-<td><input type="file" multiple></td>
+<td><input type="file" multiple=""></td>
 <td>多文件上传</td>
 </tr>
 <tr>
@@ -851,7 +851,7 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 </tr>
 <tr>
 <td><strong>required</strong></td>
-<td><input type="text" required></td>
+<td><input type="text" required=""></td>
 <td>必填项</td>
 </tr>
 <tr>
@@ -994,7 +994,25 @@ p,h,a,b,u,i,s,em,del,ins,strong,img
 <p><strong>多浏览器支持的方案，如下图</strong></p>
 <p><img src="media/1498468097509.png" alt="1498468097509"></p>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1224,7 +1242,7 @@ Shell 数组用括号来表示，元素用”空格”符号</div>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -1413,7 +1431,7 @@ Shell 数组用括号来表示，元素用”空格”符号</div>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

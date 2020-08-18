@@ -333,7 +333,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        699
+                        725
                     </div>
                     
 
@@ -362,11 +362,11 @@
 # author:菜鸟教程
 # url:www.runoob.com
 
-echo &quot;Shell 传递参数实例！&quot;;
-echo &quot;执行的文件名：$0&quot;;
-echo &quot;第一个参数为：$1&quot;;
-echo &quot;第二个参数为：$2&quot;;
-echo &quot;第三个参数为：$3&quot;;</code></pre><p>为脚本设置可执行权限，并执行脚本，输出结果如下所示：</p>
+echo "Shell 传递参数实例！";
+echo "执行的文件名：$0";
+echo "第一个参数为：$1";
+echo "第二个参数为：$2";
+echo "第三个参数为：$3";</code></pre><p>为脚本设置可执行权限，并执行脚本，输出结果如下所示：</p>
 <pre><code>$ chmod +x test.sh 
 $ ./test.sh 1 2 3
 Shell 传递参数实例！
@@ -414,11 +414,11 @@ Shell 传递参数实例！
 # author:菜鸟教程
 # url:www.runoob.com
 
-echo &quot;Shell 传递参数实例！&quot;;
-echo &quot;第一个参数为：$1&quot;;
+echo "Shell 传递参数实例！";
+echo "第一个参数为：$1";
 
-echo &quot;参数个数为：$#&quot;;
-echo &quot;传递的参数作为一个字符串显示：$*&quot;;</code></pre><p>执行脚本，输出结果如下所示：</p>
+echo "参数个数为：$#";
+echo "传递的参数作为一个字符串显示：$*";</code></pre><p>执行脚本，输出结果如下所示：</p>
 <pre><code>$ chmod +x test.sh 
 $ ./test.sh 1 2 3
 Shell 传递参数实例！
@@ -433,13 +433,13 @@ Shell 传递参数实例！
 # author:菜鸟教程
 # url:www.runoob.com
 
-echo &quot;-- \$* 演示 ---&quot;
-for i in &quot;$*&quot;; do
+echo "-- \$* 演示 ---"
+for i in "$*"; do
     echo $i
 done
 
-echo &quot;-- \$@ 演示 ---&quot;
-for i in &quot;$@&quot;; do
+echo "-- \$@ 演示 ---"
+for i in "$@"; do
     echo $i
 done</code></pre><p>执行脚本，输出结果如下所示：</p>
 <pre><code>$ chmod +x test.sh 
@@ -453,7 +453,25 @@ $ ./test.sh 1 2 3
 <li><a href="https://www.runoob.com/linux/linux-shell-passing-arguments.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell-passing-arguments.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -581,7 +599,9 @@ Shell 数组用括号来表示，元素用”空格”符号</div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">Shell 变量定义变量时，变量名不加美元符号（$，PHP语言中变量需要），如：
-your_name=&quot;runoob.com&quot;注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵</div>
+your_name="runoob.com"注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：
+
+命名</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
@@ -674,7 +694,7 @@ your_name=&quot;runoob.com&quot;注意，变量名和等号之间不能有空格
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -863,7 +883,7 @@ your_name=&quot;runoob.com&quot;注意，变量名和等号之间不能有空格
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

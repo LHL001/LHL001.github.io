@@ -333,7 +333,7 @@ Shell 是指一种应用程序，这个应用程序提供了一个界面，用�
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        795
+                        847
                     </div>
                     
 
@@ -382,7 +382,7 @@ Shell 是指一种应用程序，这个应用程序提供了一个界面，用�
 <h2 id="第一个shell脚本"><a href="#第一个shell脚本" class="headerlink" title="第一个shell脚本"></a>第一个shell脚本</h2><p>打开文本编辑器(可以使用 vi/vim 命令来创建文件)，新建一个文件 test.sh，扩展名为 sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用 php 写 shell 脚本，扩展名就用 php 好了。</p>
 <p>输入一些代码，第一行一般是这样：</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><em>#!/bin/bash</em><br><strong>echo</strong> “Hello World !”</p>
-<p><a href="https://www.runoob.com/try/runcode.php?filename=helloworld&type=bash" target="_blank" rel="noopener">运行实例 »</a></p>
+<p><a href="https://www.runoob.com/try/runcode.php?filename=helloworld&amp;type=bash" target="_blank" rel="noopener">运行实例 »</a></p>
 <p><strong>#!</strong> 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。</p>
 <p>echo 命令用于向窗口输出文本。</p>
 <h3 id="运行-Shell-脚本有两种方法："><a href="#运行-Shell-脚本有两种方法：" class="headerlink" title="运行 Shell 脚本有两种方法："></a>运行 Shell 脚本有两种方法：</h3><p><strong>1、作为可执行程序</strong></p>
@@ -397,7 +397,25 @@ Shell 是指一种应用程序，这个应用程序提供了一个界面，用�
 <li><a href="https://www.runoob.com/linux/linux-shell.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-shell.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -478,7 +496,9 @@ Shell 是指一种应用程序，这个应用程序提供了一个界面，用�
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">Shell 变量定义变量时，变量名不加美元符号（$，PHP语言中变量需要），如：
-your_name=&quot;runoob.com&quot;注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵</div>
+your_name="runoob.com"注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：
+
+命名</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
@@ -622,7 +642,7 @@ so</div>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -811,7 +831,7 @@ so</div>
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>

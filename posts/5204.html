@@ -389,7 +389,7 @@
 bc 1.06.95
 Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006 Free Software Foundation, Inc.
 This is free software with ABSOLUTELY NO WARRANTY.
-For details type `warranty&#39;.
+For details type `warranty'.
 2+3
 5
 5-2
@@ -397,16 +397,16 @@ For details type `warranty&#39;.
 2+3*1
 5</code></pre><p>输入 quit 退出。</p>
 <p><strong>通过管道符</strong></p>
-<pre><code>$ echo &quot;15+5&quot; | bc
+<pre><code>$ echo "15+5" | bc
 20</code></pre><p>scale=2 设小数位，2 代表保留两位:</p>
-<pre><code>$ echo &#39;scale=2; (2.777 - 1.4744)/1&#39; | bc
+<pre><code>$ echo 'scale=2; (2.777 - 1.4744)/1' | bc
 1.30</code></pre><p>bc 除了 scale 来设定小数位之外，还有 ibase 和 obase 来其它进制的运算:</p>
-<pre><code>$ echo &quot;ibase=2;111&quot; |bc
+<pre><code>$ echo "ibase=2;111" |bc
 7</code></pre><p><strong>进制转换</strong></p>
 <pre><code>#!/bin/bash
 
 abc=192 
-echo &quot;obase=2;$abc&quot; | bc
+echo "obase=2;$abc" | bc
 &lt;pre&gt;
 &lt;p&gt;
 执行结果为：11000000，这是用bc将十进制转换成二进制。&lt;/p&gt;
@@ -416,11 +416,11 @@ echo &quot;obase=2;$abc&quot; | bc
 #!/bin/bash 
 
 abc=11000000 
-echo &quot;obase=10;ibase=2;$abc&quot; | bc</code></pre><p>执行结果为：192，这是用bc将二进制转换为十进制。</p>
+echo "obase=10;ibase=2;$abc" | bc</code></pre><p>执行结果为：192，这是用bc将二进制转换为十进制。</p>
 <p>计算平方和平方根：</p>
-<pre><code>$ echo &quot;10^10&quot; | bc 
+<pre><code>$ echo "10^10" | bc 
 10000000000
-$ echo &quot;sqrt(100)&quot; | bc
+$ echo "sqrt(100)" | bc
 10</code></pre><h2 id="2-tail"><a href="#2-tail" class="headerlink" title="2.tail"></a>2.tail</h2><p>​        tail 命令可用于查看文件的内容，有一个常用的参数 <strong>-f</strong> 常用于查阅正在改变的日志文件。</p>
 <p><strong>tail -f filename</strong> 会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。</p>
 <h3 id="命令格式："><a href="#命令格式：" class="headerlink" title="命令格式："></a><strong>命令格式：</strong></h3><pre><code>tail [参数] [文件]  </code></pre><p><strong>参数：</strong></p>
@@ -487,10 +487,10 @@ p q r
 s t u
 v w x
 y z</code></pre><p>-d 选项可以自定义一个定界符：</p>
-<pre><code># echo &quot;nameXnameXnameXname&quot; | xargs -dX
+<pre><code># echo "nameXnameXnameXname" | xargs -dX
 
 name name name name</code></pre><p>结合 -n 选项使用：</p>
-<pre><code># echo &quot;nameXnameXnameXname&quot; | xargs -dX -n2
+<pre><code># echo "nameXnameXnameXname" | xargs -dX -n2
 
 name name
 name name</code></pre><p>读取 stdin，将格式化后的参数传递给命令</p>
@@ -511,16 +511,34 @@ ccc</code></pre><p>xargs 的一个选项 -I，使用 -I 指定一个替换字符
 -p ccc -l</code></pre><p>复制所有图片文件到 /data/images 目录下：</p>
 <pre><code>ls *.jpg | xargs -n1 -I {} cp {} /data/images</code></pre><p>xargs 结合 find 使用</p>
 <p>用 rm 删除太多的文件时候，可能得到一个错误信息：<strong>/bin/rm Argument list too long.</strong> 用 xargs 去避免这个问题：</p>
-<pre><code>find . -type f -name &quot;*.log&quot; -print0 | xargs -0 rm -f</code></pre><p>xargs -0 将 \0 作为定界符。</p>
+<pre><code>find . -type f -name "*.log" -print0 | xargs -0 rm -f</code></pre><p>xargs -0 将 \0 作为定界符。</p>
 <p>统计一个源代码目录中所有 php 文件的行数：</p>
-<pre><code>find . -type f -name &quot;*.php&quot; -print0 | xargs -0 wc -l</code></pre><p>查找所有的 jpg 文件，并且压缩它们：</p>
-<pre><code>find . -type f -name &quot;*.jpg&quot; -print | xargs tar -czvf images.tar.gz</code></pre><p>xargs 其他应用</p>
+<pre><code>find . -type f -name "*.php" -print0 | xargs -0 wc -l</code></pre><p>查找所有的 jpg 文件，并且压缩它们：</p>
+<pre><code>find . -type f -name "*.jpg" -print | xargs tar -czvf images.tar.gz</code></pre><p>xargs 其他应用</p>
 <p>假如你有一个文件包含了很多你希望下载的 URL，你能够使用 xargs下载所有链接：</p>
 <pre><code># cat url-list.txt | xargs wget -c</code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
 <li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 </ul>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -739,7 +757,7 @@ ccc</code></pre><p>xargs 的一个选项 -I，使用 -I 指定一个替换字符
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">224.9k</span>
+            <span class="white-color">226.3k</span>
             
 
             <br>
@@ -928,7 +946,7 @@ ccc</code></pre><p>xargs 的一个选项 -I，使用 -I 指定一个替换字符
             <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
           </div>
           <div class="github-badge">
-            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">226.3k</span>
           </div>
 </div>
 </center>
