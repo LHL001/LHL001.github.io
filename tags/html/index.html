@@ -339,20 +339,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/tags/shell/" title="shell: 12">
+                <a href="/tags/MySQL/" title="MySQL: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="shell" style="background-color: #FEF9E7;">shell
-                        <span class="tag-length">12</span>
+                            data-tagname="MySQL" style="background-color: #FEF9E7;">MySQL
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/MySQL/" title="MySQL: 1">
+                <a href="/tags/shell/" title="shell: 12">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="MySQL" style="background-color: #F8F9F9;">MySQL
-                        <span class="tag-length">1</span>
+                            data-tagname="shell" style="background-color: #F8F9F9;">shell
+                        <span class="tag-length">12</span>
                     </span>
                 </a>
                 
@@ -528,8 +528,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);
-        var pvcountOffset = 80000;
-        var uvcountOffset = 20000;
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
