@@ -1,0 +1,1679 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="9.Linux命令（备份压缩）, yoyo，LHL001">
+    <meta name="description" content="Linux命令（备份压缩）1.arar命令用于建立或修改备存文件，或是从备存文件中抽取文件。
+ar可让您集合许多文件，成为单一的备存文件。在备存文件中，所有成员文件皆保有原来的属性与权限。
+语法ar[-dmpqrtx][cfosSuvV][">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>9.Linux命令（备份压缩） | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LHL001" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Visit Github
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LHL001" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Visit Github" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        9.Linux命令（备份压缩）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux命令/" target="_blank">
+                                <span class="chip bg-color">Linux命令</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                Linux笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-08-18
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        12.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        50 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Linux命令（备份压缩）"><a href="#Linux命令（备份压缩）" class="headerlink" title="Linux命令（备份压缩）"></a>Linux命令（备份压缩）</h1><h2 id="1-ar"><a href="#1-ar" class="headerlink" title="1.ar"></a>1.ar</h2><p>ar命令用于建立或修改备存文件，或是从备存文件中抽取文件。</p>
+<p>ar可让您集合许多文件，成为单一的备存文件。在备存文件中，所有成员文件皆保有原来的属性与权限。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>ar[-dmpqrtx][cfosSuvV][a&lt;成员文件&gt;][b&lt;成员文件&gt;][i&lt;成员文件&gt;][备存文件][成员文件]</code></pre><p><strong>参数</strong>：</p>
+<p><strong>必要参数</strong>：</p>
+<ul>
+<li>-d 　删除备存文件中的成员文件。</li>
+<li>-m 　变更成员文件在备存文件中的次序。</li>
+<li>-p 　显示备存文件中的成员文件内容。</li>
+<li>-q 　将文件附加在备存文件末端。</li>
+<li>-r 　将文件插入备存文件中。</li>
+<li>-t 　显示备存文件中所包含的文件。</li>
+<li>-x 　自备存文件中取出成员文件。</li>
+</ul>
+<p><strong>选项参数</strong>：</p>
+<ul>
+<li>a&lt;成员文件&gt; 　将文件插入备存文件中指定的成员文件之后。</li>
+<li>b&lt;成员文件&gt; 　将文件插入备存文件中指定的成员文件之前。</li>
+<li>c 　建立备存文件。</li>
+<li>f 　为避免过长的文件名不兼容于其他系统的ar指令指令，因此可利用此参数，截掉要放入备存文件中过长的成员文件名称。</li>
+<li>i&lt;成员文件&gt; 　将文件插入备存文件中指定的成员文件之前。</li>
+<li>o 　保留备存文件中文件的日期。</li>
+<li>s 　若备存文件中包含了对象模式，可利用此参数建立备存文件的符号表。</li>
+<li>S 　不产生符号表。</li>
+<li>u 　只将日期较新文件插入备存文件中。</li>
+<li>v 　程序执行时显示详细的信息。</li>
+<li>V 　显示版本信息。</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>打包文件</p>
+<pre><code>[root@runoob.com ~]# ls   //显示当前目录文件   
+a.c    b.c d.c   install.log      qte
+anaconda-ks.cfg c.c Desktop 
+
+[root@runoob.com ~]# ar rv one.bak a.c b.c //打包 a.c b.c文件 
+ar: 正在创建 one.bak
+a - a.c
+a - b.c
+[root@runoob.com ~]# </code></pre><p>打包多个文件</p>
+<pre><code>[root@runoob.com ~]# ar rv two.bak *.c  //打包以.c结尾的文件  
+ar: 正在创建 two.bak
+a - a.c
+a - b.c
+a - c.c
+a - d.c
+[root@runoob.com ~]# </code></pre><p>显示打包文件的内容</p>
+<pre><code>[root@runoob.com ~]# ar t two.bak    
+a.c
+b.c
+c.c
+d.c
+[root@runoob.com ~]# </code></pre><p>删除打包文件的成员文件</p>
+<pre><code>[root@runoob.com ~]# ar d two.bak a.c b.c c.c  
+[root@runoob.com ~]# ar t two.bak       
+d.c</code></pre><h2 id="2-bunzip2"><a href="#2-bunzip2" class="headerlink" title="2.bunzip2"></a>2.bunzip2</h2><p>bunzip2命令是.bz2文件的解压缩程序。</p>
+<p>bunzip2可解压缩.bz2格式的压缩文件。bunzip2实际上是bzip2的符号连接，执行bunzip2与bzip2 -d的效果相同。</p>
+<p><strong>语法</strong>：bunzip2 [-fkLsvV][.bz2压缩文件]</p>
+<p><strong>参数</strong>：</p>
+<ul>
+<li>-f或–force 　解压缩时，若输出的文件与现有文件同名时，预设不会覆盖现有的文件。若要覆盖，请使用此参数。</li>
+<li>-k或–keep 　在解压缩后，预设会删除原来的压缩文件。若要保留压缩文件，请使用此参数。</li>
+<li>-s或–small 　降低程序执行时，内存的使用量。</li>
+<li>-v或–verbose 　解压缩文件时，显示详细的信息。</li>
+<li>-L,–license,-V或–version 　显示版本信息。</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>解压.bz2文件</p>
+<pre><code># bunzip2 -v temp.bz2 //解压文件显示详细处理信息</code></pre><h2 id="3-bzip2"><a href="#3-bzip2" class="headerlink" title="3.bzip2"></a>3.bzip2</h2><p>bzip2命令是.bz2文件的压缩程序。</p>
+<p>bzip2采用新的压缩演算法，压缩效果比传统的LZ77/LZ78压缩演算法来得好。若没有加上任何参数，bzip2压缩完文件后会产生.bz2的压缩文件，并删除原始的文件。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><pre><code>bzip2 [-cdfhkLstvVz][--repetitive-best][--repetitive-fast][- 压缩等级][要压缩的文件]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c或–stdout 　将压缩与解压缩的结果送到标准输出。</li>
+<li>-d或–decompress 　执行解压缩。</li>
+<li>-f或–force 　bzip2在压缩或解压缩时，若输出文件与现有文件同名，预设不会覆盖现有文件。若要覆盖，请使用此参数。</li>
+<li>-h或–help 　显示帮助。</li>
+<li>-k或–keep 　bzip2在压缩或解压缩后，会删除原始的文件。若要保留原始文件，请使用此参数。</li>
+<li>-s或–small 　降低程序执行时内存的使用量。</li>
+<li>-t或–test 　测试.bz2压缩文件的完整性。</li>
+<li>-v或–verbose 　压缩或解压缩文件时，显示详细的信息。</li>
+<li>-z或–compress 　强制执行压缩。</li>
+<li>-L,–license,</li>
+<li>-V或–version 　显示版本信息。</li>
+<li>–repetitive-best 　若文件中有重复出现的资料时，可利用此参数提高压缩效果。</li>
+<li>–repetitive-fast 　若文件中有重复出现的资料时，可利用此参数加快执行速度。</li>
+<li>-压缩等级 　压缩时的区块大小。</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>解压.bz2文件</p>
+<pre><code>[root@w3cschool.cc ~]# bzip2 -v temp.bz2 //解压文件显示详细处理信息 </code></pre><p>压缩文件</p>
+<pre><code>[root@w3cschool.cc ~]# bzip2 -c a.c b.c c.c</code></pre><p>检查文件完整性</p>
+<pre><code>[root@w3cschool.cc ~]# bzip2 -t temp.bz2</code></pre><h2 id="4-bzip2recover"><a href="#4-bzip2recover" class="headerlink" title="4.bzip2recover"></a>4.bzip2recover</h2><p>bzip2recover命令用来修复损坏的.bz2文件。</p>
+<p>bzip2是以区块的方式来压缩文件，每个区块视为独立的单位。因此，当某一区块损坏时，便可利用bzip2recover，试着将文件中的区块隔开来，以便解压缩正常的区块。通常只适用在压缩文件很大的情况。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><pre><code>bzip2recover [.bz2 压缩文件]</code></pre><h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>修复.bz2文件</p>
+<p># bzip2recover col.bz2</p>
+<h2 id="5-gunzip"><a href="#5-gunzip" class="headerlink" title="5.gunzip"></a>5.gunzip</h2><p>gunzip命令用于解压文件。</p>
+<p>gunzip是个使用广泛的解压缩程序，它用于解开被gzip压缩过的文件，这些压缩文件预设最后的扩展名为”.gz”。事实上gunzip就是gzip的硬连接，因此不论是压缩或解压缩，都可通过gzip指令单独完成。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p><strong>参数</strong>：</p>
+<pre><code>gunzip [-acfhlLnNqrtvV][-s &lt;压缩字尾字符串&gt;][文件...] 或 gunzip [-acfhlLnNqrtvV][-s &lt;压缩字尾字符串&gt;][目录]</code></pre><ul>
+<li>-a或–ascii 　使用ASCII文字模式。</li>
+<li>-c或–stdout或–to-stdout 　把解压后的文件输出到标准输出设备。</li>
+<li>-f或-force 　强行解开压缩文件，不理会文件名称或硬连接是否存在以及该文件是否为符号连接。</li>
+<li>-h或–help 　在线帮助。</li>
+<li>-l或–list 　列出压缩文件的相关信息。</li>
+<li>-L或–license 　显示版本与版权信息。</li>
+<li>-n或–no-name 　解压缩时，若压缩文件内含有远来的文件名称及时间戳记，则将其忽略不予处理。</li>
+<li>-N或–name 　解压缩时，若压缩文件内含有原来的文件名称及时间戳记，则将其回存到解开的文件上。</li>
+<li>-q或–quiet 　不显示警告信息。</li>
+<li>-r或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</li>
+<li>-S&lt;压缩字尾字符串&gt;或–suffix&lt;压缩字尾字符串&gt; 　更改压缩字尾字符串。</li>
+<li>-t或–test 　测试压缩文件是否正确无误。</li>
+<li>-v或–verbose 　显示指令执行过程。</li>
+<li>-V或–version 显示版本信息。</li>
+</ul>
+<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><pre><code>&lt;p&gt;解压文件
+&lt;/p&gt;
+&lt;pre&gt;
+# gunzip ab.gz </code></pre><h2 id="6-unarj"><a href="#6-unarj" class="headerlink" title="6.unarj"></a>6.unarj</h2><p>unarj命令用于解压缩.arj文件。</p>
+<p>unarj为.arj压缩文件的压缩程序。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><pre><code>unarj [eltx][.arj压缩文件]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>e 解压缩.arj文件。</li>
+<li>l 显示压缩文件内所包含的文件。</li>
+<li>t 检查压缩文件是否正确。</li>
+<li>x 解压缩时保留原有的路径。</li>
+</ul>
+<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>解压.arj文件</p>
+<pre><code># unarj e test.arj</code></pre><h2 id="7-compress"><a href="#7-compress" class="headerlink" title="7.compress"></a>7.compress</h2><p>compress命令是一个相当古老的 unix 档案压缩指令，压缩后的档案会加上一个 .Z 延伸档名以区别未压缩的档案，压缩后的档案可以以 uncompress 解压。若要将数个档案压成一个压缩档，必须先将档案 tar 起来再压缩。由于 gzip 可以产生更理想的压缩比例，一般人多已改用 gzip 为档案压缩工具。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><pre><code>compress [-dfvcV] [-b maxbits] [file ...]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>c 输出结果至标准输出设备（一般指荧幕）</li>
+<li>f 强迫写入档案，若目的档已经存在，则会被覆盖 (force)</li>
+<li>v 将程序执行的讯息印在荧幕上 (verbose)</li>
+<li>b 设定共同字串数的上限，以位元计算，可以设定的值为 9 至 16 bits 。由于值越大，能使用的共同字串就 越多，压缩比例就越大，所以一般使用预设值 16 bits (bits)</li>
+<li>d 将压缩档解压缩</li>
+<li>V 列出版本讯息</li>
+<li><strong>范例</strong>：</li>
+<li>将 source.dat 压缩成 source.dat.Z ，若 source.dat.Z 已经存在，内容则会被压缩档覆盖。</li>
+<li>compress -f source.dat</li>
+<li>将 source.dat 压缩成 source.dat.Z ，并列印出压缩比例。</li>
+<li>-v 与 -f 可以一起使用</li>
+<li>compress -vf source.dat</li>
+<li>将压缩后的资料输出后再导入 target.dat.Z 可以改变压缩档名。</li>
+<li>compress -c source.dat &gt; target.dat.Z</li>
+<li>-b 的值越大，压缩比例就越大，范围是 9-16 ，预设值是 16 。</li>
+<li>compress -b 12 source.dat</li>
+<li>将 source.dat.Z 解压成 source.dat ，若档案已经存在，使用者按 y 以确定覆盖档案，若使用 -df 程序则会自动覆盖档案。由于系统会自动加入 .Z 为延伸档名，所以 source.dat 会自动当作 source.dat.Z 处理。</li>
+<li>compress -d source.dat</li>
+<li>compress -d source.dat.Z</li>
+</ul>
+<h3 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h3><pre><code>[root@runoob.com ~]# compress abc.h
+[root@runoob.com ~]# ls
+
+abc.h.Z</code></pre><p>解压文件</p>
+<pre><code>[root@runoob.com ~]# compress -d abc.h.Z
+[root@runoob.com ~]# ls
+
+abc.h.</code></pre><p>按指定压缩比例进行压缩</p>
+<pre><code>[root@runoob.com ~]# compress -b 7 abc.h</code></pre><p>强制压缩文件夹</p>
+<pre><code>[root@runoob.com ~]# compress -rf /home/abc/ </code></pre><h2 id="8-cpio"><a href="#8-cpio" class="headerlink" title="8.cpio"></a>8.cpio</h2><p>cpio命令用于备份文件。</p>
+<p>cpio是用来建立，还原备份档的工具程序，它可以加入，解开cpio或tra备份档内的文件。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><pre><code>cpio [-0aABckLovV][-C &lt;输入/输出大小&gt;][-F &lt;备份档&gt;][-H &lt;备份格式&gt;][-O &lt;备份档&gt;][--block-size=&lt;区块大小&gt;][--force-local][--help][--quiet][--version] 或 cpio [-bBcdfikmnrsStuvV][-C &lt;输入/输出大小&gt;][-E &lt;范本文件&gt;][-F &lt;备份档&gt;][-H &lt;备份格式&gt;][-I &lt;备份档&gt;][-M &lt;回传信息&gt;][-R &lt;拥有者&gt;&lt;:/.&gt;&lt;所属群组&gt;][--block-size=&lt;区块大小&gt;][--force-local][--help][--no-absolute-filenames][--no-preserve-owner][--only-verify-crc][--quiet][--sparse][--version][范本样式...] 或 cpio [-0adkiLmpuvV][-R &lt;拥有者&gt;&lt;:/.&gt;&lt;所属群组&gt;][--help][--no-preserve-owner][--quiet][--sparse][--version][目的目]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-0或–null 　接受新增列控制字符，通常配合find指令的”-print0”参数使用。</li>
+<li>-a或–reset-access-time 　重新设置文件的存取时间。</li>
+<li>-A或–append 　附加到已存在的备份档中，且这个备份档必须存放在磁盘上，而不能放置于磁带机里。</li>
+<li>-b或–swap 　此参数的效果和同时指定”-sS”参数相同。</li>
+<li>-B 　将输入/输出的区块大小改成5210 Bytes。</li>
+<li>-c 　使用旧ASCII备份格式。</li>
+<li>-C&lt;区块大小&gt;或–io-size=&lt;区块大小&gt; 　设置输入/输出的区块大小，单位是Byte。</li>
+<li>-d或–make-directories 　如有需要cpio会自行建立目录。</li>
+<li>-E&lt;范本文件&gt;或–pattern-file=&lt;范本文件&gt; 　指定范本文件，其内含有一个或多个范本样式，让cpio解开符合范本条件的文件，格式为每列一个范本样式。</li>
+<li>-f或–nonmatching 　让cpio解开所有不符合范本条件的文件。</li>
+<li>-F&lt;备份档&gt;或–file=&lt;备份档&gt; 　指定备份档的名称，用来取代标准输入或输出，也能借此通过网络使用另一台主机的保存设备存取备份档。</li>
+<li>-H&lt;备份格式&gt; 　指定备份时欲使用的文件格式。</li>
+<li>-i或–extract 　执行copy-in模式，还原备份档。</li>
+<li>-l&lt;备份档&gt; 　指定备份档的名称，用来取代标准输入，也能借此通过网络使用另一台主机的保存设备读取备份档。</li>
+<li>-k 　此参数将忽略不予处理，仅负责解决cpio不同版本间的兼容性问题。</li>
+<li>-l或–link 　以硬连接的方式取代复制文件，可在copy-pass模式下运用。</li>
+<li>-L或–dereference 　不建立符号连接，直接复制该连接所指向的原始文件。</li>
+<li>-m或preserve-modification-time 　不去更换文件的更改时间。</li>
+<li>-M&lt;回传信息&gt;或–message=&lt;回传信息&gt; 　设置更换保存媒体的信息。</li>
+<li>-n或–numeric-uid-gid 　使用”-tv”参数列出备份档的内容时，若再加上参数”-n”，则会以用户识别码和群组识别码替代拥有者和群组名称列出文件清单。</li>
+<li>-o或–create 　执行copy-out模式，建立备份档。</li>
+<li>-O&lt;备份档&gt; 　指定备份档的名称，用来取代标准输出，也能借此通过网络　使用另一台主机的保存设备存放备份档。</li>
+<li>-p或–pass-through 　执行copy-pass模式，略过备份步骤，直接将文件复制到目的目录。</li>
+<li>-r或–rename 　当有文件名称需要更动时，采用互动模式。</li>
+<li>-R&lt;拥有者&gt;&lt;:/.&gt;&lt;所属群组&gt;或</li>
+<li>—-owner&lt;拥有者&gt;&lt;:/.&gt;&lt;所属群组&gt; 　在copy-in模式还原备份档，或copy-pass模式复制文件时，可指定这些备份，复制的文件的拥有者与所属群组。</li>
+<li>-s或–swap-bytes 　交换每对字节的内容。</li>
+<li>-S或–swap-halfwords 　交换每半个字节的内容。</li>
+<li>-t或–list 　将输入的内容呈现出来。</li>
+<li>-u或–unconditional 　置换所有文件，不论日期时间的新旧与否，皆不予询问而直接覆盖。</li>
+<li>-v或–verbose 　详细显示指令的执行过程。</li>
+<li>-V或–dot 　执行指令时，在每个文件的执行程序前面加上”.”号</li>
+<li>–block-size=&lt;区块大小&gt; 　设置输入/输出的区块大小，假如设置数值为5，则区块大小为2500，若设置成10，则区块大小为5120，依次类推。</li>
+<li>–force-local 　强制将备份档存放在本地主机。</li>
+<li>–help 　在线帮助。</li>
+<li>–no-absolute-filenames 　使用相对路径建立文件名称。</li>
+<li>–no-preserve-owner 　不保留文件的拥有者，谁解开了备份档，那些文件就归谁所有。</li>
+<li>-only-verify-crc 　当备份档采用CRC备份格式时，可使用这项参数检查备份档内的每个文件是否正确无误。</li>
+<li>–quiet 　不显示复制了多少区块。</li>
+<li>–sparse 　倘若一个文件内含大量的连续0字节，则将此文件存成稀疏文件。</li>
+<li>–version 　显示版本信息。</li>
+</ul>
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>制作备份文件</p>
+<pre><code>[root@runoob.com var]# ll //显示当前目录下的文件
+总用量 164
+drwxr-xr-x  2 root  root  4096 2008-03-30 account
+drwxr-xr-x  9 root  root  4096 2008-03-30 cache
+drwxr-xr-x  3 netdump netdump 4096 2008-03-30 crash
+drwxr-xr-x  3 root  root  4096 2008-03-30 db
+drwxr-xr-x  3 root  root  4096 2008-03-30 empty
+drwxr-xr-x  3 root  root  4096 2008-03-30 ftp
+drwxrwx--T  2 root  gdm   4096 4月 9 20:17 gdm
+drwxr-xr-x 25 root  root  4096 2008-03-30 lib
+drwxr-xr-x  2 root  root  4096 2004-08-13 local
+drwxrwxr-x  6 root  lock  4096 5月 8 15:25 lock
+drwxr-xr-x 14 root  root  4096 5月 8 15:14 log
+lrwxrwxrwx  1 root  root   10 2008-03-30 mail -&gt; spool/mail
+drwxr-xr-x  2 root  root  4096 2004-08-13 nis
+drwxr-xr-x  2 root  root  4096 2004-08-13 opt
+drwxr-xr-x  2 root  root  4096 2004-08-13 preserve
+drwxr-xr-x 16 root  root  4096 5月 8 15:14 run
+drwxr-xr-x 16 root  root  4096 2008-03-30 spool
+drwxrwxrwt  3 root  root  4096 1月 13 18:53 tmp
+drwx------  2 root  root  4096 2004-07-08 tux
+drwxr-xr-x  8 root  root  4096 1月 19 19:39 www
+drwxr-xr-x  3 root  root  4096 2008-03-30 yp
+[root@runoob.com var]# ls | cpio -o &gt;123.cpio //制作备份文件
+25 blocks
+[root@runoob.com var]# ll //显示当前目录下的文件
+总用量 172
+-rw-r--r--  1 root  root  1024 5月 24 13:06 123.cpio
+drwxr-xr-x  2 root  root  4096 2008-03-30 account
+drwxr-xr-x  9 root  root  4096 2008-03-30 cache
+drwxr-xr-x  3 netdump netdump 4096 2008-03-30 crash
+drwxr-xr-x  3 root  root  4096 2008-03-30 db
+drwxr-xr-x  3 root  root  4096 2008-03-30 empty
+drwxr-xr-x  3 root  root  4096 2008-03-30 ftp
+drwxrwx--T  2 root  gdm   4096 4月 9 20:17 gdm
+drwxr-xr-x 25 root  root  4096 2008-03-30 lib
+drwxr-xr-x  2 root  root  4096 2004-08-13 local
+drwxrwxr-x  6 root  lock  4096 5月 8 15:25 lock
+drwxr-xr-x 14 root  root  4096 5月 8 15:14 log
+lrwxrwxrwx  1 root  root   10 2008-03-30 mail -&gt; spool/mail
+drwxr-xr-x  2 root  root  4096 2004-08-13 nis
+drwxr-xr-x  2 root  root  4096 2004-08-13 opt
+drwxr-xr-x  2 root  root  4096 2004-08-13 preserve
+drwxr-xr-x 16 root  root  4096 5月 8 15:14 run
+drwxr-xr-x 16 root  root  4096 2008-03-30 spool
+drwxrwxrwt  3 root  root  4096 1月 13 18:53 tmp
+drwx------  2 root  root  4096 2004-07-08 tux
+drwxr-xr-x  8 root  root  4096 1月 19 19:39 www
+drwxr-xr-x  3 root  root  4096 2008-03-30 yp
+[root@runoob.com var]# </code></pre><p>解压备份文件</p>
+<pre><code>[root@runoob.com var]# ls | cpio -i -l 123.cpio</code></pre><p>解压缩备份文件，并列出详细信息</p>
+<pre><code>[root@runoob.com var]# cpio -t -I 123.cpio  
+123.cpio
+a.c
+b.c
+c.c
+……省略部分结果</code></pre><p>强制解压缩</p>
+<pre><code>[root@runoob.com var]# cpio -i -u -I 123.cpio </code></pre><p>解压缩时进行反向匹配，指定不解压的文件</p>
+<pre><code>[root@runoob.com var]# cpio -i -I 123.cpio -f *.c 
+
+//不解压.c结尾的文件</code></pre><p>向指定的.cpio文件添加文件</p>
+<pre><code>[root@runoob.com var]# ls
+123.cpio crash ftp local mail preserve tmp yp
+account  db    gdm lock  nis  run       tux
+cache     empty lib log  opt  spool   www
+[root@runoob.com var]# cpio -o -O 123.cpio -A
+db  //用户输入 按下Ctrl+D结束输入
+1 block
+[root@runoob.com var]# </code></pre><p>从标准输入备份文件</p>
+<pre><code>[root@runoob.com test]# ls              
+a. a.c b.c c.c d.c    f.c
+[root@runoob.com test]# cpio -o &gt;123.cpio
+a.c  //用户输入
+b.c
+c.c  //按下Ctrl+D完成输入
+3 block
+[root@runoob.com test]# </code></pre><p>复制文件</p>
+<pre><code>[root@runoob.com test]# cpio -p /root
+a.c  //用户输入
+b.c
+c.c  //按下Ctrl+D完成输入
+3 block</code></pre><h2 id="9-dump"><a href="#9-dump" class="headerlink" title="9.dump"></a>9.dump</h2><p>dump命令用于备份文件系统。</p>
+<p>dump为备份工具程序，可将目录或整个文件系统备份至指定的设备，或备份成一个大文件。</p>
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><pre><code>dump [-cnu][-0123456789][-b &lt;区块大小&gt;][-B &lt;区块数目&gt;][-d &lt;密度&gt;][-f &lt;设备名称&gt;][-h &lt;层级&gt;][-s &lt;磁带长度&gt;][-T &lt;日期&gt;][目录或文件系统] 或 dump [-wW]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-0123456789 　备份的层级。</li>
+<li>-b&lt;区块大小&gt; 　指定区块的大小，单位为KB。</li>
+<li>-B&lt;区块数目&gt; 　指定备份卷册的区块数目。</li>
+<li>-c 　修改备份磁带预设的密度与容量。</li>
+<li>-d&lt;密度&gt; 　设置磁带的密度。单位为BPI。</li>
+<li>-f&lt;设备名称&gt; 　指定备份设备。</li>
+<li>-h&lt;层级&gt; 　当备份层级等于或大于指定的层级时，将不备份用户标示为”nodump”的文件。</li>
+<li>-n 　当备份工作需要管理员介入时，向所有”operator”群组中的使用者发出通知。</li>
+<li>-s&lt;磁带长度&gt; 　备份磁带的长度，单位为英尺。</li>
+<li>-T&lt;日期&gt; 　指定开始备份的时间与日期。</li>
+<li>-u 　备份完毕后，在/etc/dumpdates中记录备份的文件系统，层级，日期与时间等。</li>
+<li>-w 　与-W类似，但仅显示需要备份的文件。</li>
+<li>-W 　显示需要备份的文件及其最后一次备份的层级，时间与日期。</li>
+</ul>
+<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>备份文件到磁带</p>
+<pre><code># dump -0 -u /dev/tape /home/</code></pre><p>其中”-0”参数指定的是备份等级”-u”要求备份完毕之后将相应的信息存储到文件 /etc/dumpdates 留作记录</p>
+<h2 id="10-uuencode"><a href="#10-uuencode" class="headerlink" title="10.uuencode"></a>10.uuencode</h2><p>uuencode命令用于将uuencode编码后的档案还原。</p>
+<p>早期在许多 unix 系统的传送协定只能传送七位元字元，并不支援二进位档案，像中文文字档就有用到八位元，所以无法完整地送到另一架机器上。 uuencode 指令，可以将二进位档转换成七位元的档案，传送到另一架机器上再以 uudecode 还原。最常见的是用在以电子邮件传送二进位档。uuencode 编码后的资料都以 begin 开始，以 end 作为结束。</p>
+<h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><pre><code> compress[必要参数][选择参数][目录或者文件]</code></pre><p><strong>参数说明：</strong></p>
+<p><strong>必要参数：</strong></p>
+<ul>
+<li>无</li>
+</ul>
+<p><strong>选择参数：</strong></p>
+<ul>
+<li>h 显示帮助信息</li>
+<li>v 显示版本信息</li>
+</ul>
+<h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>还原档案</p>
+<pre><code># uuencode test.uud</code></pre><h2 id="11-gzexe"><a href="#11-gzexe" class="headerlink" title="11.gzexe"></a>11.gzexe</h2><p>gzexe命令用于压缩执行文件。</p>
+<p>gzexe是用来压缩执行文件的程序。当您去执行被压缩过的执行文件时，该文件会自动解压然后继续执行，和使用一般的执行文件相同。</p>
+<h3 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h3><pre><code>gzexe [-d][执行文件...]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-d 　解开压缩文件。</li>
+</ul>
+<h3 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h3><p>压缩可执行文件</p>
+<pre><code># gzexe abc </code></pre><h2 id="12-gzip"><a href="#12-gzip" class="headerlink" title="12.gzip"></a>12.gzip</h2><p>gzip命令用于压缩文件。</p>
+<p>gzip是个使用广泛的压缩程序，文件经它压缩过后，其名称后面会多出”.gz”的扩展名。</p>
+<h3 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h3><pre><code>gzip [-acdfhlLnNqrtvV][-S &amp;lt;压缩字尾字符串&amp;gt;][-&amp;lt;压缩效率&amp;gt;][--best/fast][文件...] 或 gzip [-acdfhlLnNqrtvV][-S &amp;lt;压缩字尾字符串&amp;gt;][-&amp;lt;压缩效率&amp;gt;][--best/fast][目录]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-a或–ascii 　使用ASCII文字模式。</li>
+<li>-c或–stdout或–to-stdout 　把压缩后的文件输出到标准输出设备，不去更动原始文件。</li>
+<li>-d或–decompress或—-uncompress 　解开压缩文件。</li>
+<li>-f或–force 　强行压缩文件。不理会文件名称或硬连接是否存在以及该文件是否为符号连接。</li>
+<li>-h或–help 　在线帮助。</li>
+<li>-l或–list 　列出压缩文件的相关信息。</li>
+<li>-L或–license 　显示版本与版权信息。</li>
+<li>-n或–no-name 　压缩文件时，不保存原来的文件名称及时间戳记。</li>
+<li>-N或–name 　压缩文件时，保存原来的文件名称及时间戳记。</li>
+<li>-q或–quiet 　不显示警告信息。</li>
+<li>-r或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</li>
+<li>-S&lt;压缩字尾字符串&gt;或—-suffix&lt;压缩字尾字符串&gt; 　更改压缩字尾字符串。</li>
+<li>-t或–test 　测试压缩文件是否正确无误。</li>
+<li>-v或–verbose 　显示指令执行过程。</li>
+<li>-V或–version 　显示版本信息。</li>
+<li>-&lt;压缩效率&gt; 　压缩效率是一个介于1－9的数值，预设值为”6”，指定愈大的数值，压缩效率就会愈高。</li>
+<li>–best 　此参数的效果和指定”-9”参数相同。</li>
+<li>–fast 　此参数的效果和指定”-1”参数相同。</li>
+</ul>
+<h3 id="实例-10"><a href="#实例-10" class="headerlink" title="实例"></a>实例</h3><p>压缩文件</p>
+<pre><code>[root@runoob.com a]# ls //显示当前目录文件
+a.c b.h d.cpp
+[root@runoob.com a]# gzip * //压缩目录下的所有文件
+[root@runoob.com a]# ls //显示当前目录文件
+a.c.gz    b.h.gz    d.cpp.gz
+[root@runoob.com a]# </code></pre><p>接范例1， 列出详细的信息</p>
+<pre><code>[root@runoob.com a]# gzip -dv * //解压文件，并列出详细信息
+a.c.gz:     0.0% -- replaced with a.c
+b.h.gz:     0.0% -- replaced with b.h
+d.cpp.gz:     0.0% -- replaced with d.cpp
+[root@runoob.com a]# </code></pre><p>接范例1，显示压缩文件的信息</p>
+<pre><code>[root@runoob.com a]# gzip -l *
+     compressed    uncompressed ratio uncompressed_name
+         24          0  0.0% a.c
+         24          0  0.0% b.h
+         26          0  0.0% d.cpp</code></pre><h2 id="13-lha"><a href="#13-lha" class="headerlink" title="13.lha"></a>13.lha</h2><p>lha命令用于压缩或解压缩文件。</p>
+<p>lha是从lharc演变而来的压缩程序，文件经它压缩后，会另外产生具有”.lzh”扩展名的压缩文件。</p>
+<h3 id="语法-11"><a href="#语法-11" class="headerlink" title="语法"></a>语法</h3><pre><code>lha [-acdfglmnpqtuvx][-a &lt;0/1/2&gt;/u&lt;/0/1/2&gt;][-&lt;a/c/u&gt;d][-&lt;e/x&gt;i][-&lt;a/u&gt;o][-&lt;e/x&gt;w=&lt;目的目录&gt;][-&lt;a/u&gt;z][压缩文件][文件...] 或 lha [-acdfglmnpqtuvx][-a &lt;0/1/2&gt;/u&lt;/0/1/2&gt;][-&lt;a/c/u&gt;d][-&lt;e/x&gt;i][-&lt;a/u&gt;o][-&lt;e/x&gt;w=&lt;目的目录&gt;][-&lt;a/u&gt;z][压缩文件][目录...]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-a或a 压缩文件，并加入到压缩文件内。</li>
+<li>-a&lt;0/1/2&gt;/u&lt;/0/1/2&gt; 压缩文件时，采用不同的文件头。</li>
+<li>-c或c 压缩文件，重新建构新的压缩文件后，再将其加入。</li>
+<li>-d或d 从压缩文件内删除指定的文件。</li>
+<li>-&lt;a/c/u&gt;d或&lt;a/c/u&gt;d 压缩文件，然后将其加入，重新建构，更新压缩文件或，删除原始文件，也就是把文件移到压缩文件中。</li>
+<li>-e或e 解开压缩文件。</li>
+<li>-f或f 强制执行lha命令，在解压时会直接覆盖已有的文件而不加以询问。</li>
+<li>-g或g 使用通用的压缩格式，便于解决兼容性的问题。</li>
+<li>-&lt;e/x&gt;i或&lt;e/x&gt;i 解开压缩文件时，忽略保存在压缩文件内的文件路径，直接将其解压后存放在现行目录下或是指定的目录中。</li>
+<li>-l或l 列出压缩文件的相关信息。</li>
+<li>-m或m 此参数的效果和同时指定”-ad”参数相同。</li>
+<li>-n或n 不执行指令，仅列出实际执行会进行的动作。</li>
+<li>-&lt;a/u&gt;o或&lt;a/u&gt;o 采用lharc兼容格式，将压缩后的文件加入，更新压缩文件。</li>
+<li>-p或p 从压缩文件内输出到标准输出设备。</li>
+<li>-q或q 不显示指令执行过程。</li>
+<li>-t或t 检查备份文件内的每个文件是否正确无误。</li>
+<li>-u或u 更换较新的文件到压缩文件内。</li>
+<li>-u&lt;/0/1/2&gt;或u&lt;/0/1/2&gt; 在文件压缩时采用不同的文件头，然后更新到压缩文件内。</li>
+<li>-v或v 详细列出压缩文件的相关信息。</li>
+<li>-&lt;e/x&gt;w=&lt;目的目录&gt;或&lt;e/x&gt;w=&lt;目的目录&gt; 指定解压缩的目录。</li>
+<li>-x或x 解开压缩文件。</li>
+<li>-&lt;a/u&gt;z或&lt;a/u&gt;z 不压缩文件，直接把它加入，更新压缩文件。</li>
+</ul>
+<h3 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h3><p>缩文件</p>
+<pre><code># lha -a abc.lhz a.b //压缩a.b文件，压缩后生成 abc.lhz文件</code></pre><p>压缩目录</p>
+<pre><code># lha -a abc2 /home/hnlinux</code></pre><p>解压文件到当前目录</p>
+<pre><code># lha -xiw=agis abc  //解压文件abc</code></pre><h2 id="14-restore"><a href="#14-restore" class="headerlink" title="14.restore"></a>14.restore</h2><p>restore命令用来还原由dump操作所备份下来的文件或整个文件系统(一个分区)。</p>
+<p>restore 指令所进行的操作和dump指令相反，dump操作可用来备份文件，而restore操作则是写回这些已备份的文件。</p>
+<h3 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h3><pre><code>restore [-cCvy][-b &lt;区块大小&gt;][-D &lt;文件系统&gt;][-f &lt;备份文件&gt;][-s &lt;文件编号&gt;] 或 restore [-chimvy][-b &lt;区块大小&gt;][-f &lt;备份文件&gt;][-s &lt;文件编号&gt;] 或 restore [-crvy][-b &lt;区块大小&gt;][-f &lt;备份文件&gt;][-s &lt;文件编号&gt;] 或 restore [-cRvy][-b &lt;区块大小&gt;][-D &lt;文件系统&gt;][-f &lt;备份文件&gt;][-s &lt;文件编号&gt;] 或 restore [chtvy][-b &lt;区块大小&gt;][-D &lt;文件系统&gt;][-f &lt;备份文件&gt;][-s &lt;文件编号&gt;][文件...] 或 restore [-chmvxy][-b &lt;区块大小&gt;][-D &lt;文件系统&gt;][-f &lt;备份文件&gt;][-s &lt;文件编号&gt;][文件...]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-b&lt;区块大小&gt; 设置区块大小，单位是Byte。</li>
+<li>-c 不检查dump操作的备份格式，仅准许读取使用旧格式的备份文件。</li>
+<li>-C 使用对比模式，将备份的文件与现行的文件相互对比。</li>
+<li>-D&lt;文件系统&gt; 允许用户指定文件系统的名称。</li>
+<li>-f&lt;备份文件&gt; 从指定的文件中读取备份数据，进行还原操作。</li>
+<li>-h 仅解出目录而不包括与该目录相关的所有文件。</li>
+<li>-i 使用互动模式，在进行还原操作时，restore指令将依序询问用户。</li>
+<li>-m 解开符合指定的inode编号的文件或目录而非采用文件名称指定。</li>
+<li>-r 进行还原操作。</li>
+<li>-R 全面还原文件系统时，检查应从何处开始进行。</li>
+<li>-s&lt;文件编号&gt; 当备份数据超过一卷磁带时，您可以指定备份文件的编号。</li>
+<li>-t 指定文件名称，若该文件已存在备份文件中，则列出它们的名称。</li>
+<li>-v 显示指令执行过程。</li>
+<li>-x 设置文件名称，且从指定的存储媒体里读入它们，若该文件已存在在备份文件中，则将其还原到文件系统内。</li>
+<li>-y 不询问任何问题，一律以同意回答并继续执行指令。</li>
+</ul>
+<h2 id="15-tar"><a href="#15-tar" class="headerlink" title="15.tar"></a>15.tar</h2><p>tar命令用于备份文件。</p>
+<p>tar是用来建立，还原备份文件的工具程序，它可以加入，解开备份文件内的文件。</p>
+<h3 id="语法-13"><a href="#语法-13" class="headerlink" title="语法"></a>语法</h3><pre><code>tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-b &lt;区块数目&gt;][-C &lt;目的目录&gt;][-f &lt;备份文件&gt;][-F &lt;Script文件&gt;][-K &lt;文件&gt;][-L &lt;媒体容量&gt;][-N &lt;日期时间&gt;][-T &lt;范本文件&gt;][-V &lt;卷册名称&gt;][-X &lt;范本文件&gt;][-&lt;设备编号&gt;&lt;存储密度&gt;][--after-date=&lt;日期时间&gt;][--atime-preserve][--backuup=&lt;备份方式&gt;][--checkpoint][--concatenate][--confirmation][--delete][--exclude=&lt;范本样式&gt;][--force-local][--group=&lt;群组名称&gt;][--help][--ignore-failed-read][--new-volume-script=&lt;Script文件&gt;][--newer-mtime][--no-recursion][--null][--numeric-owner][--owner=&lt;用户名称&gt;][--posix][--erve][--preserve-order][--preserve-permissions][--record-size=&lt;区块数目&gt;][--recursive-unlink][--remove-files][--rsh-command=&lt;执行指令&gt;][--same-owner][--suffix=&lt;备份字尾字符串&gt;][--totals][--use-compress-program=&lt;执行指令&gt;][--version][--volno-file=&lt;编号文件&gt;][文件或目录...]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-A或–catenate 新增文件到已存在的备份文件。</li>
+<li>-b&lt;区块数目&gt;或–blocking-factor=&lt;区块数目&gt; 设置每笔记录的区块数目，每个区块大小为12Bytes。</li>
+<li>-B或–read-full-records 读取数据时重设区块大小。</li>
+<li>-c或–create 建立新的备份文件。</li>
+<li>-C&lt;目的目录&gt;或–directory=&lt;目的目录&gt; 切换到指定的目录。</li>
+<li>-d或–diff或–compare 对比备份文件内和文件系统上的文件的差异。</li>
+<li>-f&lt;备份文件&gt;或–file=&lt;备份文件&gt; 指定备份文件。</li>
+<li>-F&lt;Script文件&gt;或–info-script=&lt;Script文件&gt; 每次更换磁带时，就执行指定的Script文件。</li>
+<li>-g或–listed-incremental 处理GNU格式的大量备份。</li>
+<li>-G或–incremental 处理旧的GNU格式的大量备份。</li>
+<li>-h或–dereference 不建立符号连接，直接复制该连接所指向的原始文件。</li>
+<li>-i或–ignore-zeros 忽略备份文件中的0 Byte区块，也就是EOF。</li>
+<li>-k或–keep-old-files 解开备份文件时，不覆盖已有的文件。</li>
+<li>-K&lt;文件&gt;或–starting-file=&lt;文件&gt; 从指定的文件开始还原。</li>
+<li>-l或–one-file-system 复制的文件或目录存放的文件系统，必须与tar指令执行时所处的文件系统相同，否则不予复制。</li>
+<li>-L&lt;媒体容量&gt;或-tape-length=&lt;媒体容量&gt; 设置存放每体的容量，单位以1024 Bytes计算。</li>
+<li>-m或–modification-time 还原文件时，不变更文件的更改时间。</li>
+<li>-M或–multi-volume 在建立，还原备份文件或列出其中的内容时，采用多卷册模式。</li>
+<li>-N&lt;日期格式&gt;或–newer=&lt;日期时间&gt; 只将较指定日期更新的文件保存到备份文件里。</li>
+<li>-o或–old-archive或–portability 将资料写入备份文件时使用V7格式。</li>
+<li>-O或–stdout 把从备份文件里还原的文件输出到标准输出设备。</li>
+<li>-p或–same-permissions 用原来的文件权限还原文件。</li>
+<li>-P或–absolute-names 文件名使用绝对名称，不移除文件名称前的”/“号。</li>
+<li>-r或–append 新增文件到已存在的备份文件的结尾部分。</li>
+<li>-R或–block-number 列出每个信息在备份文件中的区块编号。</li>
+<li>-s或–same-order 还原文件的顺序和备份文件内的存放顺序相同。</li>
+<li>-S或–sparse 倘若一个文件内含大量的连续0字节，则将此文件存成稀疏文件。</li>
+<li>-t或–list 列出备份文件的内容。</li>
+<li>-T&lt;范本文件&gt;或–files-from=&lt;范本文件&gt; 指定范本文件，其内含有一个或多个范本样式，让tar解开或建立符合设置条件的文件。</li>
+<li>-u或–update 仅置换较备份文件内的文件更新的文件。</li>
+<li>-U或–unlink-first 解开压缩文件还原文件之前，先解除文件的连接。</li>
+<li>-v或–verbose 显示指令执行过程。</li>
+<li>-V&lt;卷册名称&gt;或–label=&lt;卷册名称&gt; 建立使用指定的卷册名称的备份文件。</li>
+<li>-w或–interactive 遭遇问题时先询问用户。</li>
+<li>-W或–verify 写入备份文件后，确认文件正确无误。</li>
+<li>-x或–extract或–get 从备份文件中还原文件。</li>
+<li>-X&lt;范本文件&gt;或–exclude-from=&lt;范本文件&gt; 指定范本文件，其内含有一个或多个范本样式，让ar排除符合设置条件的文件。</li>
+<li>-z或–gzip或–ungzip 通过gzip指令处理备份文件。</li>
+<li>-Z或–compress或–uncompress 通过compress指令处理备份文件。</li>
+<li>-&lt;设备编号&gt;&lt;存储密度&gt; 设置备份用的外围设备编号及存放数据的密度。</li>
+<li>–after-date=&lt;日期时间&gt; 此参数的效果和指定”-N”参数相同。</li>
+<li>–atime-preserve 不变更文件的存取时间。</li>
+<li>–backup=&lt;备份方式&gt;或–backup 移除文件前先进行备份。</li>
+<li>–checkpoint 读取备份文件时列出目录名称。</li>
+<li>–concatenate 此参数的效果和指定”-A”参数相同。</li>
+<li>–confirmation 此参数的效果和指定”-w”参数相同。</li>
+<li>–delete 从备份文件中删除指定的文件。</li>
+<li>–exclude=&lt;范本样式&gt; 排除符合范本样式的文件。</li>
+<li>–group=&lt;群组名称&gt; 把加入设备文件中的文件的所属群组设成指定的群组。</li>
+<li>–help 在线帮助。</li>
+<li>–ignore-failed-read 忽略数据读取错误，不中断程序的执行。</li>
+<li>–new-volume-script=&lt;Script文件&gt; 此参数的效果和指定”-F”参数相同。</li>
+<li>–newer-mtime 只保存更改过的文件。</li>
+<li>–no-recursion 不做递归处理，也就是指定目录下的所有文件及子目录不予处理。</li>
+<li>–null 从null设备读取文件名称。</li>
+<li>–numeric-owner 以用户识别码及群组识别码取代用户名称和群组名称。</li>
+<li>–owner=&lt;用户名称&gt; 把加入备份文件中的文件的拥有者设成指定的用户。</li>
+<li>–posix 将数据写入备份文件时使用POSIX格式。</li>
+<li>–preserve 此参数的效果和指定”-ps”参数相同。</li>
+<li>–preserve-order 此参数的效果和指定”-A”参数相同。</li>
+<li>–preserve-permissions 此参数的效果和指定”-p”参数相同。</li>
+<li>–record-size=&lt;区块数目&gt; 此参数的效果和指定”-b”参数相同。</li>
+<li>–recursive-unlink 解开压缩文件还原目录之前，先解除整个目录下所有文件的连接。</li>
+<li>–remove-files 文件加入备份文件后，就将其删除。</li>
+<li>–rsh-command=&lt;执行指令&gt; 设置要在远端主机上执行的指令，以取代rsh指令。</li>
+<li>–same-owner 尝试以相同的文件拥有者还原文件。</li>
+<li>–suffix=&lt;备份字尾字符串&gt; 移除文件前先行备份。</li>
+<li>–totals 备份文件建立后，列出文件大小。</li>
+<li>–use-compress-program=&lt;执行指令&gt; 通过指定的指令处理备份文件。</li>
+<li>–version 显示版本信息。</li>
+<li>–volno-file=&lt;编号文件&gt; 使用指定文件内的编号取代预设的卷册编号。</li>
+</ul>
+<h3 id="实例-12"><a href="#实例-12" class="headerlink" title="实例"></a>实例</h3><p>压缩文件 非打包</p>
+<pre><code># touch a.c       
+# tar -czvf test.tar.gz a.c   //压缩 a.c文件为test.tar.gz
+a.c</code></pre><p>列出压缩文件内容</p>
+<pre><code># tar -tzvf test.tar.gz 
+-rw-r--r-- root/root     0 2010-05-24 16:51:59 a.c</code></pre><p>解压文件</p>
+<pre><code># tar -xzvf test.tar.gz 
+a.c</code></pre><h2 id="16-uudecode"><a href="#16-uudecode" class="headerlink" title="16.uudecode"></a>16.uudecode</h2><p>uudecode 将 uuencode 编码后的档案还原， uudecode 只会将 begin 与 end 标记之间的编码资料还原，程序会跳过标记以外的资料。</p>
+<h3 id="语法-14"><a href="#语法-14" class="headerlink" title="语法"></a>语法</h3><pre><code>uuencode [-hv] [file1 ...]&lt;/p&gt;</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>h 列出指令使用格式 (help)</li>
+<li>v 列出版本讯息</li>
+</ul>
+<h3 id="实例-13"><a href="#实例-13" class="headerlink" title="实例"></a>实例</h3><p>将 file.uud 还原，而还原后的档名储存在 file.uud 档中。</p>
+<pre><code>uuencode file.uud</code></pre><p>可以一起还原好几个档案。</p>
+<pre><code>uuencode file1.uud file2.uud</code></pre><h2 id="17-unzip"><a href="#17-unzip" class="headerlink" title="17.unzip"></a>17.unzip</h2><p>unzip命令用于解压缩zip文件</p>
+<p>unzip为.zip压缩文件的解压缩程序。</p>
+<h3 id="语法-15"><a href="#语法-15" class="headerlink" title="语法"></a>语法</h3><pre><code>unzip [-cflptuvz][-agCjLMnoqsVX][-P &lt;密码&gt;][.zip文件][文件][-d &lt;目录&gt;][-x &lt;文件&gt;] 或 unzip [-Z]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c 将解压缩的结果显示到屏幕上，并对字符做适当的转换。</li>
+<li>-f 更新现有的文件。</li>
+<li>-l 显示压缩文件内所包含的文件。</li>
+<li>-p 与-c参数类似，会将解压缩的结果显示到屏幕上，但不会执行任何的转换。</li>
+<li>-t 检查压缩文件是否正确。</li>
+<li>-u 与-f参数类似，但是除了更新现有的文件外，也会将压缩文件中的其他文件解压缩到目录中。</li>
+<li>-v 执行是时显示详细的信息。</li>
+<li>-z 仅显示压缩文件的备注文字。</li>
+<li>-a 对文本文件进行必要的字符转换。</li>
+<li>-b 不要对文本文件进行字符转换。</li>
+<li>-C 压缩文件中的文件名称区分大小写。</li>
+<li>-j 不处理压缩文件中原有的目录路径。</li>
+<li>-L 将压缩文件中的全部文件名改为小写。</li>
+<li>-M 将输出结果送到more程序处理。</li>
+<li>-n 解压缩时不要覆盖原有的文件。</li>
+<li>-o 不必先询问用户，unzip执行后覆盖原有文件。</li>
+<li>-P&lt;密码&gt; 使用zip的密码选项。</li>
+<li>-q 执行时不显示任何信息。</li>
+<li>-s 将文件名中的空白字符转换为底线字符。</li>
+<li>-V 保留VMS的文件版本信息。</li>
+<li>-X 解压缩时同时回存文件原来的UID/GID。</li>
+<li>[.zip文件] 指定.zip压缩文件。</li>
+<li>[文件] 指定要处理.zip压缩文件中的哪些文件。</li>
+<li>-d&lt;目录&gt; 指定文件解压缩后所要存储的目录。</li>
+<li>-x&lt;文件&gt; 指定不要处理.zip压缩文件中的哪些文件。</li>
+<li>-Z unzip -Z等于执行zipinfo指令。</li>
+</ul>
+<h3 id="实例-14"><a href="#实例-14" class="headerlink" title="实例"></a>实例</h3><p>查看压缩文件中包含的文件：</p>
+<pre><code># unzip -l abc.zip 
+Archive: abc.zip
+ Length   Date  Time  Name
+--------  ----  ----  ----
+  94618 05-21-10 20:44  a11.jpg
+  202001 05-21-10 20:44  a22.jpg
+    16 05-22-10 15:01  11.txt
+  46468 05-23-10 10:30  w456.JPG
+  140085 03-14-10 21:49  my.asp
+--------          -------
+  483188          5 files</code></pre><p>-v 参数用于查看压缩文件目录信息，但是不解压该文件。</p>
+<pre><code># unzip -v abc.zip 
+Archive: abc.zip
+Length  Method  Size Ratio  Date  Time  CRC-32  Name
+-------- ------ ------- -----  ----  ----  ------  ----
+  94618 Defl:N  93353  1% 05-21-10 20:44 9e661437 a11.jpg
+ 202001 Defl:N  201833  0% 05-21-10 20:44 1da462eb a22.jpg
+   16 Stored    16  0% 05-22-10 15:01 ae8a9910 ? +-|￥+-? (11).txt
+  46468 Defl:N  39997 14% 05-23-10 10:30 962861f2 w456.JPG
+ 140085 Defl:N  36765 74% 03-14-10 21:49 836fcc3f my.asp
+--------     ------- ---              -------
+ 483188      371964 23%              5 files</code></pre><h2 id="18-zip"><a href="#18-zip" class="headerlink" title="18.zip"></a>18.zip</h2><p>zip命令用于压缩文件。</p>
+<p>zip是个使用广泛的压缩程序，文件经它压缩后会另外产生具有”.zip”扩展名的压缩文件。</p>
+<h3 id="语法-16"><a href="#语法-16" class="headerlink" title="语法"></a>语法</h3><pre><code>zip [-AcdDfFghjJKlLmoqrSTuvVwXyz$][-b &lt;工作目录&gt;][-ll][-n &lt;字尾字符串&gt;][-t &lt;日期时间&gt;][-&lt;压缩效率&gt;][压缩文件][文件...][-i &lt;范本样式&gt;][-x &lt;范本样式&gt;]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-A 调整可执行的自动解压缩文件。</li>
+<li>-b&lt;工作目录&gt; 指定暂时存放文件的目录。</li>
+<li>-c 替每个被压缩的文件加上注释。</li>
+<li>-d 从压缩文件内删除指定的文件。</li>
+<li>-D 压缩文件内不建立目录名称。</li>
+<li>-f 此参数的效果和指定”-u”参数类似，但不仅更新既有文件，如果某些文件原本不存在于压缩文件内，使用本参数会一并将其加入压缩文件中。</li>
+<li>-F 尝试修复已损坏的压缩文件。</li>
+<li>-g 将文件压缩后附加在既有的压缩文件之后，而非另行建立新的压缩文件。</li>
+<li>-h 在线帮助。</li>
+<li>-i&lt;范本样式&gt; 只压缩符合条件的文件。</li>
+<li>-j 只保存文件名称及其内容，而不存放任何目录名称。</li>
+<li>-J 删除压缩文件前面不必要的数据。</li>
+<li>-k 使用MS-DOS兼容格式的文件名称。</li>
+<li>-l 压缩文件时，把LF字符置换成LF+CR字符。</li>
+<li>-ll 压缩文件时，把LF+CR字符置换成LF字符。</li>
+<li>-L 显示版权信息。</li>
+<li>-m 将文件压缩并加入压缩文件后，删除原始文件，即把文件移到压缩文件中。</li>
+<li>-n&lt;字尾字符串&gt; 不压缩具有特定字尾字符串的文件。</li>
+<li>-o 以压缩文件内拥有最新更改时间的文件为准，将压缩文件的更改时间设成和该文件相同。</li>
+<li>-q 不显示指令执行过程。</li>
+<li>-r 递归处理，将指定目录下的所有文件和子目录一并处理。</li>
+<li>-S 包含系统和隐藏文件。</li>
+<li>-t&lt;日期时间&gt; 把压缩文件的日期设成指定的日期。</li>
+<li>-T 检查备份文件内的每个文件是否正确无误。</li>
+<li>-u 更换较新的文件到压缩文件内。</li>
+<li>-v 显示指令执行过程或显示版本信息。</li>
+<li>-V 保存VMS操作系统的文件属性。</li>
+<li>-w 在文件名称里假如版本编号，本参数仅在VMS操作系统下有效。</li>
+<li>-x&lt;范本样式&gt; 压缩时排除符合条件的文件。</li>
+<li>-X 不保存额外的文件属性。</li>
+<li>-y 直接保存符号连接，而非该连接所指向的文件，本参数仅在UNIX之类的系统下有效。</li>
+<li>-z 替压缩文件加上注释。</li>
+<li>-$ 保存第一个被压缩文件所在磁盘的卷册名称。</li>
+<li>-&lt;压缩效率&gt; 压缩效率是一个介于1-9的数值。</li>
+</ul>
+<h3 id="实例-15"><a href="#实例-15" class="headerlink" title="实例"></a>实例</h3><p>将 /home/html/ 这个目录下所有文件和文件夹打包为当前目录下的 html.zip：</p>
+<pre><code>zip -q -r html.zip /home/html</code></pre><p>如果在我们在 /home/html 目录下，可以执行以下命令：</p>
+<pre><code>zip -q -r html.zip *</code></pre><p>从压缩文件 cp.zip 中删除文件 a.c</p>
+<pre><code>zip -dv cp.zip a.c</code></pre><h2 id="19-zipinfo"><a href="#19-zipinfo" class="headerlink" title="19.zipinfo"></a>19.zipinfo</h2><p>zipinfo命令用于列出压缩文件信息。</p>
+<p>执行zipinfo指令可得知ZIP压缩文件的详细信息。</p>
+<h3 id="语法-17"><a href="#语法-17" class="headerlink" title="语法"></a>语法</h3><pre><code>zipinfo [-12hlmMstTvz] [压缩文件] [文件...] [ -  x &lt;范本样式&gt;]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-1只列出文件名称。</li>
+<li>-2此参数的效果和指定“-1”参数类似，但可搭配“-h”，“ - t”和“-z”参数使用。</li>
+<li>-h只列出压缩文件的文件名称。</li>
+<li>-l此参数的效果和指定“-m”参数类似，但会列出原始文件的大小而非每个文件的压缩率。</li>
+<li>-m此参数的效果和指定“-s”参数类似，但多会列出每个文件的压缩率。</li>
+<li>-M若信息内容超过一个画面，则采用类似更多指令的方式列出信息。</li>
+<li>-s用类似执行“ls -l”指令的效果列出压缩文件内容。</li>
+<li>-t只列出压缩文件内所包含的文件数目，压缩前后的文件大小及压缩率。</li>
+<li>-T将压缩文件内每个文件的日期时间用年，月，日，时，分，秒的顺序列出。</li>
+<li>-v详细显示压缩文件内每一个文件的信息。</li>
+<li>-x &lt;范本样式&gt;不列出符合条件的文件的信息。</li>
+<li>-z如果压缩文件内含有注释，就将注释显示出来。</li>
+</ul>
+<h3 id="实例-16"><a href="#实例-16" class="headerlink" title="实例"></a>实例</h3><p>显示压缩文件信息</p>
+<pre><code>[root@w3cschool.cc a] #zipinfo cp.zip 
+存档：cp.zip 486字节4个文件
+-rw-r  -  r-- 2.3 unx 0 bx stor 24-May-10 18:54 ac
+-rw-r  -  r-- 2.3 unx 0 bx stor 24-May-10 18:54 bc
+-rw-r  -  r-- 2.3 unx 0 bx stor 24-May-10 18:54 cc
+-rw-r  -  r-- 2.3 unx 0 bx stor 24-May-10 18:54 ec
+4个文件，0个字节未压缩，0个字节压缩：0.0％
+[root@w3cschool.cc a]＃ </code></pre><p>显示压缩文件中每个文件的信息</p>
+<pre><code>[root@w3cschool.cc a] #zipinfo -v cp.zip 
+存档：cp.zip 486字节4个文件
+
+中心目录结束记录：
+-------------------------------
+
+ 中央结尾记录的实际偏差：464（000001D0h）
+ 中央终点记录的预期偏差：464（000001D0h）
+ （基于中心目录的长度及其预期的偏移量）
+
+ 此zip文件构成单部分存档的唯一磁盘; 它的
+ 中心目录包含4个条目。中央目录是248
+ （000000F8h）字节长，其（预期）偏移量以字节为单位
+ zip文件的开头是216（000000D8h）。
+
+ 没有zipfile注释。
+
+中央目录条目＃1：
+---------------------------
+
+ AC
+
+ 从归档开始的本地头的偏移量：0（00000000h）字节
+ 文件系统或原产地操作系统：Unix
+ 编码软件版本：2.3
+ 所需的最低文件系统兼容性：MS-DOS，OS / 2或NT FAT
+ 提取所需的最低软件版本：1.0
+ 压缩方法：无（存储）
+ 文件安全状态：未加密
+ 扩展本地标题：没有
+ 文件最后修改日期（DOS日期/时间）：2010年5月24日18:54:26
+ 文件最后修改时（UT额外字段modtime）：2010年5月24日18:54:26本地
+ 文件最后修改日期（UT额外字段modtime）：2010年5月24日10:54:26 UTC
+ 32位CRC值（十六进制）：00000000
+ 压缩大小：0字节
+ 未压缩的大小：0字节
+ 文件名长度：3个字符
+ 额外字段的长度：13个字节
+ 文件注释长度：0个字符
+ 文件开头的磁盘号：磁盘1
+ 表观文件类型：二进制
+ Unix文件属性（100644八进制）： -  rpm -r  -  r--
+ MS-DOS文件属性（00十六进制）：无
+
+ 中心目录额外字段包含：
+ -  ID为0x5455（通用时间）和5个数据字节的子字段。
+  本地额外字段具有UTC / GMT修改/访问时间。
+ -  ID为0x7855（Unix UID / GID）和0个数据字节的子字段。
+
+ 没有文件评论。
+
+中央目录条目＃2：
+---------------------------
+
+ 公元前
+
+ 从归档开始的本地头的偏移量：54（00000036h）个字节
+ 文件系统或原产地操作系统：Unix
+ 编码软件版本：2.3
+ 所需的最低文件系统兼容性：MS-DOS，OS / 2或NT FAT
+ 提取所需的最低软件版本：1.0
+ 压缩方法：无（存储）
+ 文件安全状态：未加密
+ 扩展本地标题：没有
+ 文件最后修改日期（DOS日期/时间）：2010年5月24日18:54:26
+ 文件最后修改时（UT额外字段modtime）：2010年5月24日18:54:26本地
+ 文件最后修改日期（UT额外字段modtime）：2010年5月24日10:54:26 UTC
+ 32位CRC值（十六进制）：00000000
+ 压缩大小：0字节
+ 未压缩的大小：0字节
+ 文件名长度：3个字符
+ 额外字段的长度：13个字节
+ 文件注释长度：0个字符
+ 文件开头的磁盘号：磁盘1
+ 表观文件类型：二进制
+ Unix文件属性（100644八进制）： -  rpm -r  -  r--
+ MS-DOS文件属性（00十六进制）：无
+
+ 中心目录额外字段包含：
+ -  ID为0x5455（通用时间）和5个数据字节的子字段。
+  本地额外字段具有UTC / GMT修改/访问时间。
+ -  ID为0x7855（Unix UID / GID）和0个数据字节的子字段。
+
+ 没有文件评论。
+
+中央目录条目＃3：
+---------------------------
+
+ CC
+
+ 从归档开始的本地头的偏移量：108（0000006Ch）个字节
+ 文件系统或原产地操作系统：Unix
+ 编码软件版本：2.3
+ 所需的最低文件系统兼容性：MS-DOS，OS / 2或NT FAT
+ 提取所需的最低软件版本：1.0
+ 压缩方法：无（存储）
+ 文件安全状态：未加密
+ 扩展本地标题：没有
+ 文件最后修改日期（DOS日期/时间）：2010年5月24日18:54:26
+ 文件最后修改时（UT额外字段modtime）：2010年5月24日18:54:26本地
+ 文件最后修改日期（UT额外字段modtime）：2010年5月24日10:54:26 UTC
+ 32位CRC值（十六进制）：00000000
+ 压缩大小：0字节
+ 未压缩的大小：0字节
+ 文件名长度：3个字符
+ 额外字段的长度：13个字节
+ 文件注释长度：0个字符
+ 文件开头的磁盘号：磁盘1
+ 表观文件类型：二进制
+ Unix文件属性（100644八进制）： -  rpm -r  -  r--
+ MS-DOS文件属性（00十六进制）：无
+
+ 中心目录额外字段包含：
+ -  ID为0x5455（通用时间）和5个数据字节的子字段。
+  本地额外字段具有UTC / GMT修改/访问时间。
+ -  ID为0x7855（Unix UID / GID）和0个数据字节的子字段。
+
+ 没有文件评论。
+
+中央目录条目＃4：
+---------------------------
+
+ EC
+
+ 从归档开始的本地头的偏移量：162（000000A2h）个字节
+ 文件系统或原产地操作系统：Unix
+ 编码软件版本：2.3
+ 所需的最低文件系统兼容性：MS-DOS，OS / 2或NT FAT
+ 提取所需的最低软件版本：1.0
+ 压缩方法：无（存储）
+ 文件安全状态：未加密
+ 扩展本地标题：没有
+ 文件最后修改日期（DOS日期/时间）：2010年5月24日18:54:26
+ 文件最后修改时（UT额外字段modtime）：2010年5月24日18:54:26本地
+ 文件最后修改日期（UT额外字段modtime）：2010年5月24日10:54:26 UTC
+ 32位CRC值（十六进制）：00000000
+ 压缩大小：0字节
+ 未压缩的大小：0字节
+ 文件名长度：3个字符
+ 额外字段的长度：13个字节
+ 文件注释长度：0个字符
+ 文件开头的磁盘号：磁盘1
+ 表观文件类型：二进制
+ Unix文件属性（100644八进制）： -  rpm -r  -  r--
+ MS-DOS文件属性（00十六进制）：无
+
+ 中心目录额外字段包含：
+ -  ID为0x5455（通用时间）和5个数据字节的子字段。
+  本地额外字段具有UTC / GMT修改/访问时间。
+ -  ID为0x7855（Unix UID / GID）和0个数据字节的子字段。
+
+ 没有文件评论。</code></pre><h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
+<li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
+</ul>
+<p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/45949.html" class="b-link-green">9.Linux命令（备份压缩）</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/19804.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="10.Linux命令（设备管理）">
+                        
+                        <span class="card-title">10.Linux命令（设备管理）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux命令（设备管理）1.setledssetleds命令用来设定键盘上方三个 LED 的状态。在 Linux 中，每一个虚拟主控台都有独立的设定。
+语法setleds [-v] [-L] [-D] [-F] [{+|-}num] [{</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/49806.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="8.Linux命令（系统设置）">
+                        
+                        <span class="card-title">8.Linux命令（系统设置）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux命令（系统设置）1.reset​        reset命令其实和 tset 是一同个命令，它的用途是设定终端机的状态。一般而言，这个命令会自动的从环境变数、命令列或是其它的组态档决定目前终端机的型态。如果指定型态是 ‘?’ 的</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">224.9k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+<center>
+<div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+            <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages 和 Gitee Pages">
+            <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub & Coding & Gitee</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://cloud.tencent.com/" target="_blank" title="腾讯云提供域名相关服务">
+            <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Tencent</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank" title="jsDelivr 提供 CDN 加速服务">
+            <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+          </div>
+          <div class="github-badge">
+              <a style="color: #fff" rel="license" href="https://blinkfox.github.io/" target="_blank" title="站点使用 Matery主题">
+            <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Matery</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+            <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
+            <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+          </div>
+</div>
+</center>
+
+<style>
+    .github-badge {
+        display:inline-block;
+        border-radius:4px;
+        text-shadow:none;
+        font-size:13px;
+        color:#fff;
+        line-height:15px;
+        background-color:#ABBAC3;
+        margin-bottom:5px;
+    }
+    .github-badge .badge-subject {
+        display:inline-block;
+        background-color:#4D4D4D;
+        padding:4px 4px 4px 6px;
+        border-top-left-radius:4px;
+        border-bottom-left-radius:4px;
+    }
+    .github-badge .badge-value {
+        display:inline-block;
+        padding:4px 6px 4px 4px;
+        border-top-right-radius:4px;
+        border-bottom-right-radius:4px;
+    }
+    .github-badge .bg-brightgreen {
+        background-color:#4DC820 !important;
+    }
+    .github-badge .bg-orange {
+        background-color:#FFA500 !important;
+    }
+    .github-badge .bg-yellow {
+        background-color:#D8B024 !important;
+    }
+    .github-badge .bg-blueviolet {
+        background-color:#8833D7 !important;
+    }
+    .github-badge .bg-pink {
+        background-color:#F26BAE !important;
+    }
+    .github-badge .bg-red {
+        background-color:#e05d44 !important;
+    }
+    .github-badge .bg-blue {
+        background-color:#007EC6 !important;
+    }
+    .github-badge .bg-lightgrey {
+        background-color:#9F9F9F !important;
+    }
+    .github-badge .bg-grey, .github-badge .bg-gray {
+        background-color:#555 !important;
+    }
+    .github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+        background-color:#9f9f9f !important;
+    }
+</style>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<script src="/js/snow.js"></script>
+
+</body>
+</html>

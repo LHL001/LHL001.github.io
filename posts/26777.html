@@ -1,0 +1,1957 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="6.Linux命令（网络通讯）, yoyo，LHL001">
+    <meta name="description" content="Linux命令（网络通讯）1.apachect     apachectl命令可用来控制Apache HTTP服务器的程序。apachectl是slackware内附Apache HTTP服务器的script文件，可供管理员控制服务器，但在">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>6.Linux命令（网络通讯） | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/LHL001" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Visit Github
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/LHL001" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Visit Github" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        6.Linux命令（网络通讯）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux命令/" target="_blank">
+                                <span class="chip bg-color">Linux命令</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                Linux笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-08-17
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        15k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        66 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Linux命令（网络通讯）"><a href="#Linux命令（网络通讯）" class="headerlink" title="Linux命令（网络通讯）"></a>Linux命令（网络通讯）</h1><h2 id="1-apachect"><a href="#1-apachect" class="headerlink" title="1.apachect"></a>1.apachect</h2><pre><code>     apachectl命令可用来控制Apache HTTP服务器的程序。</code></pre><p>apachectl是slackware内附Apache HTTP服务器的script文件，可供管理员控制服务器，但在其他Linux的Apache HTTP服务器不一定有这个文件。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>apachectl [configtest][fullstatus][graceful][help][restart][start][status][stop]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>configtest 检查设置文件中的语法是否正确。</li>
+<li>fullstatus 显示服务器完整的状态信息。</li>
+<li>graceful 重新启动Apache服务器，但不会中断原有的连接。</li>
+<li>help 显示帮助信息。</li>
+<li>restart 重新启动Apache服务器。</li>
+<li>start 启动Apache服务器。</li>
+<li>status 显示服务器摘要的状态信息。</li>
+<li>stop 停止Apache服务器。</li>
+</ul>
+<h2 id="2-arpwatch"><a href="#2-arpwatch" class="headerlink" title="2.arpwatch"></a>2.arpwatch</h2><p>​        arpwatch命令用于监听网络上ARP的记录。</p>
+<p>ARP(Address Resolution Protocol)是用来解析IP与网络装置硬件地址的协议。</p>
+<p>arpwatch可监听区域网络中的ARP数据包并记录，同时将监听到的变化通过E-mail来报告。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><pre><code>arpwatch [-d][-f&lt;记录文件&gt;][-i&lt;接口&gt;][-r&lt;记录文件&gt;]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-d 启动排错模式。</li>
+<li>-f&lt;记录文件&gt; 设置存储ARP记录的文件，预设为/var/arpwatch/arp.dat。</li>
+<li>-i&lt;接口&gt; 指定监听ARP的接口，预设的接口为eth0。</li>
+<li>-r&lt;记录文件&gt; 从指定的文件中读取ARP记录，而不是从网络上监听。</li>
+<li>-n 指定附加的本地网络</li>
+<li>-u 指定用户和用户组</li>
+<li>-e 发送邮件给指定用户，非默认的root用户</li>
+<li>-s 指定用户名作为返回地址，而不是默认的用户root</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>监听网卡eth0的ARP信息</p>
+<pre><code>arpwatch -i eth0</code></pre><p>监听ARP的信息，将相关信息记录到相应的文件</p>
+<pre><code># arpwatch -i eth0 -f a.log //将信息记录到a.log中</code></pre><h2 id="3-dip"><a href="#3-dip" class="headerlink" title="3.dip"></a>3.dip</h2><p>​        dip命令用于IP拨号连接。</p>
+<p>dip可控制调制解调器，以拨号IP的方式建立对外的双向连接。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><pre><code>dip [-aikltv][-m&lt;MTU数目&gt;][-p&lt;协议&gt;][拨号script文件]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a 询问用户名称与密码。</li>
+<li>-i 启动拨号服务器功能。</li>
+<li>-k 删除执行中的dip程序。</li>
+<li>-l 指定要删除的连线，必须配合-k参数一起使用。</li>
+<li>-m&lt;MTU数目&gt; 设置最大传输单位，预设值为296。</li>
+<li>-p&lt;协议&gt; 设置通信协议。</li>
+<li>-t 进入dip的指令模式。</li>
+<li>-v 执行时显示详细的信息。</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>建立拨号连接</p>
+<pre><code>$ dip -t</code></pre><h2 id="4-getty"><a href="#4-getty" class="headerlink" title="4.getty"></a>4.getty</h2><p>​         getty命令用于设置终端机模式，连线速率和管制线路。</p>
+<p>getty指令是UNIX之类操作系统启动时所必须的3个步骤之一。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><pre><code>getty [-h][-d&lt;组态配置文件&gt;][-r&lt;延迟秒数&gt;][-t&lt;超时秒数&gt;][-w&lt;等待字符串&gt;][终端机编号][连线速率&lt;终端机类型&gt;&lt;管制线路&gt;] 或 getty [-c&lt;定义配置文件&gt;]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>-c&lt;定义配置文件&gt; 指定定义配置文件，预设为/etc/gettydefs。</li>
+<li>-d&lt;组态配置文件&gt; 指定组态配置文件，预设为/etc/conf.getty。</li>
+<li>-h 当传输速率为0时就强制断线。</li>
+<li>-r&lt;延迟秒数&gt; 设置延迟时间。</li>
+<li>-t&lt;超时秒数&gt; 设置等待登入的时间。</li>
+<li>-w&lt;等待字符串&gt; 设置等待回应的字符串。</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>开启终端：</p>
+<pre><code># getty tty7</code></pre><h2 id="5-mingetty"><a href="#5-mingetty" class="headerlink" title="5.mingetty"></a>5.mingetty</h2><p>​        mingetty命令是精简版的getty。</p>
+<p>mingetty适用于本机上的登入程序。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><pre><code>mingetty [--long-hostname][--noclear][tty]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>–long-hostname 显示完整的主机名称。</li>
+<li>–noclear 在询问登入的用户名称之前不要清楚屏幕画面。</li>
+</ul>
+<h2 id="6-uux"><a href="#6-uux" class="headerlink" title="6.uux"></a>6.uux</h2><p>​        uux命令用于在远端的UUCP主机上执行指令。</p>
+<p>uux可在远端的UUCP主机上执行指令或是执行本机上的指令，但在执行时会使用远端电脑的文件。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><pre><code>uux [-bcCIjlnrvz][-a&lt;地址&gt;][-g&lt;等级&gt;][-s&lt;文件&gt;][-x&lt;层级&gt;][--help][指令]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-或-p或–stdin 直接从键盘读取要执行的指令。</li>
+<li>-a&lt;地址&gt;或–requestor&lt;地址&gt; 执行邮件地址，以便寄送状态信息。</li>
+<li>-b或–erturn-stdin 在屏幕上显示状态信息。</li>
+<li>-c或–nocopy 不用将文件复制到缓冲区。</li>
+<li>-C或–copy 将文件复制到缓冲区。</li>
+<li>-g&lt;等级&gt;或–grade&lt;等级&gt; 指定文件传送作业的优先顺序。</li>
+<li>-I或–config file 指定uux配置文件。</li>
+<li>-j或–jobid 显示作业编号。</li>
+<li>-l或–link 将本机上的文件连接到缓冲区。</li>
+<li>-n或–notification=no 无论发生任何状态，都不寄邮件通知用户。</li>
+<li>-r或–nouucico 不要立即启动uucico服务程序，仅将作业送到队列中，然后再执行。</li>
+<li>-s&lt;文件&gt;或–status&lt;文件&gt; 将完成状态保存为指定的文件。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>-x&lt;层级&gt;或–debug&lt;层级&gt; 指定排错层级。</li>
+<li>-z或–notification=error 若发生错误，则以邮件来通知用户。</li>
+<li>–help 显示帮助。</li>
+</ul>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>在远程主机 uucp 执行命令</p>
+<pre><code># uux hnlinux! date  /// 在远程主机 指定date命令查看系统时间</code></pre><h2 id="7-telnet"><a href="#7-telnet" class="headerlink" title="7.telnet"></a>7.telnet</h2><p>​        telnet命令用于远端登入。</p>
+<p>执行telnet指令开启终端机阶段作业，并登入远端主机。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><pre><code>telnet [-8acdEfFKLrx][-b&lt;主机别名&gt;][-e&lt;脱离字符&gt;][-k&lt;域名&gt;][-l&lt;用户名称&gt;][-n&lt;记录文件&gt;][-S&lt;服务类型&gt;][-X&lt;认证形态&gt;][主机名称或IP地址&lt;通信端口&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-8 允许使用8位字符资料，包括输入与输出。</li>
+<li>-a 尝试自动登入远端系统。</li>
+<li>-b&lt;主机别名&gt; 使用别名指定远端主机名称。</li>
+<li>-c 不读取用户专属目录里的.telnetrc文件。</li>
+<li>-d 启动排错模式。</li>
+<li>-e&lt;脱离字符&gt; 设置脱离字符。</li>
+<li>-E 滤除脱离字符。</li>
+<li>-f 此参数的效果和指定”-F”参数相同。</li>
+<li>-F 使用Kerberos V5认证时，加上此参数可把本地主机的认证数据上传到远端主机。</li>
+<li>-k&lt;域名&gt; 使用Kerberos认证时，加上此参数让远端主机采用指定的领域名，而非该主机的域名。</li>
+<li>-K 不自动登入远端主机。</li>
+<li>-l&lt;用户名称&gt; 指定要登入远端主机的用户名称。</li>
+<li>-L 允许输出8位字符资料。</li>
+<li>-n&lt;记录文件&gt; 指定文件记录相关信息。</li>
+<li>-r 使用类似rlogin指令的用户界面。</li>
+<li>-S&lt;服务类型&gt; 设置telnet连线所需的IP TOS信息。</li>
+<li>-x 假设主机有支持数据加密的功能，就使用它。</li>
+<li>-X&lt;认证形态&gt; 关闭指定的认证形态。</li>
+</ul>
+<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>登录远程主机</p>
+<pre><code># telnet 192.168.0.5 
+
+//登录IP为 192.168.0.5 的远程主机</code></pre><h2 id="8-uulog"><a href="#8-uulog" class="headerlink" title="8.uulog"></a>8.uulog</h2><p>​        uulog命令用于显示UUCP记录文件。</p>
+<p>uulog可用来显示UUCP记录文件中记录。</p>
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><pre><code>uulog [-DFISv][-&lt;行数&gt;][-f&lt;主机&gt;][-I&lt;配置文件&gt;][-n&lt;行数&gt;][-s&lt;主机&gt;][-u&lt;用户&gt;][-X&lt;层级&gt;][--help]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-D或–debuglog 显示排错记录。</li>
+<li>-f&lt;主机&gt;或–follow&lt;主机&gt; 与-F参数类似，但仅显示与指定主机相关的记录。</li>
+<li>-I&lt;配置文件&gt;或–config&lt;配置文件&gt; 指定程序的配置文件。</li>
+<li>-&lt;行数&gt;,-n&lt;行数&gt;或–lines&lt;行数&gt; 显示记录文件中，从最后算起指定行数的数值。</li>
+<li>-s&lt;主机&gt; 仅显示记录文件中，与指定文件相关的记录。</li>
+<li>-S或–statslog 显示统计记录。</li>
+<li>-u&lt;用户&gt;或–suer&lt;用户&gt; 仅显示记录文件中，与指定用户相关的记录。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>-X&lt;层级&gt;或–debug&lt;层级&gt; 设定排错层级。</li>
+<li>–help 显示帮助。</li>
+</ul>
+<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>显示uucp log信息</p>
+<pre><code># uulog</code></pre><h2 id="9-uustat"><a href="#9-uustat" class="headerlink" title="9.uustat"></a>9.uustat</h2><p>​        uustat命令用于显示UUCP目前的状况。</p>
+<p>执行uucp与uux指令后，会先将工作送到队列，再由uucico来执行工作。uustat可显示，删除或启动队列中等待执行的工作。</p>
+<h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><pre><code>uustat [-aeiKmMNpqQRv][-B&lt;行数&gt;][-c&lt;指令&gt;][-C&lt;指令&gt;][-I&lt;配置文件&gt;][-k&lt;工作&gt;][-o&lt;小时&gt;][-r&lt;工作&gt;][-s&lt;主机&gt;][-S&lt;主机&gt;][-u&lt;用户&gt;][-U&lt;用户&gt;][-W&lt;附注&gt;][-y&lt;小时&gt;][-x&lt;层级&gt;][--help]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a或-all 显示全部的UUCP工作。</li>
+<li>-B&lt;行数&gt;或–mail-lines&lt;行数&gt; 与-M或-N参数一并使用，用来指定邮件中要包含多少行的信息。</li>
+<li>-c&lt;指令&gt;或–command&lt;指令&gt; 显示与&lt;指令&gt;有关的工作。</li>
+<li>-C&lt;指令&gt;或–not-command&lt;指令&gt; 显示与&lt;指令&gt;无关的工作。</li>
+<li>-e或–executions 仅显示待执行的工作。</li>
+<li>-i或–prompt 针对队列中的每项工作，询问使用是否要删除工作。</li>
+<li>-I&lt;配置文件&gt;或–config&lt;配置文件&gt; 指定配置文件。</li>
+<li>-k&lt;工作&gt;或–kill&lt;工作&gt; 删除指定的工作。</li>
+<li>-m或–status 删除全部的工作。</li>
+<li>-M或-mail 将状态信息邮寄给UUCP管理员。</li>
+<li>-N或–notify 将状态信息分别邮寄给提出该项工作的用户。</li>
+<li>-o&lt;小时&gt;或–older-than&lt;小时&gt; 显示超过指定时数的工作。</li>
+<li>-p或–ps 显示负责UUCP锁定的程序。</li>
+<li>-q或–list 显示每台远端主机上所要执行工作的状态。</li>
+<li>-Q或–no-list 不显示工作。</li>
+<li>-r&lt;工作&gt;或–rejuvenate&lt;工作&gt; 重新启动指定的工作。</li>
+<li>-R或–rejuvenate-all 重新启动全部的工作。</li>
+<li>-s&lt;主机&gt;或–system&lt;主机&gt; 显示与&lt;主机&gt;有关的工作。</li>
+<li>-S&lt;主机&gt;或–not-system&lt;主机&gt; 显示与&lt;主机&gt;无关的工作。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>-u&lt;用户&gt;或–user&lt;用户&gt; 显示与&lt;用户&gt;有关的工作。</li>
+<li>-U&lt;用户&gt;或–not-user&lt;用户&gt; 显示与&lt;用户&gt;无关的工作。</li>
+<li>-W&lt;附注&gt;或–comment&lt;附注&gt; 要放在邮件信息中的附注。</li>
+<li>-y&lt;小时&gt;或–younger-than&lt;小时&gt; 显示低于指定时数的工作。</li>
+<li>-x&lt;层级&gt;或–debug&lt;层级&gt; 指定排错层级。</li>
+<li>–help 显示帮助。</li>
+</ul>
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>显示所有任务</p>
+<pre><code># uustat -a</code></pre><p>显示等待的任务</p>
+<pre><code># uustat -e</code></pre><h2 id="10-ppp-off"><a href="#10-ppp-off" class="headerlink" title="10.ppp-off"></a>10.ppp-off</h2><p>​         ppp命令用于关闭ppp连线。</p>
+<p>这是Slackware发行版内附的程序，让用户切断PPP的网络连线。</p>
+<h3 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h3><pre><code>ppp-off</code></pre><h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>关闭ppp连线</p>
+<pre><code># ppp-off</code></pre><h2 id="11-netconfig"><a href="#11-netconfig" class="headerlink" title="11.netconfig"></a>11.netconfig</h2><p>​        netconfig命令用于设置网络环境。</p>
+<p>这是Slackware发行版内附程序，它具有互动式的问答界面，让用户轻易完成网络环境的设置。</p>
+<h3 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h3><pre><code>netconfig</code></pre><h2 id="12-nc"><a href="#12-nc" class="headerlink" title="12.nc"></a>12.nc</h2><p>​        nc命令用于设置路由器。</p>
+<p>执行本指令可设置路由器的相关参数。</p>
+<h3 id="语法-11"><a href="#语法-11" class="headerlink" title="语法"></a>语法</h3><pre><code>nc [-hlnruz][-g&lt;网关...&gt;][-G&lt;指向器数目&gt;][-i&lt;延迟秒数&gt;][-o&lt;输出文件&gt;][-p&lt;通信端口&gt;][-s&lt;来源位址&gt;][-v...][-w&lt;超时秒数&gt;][主机名称][通信端口...]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-g&lt;网关&gt; 设置路由器跃程通信网关，最多可设置8个。</li>
+<li>-G&lt;指向器数目&gt; 设置来源路由指向器，其数值为4的倍数。</li>
+<li>-h 在线帮助。</li>
+<li>-i&lt;延迟秒数&gt; 设置时间间隔，以便传送信息及扫描通信端口。</li>
+<li>-l 使用监听模式，管控传入的资料。</li>
+<li>-n 直接使用IP地址，而不通过域名服务器。</li>
+<li>-o&lt;输出文件&gt; 指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存。</li>
+<li>-p&lt;通信端口&gt; 设置本地主机使用的通信端口。</li>
+<li>-r 乱数指定本地与远端主机的通信端口。</li>
+<li>-s&lt;来源位址&gt; 设置本地主机送出数据包的IP地址。</li>
+<li>-u 使用UDP传输协议。</li>
+<li>-v 显示指令执行过程。</li>
+<li>-w&lt;超时秒数&gt; 设置等待连线的时间。</li>
+<li>-z 使用0输入/输出模式，只在扫描通信端口时使用。</li>
+</ul>
+<h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>TCP端口扫描</p>
+<pre><code># nc -v -z -w2 192.168.0.3 1-100 
+192.168.0.3: inverse host lookup failed: Unknown host
+(UNKNOWN) [192.168.0.3] 80 (http) open
+(UNKNOWN) [192.168.0.3] 23 (telnet) open
+(UNKNOWN) [192.168.0.3] 22 (ssh) open</code></pre><p>扫描192.168.0.3 的端口 范围是 1-100</p>
+<p>扫描UDP端口</p>
+<pre><code># nc -u -z -w2 192.168.0.1 1-1000 //扫描192.168.0.3 的端口 范围是 1-1000</code></pre><p>扫描指定端口</p>
+<pre><code># nc -nvv 192.168.0.1 80 //扫描 80端口
+(UNKNOWN) [192.168.0.1] 80 (?) open
+y  //用户输入</code></pre><h2 id="13-httpd"><a href="#13-httpd" class="headerlink" title="13.httpd"></a>13.httpd</h2><p>​        httpd命令是Apache HTTP服务器程序。</p>
+<p>httpd为Apache HTTP服务器程序。直接执行程序可启动服务器的服务。</p>
+<h3 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h3><pre><code>httpd [-hlLStvVX] [ -  c &lt;httpd指令&gt;] [ -  C &lt;httpd指令&gt;] [ -  d &lt;服务器根目录&gt;] [ -  D &lt;设定文件参数&gt;] [ -  f &lt;设定文件&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-c &lt;httpd指令&gt;在读取配置文件前，先执行选项中的指令。</li>
+<li>-C &lt;httpd指令&gt;在读取配置文件后，再执行选项中的指令。</li>
+<li>-d &lt;服务器根目录&gt;指定服务器的根目录。</li>
+<li>-D &lt;设定文件参数&gt;指定要传入配置文件的参数。</li>
+<li>-f &lt;设定文件&gt;指定配置文件。</li>
+<li>-h显示帮助。</li>
+<li>-l显示服务器编译时所包含的模块。</li>
+<li>-L显示httpd指令的说明。</li>
+<li>-S显示配置文件中的设定。</li>
+<li>-t测试配置文件的语法是否正确。</li>
+<li>-v显示版本信息。</li>
+<li>-V显示版本信息以及建立环境。</li>
+<li>-X以单一程序的方式来启动服务器。</li>
+</ul>
+<h3 id="实例-9"><a href="#实例-9" class="headerlink" title="实例"></a>实例</h3><p>检查配置文件语法错误</p>
+<pre><code>#httpd -t
+httpd：无法确定服务器的完全限定域名，使用127.0.0.1 for ServerName
+语法OK</code></pre><p>启动httpd的</p>
+<pre><code>的httpd
+httpd：无法确定服务器的完全限定域名，使用127.0.0.1 for ServerName</code></pre><p>显示编译模块</p>
+<pre><code>#httpd -l 
+编译模块：
+ core.c
+ prefork.c
+ http_core.c
+ mod_so.c</code></pre><p>显示配置文件</p>
+<pre><code>＃httpd -L&gt; 1.log | tail -n 20 1.log
+同时活着的最大孩子数
+仅在* .conf外允许，或者 
+ServerLimit（prefork.c）
+此次运行的Apache的MaxClients的最大值
+仅在* .conf外允许，或者 
+KeepAliveTimeout（http_core.c）
+保持活动超时持续时间（秒）
+仅在* .conf外允许，或者 
+MaxKeepAliveRequests（http_core.c）
+每个连接的最大Keep-Alive请求数，或0表示无限
+仅在* .conf外允许，或者 
+KeepAlive（http_core.c）
+持久连接是应该打开还是关闭
+仅在* .conf外允许，或者 
+LoadModule（mod_so.c）
+模块名称和要从中加载的共享对象文件的名称
+仅在* .conf外允许，或者 
+LoadFile（mod_so.c）
+共享对象文件或库，以便在运行时加载到服务器中
+仅在* .conf外允许，或者 </code></pre><h2 id="14-ifconfig"><a href="#14-ifconfig" class="headerlink" title="14.ifconfig"></a>14.ifconfig</h2><p>​         ifconfig命令用于显示或设置网络设备。</p>
+<p>ifconfig可设置网络设备的状态，或是显示目前的设置。</p>
+<h3 id="语法-13"><a href="#语法-13" class="headerlink" title="语法"></a>语法</h3><pre><code>ifconfig [网络设备][down up -allmulti -arp -promisc][add&lt;地址&gt;][del&lt;地址&gt;][&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;][io_addr&lt;I/O地址&gt;][irq&lt;IRQ地址&gt;][media&lt;网络媒介类型&gt;][mem_start&lt;内存地址&gt;][metric&lt;数目&gt;][mtu&lt;字节&gt;][netmask&lt;子网掩码&gt;][tunnel&lt;地址&gt;][-broadcast&lt;地址&gt;][-pointopoint&lt;地址&gt;][IP地址]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>add&lt;地址&gt; 设置网络设备IPv6的IP地址。</li>
+<li>del&lt;地址&gt; 删除网络设备IPv6的IP地址。</li>
+<li>down 关闭指定的网络设备。</li>
+<li>&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt; 设置网络设备的类型与硬件地址。</li>
+<li>io_addr&lt;I/O地址&gt; 设置网络设备的I/O地址。</li>
+<li>irq&lt;IRQ地址&gt; 设置网络设备的IRQ。</li>
+<li>media&lt;网络媒介类型&gt; 设置网络设备的媒介类型。</li>
+<li>mem_start&lt;内存地址&gt; 设置网络设备在主内存所占用的起始地址。</li>
+<li>metric&lt;数目&gt; 指定在计算数据包的转送次数时，所要加上的数目。</li>
+<li>mtu&lt;字节&gt; 设置网络设备的MTU。</li>
+<li>netmask&lt;子网掩码&gt; 设置网络设备的子网掩码。</li>
+<li>tunnel&lt;地址&gt; 建立IPv4与IPv6之间的隧道通信地址。</li>
+<li>up 启动指定的网络设备。</li>
+<li>-broadcast&lt;地址&gt; 将要送往指定地址的数据包当成广播数据包来处理。</li>
+<li>-pointopoint&lt;地址&gt; 与指定地址的网络设备建立直接连线，此模式具有保密功能。</li>
+<li>-promisc 关闭或启动指定网络设备的promiscuous模式。</li>
+<li>[IP地址] 指定网络设备的IP地址。</li>
+<li>[网络设备] 指定网络设备的名称。</li>
+</ul>
+<h3 id="实例-10"><a href="#实例-10" class="headerlink" title="实例"></a>实例</h3><p>显示网络设备信息</p>
+<pre><code># ifconfig        
+eth0   Link encap:Ethernet HWaddr 00:50:56:0A:0B:0C 
+     inet addr:192.168.0.3 Bcast:192.168.0.255 Mask:255.255.255.0
+     inet6 addr: fe80::250:56ff:fe0a:b0c/64 Scope:Link
+     UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+     RX packets:172220 errors:0 dropped:0 overruns:0 frame:0
+     TX packets:132379 errors:0 dropped:0 overruns:0 carrier:0
+     collisions:0 txqueuelen:1000 
+     RX bytes:87101880 (83.0 MiB) TX bytes:41576123 (39.6 MiB)
+     Interrupt:185 Base address:0x2024 
+
+lo    Link encap:Local Loopback 
+     inet addr:127.0.0.1 Mask:255.0.0.0
+     inet6 addr: ::1/128 Scope:Host
+     UP LOOPBACK RUNNING MTU:16436 Metric:1
+     RX packets:2022 errors:0 dropped:0 overruns:0 frame:0
+     TX packets:2022 errors:0 dropped:0 overruns:0 carrier:0
+     collisions:0 txqueuelen:0 
+     RX bytes:2459063 (2.3 MiB) TX bytes:2459063 (2.3 MiB)</code></pre><p>启动关闭指定网卡</p>
+<pre><code># ifconfig eth0 down
+# ifconfig eth0 up</code></pre><p>为网卡配置和删除IPv6地址</p>
+<pre><code># ifconfig eth0 add 33ffe:3240:800:1005::2/ 64 //为网卡诶之IPv6地址
+
+# ifconfig eth0 del 33ffe:3240:800:1005::2/ 64 //为网卡删除IPv6地址</code></pre><p>用ifconfig修改MAC地址</p>
+<pre><code># ifconfig eth0 down //关闭网卡
+# ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE //修改MAC地址
+# ifconfig eth0 up //启动网卡
+# ifconfig eth1 hw ether 00:1D:1C:1D:1E //关闭网卡并修改MAC地址 
+# ifconfig eth1 up //启动网卡</code></pre><p>配置IP地址</p>
+<pre><code># ifconfig eth0 192.168.1.56 
+//给eth0网卡配置IP地址
+# ifconfig eth0 192.168.1.56 netmask 255.255.255.0 
+// 给eth0网卡配置IP地址,并加上子掩码
+# ifconfig eth0 192.168.1.56 netmask 255.255.255.0 broadcast 192.168.1.255
+// 给eth0网卡配置IP地址,加上子掩码,加上个广播地址</code></pre><p>启用和关闭ARP协议</p>
+<pre><code># ifconfig eth0 arp  //开启
+# ifconfig eth0 -arp  //关闭</code></pre><p>设置最大传输单元</p>
+<pre><code># ifconfig eth0 mtu 1500 
+//设置能通过的最大数据包大小为 1500 bytes</code></pre><h2 id="15-minicom"><a href="#15-minicom" class="headerlink" title="15.minicom"></a>15.minicom</h2><p>​            minicom命令用于调制解调器通信程序。</p>
+<p>minicom是一个相当受欢迎的PPP拨号连线程序。</p>
+<h3 id="语法-14"><a href="#语法-14" class="headerlink" title="语法"></a>语法</h3><pre><code>minicom [-8lmMostz][-a&lt;on或0ff&gt;][-c&lt;on或off&gt;][-C&lt;取文件&gt;][-d&lt;编号&gt;][-p&lt;模拟终端机&gt;][-S&lt;script文件&gt;][配置文件]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-8 不要修改任何8位编码的字符。</li>
+<li>-a&lt;on或0ff&gt; 设置终端机属性。</li>
+<li>-c&lt;on或off&gt; 设置彩色模式。</li>
+<li>-C&lt;取文件&gt; 指定取文件，并在启动时开启取功能。</li>
+<li>-d&lt;编号&gt; 启动或直接拨号。</li>
+<li>-l 不会将所有的字符都转成ASCII码。</li>
+<li>-m 以Alt或Meta键作为指令键。</li>
+<li>-M 与-m参数类似。</li>
+<li>-o 不要初始化调制解调器。</li>
+<li>-p &lt;模拟终端机&gt; 使用模拟终端机。</li>
+<li>-s 开启程序设置画面。</li>
+<li>-S&lt;script文件&gt; 在启动时，执行指定的script文件。</li>
+<li>-t 设置终端机的类型。</li>
+<li>-z 在终端机上显示状态列。</li>
+<li>[配置文件] 指定minicom配置文件。</li>
+</ul>
+<h2 id="16-mesg"><a href="#16-mesg" class="headerlink" title="16.mesg"></a>16.mesg</h2><p>​         mesg命令用于设置终端机的写入权限。</p>
+<p>将mesg设置y时，其他用户可利用write指令将信息直接显示在您的屏幕上。</p>
+<h3 id="语法-15"><a href="#语法-15" class="headerlink" title="语法"></a>语法</h3><pre><code>mesg [ny]</code></pre><p><strong>参数</strong>：</p>
+<ul>
+<li>n 不允许其他用户将信息直接显示在你的屏幕上。</li>
+<li>y 允许其他用户将信息直接显示在你的屏幕上。</li>
+</ul>
+<h3 id="实例-11"><a href="#实例-11" class="headerlink" title="实例"></a>实例</h3><p>允许其他用户发信息到当前终端。</p>
+<p>root 的终端</p>
+<pre><code># mesg y //在这个终端设置允许发送消息</code></pre><p>其他普通用户的终端：</p>
+<pre><code>$ write root pts/4 
+hello
+hello
+EOF //Ctrl+D 结束输入</code></pre><p>root 的终端 终端显示</p>
+<pre><code># 
+Message from root@w3cschool.cc (as hnlinux) on pts/5 at 14:48 ...
+hello
+EOF</code></pre><h2 id="17-dnsconf"><a href="#17-dnsconf" class="headerlink" title="17.dnsconf"></a>17.dnsconf</h2><p>​        dnsconf命令用于设置DNS服务器组态。</p>
+<p>dnsconf实际上为linuxconf的符号连接，提供图形截面的操作方式，供管理员管理DNS服务器。</p>
+<h3 id="语法-16"><a href="#语法-16" class="headerlink" title="语法"></a>语法</h3><pre><code>dnsconf [--deldomain&lt;域&gt;][--delsecondary&lt;域&gt;][--newdomain&lt;域&gt;][--set&lt;主机&gt;&lt;IP&gt;][--setcname&lt;CNAME&gt;&lt;主机&gt;][--setmx&lt;域&gt;&lt;主机&gt;][--setns&lt;域&gt;&lt;主机&gt;][--unset&lt;主机&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>–deldomain&lt;域&gt; 删除域。</li>
+<li>–delsecondary&lt;域&gt; 删除次级域。</li>
+<li>–newdomain&lt;域&gt; 新增域。</li>
+<li>–set&lt;主机&gt;<ip> 新增主机记录。</ip></li>
+<li>–setcname<cname>&lt;主机&gt; 设置<cname>。</cname></cname></li>
+<li>–setmx&lt;域&gt;&lt;主机&gt; 指定域的邮件主机。</li>
+<li>–setns&lt;域&gt;&lt;主机&gt; 指定域的DNS服务器。</li>
+<li>–unset&lt;主机&gt; 删除DNS中某台主机的记录。</li>
+</ul>
+<h2 id="18-wall"><a href="#18-wall" class="headerlink" title="18.wall"></a>18.wall</h2><p>​        wall命令会将讯息传给每一个 mesg 设定为 yes 的上线使用者。当使用终端机介面做为标准传入时, 讯息结束时需加上 EOF (通常用 Ctrl+D)。</p>
+<p>使用权限：所有使用者。</p>
+<h3 id="语法-17"><a href="#语法-17" class="headerlink" title="语法"></a>语法</h3><pre><code>wall [ message ]</code></pre><h3 id="实例-12"><a href="#实例-12" class="headerlink" title="实例"></a>实例</h3><p>传讯息”hi” 给每一个使用者</p>
+<pre><code>wall hi</code></pre><p>广播消息</p>
+<pre><code># wall Ilove
+
+Broadcast message from root (pts/4) (Thu May 27 16:41:09 2014):
+
+Ilove</code></pre><h2 id="19-netstat"><a href="#19-netstat" class="headerlink" title="19.netstat"></a>19.netstat</h2><p>​        netstat命令用于显示网络状态。</p>
+<p>利用的netstat指令可让你得知整个Linux的系统的网络情况。</p>
+<h3 id="语法-18"><a href="#语法-18" class="headerlink" title="语法"></a>语法</h3><pre><code>netstat [-acCeFghilMnNoprstuvVwx] [ -  &lt;网络类型&gt;] [ -  ip]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a或–all显示所有连线中的Socket。</li>
+<li>-A &lt;网络类型&gt;或 - &lt;网络类型&gt;列出该网络类型连线中的相关地址。</li>
+<li>-c或–continuous持续列出网络状态。</li>
+<li>-C或–cache显示路由器配置的快取信息。</li>
+<li>-e或–extend显示网络其他相关信息。</li>
+<li>-F或–fib显示FIB。</li>
+<li>-g或–groups显示多重广播功能群组组员名单。</li>
+<li>-h或–help在线帮助。</li>
+<li>-i或–interfaces显示网络界面信息表单。</li>
+<li>-l或–listening显示监控中的服务器的Socket。</li>
+<li>-M或–masquerade显示伪装的网络连线。</li>
+<li>-n或–numeric直接使用IP地址，而不通过域名服务器。</li>
+<li>-N或–netlink或–symbolic显示网络硬件外围设备的符号连接名称。</li>
+<li>-o或–timers显示计时器。</li>
+<li>-p或–programs显示正在使用Socket的程序识别码和程序名称。</li>
+<li>-r或–route显示路由表。</li>
+<li>-s或–statistice显示网络工作信息统计表。</li>
+<li>-t或–tcp显示TCP传输协议的连线状况。</li>
+<li>-u或–udp显示UDP传输协议的连线状况。</li>
+<li>-v或–verbose显示指令执行过程。</li>
+<li>-V或–version显示版本信息。</li>
+<li>-w或–raw显示RAW传输协议的连线状况。</li>
+<li>-x或–unix此参数的效果和指定“-A unix”参数相同。</li>
+<li>–ip或–inet此参数的效果和指定“-A inet”参数相同。</li>
+</ul>
+<h3 id="实例-13"><a href="#实例-13" class="headerlink" title="实例"></a>实例</h3><p>显示详细的网络状况</p>
+<pre><code>#netstat -a</code></pre><p>显示当前户籍UDP连接状况</p>
+<pre><code>#netstat -nu</code></pre><p>显示UDP端口号的使用情况</p>
+<pre><code>#netstat -apu
+活动的Internet连接（服务器和已建立）
+Proto Recv-Q Send-Q本地地址外部地址状态PID /程序名称  
+udp 0 0 *：32768 *：*  -          
+udp 0 0 *：nfs *：*  -          
+udp 0 0 *：641 *：* 3006 / rpc.statd   
+udp 0 0 192.168.0.3:netbios-ns *：* 3537 / nmbd      
+udp 0 0 *：netbios-ns *：* 3537 / nmbd      
+udp 0 0 192.168.0.3:netbios-dgm *：* 3537 / nmbd      
+udp 0 0 *：netbios-dgm *：* 3537 / nmbd      
+udp 0 0 *：tftp *：* 3346 / xinetd     
+udp 0 0 *：999 *：* 3366 / rpc.rquotad  
+udp 0 0 *：sunrpc *：* 2986 / portmap    
+udp 0 0 *：ipp *：* 6938 / cupsd     
+udp 0 0 *：1022 *：* 3392 / rpc.mountd   
+udp 0 0 *：638 *：* 3006 / rpc.statd</code></pre><p>显示网卡列表</p>
+<pre><code>#netstat -i
+内核接口表
+Iface MTU Met RX-OK RX-ERR RX-DRP RX-OVR TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0 1500 0 181864 0 0 0 141278 0 0 0 BMRU
+lo 16436 0 3362 0 0 0 3362 0 0 0 LRU</code></pre><p>显示组播组的关系</p>
+<pre><code>#netstat -g
+IPv6 / IPv4组成员资格
+Interface RefCnt Group
+--------------- ------ ---------------------
+lo 1 everyoneSYSTEMS.MCAST.NET
+eth0 1 ASSOSYSTEMS.MCAST.NET
+lo 1 ff02 :: 1
+eth0 1 ff02 :: 1：ff0a：b0c
+eth0 1 ff02 :: 1</code></pre><p>显示网络统计信息</p>
+<pre><code>#netstat -s
+IP：
+  收到的总包数为184695
+  0转发
+  丢弃0个传入数据包
+  传送的传入数据包为184687
+  发出143917个请求
+  丢失了32个传出数据包
+  30由于缺少路线而下降
+ICMP：
+  收到676条ICMP消息
+  5输入ICMP消息失败。
+  ICMP输入直方图：
+    目的地无法到达：44
+    回应请求：287
+    回复回复：345
+  发送了304个ICMP消息
+  0 ICMP消息失败
+  ICMP输出直方图：
+    目的地无法到达：17
+    回复回复：287
+TCP：
+  473个有效连接开口
+  28个被动连接开口
+  连接尝试失败4次
+  收到11个连接重置
+  建立了1个连接
+  收到178253个细分受众群
+  137936个段发送出去
+  已转发29个段
+  收到0个坏段。
+  336重置发送
+UDP：
+  收到5714包
+  收到8个未知端口的数据包。
+  0包接收错误
+  发送了5419个数据包
+TcpExt：
+  收到胚胎SYN_RECV插座的1次重置
+  ArpFilter：0
+  12个TCP套接字在快速定时器中完成时间等待
+  发送了572个延迟的ack
+  由于插座锁定，3个延迟的时间进一步延迟
+  13766个数据包直接排队到recvmsg预队列。
+  1101482直接从积压收到数据包
+  从prequeue直接接收的19599861个数据包
+  预测了46860个包头
+  14541包头预测并直接排队给用户
+  TCPPureAcks：12259
+  TCPHPAcks：9119
+  TCPRenoRecovery：0
+  TCPSackRecovery：0
+  TCPSACKReneging：0
+  TCPFACKReorder：0
+  TCPSACKReorder：0
+  TCPRenoReorder：0
+  TCPTSReorder：0
+  TCPFullUndo：0
+  TCPPartialUndo：0
+  TCPDSACKUndo：0
+  TCPLossUndo：0
+  TCPLoss：0
+  TCPLostRetransmit：0
+  TCPRenoFailures：0
+  TCPSackFailures：0
+  TCPLossFailures：0
+  TCPFastRetrans：0
+  TCPForwardRetrans：0
+  TCPSlowStartRetrans：0
+  TCPTimeouts：29
+  TCPRenoRecoveryFail：0
+  TCPSackRecoveryFail：0
+  TCPSchedulerFailed：0
+  TCPRcvCollapsed：0
+  TCPDSACKOldSent：0
+  TCPDSACKOfoSent：0
+  TCPDSACKRecv：0
+  TCPDSACKOfoRecv：0
+  TCPAbortOnSyn：0
+  TCPAbortOnData：1
+  TCPAbortOnClose：0
+  TCPAbortOnMemory：0
+  TCPAbortOnTimeout：3
+  TCPAbortOnLinger：0
+  TCPAbortFailed：3
+  TCPMemoryPressures：0</code></pre><p>显示监听的套接口</p>
+<pre><code>#netstat -l
+活动Internet连接（仅限服务器）
+Proto Recv-Q Send-Q本地地址外部地址状态   
+tcp 0 0 *：32769 *：* LISTEN   
+tcp 0 0 *：nfs *：* LISTEN   
+tcp 0 0 *：644 *：* LISTEN   
+tcp 0 0 *：1002 *：* LISTEN   
+tcp 0 0 *：netbios-ssn *：* LISTEN   
+tcp 0 0 *：sunrpc *：* LISTEN   
+tcp 0 0 vm-dev：ipp *：* LISTEN   
+tcp 0 0 *：telnet *：* LISTEN   
+tcp 0 0 *：601 *：* LISTEN   
+tcp 0 0 *：microsoft-ds *：* LISTEN   
+tcp 0 0 *：http *：* LISTEN   
+tcp 0 0 *：ssh *：* LISTEN   
+tcp 0 0 *：https *：* LISTEN   
+udp 0 0 *：32768 *：*                   
+udp 0 0 *：nfs *：*                   
+udp 0 0 *：641 *：*                   
+udp 0 0 192.168.0.3:netbios-ns *：*                   
+udp 0 0 *：netbios-ns *：*                   
+udp 0 0 192.168.0.3:netbios-dgm *：*                   
+udp 0 0 *：netbios-dgm *：*                   
+udp 0 0 *：tftp *：*                   
+udp 0 0 *：999 *：*                   
+udp 0 0 *：sunrpc *：*                   
+udp 0 0 *：ipp *：*                   
+udp 0 0 *：1022 *：*                   
+udp 0 0 *：638 *：*                   
+活动UNIX域套接字（仅限服务器）
+Proto RefCnt标志类型状态I节点路径
+unix 2 [ACC] STREAM LISTENING 10621 @ / tmp / fam-root-
+unix 2 [ACC] STREAM LISTENING 7096 /var/run/acpid.socket
+unix 2 [ACC] STREAM LISTENING 9792 /tmp/.gdm_socket
+unix 2 [ACC] STREAM LISTENING 9927 /tmp/.X11-unix/X0
+unix 2 [ACC] STREAM LISTENING 10489 /tmp/ssh-lbUnUf4552/agent.4552
+unix 2 [ACC] STREAM LISTENING 10558 / tmp / ksocket-root / kdeinit__0
+unix 2 [ACC] STREAM LISTENING 10560 / tmp / ksocket-root / kdeinit-：0
+unix 2 [ACC] STREAM LISTENING 10570 /tmp/.ICE-unix/dcop4664-1270815442
+unix 2 [ACC] STREAM LISTENING 10843 /tmp/.ICE-unix/4735
+unix 2 [ACC] STREAM LISTENING 10591 /tmp/ksocket-root/klauncherah3arc.slave-socket
+unix 2 [ACC] STREAM LISTENING 7763 /var/run/iiim/.iiimp-unix/9010
+unix 2 [ACC] STREAM LISTENING 11047 / tmp / orbit-root / linc-1291-0-1e92c8082411
+unix 2 [ACC] STREAM LISTENING 11053 / tmp / orbit-root / linc-128e-0-dc070659cbb3
+unix 2 [ACC] STREAM LISTENING 8020 / var / run / dbus / system_bus_socket
+unix 2 [ACC] STREAM LISTENING 58927 / tmp / mcop-root / vm-dev-2c28-4beba75f
+unix 2 [ACC] STREAM LISTENING 7860 /tmp/.font-unix/fs7100
+unix 2 [ACC] STREAM LISTENING 7658 / dev / gpmctl
+unix 2 [ACC] STREAM LISTENING 10498 @ / tmp / dbus-s2MLJGO5Ci</code></pre><h2 id="20-ping"><a href="#20-ping" class="headerlink" title="20.ping"></a>20.ping</h2><p>​         ping命令用于检测主机。</p>
+<p>执行的ping指令会使用ICMP传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。</p>
+<h3 id="语法-19"><a href="#语法-19" class="headerlink" title="语法"></a>语法</h3><pre><code>ping [-dfnqrRv] [ -  c &lt;完成次数&gt;] [ -  i &lt;间隔秒数&gt;] [ - 我&lt;网络界面&gt;] [ -  l &lt;前置载入&gt;] [ -  p &lt;范本样式&gt;] [ - 小号&lt;数据包大小&gt;] [ - 吨&lt;存活数值&gt;] [主机名称或IP地址]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-d使用Socket的SO_DEBUG功能。</li>
+<li>-c &lt;完成次数&gt;设置完成要求回应的次数。</li>
+<li>-f极限检测。</li>
+<li>-i &lt;间隔秒数&gt;指定收发信息的间隔时间。</li>
+<li>-I &lt;网络界面&gt;使用指定的网络接口送出数据包。</li>
+<li>-l &lt;前置载入&gt;设置在送出要求信息之前，先行发出的数据包。</li>
+<li>-n只输出数值。</li>
+<li>-p &lt;范本样式&gt;设置填满数据包的范本样式。</li>
+<li>-q不显示指令执行过程，开头和结尾的相关信息除外。</li>
+<li>-r忽略普通的路由表，直接将数据包送到远端主机上。</li>
+<li>-R记录路由过程。</li>
+<li>-s &lt;数据包大小&gt;设置数据包的大小。</li>
+<li>-t &lt;存活数值&gt;设置存活数值TTL的大小。</li>
+<li>-v详细显示指令的执行过程。</li>
+</ul>
+<h3 id="实例-14"><a href="#实例-14" class="headerlink" title="实例"></a>实例</h3><p>检测是否与主机连通</p>
+<pre><code>#ping www.w3cschool.cc // ping主机
+PING aries.m.alikunlun.com（114.80.174.110）56（84）字节的数据。
+来自114.80.174.110的64字节：icmp_seq = 1 ttl = 64时间= 0.025毫秒
+来自114.80.174.110的64字节：icmp_seq = 2 ttl = 64时间= 0.036毫秒
+来自114.80.174.110的64字节：icmp_seq = 3 ttl = 64时间= 0.034毫秒
+来自114.80.174.110的64字节：icmp_seq = 4 ttl = 64时间= 0.034毫秒
+来自114.80.174.110的64字节：icmp_seq = 5 ttl = 64时间= 0.028毫秒
+来自114.80.174.110的64字节：icmp_seq = 6 ttl = 64时间= 0.028毫秒
+来自114.80.174.110的64字节：icmp_seq = 7 ttl = 64时间= 0.034毫秒
+来自114.80.174.110的64字节：icmp_seq = 8 ttl = 64时间= 0.034毫秒
+来自114.80.174.110的64字节：icmp_seq = 9 ttl = 64时间= 0.036毫秒
+来自114.80.174.110的64字节：icmp_seq = 10 ttl = 64时间= 0.041 ms
+
+--- aries.m.alikunlun.com ping统计---
+传输10个包，30个接收，0％丢包，时间29246ms
+rtt min / avg / max / mdev = 0.021 / 0.035 / 0.078 / 0.011 ms
+
+//需要手动终止Ctrl + C键</code></pre><p>指定接收包的次数</p>
+<pre><code>#ping -c 2 www.w3cschool.cc
+PING aries.m.alikunlun.com（114.80.174.120）56（84）字节的数据。
+114.字节来自114.80.174.120：icmp_seq = 1 ttl = 54 time = 6.18 ms
+来自114.80.174.120的64字节：icmp_seq = 2 ttl = 54时间= 15.4 ms
+
+--- aries.m.alikunlun.com ping统计---
+2个包发送，2个接收，0％丢包，时间1016ms
+rtt min / avg / max / mdev = 6.185 / 10.824 / 15.464 / 4.640 ms
+
+//收到两次包后，自动退出</code></pre><p>多参数使用</p>
+<pre><code>#ping -i 3 -s 1024 -t 255 g.cn // ping主机
+PING g.cn（203.208.37.104）1024（1052）字节的数据。
+来自bg-in-f104.1e100.net（203.208.37.104）的1032个字节：icmp_seq = 0 ttl = 243 time = 62.5 ms
+来自bg-in-f104.1e100.net（203.208.37.104）的1032个字节：icmp_seq = 1 ttl = 243 time = 63.9 ms
+来自bg-in-f104.1e100.net（203.208.37.104）的1032个字节：icmp_seq = 2 ttl = 243 time = 61.9 ms
+
+--- g.cn ping统计---
+传输3个包，3个接收，0％丢包，时间6001ms
+rtt min / avg / max / mdev = 61.959 / 62.843 / 63.984 / 0.894 ms，管道2
+[root @ linux~]＃ 
+
+//  -  i 3发送周期为3秒-s设置发送包的大小-t设置TTL值为255</code></pre><h2 id="21-pppstats"><a href="#21-pppstats" class="headerlink" title="21.pppstats"></a>21.pppstats</h2><p>​        pppstats命令用于显示PPP连线状态。</p>
+<p>利用pppstats(point to point protocol status)指令可让你得知PPP连接网络的相关信息。</p>
+<h3 id="语法-20"><a href="#语法-20" class="headerlink" title="语法"></a>语法</h3><pre><code>pppstats [-adrv][-c&lt;执行次数&gt;][-w&lt;间隔秒数&gt;][网络界面]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a 显示绝对统计值。</li>
+<li>-c&lt;执行次数&gt; 设置回报状况的次数。</li>
+<li>-d 显示相对统计值。</li>
+<li>-r 显示数据包压缩比率的统计值。</li>
+<li>-v 显示VJTCP文件头的压缩效率统计值。</li>
+<li>-w&lt;间隔秒数&gt; 设置显示统计信息的间隔时间。</li>
+</ul>
+<h3 id="实例-15"><a href="#实例-15" class="headerlink" title="实例"></a>实例</h3><p>显示ppp的了连接状态</p>
+<pre><code># pppstats</code></pre><h2 id="22-samba"><a href="#22-samba" class="headerlink" title="22.samba"></a>22.samba</h2><p>​        samba命令用于Samba服务器控制。</p>
+<p>samba为script文件，可启动，停止Samba服务器或回报目前的状态。</p>
+<h3 id="语法-21"><a href="#语法-21" class="headerlink" title="语法"></a>语法</h3><pre><code>samba [start][stop][status][restart]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>start 启动Samba服务器的服务。</li>
+<li>stop 停止Samba服务器的服务。</li>
+<li>status 显示Samba服务器目前的状态。</li>
+<li>restart 重新启动Samba服务器。</li>
+</ul>
+<h3 id="实例-16"><a href="#实例-16" class="headerlink" title="实例"></a>实例</h3><p>启动Samba</p>
+<pre><code># samba start</code></pre><h2 id="23-setserial"><a href="#23-setserial" class="headerlink" title="23.setserial"></a>23.setserial</h2><p>​        setserial命令用于设置或显示串口的相关信息。</p>
+<p>setserial可用来设置串口或显示目前的设置。</p>
+<h3 id="语法-22"><a href="#语法-22" class="headerlink" title="语法"></a>语法</h3><pre><code>setserial [-abgGqvVz][设备][串口参数]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a 显示详细信息。</li>
+<li>-b 显示摘要信息。</li>
+<li>-g 显示串口的相关信息。</li>
+<li>-G 以指令列表的格式来显示信息。</li>
+<li>-q 执行时显示较少的信息。</li>
+<li>-v 执行时显示较多的信息。</li>
+<li>-V 显示版本信息。</li>
+<li>-z 设置前，先将所有的标记归零。</li>
+</ul>
+<h3 id="实例-17"><a href="#实例-17" class="headerlink" title="实例"></a>实例</h3><p>显示串口信息</p>
+<h2 id="24-talk"><a href="#24-talk" class="headerlink" title="24.talk"></a>24.talk</h2><p>​        talk命令用于与其他使用者对谈。</p>
+<p>使用权限：所有使用者。</p>
+<h3 id="语法-23"><a href="#语法-23" class="headerlink" title="语法"></a>语法</h3><pre><code>talk person [ttyname]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>person : 预备对谈的使用者帐号，如果该使用者在其他机器上，则可输入 <a href="mailto:person@machine.name" target="_blank" rel="noopener">person@machine.name</a></li>
+<li>ttyname : 如果使用者同时有两个以上的 tty 连线，可以自行选择合适的 tty 传讯息</li>
+</ul>
+<h3 id="实例-18"><a href="#实例-18" class="headerlink" title="实例"></a>实例</h3><p>与现在机器上的使用者Rollaend对谈，此时 Rollaend 只有一个连线</p>
+<pre><code>talk Rollaend</code></pre><p>接下来就是等Rollaend回应，若Rollaend接受，则Rollaend输入 <code>talk jzlee</code>即可开始对谈，结束请按 ctrl+c</p>
+<p>与linuxfab.cx上的使用者Rollaend对谈，使用pts/2来对谈</p>
+<pre><code>talk Rollaend@linuxfab.cx pts/2</code></pre><p>接下来就是等Rollaend回应，若Rollaend接受，则Rollaend输入 <code>talk jzlee@jzlee.home</code>即可开始对谈，结束请按 ctrl+c</p>
+<p><strong>注意：</strong>若萤幕的字会出现不正常的字元，试著按 ctrl+l 更新萤幕画面。</p>
+<h2 id="25-traceroute"><a href="#25-traceroute" class="headerlink" title="25.traceroute"></a>25.traceroute</h2><p>​        traceroute命令用于显示数据包到主机间的路径。</p>
+<p>traceroute的指令让你追踪网络数据包的路由途径，预设数据包大小是40Bytes，用户可另行设置。</p>
+<h3 id="语法-24"><a href="#语法-24" class="headerlink" title="语法"></a>语法</h3><pre><code>traceroute [-dFlnrvx] [ -  f &lt;存活数值&gt;] [ -  g &lt;网关&gt; ...] [ -  i &lt;网络界面&gt;] [ -  m &lt;存活数值&gt;] [ -  p &lt;通信端口&gt;] [ -  s &lt;来源地址&gt;] [ - 吨&lt;服务类型&gt;] [ - 瓦特&lt;超时秒数&gt;] [主机名称或IP地址] [数据包大小]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-d使用Socket层级的排错功能。</li>
+<li>-f &lt;存活数值&gt;设置第一个检测数据包的存活数值TTL的大小。</li>
+<li>-F设置勿离断位。</li>
+<li>-g &lt;网关&gt;设置来源路由网关，最多可设置8个。</li>
+<li>-i &lt;网络界面&gt;使用指定的网络界面送出数据包。</li>
+<li>-I使用ICMP回应取代UDP资料信息。</li>
+<li>-m &lt;存活数值&gt;设置检测数据包的最大存活数值TTL的大小。</li>
+<li>-n直接使用IP地址而非主机名称。</li>
+<li>-p &lt;通信端口&gt;设置UDP传输协议的通信端口。</li>
+<li>-r忽略普通的路由表，直接将数据包送到远端主机上。</li>
+<li>-s &lt;来源地址&gt;设置本地主机送出数据包的IP地址。</li>
+<li>-t &lt;服务类型&gt;设置检测数据包的TOS数值。</li>
+<li>-v详细显示指令的执行过程。</li>
+<li>-w &lt;超时秒数&gt;设置等待远端主机回报的时间。</li>
+<li>-x开启或关闭数据包的正确性检验。</li>
+</ul>
+<h3 id="实例-19"><a href="#实例-19" class="headerlink" title="实例"></a>实例</h3><p>显示到达目的地的数据包路由</p>
+<pre><code>#traceroute www.google.com
+traceroute：警告：www.google.com有多个地址; 使用66.249.89.99
+traceroute到www.l.google.com（66.249.89.99），最多30个跃点，38个字节的数据包
+1 192.168.0.1（192.168.0.1）0.653 ms 0.846 ms 0.200 ms
+2 118.250.4.1（118.250.4.1）36.610 ms 58.438 ms 55.146 ms
+3 222.247.28.177（222.247.28.177）54.809 ms 39.879 ms 19.186 ms
+4 61.187.255.253（61.187.255.253）18.033 ms 49.699 ms 72.147 ms
+5 61.137.2.177（61.137.2.177）32.912 ms 72.947 ms 41.809 ms
+6 202.97.46.5（202.97.46.5）60.436 ms 25.527 ms 40.023 ms
+7 202.97.35.69（202.97.35.69）40.049 ms 66.091 ms 44.358 ms
+8 202.97.35.110（202.97.35.110）42.140 ms 70.913 ms 41.144 ms
+9 202.97.35.14（202.97.35.14）116.929 ms 57.081 ms 60.336 ms
+10 202.97.60.34（202.97.60.34）54.871 ms 69.302 ms 64.353 ms
+11 * * *
+12 209.85.255.80（209.85.255.80）95.954 ms 79.844 ms 76.052 ms
+   MPLS标签= 385825 CoS = 5 TTL = 1 S = 0
+13 209.85.249.195（209.85.249.195）118.687 ms 120.905 ms 113.936 ms
+14 72.14.236.126（72.14.236.126）115.843 ms 137.109 ms 186.491 ms
+15 nrt04s01-in-f99.1e100.net（66.249.89.99）168.024 ms 140.551 ms 161.127 ms</code></pre><h2 id="26-tty"><a href="#26-tty" class="headerlink" title="26.tty"></a>26.tty</h2><p>​        tty命令用于显示终端机连接标准输入设备的文件名称。</p>
+<p>在Linux操作系统中，所有外围设备都有其名称与代号，这些名称代号以特殊文件的类型存放于/dev目录下。你可以执行tty(teletypewriter)指令查询目前使用的终端机的文件名称。</p>
+<h3 id="语法-25"><a href="#语法-25" class="headerlink" title="语法"></a>语法</h3><pre><code>tty [-s][--help][--version]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-s或–silent或–quiet 不显示任何信息，只回传状态代码。</li>
+<li>–help 在线帮助。</li>
+<li>–version 显示版本信息。</li>
+</ul>
+<h3 id="实例-20"><a href="#实例-20" class="headerlink" title="实例"></a>实例</h3><p>显示当前终端</p>
+<pre><code># tty
+/dev/pts/4</code></pre><h2 id="27-newaliases"><a href="#27-newaliases" class="headerlink" title="27.newaliases"></a>27.newaliases</h2><p>​            newaliases命令会使用一个在 /etc/aliases 中的档案做使用者名称转换的动作。当 sendmail 收到一个要送给 xxx 的信时，它会依据 aliases档的内容送给另一个使用者。这个功能可以创造一个只有在信件系统内才有效的使用者。例如 mailing list 就会用到这个功能，在 mailinglist 中，我们可能会创造一个叫 <a href="mailto:redlinux@link.ece.uci.edu" target="_blank" rel="noopener">redlinux@link.ece.uci.edu</a> 的 mailinglist，但实际上并没有一个叫 redlinux 的使用者。实际 aliases 档的内容是将送给这个使用者的信都收给 mailing list 处理程序负责分送的工作。</p>
+<p>/etc/aliases 是一个文字模式的档案，sendmail 需要一个二进位格式的 /etc/aliases.db。newaliases 的功能传是将 /etc/aliases 转换成一个 sendmail 所能了解的数据库。</p>
+<p>使用权限：系统管理者。</p>
+<h3 id="语法-26"><a href="#语法-26" class="headerlink" title="语法"></a>语法</h3><pre><code>newaliases</code></pre><p><strong>参数说明</strong>：没有任何参数。</p>
+<h3 id="实例-21"><a href="#实例-21" class="headerlink" title="实例"></a>实例</h3><pre><code># newaliases</code></pre><p>下面命令会做相同的事</p>
+<pre><code># sendmail -bi</code></pre><h2 id="28-uuname"><a href="#28-uuname" class="headerlink" title="28.uuname"></a>28.uuname</h2><p>​        uuname命令用于显示全部的UUCP远端主机。</p>
+<p>uuname可显示UUCP远端主机。</p>
+<h3 id="语法-27"><a href="#语法-27" class="headerlink" title="语法"></a>语法</h3><pre><code>uuname [-alv][-I&lt;配置文件&gt;][--help]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a或–aliases 显示别名。</li>
+<li>-I&lt;配置文件&gt;或–config&lt;配置文件&gt; 指定程序的配置文件。</li>
+<li>-l或–local 显示本机名称。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>–help 显示帮助。</li>
+</ul>
+<h3 id="实例-22"><a href="#实例-22" class="headerlink" title="实例"></a>实例</h3><p>显示uucp主机名称</p>
+<pre><code># uuname</code></pre><h2 id="29-netconf"><a href="#29-netconf" class="headerlink" title="29.netconf"></a>29.netconf</h2><p>netconf命令用于设置各项网络功能。</p>
+<p>netconf是Red Hat Linux发行版专门用来调整Linux各项设置的程序。</p>
+<h3 id="语法-28"><a href="#语法-28" class="headerlink" title="语法"></a>语法</h3><pre><code>netconf</code></pre><h2 id="30-write"><a href="#30-write" class="headerlink" title="30.write"></a>30.write</h2><p>​        write命令用于传讯息给其他使用者。</p>
+<p>使用权限：所有使用者。</p>
+<h3 id="语法-29"><a href="#语法-29" class="headerlink" title="语法"></a>语法</h3><pre><code>write user [ttyname]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>user : 预备传讯息的使用者帐号</li>
+<li>ttyname : 如果使用者同时有两个以上的 tty 连线，可以自行选择合适的 tty 传讯息</li>
+</ul>
+<h3 id="实例-23"><a href="#实例-23" class="headerlink" title="实例"></a>实例</h3><p>传讯息给 Rollaend，此时 Rollaend 只有一个连线</p>
+<pre><code>write Rollaend</code></pre><p>接下来就是将讯息打上去，结束请按 ctrl+c</p>
+<p>传讯息给 Rollaend，Rollaend 的连线有 pts/2，pts/3</p>
+<pre><code>write Rollaend pts/2</code></pre><p>接下来就是将讯息打上去，结束请按 ctrl+c</p>
+<p><strong>注意：</strong>若对方设定 mesg n，则此时讯席将无法传给对方。</p>
+<h2 id="31-statserial"><a href="#31-statserial" class="headerlink" title="31.statserial"></a>31.statserial</h2><p>​        statserial命令用于显示串口状态。</p>
+<p>statserial(status ofserial port)可显示各个接脚的状态，常用来判断串口是否正常。</p>
+<h3 id="语法-30"><a href="#语法-30" class="headerlink" title="语法"></a>语法</h3><pre><code>statserial [-dnx][串口设备名称]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-d 以10进制数字来表示串口的状态。</li>
+<li>-n 仅显示一次串口的状态后即结束程序。</li>
+<li>-x 与-n参数类似，但是以16进制来表示。</li>
+</ul>
+<h3 id="实例-24"><a href="#实例-24" class="headerlink" title="实例"></a>实例</h3><p>显示串口状态</p>
+<pre><code># statserial /dev/tty1</code></pre><p>只显示一次串口状态</p>
+<pre><code># statserial -n /dev/tty1</code></pre><h2 id="32-efax"><a href="#32-efax" class="headerlink" title="32.efax"></a>32.efax</h2><pre><code>     efax命令用于收发传真。</code></pre><p>支持Class 1与Class 2的调制解调器来收发传真。</p>
+<h3 id="语法-31"><a href="#语法-31" class="headerlink" title="语法"></a>语法</h3><pre><code>efax [-sw][-a&lt;AT指令&gt;][-c&lt;调制解调器属性&gt;][-d&lt;驱动程序&gt;][-f&lt;字体文件&gt;][-g&lt;指令&gt;][-h&lt;传真标题字符串&gt;][-i&lt;AT指令&gt;][-j&lt;AT指令&gt;][-k&lt;AT指令&gt;][-l&lt;识别码&gt;][-o&lt;选项&gt;][-q&lt;错误次数&gt;][-r&lt;文件名&gt;][-v&lt;信息类型&gt;][-x&lt;UUCP锁定文件&gt;][-t&lt;电话号码&gt;&lt;传真文件&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a&lt;AT指令&gt; 以指定的AT指令来接电话。</li>
+<li>-c&lt;调制解调器属性&gt; 设置本机调制解调器的属性。</li>
+<li>-d&lt;驱动程序&gt; 指定调制解调器驱动程序。</li>
+<li>-f&lt;字体文件&gt; 使用指定的字体文件来建立传真标题。</li>
+<li>-g&lt;指令&gt; 若接到的电话为数据，则执行指定的指令。</li>
+<li>-h&lt;传真标题字符串&gt; 指定字符串为每页最前端的标题。</li>
+<li>-i&lt;AT指令&gt; 在调制解调器进入传真模式前，传送AT指令到调制解调器。</li>
+<li>-j&lt;AT指令&gt; 在调制解调器进入传真模式后，传送AT指令到调制解调器。</li>
+<li>-k&lt;AT指令&gt; 在调制解调器离开传真模式前，传送AT指令到调制解调器。</li>
+<li>-l&lt;识别码&gt; 设置本机调制解调器的识别码。</li>
+<li>-o&lt;选项&gt; 使用非标准调制解调器时设置相关选项。</li>
+<li>-q&lt;错误次数&gt; 接收传真时，当每页发生错误次数超过指定的数目时，要求对方重发。</li>
+<li>-r&lt;文件名&gt; 在接收传真时，将每页分别保存成文件。</li>
+<li>-v&lt;信息类型&gt; 选择要印出的信息类型。</li>
+<li>-w 不要接听电话，等待OK或CONNECT的信号。</li>
+<li>-x&lt;UUCP锁定文件&gt; 使用UUCP格式的锁定文件来锁定调制解调器。</li>
+<li>-t&lt;电话号码&gt;&lt;传真文件&gt; 以&lt;电话号码&gt;中的号码来拨号，并将&lt;传真文件&gt;传真出去。</li>
+</ul>
+<h2 id="33-pppsetup"><a href="#33-pppsetup" class="headerlink" title="33.pppsetup"></a>33.pppsetup</h2><p>​        pppsetup命令用于设置PPP连线。</p>
+<p>这是Slackware发行版内附程序，它具有互动式的问答界面，让用户轻易完成PPP的连线设置。</p>
+<h3 id="语法-32"><a href="#语法-32" class="headerlink" title="语法"></a>语法</h3><pre><code>pppsetup</code></pre><h3 id="实例-25"><a href="#实例-25" class="headerlink" title="实例"></a>实例</h3><p>设置ppp拨号</p>
+<pre><code># pppsetup</code></pre><h2 id="34-tcpdump"><a href="#34-tcpdump" class="headerlink" title="34. tcpdump"></a>34. tcpdump</h2><p>​         tcpdump命令用于倾倒网络传输数据。<br>执行的tcpdump指令可列出经过指定网络界面的数据包文件头，在Linux的操作系统中，你必须是系统管理员。</p>
+<h3 id="语法-33"><a href="#语法-33" class="headerlink" title="语法"></a>语法</h3><pre><code>tcpdump [-adeflnNOpqStvx] [ -  c &lt;数据包数目&gt;] [ -  dd] [ -  ddd] [ -  F &lt;表达文件&gt;] [ -  i &lt;网络界面&gt;] [ -  r &lt;数据包文件&gt;] [ -  s &lt;数据包大小&gt;] [ -  TT] [ -  T的&lt;数据包类型&gt;] [ -  VV] [ - 瓦特&lt;数据包文件&gt;] [输出数据栏位]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a尝试将网络和广播地址转换成名称。</li>
+<li>-c &lt;数据包数目&gt;收到指定的数据包数目后，就停止进行倾倒操作。</li>
+<li>-d把编译过的数据包编码转换成可读的格式，并倾倒到标准输出。</li>
+<li>-dd把编译过的数据包编码转换成C语言的格式，并倾倒到标准输出。</li>
+<li>-ddd把编译过的数据包编码转换成十进制数字的格式，并倾倒到标准输出。</li>
+<li>-e在每列倾倒资料上显示连接层级的文件头。</li>
+<li>-f用数字显示网际网络地址。</li>
+<li>-F &lt;表达文件&gt;指定内含表达方式的文件。</li>
+<li>-i &lt;网络界面&gt;使用指定的网络截面送出数据包。</li>
+<li>-l使用标准输出列的缓冲区。</li>
+<li>-n不把主机的网络地址转换成名字。</li>
+<li>-N不列出域名。</li>
+<li>-O不将数据包编码最佳化。</li>
+<li>-p不让网络界面进入混杂模式。</li>
+<li>-q快速输出，仅列出少数的传输协议信息。</li>
+<li>-r &lt;数据包文件&gt;从指定的文件读取数据包数据。</li>
+<li>-s &lt;数据包大小&gt;设置每个数据包的大小。</li>
+<li>-S用绝对而非相对数值列出TCP关联数。</li>
+<li>-t在每列倾倒资料上不显示时间戳记。</li>
+<li>-tt在每列倾倒资料上显示未经格式化的时间戳记。</li>
+<li>-T &lt;数据包类型&gt;强制将表达方式所指定的数据包转译成设置的数据包类型。</li>
+<li>-v详细显示指令执行过程。</li>
+<li>-vv更详细显示指令执行过程。</li>
+<li>-x用十六进制字码列出数据包资料。</li>
+<li>-w &lt;数据包文件&gt;把数据包数据写入指定的文件。</li>
+</ul>
+<h3 id="实例-26"><a href="#实例-26" class="headerlink" title="实例"></a>实例</h3><p>显示TCP包信息</p>
+<pre><code>#tcpdump
+tcpdump：详细输出被抑制，使用-v或-vv进行完整协议解码
+监听eth0，链接类型EN10MB（以太网），捕获大小96字节
+23：35：55.129998 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 148872068：148872168（100）ack 4184371747 win 2100
+23：35：55.182357 IP 192.168.0.1.2101&gt; 192.168.0.3.ssh :. ack 100 win 64240
+23：35：55.182397 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 100：200（100）ack 1 win 2100
+23：35：55.131713 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：50226+ PTR？1.0.168.192.in-addr.arpa。（42）
+23：35：55.131896 PPPoE [ses 0x1cb0] IP 118.250.6.85.64215&gt; dns2.cs.hn.cn.domain：50226+ PTR？1.0.168.192.in-addr.arpa。（42）
+23：35：55.154238 PPPoE [ses 0x1cb0] IP dns2.cs.hn.cn.domain&gt; 118.250.6.85.64215：50226 NXDomain 0/0/0（42）
+23：35：55.156298 IP dns2.cs.hn.cn.domain&gt; 192.168.0.3.32804：50226 NXDomain 0/0/0（42）
+23：35：55.159292 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：30304+ PTR？3.0.168.192.in-addr.arpa。（42）
+23：35：55.159449 PPPoE [ses 0x1cb0] IP 118.250.6.85.64215&gt; dns2.cs.hn.cn.domain：30304+ PTR？3.0.168.192.in-addr.arpa。（42）
+23：35：55.179816 PPPoE [ses 0x1cb0] IP dns2.cs.hn.cn.domain&gt; 118.250.6.85.64215：30304 NXDomain 0/0/0（42）
+23：35：55.181279 IP dns2.cs.hn.cn.domain&gt; 192.168.0.3.32804：30304 NXDomain 0/0/0（42）
+23：35：55.181806 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 200：268（68）ack 1 win 2100
+23：35：55.182177 IP 192.168.0.1.2101&gt; 192.168.0.3.ssh :. ack 268获胜64198
+23：35：55.182677 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：43983+ PTR？112.96.103.202.in-addr.arpa。（45）
+23：35：55.182807 PPPoE [ses 0x1cb0] IP 118.250.6.85.64215&gt; dns2.cs.hn.cn.domain：43983+ PTR？112.96.103.202.in-addr.arpa。（45）
+23：35：55.183055 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 268：352（84）ack 1 win 2100
+23：35：55.201096 PPPoE [ses 0x1cb0] IP dns2.cs.hn.cn.domain&gt; 118.250.6.85.64215：43983 1/0/0（72）
+23：35：55.203087 IP dns2.cs.hn.cn.domain&gt; 192.168.0.3.32804：43983 1/0/0（72）
+23：35：55.204666 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 352：452（100）ack 1 win 2100
+23：35：55.204852 IP 192.168.0.1.2101&gt; 192.168.0.3.ssh :. ack 452获胜64152
+23：35：55.205305 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 452：520（68）ack 1 win 2100
+23：35：55.205889 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：9318+ PTR？85.6.250.118.in-addr.arpa。（43）
+23：35：55.206071 PPPoE [ses 0x1cb0] IP 118.250.6.85.64215&gt; dns2.cs.hn.cn.domain：9318+ PTR？85.6.250.118.in-addr.arpa。（43）
+23：35：55.215338 PPPoE [ses 0x1cb0] IP 115.238.1.45.3724&gt; 118.250.6.85.64120：P 2392751922：2392751987（65）ack 2849759785 win 54
+23：35：55.216273 IP 115.238.1.45.3724&gt; 192.168.0.65.2057：P 2392751922：2392751987（65）ack 2849759785 win 54
+23：35：55.329204 IP 192.168.0.1.2101&gt; 192.168.0.3.ssh :. ack 520 win 64135
+23：35：55.458214 IP 192.168.0.65.2057&gt; 115.238.1.45.3724 :. ack 65 win 32590
+23：35：55.458221 PPPoE [ses 0x1cb0] IP 118.250.6.85.64120&gt; 115.238.1.45.3724 :. ack 65 win 32590
+23：35：55.708228 PPPoE [ses 0x1cb0] IP 115.238.1.45.3724&gt; 118.250.6.85.64120：P 65：118（53）ack 1 win 54
+23：35：55.710213 IP 115.238.1.45.3724&gt; 192.168.0.65.2057：P 65：118（53）ack 1 win 54
+23：35：55.865151 IP 192.168.0.65.2057&gt; 115.238.1.45.3724 :. ack 118 win 32768
+23：35：55.865157 PPPoE [ses 0x1cb0] IP 118.250.6.85.64120&gt; 115.238.1.45.3724 :. ack 118 win 32768
+23：35：56.242805 IP 192.168.0.65.2057&gt; 115.238.1.45.3724：P 1:25（24）ack 118 win 32768
+23：35：56.242812 PPPoE [ses 0x1cb0] IP 118.250.6.85.64120&gt; 115.238.1.45.3724：P 1:25（24）ack 118 win 32768
+23：35：56.276816 PPPoE [ses 0x1cb0] IP 115.238.1.45.3724&gt; 118.250.6.85.64120 :. ack 25胜54
+23：35：56.278240 IP 115.238.1.45.3724&gt; 192.168.0.65.2057 :. ack 25胜54
+23：35：56.349747 PPPoE [ses 0x1cb0] IP 115.238.1.45.3724&gt; 118.250.6.85.64120：P 118：159（41）ack 25 win 54
+23：35：56.351780 IP 115.238.1.45.3724&gt; 192.168.0.65.2057：P 118：159（41）ack 25 win 54
+23：35：56.400051 PPPoE [ses 0x1cb0] IP 119.147.18.44.8000&gt; 118.250.6.85.4000：UDP，长度79
+23：35：56.475050 IP 192.168.0.65.2057&gt; 115.238.1.45.3724 :. ack 159 win 32762
+23：35：56.475063 PPPoE [ses 0x1cb0] IP 118.250.6.85.64120&gt; 115.238.1.45.3724 :. ack 159 win 32762
+23：35：56.508968 PPPoE [ses 0x1cb0] IP 115.238.1.45.3724&gt; 118.250.6.85.64120：P 159：411（252）ack 25 win 54
+23：35：56.510182 IP 115.238.1.45.3724&gt; 192.168.0.65.2057：P 159：411（252）ack 25 win 54
+23：35：56.592028 PPPoE [ses 0x1cb0] IP 117.136.2.43.38959&gt; 118.250.6.85.63283：UDP，长度36
+
+捕获了44个包
+过滤器收到76个数据包
+内核丢弃0个数据包</code></pre><p>显示指定数量包</p>
+<pre><code>#tcpdump -c 20
+tcpdump：详细输出被抑制，使用-v或-vv进行完整协议解码
+监听eth0，链接类型EN10MB（以太网），捕获大小96字节
+23：36：28.949538 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 148875984：148876020（36）ack 4184373187 win 2100
+23：36：28.994325 IP 192.168.0.1.2101&gt; 192.168.0.3.ssh :. ack 36赢64020
+23：36：28.994368 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 36:72（36）ack 1 win 2100
+23：36：28.950779 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：18242+ PTR？1.0.168.192.in-addr.arpa。（42）
+23：36：28.950948 PPPoE [ses 0x1cb0] IP 118.250.6.85.64215&gt; dns2.cs.hn.cn.domain：18242+ PTR？1.0.168.192.in-addr.arpa。（42）
+23：36：28.960105 PPPoE [ses 0x1cb0] IP 222.82.119.41.13594&gt; 118.250.6.85.63283：UDP，长度36
+23：36：28.962192 IP 222.82.119.41.13594&gt; 192.168.0.65.13965：UDP，长度36
+23：36：28.963118 IP 192.168.0.65.13965&gt; 222.82.119.41.13594：UDP，长度34
+23：36：28.963123 PPPoE [ses 0x1cb0] IP 118.250.6.85.63283&gt; 222.82.119.41.13594：UDP，长度34
+23：36：28.970185 PPPoE [ses 0x1cb0] IP dns2.cs.hn.cn.domain&gt; 118.250.6.85.64215：18242 NXDomain 0/0/0（42）
+23：36：28.970413 IP dns2.cs.hn.cn.domain&gt; 192.168.0.3.32804：18242 NXDomain 0/0/0（42）
+23：36：28.972352 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：17862+ PTR？3.0.168.192.in-addr.arpa。（42）
+23：36：28.972474 PPPoE [ses 0x1cb0] IP 118.250.6.85.64215&gt; dns2.cs.hn.cn.domain：17862+ PTR？3.0.168.192.in-addr.arpa。（42）
+23：36：28.982287 PPPoE [ses 0x1cb0] IP 121.12.131.163.13109&gt; 118.250.6.85.63283：UDP，长度27
+23：36：28.984162 IP 121.12.131.163.13109&gt; 192.168.0.65.13965：UDP，长度27
+23：36：28.985021 IP 192.168.0.65.13965&gt; 121.12.131.163.13109：UDP，长度103
+23：36：28.985027 PPPoE [ses 0x1cb0] IP 118.250.6.85.63283&gt; 121.12.131.163.13109：UDP，长度103
+23：36：28.991919 PPPoE [ses 0x1cb0] IP dns2.cs.hn.cn.domain&gt; 118.250.6.85.64215：17862 NXDomain 0/0/0（42）
+23：36：28.993142 IP dns2.cs.hn.cn.domain&gt; 192.168.0.3.32804：17862 NXDomain 0/0/0（42）
+23：36：28.993574 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：P 72：140（68）ack 1 win 2100
+捕获20个数据包
+过滤器收到206个数据包
+内核丢弃了129个数据包</code></pre><p>精简显示</p>
+<pre><code>#tcpdump -c 10 -q //精简模式显示10个包
+tcpdump：详细输出被抑制，使用-v或-vv进行完整协议解码
+监听eth0，链接类型EN10MB（以太网），捕获大小96字节
+23：43：05.792280 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：tcp 36
+23：43：05.842115 IP 192.168.0.1.2101&gt; 192.168.0.3.ssh：tcp 0
+23：43：05.845074 IP 115.238.1.45.3724&gt; 192.168.0.65.2057：tcp 0
+23：43：05.907155 IP 192.168.0.3.ssh&gt; 192.168.0.1.2101：tcp 36
+23：43：05.793880 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：UDP，长度42
+23：43：05.794076 PPPoE [ses 0x1cb0] IP 118.250.6.85.64219&gt; dns2.cs.hn.cn.domain：UDP，长度42
+23：43：05.811127 PPPoE [ses 0x1cb0] IP dns2.cs.hn.cn.domain&gt; 118.250.6.85.64219：UDP，长度42
+23：43：05.814764 IP dns2.cs.hn.cn.domain&gt; 192.168.0.3.32804：UDP，长度42
+23：43：05.816404 IP 192.168.0.3.32804&gt; dns2.cs.hn.cn.domain：UDP，长度42
+23：43：05.816545 PPPoE [ses 0x1cb0] IP 118.250.6.85.64219&gt; dns2.cs.hn.cn.domain：UDP，长度42
+捕获10个数据包
+过滤器收到39个数据包
+内核丢弃0个数据包</code></pre><p>转换克阅读格式</p>
+<pre><code>#tcpdump -d    
+（000）ret＃96</code></pre><p>转换成十进制格式</p>
+<pre><code>#tcpdump -ddd
+1
+6 0 0 96</code></pre><h2 id="35-ytalk"><a href="#35-ytalk" class="headerlink" title="35.ytalk"></a>35.ytalk</h2><p>ytalk命令用于与其他用户交谈。</p>
+<p>通过ytalk指令，你可以和其他用户线上交谈，如果想和其他主机的用户交谈，在用户名称后加上其主机名称或IP地址即可。</p>
+<h3 id="语法-34"><a href="#语法-34" class="headerlink" title="语法"></a>语法</h3><pre><code>ytalk [-isxY][-h&lt;主机名称IP地址&gt;][用户名称...]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-h&lt;主机名称IP地址&gt; 指定交谈对象所在的远端主机。</li>
+<li>-i 用提醒声响代替显示信息。</li>
+<li>-s 在指令提示符号先开启ytalk交谈窗。</li>
+<li>-x 关闭图形界面。</li>
+<li>-Y 所有必须回应yes或no的问题，都必须用大写英文字母”Y”或”N”回答。</li>
+</ul>
+<h3 id="实例-27"><a href="#实例-27" class="headerlink" title="实例"></a>实例</h3><p>发送消息</p>
+<pre><code># who  //显示当前用户
+root   :0      Apr 9 20:17
+root   pts/1    Apr 9 20:17
+w3c   pts/6    May 27 16:47 (192.168.0.1)
+root   pts/2    May 27 17:37 (192.168.0.1)
+# ytalk w3c //发送消息
+hey</code></pre><h2 id="36-cu"><a href="#36-cu" class="headerlink" title="36.cu"></a>36.cu</h2><p>​        cu命令用于连接另一个系统主机。</p>
+<p>cu(call up)指令可连接另一台主机，并采用类似拨号终端机的接口工作，也可执行简易的文件传输作业。</p>
+<h3 id="语法-35"><a href="#语法-35" class="headerlink" title="语法"></a>语法</h3><pre><code>cu [dehnotv][-a&lt;通信端口&gt;][-c&lt;电话号码&gt;][-E&lt;脱离字符&gt;][-I&lt;设置文件&gt;][-l&lt;外围设备代号&gt;][-s&lt;连线速率&gt;][-x&lt;排错模式&gt;][-z&lt;系统主机&gt;][--help][-nostop][--parity=none][&lt;系统主机&gt;/&lt;电话号码&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a&lt;通信端口&gt;或-p&lt;通信端口&gt;或–port&lt;通信端口&gt; 使用指定的通信端口进行连线。</li>
+<li>-c&lt;电话号码&gt;或–phone&lt;电话号码&gt; 拨打该电话号码。</li>
+<li>-d 进入排错模式。</li>
+<li>-e或–parity=even 使用双同位检查。</li>
+<li>-E&lt;脱离字符&gt;或–escape&lt;脱离字符&gt; 设置脱离字符。</li>
+<li>-h或–halfduple 使用半双工模式。</li>
+<li>-I&lt;配置文件&gt;或–config&lt;配置文件&gt; 指定要使用的配置文件。</li>
+<li>-l&lt;外围设备代号&gt;或–line&lt;外围设备代号&gt; 指定某项外围设备，作为连接的设备。</li>
+<li>-n或–prompt 拨号时等待用户输入电话号码。</li>
+<li>-o或–parity=odd 使用单同位检查。</li>
+<li>-s&lt;连线速率&gt;或–speed&lt;连线速率&gt;或–baud&lt;连线速率&gt;或-&lt;连线速率&gt; 设置连线的速率，单位以鲍率计算。</li>
+<li>-t或–maper 把CR字符置换成LF+CR字符。</li>
+<li>-v或–version 显示版本信息。</li>
+<li>-x&lt;排错模式&gt;或–debug&lt;排错模式&gt; 使用排错模式。</li>
+<li>-z&lt;系统主机&gt;或–system&lt;系统主机&gt; 连接该系统主机。</li>
+<li>–help 在线帮助。</li>
+<li>–nostop 关闭Xon/Xoff软件流量控制。</li>
+<li>–parity=none 不使用同位检查。</li>
+</ul>
+<h3 id="实例-28"><a href="#实例-28" class="headerlink" title="实例"></a>实例</h3><p>与远程主机连接</p>
+<pre><code># cu -c 0102377765</code></pre><h2 id="37-smbd"><a href="#37-smbd" class="headerlink" title="37.smbd"></a>37.smbd</h2><p> smbd命令用于Samba服务器程序。</p>
+<p>smbd为Samba服务器程序，可分享文件与打印机等网络资源供Windows相关的用户端程序存取。</p>
+<h3 id="语法-36"><a href="#语法-36" class="headerlink" title="语法"></a>语法</h3><pre><code>smbd [-aDhoP][-d&lt;排错层级&gt;][-i&lt;范围&gt;][-l&lt;记录文件&gt;][-O&lt;连接槽选项&gt;][-p&lt;连接端口编号&gt;][-s&lt;配置文件&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-a 所有的连线记录都会加到记录文件中。</li>
+<li>-d&lt;排错层级&gt; 指定记录文件所记载事件的详细程度。</li>
+<li>-D 使用此参数时，smbd会以服务程序的方式在后台执行。</li>
+<li>-h 显示帮助。</li>
+<li>-i&lt;范围&gt; 指定NetBIOS名称的范围。</li>
+<li>-l&lt;记录文件&gt; 指定记录文件的名称。</li>
+<li>-o 每次启动时，会覆盖原有的记录文件。</li>
+<li>-O&lt;连接槽选项&gt; 设置连接槽选项。</li>
+<li>-p&lt;连接端口编号&gt; 设置连接端口编号。</li>
+<li>-P 仅用来测试smbd程序的正确性。</li>
+<li>-s&lt;配置文件&gt; 指定smbd的设置文件。</li>
+</ul>
+<h3 id="实例-29"><a href="#实例-29" class="headerlink" title="实例"></a>实例</h3><p>启动Samba服务器</p>
+<pre><code># smbd -D</code></pre><h2 id="38-testparm"><a href="#38-testparm" class="headerlink" title="38.testparm"></a>38.testparm</h2><p>​        testparm命令用于测试Samba的设置是否正确无误。</p>
+<p>执行testparm（测试参数）指令可以简单测试Samba的配置文件，假如测试结果无误，Samba常驻服务就能正确载入该设置值，但并不保证其后的操作如预期般一切正常。</p>
+<h3 id="语法-37"><a href="#语法-37" class="headerlink" title="语法"></a>语法</h3><pre><code>testparm [ - s ] [配置文件] [&lt; 主机名称&gt; &lt; IP 地址&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>-s不显示提示符号等待用户按下Enter键，就直接列出Samba服务定义信息。</li>
+</ul>
+<h3 id="实例-30"><a href="#实例-30" class="headerlink" title="实例"></a>实例</h3><p>查看Ssmba配置</p>
+<pre><code>#testparm      从/ etc / samba / smb 加载smb配置文件。conf
+ 处理部分&#39;[homes]&#39; 处理部&#39;&#39;[打印机]&#39; 处理部&#39;&#39;[uptech]&#39; 处理部&#39;&#39;[home]&#39; 加载服务文件OK 。服务器角色：ROLE_STANDALONE
+ 按Enter键查看服务定义
+       的转储/// 按下回车继续＃全局参数[ 全局]
+
+
+
+
+
+
+
+
+workgroup = MYGROUP
+server string = Samba Server 
+security = SHARE   
+加密密码= 无
+密码服务器= 无
+日志文件= / var / log / samba /％m 。日志   
+最大日志大小= 50个
+套接字选项= TCP_NODELAY SO_RCVBUF = 8192 SO_SNDBUF = 8192 
+printcap name = / etc / printcap  
+dns proxy = 没有
+idmap uid = 16777216 - 33554431 
+idmap gid = 16777216 - 33554431 
+cups options = raw   
+
+[ homes ] 
+comment = 主页目录
+只读= 不可
+浏览= 否    
+
+[ printers ] 
+comment = 所有打印机
+路径= / var / spool / samba   
+printable = 是可
+浏览= 否  
+
+[ uptech ] 
+comment = * 
+path = / home / uptech  
+只读= 没有
+客人确定= 是  
+
+[ home ] 
+comment = * 
+path = / home  
+只读= 没有
+客人确定= 是  </code></pre><h2 id="39-smbclient"><a href="#39-smbclient" class="headerlink" title="39.smbclient"></a>39.smbclient</h2><p>​        smbclient命令可存取SMB/CIFS服务器的用户端程序。</p>
+<p>SMB与CIFS为服务器通信协议，常用于Windows95/98/NT等系统。smbclient(samba client)可让Linux系统存取Windows系统所分享的资源。</p>
+<h3 id="语法-38"><a href="#语法-38" class="headerlink" title="语法"></a>语法</h3><pre><code>smbclient [网络资源][密码][-EhLN][-B&lt;IP地址&gt;][-d&lt;排错层级&gt;][-i&lt;范围&gt;][-I&lt;IP地址&gt;][-l&lt;记录文件&gt;][-M&lt;NetBIOS名称&gt;][-n&lt;NetBIOS名称&gt;][-O&lt;连接槽选项&gt;][-p&lt;TCP连接端口&gt;][-R&lt;名称解析顺序&gt;][-s&lt;目录&gt;][-t&lt;服务器字码&gt;][-T&lt;tar选项&gt;][-U&lt;用户名称&gt;][-W&lt;工作群组&gt;]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>[网络资源] [网络资源]的格式为//服务器名称/资源分享名称。</li>
+<li>[密码] 输入存取网络资源所需的密码。</li>
+<li>-B&lt;IP地址&gt; 传送广播数据包时所用的IP地址。</li>
+<li>-d&lt;排错层级&gt; 指定记录文件所记载事件的详细程度。</li>
+<li>-E 将信息送到标准错误输出设备。</li>
+<li>-h 显示帮助。</li>
+<li>-i&lt;范围&gt; 设置NetBIOS名称范围。</li>
+<li>-I&lt;IP地址&gt; 指定服务器的IP地址。</li>
+<li>-l&lt;记录文件&gt; 指定记录文件的名称。</li>
+<li>-L 显示服务器端所分享出来的所有资源。</li>
+<li>-M&lt;NetBIOS名称&gt; 可利用WinPopup协议，将信息送给选项中所指定的主机。</li>
+<li>-n&lt;NetBIOS名称&gt; 指定用户端所要使用的NetBIOS名称。</li>
+<li>-N 不用询问密码。</li>
+<li>-O&lt;连接槽选项&gt; 设置用户端TCP连接槽的选项。</li>
+<li>-p&lt;TCP连接端口&gt; 指定服务器端TCP连接端口编号。</li>
+<li>-R&lt;名称解析顺序&gt; 设置NetBIOS名称解析的顺序。</li>
+<li>-s&lt;目录&gt; 指定smb.conf所在的目录。</li>
+<li>-t&lt;服务器字码&gt; 设置用何种字符码来解析服务器端的文件名称。</li>
+<li>-T&lt;tar选项&gt; 备份服务器端分享的全部文件，并打包成tar格式的文件。</li>
+<li>-U&lt;用户名称&gt; 指定用户名称。</li>
+<li>-W&lt;工作群组&gt; 指定工作群组名称。</li>
+</ul>
+<h2 id="40-shapecfg"><a href="#40-shapecfg" class="headerlink" title="40.shapecfg"></a>40.shapecfg</h2><pre><code>     shapecfg命令用于管制网络设备的流量。</code></pre><p>自Linux-2.15开始，便支持流量管制的功能。</p>
+<h3 id="语法-39"><a href="#语法-39" class="headerlink" title="语法"></a>语法</h3><pre><code>shapecfg attach [流量管制器][网络设备]</code></pre><p>或</p>
+<pre><code>shapecfg speed [流量管制器][带宽]</code></pre><p><strong>参数说明</strong>：</p>
+<ul>
+<li>attach 将流量管制器与实际的网络设备结合。</li>
+<li>speed 设置流量管制器的对外传输带宽。</li>
+</ul>
+<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
+<li><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-command-manual.html</a></li>
+</ul>
+<p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/26777.html" class="b-link-green">6.Linux命令（网络通讯）</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/21236.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="7.Linux命令（系统管理）">
+                        
+                        <span class="card-title">7.Linux命令（系统管理）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux命令（系统管理）1.adduser​        adduser命令用于新增使用者帐号或更新预设的使用者资料。
+adduser与useradd指令为同一指令（经由符号连结的符号链接）。
+使用权限：系统管理员。
+adduser是增</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/14928.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="5.Linux命令（磁盘维护）">
+                        
+                        <span class="card-title">5.Linux命令（磁盘维护）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Linux命令（磁盘维护）1.badblocks​        badblocks命令用于检查磁盘装置中损坏的区块。
+执行指令时须指定所要检查的磁盘装置，及此装置的磁盘区块数。
+语法badblocks [-svw][-b &lt;区块大小</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux笔记/" class="post-category" target="_blank">
+                                    Linux笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux命令/" target="_blank">
+                        <span class="chip bg-color">Linux命令</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">224.9k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+<center>
+<div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+            <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages 和 Gitee Pages">
+            <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub & Coding & Gitee</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://cloud.tencent.com/" target="_blank" title="腾讯云提供域名相关服务">
+            <span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Tencent</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank" title="jsDelivr 提供 CDN 加速服务">
+            <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+          </div>
+          <div class="github-badge">
+              <a style="color: #fff" rel="license" href="https://blinkfox.github.io/" target="_blank" title="站点使用 Matery主题">
+            <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Matery</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+            <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
+            <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">224.9k</span>
+          </div>
+</div>
+</center>
+
+<style>
+    .github-badge {
+        display:inline-block;
+        border-radius:4px;
+        text-shadow:none;
+        font-size:13px;
+        color:#fff;
+        line-height:15px;
+        background-color:#ABBAC3;
+        margin-bottom:5px;
+    }
+    .github-badge .badge-subject {
+        display:inline-block;
+        background-color:#4D4D4D;
+        padding:4px 4px 4px 6px;
+        border-top-left-radius:4px;
+        border-bottom-left-radius:4px;
+    }
+    .github-badge .badge-value {
+        display:inline-block;
+        padding:4px 6px 4px 4px;
+        border-top-right-radius:4px;
+        border-bottom-right-radius:4px;
+    }
+    .github-badge .bg-brightgreen {
+        background-color:#4DC820 !important;
+    }
+    .github-badge .bg-orange {
+        background-color:#FFA500 !important;
+    }
+    .github-badge .bg-yellow {
+        background-color:#D8B024 !important;
+    }
+    .github-badge .bg-blueviolet {
+        background-color:#8833D7 !important;
+    }
+    .github-badge .bg-pink {
+        background-color:#F26BAE !important;
+    }
+    .github-badge .bg-red {
+        background-color:#e05d44 !important;
+    }
+    .github-badge .bg-blue {
+        background-color:#007EC6 !important;
+    }
+    .github-badge .bg-lightgrey {
+        background-color:#9F9F9F !important;
+    }
+    .github-badge .bg-grey, .github-badge .bg-gray {
+        background-color:#555 !important;
+    }
+    .github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+        background-color:#9f9f9f !important;
+    }
+</style>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<script src="/js/snow.js"></script>
+
+</body>
+</html>
