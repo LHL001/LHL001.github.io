@@ -98,6 +98,15 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/friends" class="waves-effect waves-light">
             
             <i class="fa fa-address-book"></i>
@@ -164,6 +173,15 @@
                 <i class="fa fa-fw fa-archive"></i>
                 
                 归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
             </a>
         </li>
         
@@ -455,7 +473,7 @@ title: tags
 date: 2020/8/17 19:10:26 
 type: &quot;tags&quot;
 layout: &quot;tags&quot;
----</code></pre><p>######新建关于我 about 页<br>about 页是用来展示关于我和我的博客信息的页面，如果 source 目录下还没有 <code>about/index.md</code> 文件，那么就需要新建一个，命令如下：</p>
+---</code></pre><h6 id="新建关于我-about-页"><a href="#新建关于我-about-页" class="headerlink" title="新建关于我 about 页"></a>新建关于我 about 页</h6><p>about 页是用来展示关于我和我的博客信息的页面，如果 source 目录下还没有 <code>about/index.md</code> 文件，那么就需要新建一个，命令如下：</p>
 <pre><code>---
 title: about
 date: 2020/8/17 19:11:17 
@@ -1098,6 +1116,16 @@ $(function () {
 
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
 
 </body>
 </html>

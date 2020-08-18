@@ -93,6 +93,15 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/friends" class="waves-effect waves-light">
             
             <i class="fa fa-address-book"></i>
@@ -159,6 +168,15 @@
                 <i class="fa fa-fw fa-archive"></i>
                 
                 归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
             </a>
         </li>
         
@@ -321,20 +339,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/tags/MySQL/" title="MySQL: 1">
+                <a href="/tags/shell/" title="shell: 12">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="MySQL" style="background-color: #FEF9E7;">MySQL
-                        <span class="tag-length">1</span>
+                            data-tagname="shell" style="background-color: #FEF9E7;">shell
+                        <span class="tag-length">12</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/shell/" title="shell: 12">
+                <a href="/tags/MySQL/" title="MySQL: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="shell" style="background-color: #F8F9F9;">shell
-                        <span class="tag-length">12</span>
+                            data-tagname="MySQL" style="background-color: #F8F9F9;">MySQL
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -348,11 +366,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/tags/Linux命令/" title="Linux命令: 12">
+                <a href="/tags/02-Web-API/" title="02-Web API: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Linux命令" style="background-color: #D7BDE2;">Linux命令
-                        <span class="tag-length">12</span>
+                            data-tagname="02-Web API" style="background-color: #D7BDE2;">02-Web API
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -366,11 +384,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/tags/02-Web-API/" title="02-Web API: 1">
+                <a href="/tags/Linux命令/" title="Linux命令: 12">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="02-Web API" style="background-color: #85C1E9;">02-Web API
-                        <span class="tag-length">1</span>
+                            data-tagname="Linux命令" style="background-color: #85C1E9;">Linux命令
+                        <span class="tag-length">12</span>
                     </span>
                 </a>
                 
@@ -634,6 +652,16 @@ $(function () {
 
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
 
 </body>
 </html>

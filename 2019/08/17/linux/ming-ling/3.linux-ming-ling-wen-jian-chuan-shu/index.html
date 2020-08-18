@@ -94,6 +94,15 @@
     </li>
     
     <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
         <a href="/friends" class="waves-effect waves-light">
             
             <i class="fa fa-address-book"></i>
@@ -160,6 +169,15 @@
                 <i class="fa fa-fw fa-archive"></i>
                 
                 归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
             </a>
         </li>
         
@@ -800,24 +818,25 @@ df：disk free其功</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/12/javascript/01-javascript-ji-chu/01-javascript-ji-chu/">
+                <a href="/2019/08/12/javascript/02-web-api/02-web-api/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="01-JavaScript基础">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="02-Web API">
                         
-                        <span class="card-title">01-JavaScript基础</span>
+                        <span class="card-title">02-Web API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary"> 本文非原创 学习目标:
 
-掌握编程的基本思维
-掌握编程的基本语法
+掌握API和Web API的概念
+掌握常见浏览器提供的API的调用方式
+能通过Web API开发常见的页面交互功能
+能够利用搜索引擎解决问题
 
 
-JavaScript基础HTML和CSS   京东
-网页、网站和应用程序网页：单独的一个页面网站：一些列相关的页面组成到一起应用程序：可以和用户产生交互，并实现某种功能</div>
+Web APIWeb API介绍API的概念API（Applica</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
@@ -837,8 +856,8 @@ JavaScript基础HTML和CSS   京东
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/" target="_blank">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/02-Web-API/" target="_blank">
+                        <span class="chip bg-color">02-Web API</span>
                     </a>
                     
                 </div>
@@ -1057,6 +1076,16 @@ $(function () {
 
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
 
 </body>
 </html>
