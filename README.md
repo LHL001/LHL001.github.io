@@ -38,7 +38,7 @@
 
  
 
-## :snowflake: About Blog | 关于博客**
+## :snowflake: About Blog | 关于博客
 
 \- 网站名称: yoyo
 
