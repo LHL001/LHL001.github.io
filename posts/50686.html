@@ -383,7 +383,7 @@ Web APIWeb API介绍API的概念API（Applica">
 <h3 id="Web-API的概念"><a href="#Web-API的概念" class="headerlink" title="Web  API的概念"></a>Web  API的概念</h3><p>浏览器提供的一套操作浏览器功能和页面元素的API(BOM和DOM)</p>
 <p>此处的Web API特指浏览器提供的API(一组方法)，Web API在后面的课程中有其它含义</p>
 <h3 id="掌握常见浏览器提供的API的调用方式"><a href="#掌握常见浏览器提供的API的调用方式" class="headerlink" title="掌握常见浏览器提供的API的调用方式"></a>掌握常见浏览器提供的API的调用方式</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API" target="_blank" rel="noopener">MDN-Web API</a></p>
-<h3 id="JavaScript的组成"><a href="#JavaScript的组成" class="headerlink" title="JavaScript的组成"></a>JavaScript的组成</h3><p><img src="media/QQ%E5%9B%BE%E7%89%8720170810172512-2357176615.png" alt="QQ图片20170810172512"></p>
+<h3 id="JavaScript的组成"><a href="#JavaScript的组成" class="headerlink" title="JavaScript的组成"></a>JavaScript的组成</h3><p><img src="/posts/50686.htm/QQ%E5%9B%BE%E7%89%8720170810172512-2357176615.png" alt="QQ图片20170810172512"></p>
 <h4 id="ECMAScript-JavaScript的核心"><a href="#ECMAScript-JavaScript的核心" class="headerlink" title="ECMAScript - JavaScript的核心"></a>ECMAScript - JavaScript的核心</h4><p>定义了JavaScript 的语法规范</p>
 <p>JavaScript的核心，描述了语言的基本语法和数据类型，ECMAScript是一套标准，定义了一种语言的标准与具体实现无关</p>
 <h4 id="BOM-浏览器对象模型"><a href="#BOM-浏览器对象模型" class="headerlink" title="BOM - 浏览器对象模型"></a>BOM - 浏览器对象模型</h4><p>一套操作浏览器功能的API</p>
@@ -392,7 +392,7 @@ Web APIWeb API介绍API的概念API（Applica">
 <p>DOM可以把HTML看做是文档树，通过DOM提供的API可以对树上的节点进行操作</p>
 <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="DOM的概念"><a href="#DOM的概念" class="headerlink" title="DOM的概念"></a>DOM的概念</h3><p>文档对象模型（Document Object Model，简称DOM），是<a href="https://baike.baidu.com/item/W3C" target="_blank" rel="noopener">W3C</a>组织推荐的处理<a href="https://baike.baidu.com/item/%E5%8F%AF%E6%89%A9%E5%B1%95%E7%BD%AE%E6%A0%87%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">可扩展标记语言</a>的标准<a href="https://baike.baidu.com/item/%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener">编程接口</a>。它是一种与平台和语言无关的<a href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener">应用程序接口</a>(API),它可以动态地访问程序和脚本，更新其内容、结构和<a href="https://baike.baidu.com/item/www/109924" target="_blank" rel="noopener">www</a>文档的风格(目前，HTML和XML文档是通过说明部分定义的)。文档可以进一步被处理，处理的结果可以加入到当前的页面。<a href="https://baike.baidu.com/item/DOM/50288" target="_blank" rel="noopener">DOM</a>是一种基于树的<a href="https://baike.baidu.com/item/API/10154" target="_blank" rel="noopener">API</a>文档，它要求在处理过程中整个文档都表示在<a href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E5%99%A8" target="_blank" rel="noopener">存储器</a>中。</p>
 <p>DOM又称为文档树模型</p>
-<p><img src="media/1497154623955.png" alt="1497154623955"></p>
+<p><img src="/posts/50686.htm/1497154623955.png" alt="1497154623955"></p>
 <ul>
 <li>文档：一个网页可以称为文档</li>
 <li>节点：网页中的所有内容都是节点（标签、属性、文本、注释等）</li>
@@ -577,7 +577,7 @@ body<span class="token punctuation">.</span><span class="token function">replace
 </ul>
 </li>
 </ul>
-<h3 id="模拟文档树结构"><a href="#模拟文档树结构" class="headerlink" title="模拟文档树结构"></a>模拟文档树结构</h3><p><img src="media/1497165666684.png" alt="1497165666684"></p>
+<h3 id="模拟文档树结构"><a href="#模拟文档树结构" class="headerlink" title="模拟文档树结构"></a>模拟文档树结构</h3><p><img src="/posts/50686.htm/1497165666684.png" alt="1497165666684"></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Node</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> option<span class="token punctuation">.</span>id <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">;</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>nodeName <span class="token operator">=</span> option<span class="token punctuation">.</span>nodeName <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">;</span>
@@ -618,7 +618,7 @@ body<span class="token punctuation">.</span>children<span class="token punctuati
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token function">getChildren</span><span class="token punctuation">(</span>doc<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="节点层级"><a href="#节点层级" class="headerlink" title="节点层级"></a>节点层级</h3><p><img src="media/1503541915769.png" alt="1503541915769"> </p>
+<h3 id="节点层级"><a href="#节点层级" class="headerlink" title="节点层级"></a>节点层级</h3><p><img src="/posts/50686.htm/1503541915769.png" alt="1503541915769"> </p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> box <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'box'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>parentNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>childNodes<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -821,19 +821,19 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>offsetTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>offsetWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>offsetHeight<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="media/1498743216279.png" alt="1498743216279"></p>
+<p><img src="/posts/50686.htm/1498743216279.png" alt="1498743216279"></p>
 <h3 id="客户区大小"><a href="#客户区大小" class="headerlink" title="客户区大小"></a>客户区大小</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> box <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'box'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>clientLeft<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>clientTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>clientWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>clientHeight<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="media/1504075813134.png" alt="1504075813134"></p>
+<p><img src="/posts/50686.htm/1504075813134.png" alt="1504075813134"></p>
 <h3 id="滚动偏移"><a href="#滚动偏移" class="headerlink" title="滚动偏移"></a>滚动偏移</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> box <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'box'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>scrollLeft<span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>scrollTop<span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>scrollWidth<span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>box<span class="token punctuation">.</span>scrollHeight<span class="token punctuation">)</span></code></pre>
-<p><img src="media/1498743288621.png" alt="1498743288621"></p>
+<p><img src="/posts/50686.htm/1498743288621.png" alt="1498743288621"></p>
 <h3 id="案例-5"><a href="#案例-5" class="headerlink" title="案例"></a>案例</h3><ul>
 <li>拖拽案例</li>
 <li>弹出登录窗口</li>
@@ -844,7 +844,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>无缝轮播图</li>
 <li>回到顶部  </li>
 </ul>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="元素的类型"><a href="#元素的类型" class="headerlink" title="元素的类型"></a>元素的类型</h3><p><img src="media/1497169919418.png" alt="1497169919418"></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="元素的类型"><a href="#元素的类型" class="headerlink" title="元素的类型"></a>元素的类型</h3><p><img src="/posts/50686.htm/1497169919418.png" alt="1497169919418"></p>
 <p><em>如有侵权，联系 <a href="mailto:2025685938@qq.com" target="_blank" rel="noopener">2025685938@qq.com</a> 删除</em></p>
 <script>
         document.querySelectorAll('.github-emoji')
