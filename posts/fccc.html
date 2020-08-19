@@ -301,9 +301,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/信息收集/" target="_blank">
+                                <span class="chip bg-color">信息收集</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -461,18 +465,18 @@
 <p><a href="http://tool.chinaz.com/nslookup/" target="_blank" rel="noopener">在线nslookup查询1</a></p>
 <p><a href="http://tools.bugscaner.com/nslookup/" target="_blank" rel="noopener">在线nslookup查询2</a></p>
 <p>有 CDN 的示例：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3yJdzvkCnFsia3CR87T6U9uwV8ltzMTb240MQFzvd6x6hsmUfufpBBXw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLEqA.png" alt=""></p>
 <p>无 CDN 的示例：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3ZT6dsOV9qaYn528hfv35WLR01jxeCics2NibeE1720pI6pIEnSmGQCQQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLZVI.png" alt=""></p>
 <p>绕过cdn的方法有多种，参考链接如下：<a href="https://www.cnblogs.com/qiudabai/p/9763739.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiudabai/p/9763739.html</a></p>
 <p>提一点的是绕过云cdn，fofa的title搜索（查看源码获取title），可以发现很多cdn 缓存服务器的ip地址，部分cdn缓存服务器经过区域传送，数据库是同步的，如果可以直接访问，  即可绕过云waf进行一些扫描、注入等操作。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3gGHmBj3vDicicXPhFe8nOvtJqe3DYZVwEjsmNDmWib8Xb4KlftPIibJnPw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3GCum33aOaLE6d47elLo0bcZcgFHQ6PjpulwY5icx2yjVz2jicXCR1EIQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLixe.png" alt=""><img src="https://s1.ax1x.com/2020/08/19/dQLArd.png" alt=""></p>
 <p>这里推荐一些c端、旁站的扫描网站和工具：</p>
 <p><a href="http://www.webscan.cc/" target="_blank" rel="noopener">http://www.webscan.cc/</a></p>
 <p>神器：<a href="https://github.com/robertdavidgraham/masscan" target="_blank" rel="noopener">https://github.com/robertdavidgraham/masscan</a></p>
 <p>御剑1.5：<a href="https://download.csdn.net/download/peng119925/10722958" target="_blank" rel="noopener">https://download.csdn.net/download/peng119925/10722958</a></p>
 <p>C端查询：IIS PUT Scanner（扫描速度快，自定义端口，有banner信息）</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3CuqYoFtk70fZvvtz34XvhxITk0dq4axYcchzn8XzTDLBlBG4uDOmSw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLkKH.png" alt=""></p>
 <h3 id="四-端口测试"><a href="#四-端口测试" class="headerlink" title="四 端口测试"></a>四 端口测试</h3><p>对网站域名对应的真实IP地址进行端口测试，很多有防护不能大批量扫描和漏洞测试，但是放在云上的网站如果cdn找到真实网站即可大批量扫描。</p>
 <p>常见工具就是nmap(功能强大)、masscan、zmap和御剑tcp端口高速扫描工具(较快)，还有一些在线的端口扫描。<a href="http://coolaf.com/tool/port、https://tool.lu/portscan/index.html" target="_blank" rel="noopener">http://coolaf.com/tool/port、https://tool.lu/portscan/index.html</a>  </p>
 <p>参考大神的思路：我们可以在收集子域对应的的ip后整理到txt中，然后nmap批量端口扫描、服务爆破和漏洞扫描，前提是不被封禁IP，可采用代理池。</p>
@@ -723,10 +727,10 @@
 <p>云悉(现在需要邀请码)：<a href="http://www.yunsee.cn/info.html" target="_blank" rel="noopener">http://www.yunsee.cn/info.html</a></p>
 <p>CMS指纹识别：<a href="http://whatweb.bugscaner.com/look/" target="_blank" rel="noopener">http://whatweb.bugscaner.com/look/</a></p>
 <p>第三方历史漏洞库：乌云、seebug、CNVD等</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3qbAoyXml7Biba5636QTF3zeWPp1c9M94ebl2pQqcE34PSmNZj02yahw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLeat.png" alt=""></p>
 <p>（2）Waf识别：<a href="https://github.com/EnableSecurity/wafw00f" target="_blank" rel="noopener">https://github.com/EnableSecurity/wafw00f</a>  </p>
 <p>kali上自带wafw00f，一条命令直接使用。建议最好在kali下使用，windows下的使用很麻烦。Nmap上也包含识别waf指纹的脚本模块。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq30ubR5PWya751PHQt4Ng1rYHXaRmP4l0Dr12FN92nnFZ8Eq7yzd9WCA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLmIP.png" alt=""></p>
 <pre><code>在搜索框中输入XSS弹窗代码&lt;script&gt;alert('XSS')&lt;/script&gt; ，WAF拦截后判断WAF。
 在可能存在的注入页面输入检测注入漏洞代码and 1=2，被WAF拦截后判断WAF。</code></pre><p><img src="https://secpulseoss.oss-cn-shanghai.aliyuncs.com/wp-content/uploads/2018/08/%E5%9B%BE%E7%89%8725-1024x506.png" alt=""></p>
 <p>（3）Dns区域传送漏洞，我们可以通过这个漏洞发现：</p>
@@ -744,16 +748,16 @@
 <p>主要通过工具扫描，主要有</p>
 <p>（1）御剑(互联网有很多字典加强版)</p>
 <p>（2）7kbstorm <a href="https://github.com/7kbstorm/7kbscan-WebPathBrute" target="_blank" rel="noopener">https://github.com/7kbstorm/7kbscan-WebPathBrute</a></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3ckIibxsZfSQgnT58z8bpDMrGJ1ea1euGTyan462icIn1ln7dWsLvUELQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLuPf.png" alt=""></p>
 <p>（3）搜索引擎（Google、baidu、bing等），搜索引擎搜索敏感文件也较为常见，一般是这样：site:xxx.xxx filetype:xls。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3WrYyuyTUG17O7iac4SS1UWZIthcrBTCDib0jMkOibOEAiaic6oM8OCnKzfA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLKG8.png" alt=""></p>
 <p>（4）爬虫（AWVS、Burpsuite、北极熊等）</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3RyScPMLeiazVdtKVBcdkHDRRTwbvuUBkfYQqaPJuF1gFTBxXJWdCfNg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLMRS.png" alt=""></p>
 <p>（5）BBscan（lijiejie大佬的脚本：<a href="https://github.com/lijiejie/BBScastorn" target="_blank" rel="noopener">https://github.com/lijiejie/BBScastorn</a> ）</p>
 <p>（6）凌风云搜索：<a href="https://www.lingfengyun.com/（部分用户可能上传云盘被在线抓取）" target="_blank" rel="noopener">https://www.lingfengyun.com/（部分用户可能上传云盘被在线抓取）</a></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3aibHWrmOrn0XZ8w6RKicY3uLdfcVboSiaBN67R7jGZ5ZSpNCx9zibugEbw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQLQxg.png" alt=""></p>
 <p>（7）github搜索</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq30fjCPdICA73g7F49JPuQuiaWgVOUFjGKDfAtfpBGDZ6rFDP4iaAjVdBQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQL1MQ.png" alt=""></p>
 <h3 id="七-社会工程学收集"><a href="#七-社会工程学收集" class="headerlink" title="七 社会工程学收集"></a>七 社会工程学收集</h3><p>运用社会工程学进行信息收集和物理渗透，在近期</p>
 <p>奇安信的“攻守皆有道，百战护山河”中提及社会工程信息收集和物理渗透是他们重要攻击途径之一。</p>
 <p>社会工程学是一种通过对受害者心理弱点、本能反应、好奇心、信任、贪婪等心理陷阱进行诸如欺骗、伤害等危害手段；是一种黑客攻击方法，利用欺骗等手段骗取对方信任，获取机密情报；是一种利用人性脆弱点、贪婪等等的心理表现进行攻击。我们可以从社会工作人员和社工库入手，社工一家公司销售人、商务人员、门卫、前台人员来获得个人信息、邮箱、电话、内网地址、物理门禁；我们可以欺骗销售获得邮箱回复进而获取内网IP及服务器信息，我们可以欺骗客服申请重置密码、发送vpn账户等。</p>
@@ -889,6 +893,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/信息收集/" target="_blank">
+                        <span class="chip bg-color">信息收集</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
