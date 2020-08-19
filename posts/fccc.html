@@ -1,0 +1,1260 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Web渗透信息收集, yoyo，LHL001">
+    <meta name="description" content="“战争的胜利百分之九十取决于情报“ — — Napoléon Bonaparte
+信息收集主要是收集服务器的配置信息和网站的敏感信息，主要包括域名信息、子域名信息、目标网站信息、目标网站真实IP、目录文件、开放端口和服务、中间件信息、脚本语">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Web渗透信息收集 | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Web渗透信息收集
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/信息收集/" class="post-category" target="_blank">
+                                信息收集
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-08-19
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>“战争的胜利百分之九十取决于情报“ — — Napoléon Bonaparte</p>
+<p>信息收集主要是收集服务器的配置信息和网站的敏感信息，主要包括域名信息、子域名信息、目标网站信息、目标网站真实IP、目录文件、开放端口和服务、中间件信息、脚本语言等等等。结合各路大佬的收集经验，菜鸟总结了8种信息收集的方式，有不足之处，欢迎赐教，欢迎斧正。个人感觉重点是顺手的工具、有IP代理池、日常收集的强大的字典、清晰可见的思维导图和多次的实战经验。</p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQg3Dg.png" alt=""></p>
+<h3 id="一-收集域名信息"><a href="#一-收集域名信息" class="headerlink" title="一 收集域名信息"></a>一 收集域名信息</h3><ul>
+<li>1.whois查询</li>
+</ul>
+<p>whois（读作“Who is”，非缩写），标准的互联网协议，是用来查询域名的IP以及所有者等信息的传输协议。简单说，就是一个用来查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商）。</p>
+<p>通过whois来实现对域名信息的查询。早期的whois查询多以命令列接口存在，但是现在出现了一些网页接口简化的线上查询工具，可以一次向不同的数据库查询。网页接口的查询工具仍然依赖whois协议向服务器发送查询请求，命令列接口的工具仍然被系统管理员广泛使用。whois通常使用TCP协议43端口。每个域名/IP的whois信息由对应的管理机构保存。</p>
+<p>Whois查询我们主要关注的重点是<strong>注册商、注册人、邮件、DNS解析服务器、注册人联系电话。</strong></p>
+<p>目前常见的查询方法主要是通过站长工具等第三方平台查询，当然其实还可以在域名注册商那查询已经注册过的域名，例如中国万网（阿里云）、西部数码、新网、纳网、中资源、三五互联、新网互联、美橙互联、爱名网、易名网等等。还可以通过自己的注册代理机构查询。</p>
+<p>各大注册商以及第三方站长工具的域名WHOIS信息查询地址如下：</p>
+<p>中国万网域名WHOIS信息查询地址：<a href="https://whois.aliyun.com/" target="_blank" rel="noopener">https://whois.aliyun.com/</a></p>
+<p>西部数码域名WHOIS信息查询地址：<a href="https://whois.west.cn/" target="_blank" rel="noopener">https://whois.west.cn/</a></p>
+<p>新网域名WHOIS信息查询地址：<a href="http://whois.xinnet.com/domain/whois/index.jsp" target="_blank" rel="noopener">http://whois.xinnet.com/domain/whois/index.jsp</a></p>
+<p>纳网域名WHOIS信息查询地址：<a href="http://whois.nawang.cn/" target="_blank" rel="noopener">http://whois.nawang.cn/</a></p>
+<p>中资源域名WHOIS信息查询地址：<a href="https://www.zzy.cn/domain/whois.html" target="_blank" rel="noopener">https://www.zzy.cn/domain/whois.html</a></p>
+<p>三五互联域名WHOIS信息查询地址：<a href="https://cp.35.com/chinese/whois.php" target="_blank" rel="noopener">https://cp.35.com/chinese/whois.php</a></p>
+<p>新网互联域名WHOIS信息查询地址：<a href="http://www.dns.com.cn/show/domain/whois/index.do" target="_blank" rel="noopener">http://www.dns.com.cn/show/domain/whois/index.do</a></p>
+<p>美橙互联域名WHOIS信息查询地址：<a href="https://whois.cndns.com/" target="_blank" rel="noopener">https://whois.cndns.com/</a></p>
+<p>爱名网域名WHOIS信息查询地址：<a href="https://www.22.cn/domain/" target="_blank" rel="noopener">https://www.22.cn/domain/</a></p>
+<p>易名网域名WHOIS信息查询地址：<a href="https://whois.ename.net/" target="_blank" rel="noopener">https://whois.ename.net/</a></p>
+<p>下面是站长工具类第三方查询地址(部分网站注册人信息会隐藏或提示联系域名注册商获取，可以去who.is查询看看)</p>
+<p>Kali的查询：whois -h 注册服务器地址  域名</p>
+<p> 站长工具-站长之家<a href="http://whois.chinaz.com/" target="_blank" rel="noopener">域名WHOIS信息查询</a></p>
+<ul>
+<li><p>邮箱反查：<a href="http://whois.chinaz.com/reverse?ddlSearchMode=1" target="_blank" rel="noopener">http://whois.chinaz.com/reverse?ddlSearchMode=1</a></p>
+</li>
+<li><p>注册人反查：<a href="http://whois.chinaz.com/reverse?ddlSearchMode=1" target="_blank" rel="noopener">http://whois.chinaz.com/reverse?ddlSearchMode=1</a></p>
+</li>
+<li><p>电话反查：<a href="http://whois.chinaz.com/reverse?ddlSearchMode=1" target="_blank" rel="noopener">http://whois.chinaz.com/reverse?ddlSearchMode=1</a></p>
+</li>
+</ul>
+<p>爱站网域名WHOIS信息查询地址：<a href="https://whois.aizhan.com/" target="_blank" rel="noopener">https://whois.aizhan.com/</a></p>
+<p>腾讯云域名WHOIS信息查询地址：<a href="https://whois.cloud.tencent.com/" target="_blank" rel="noopener">https://whois.cloud.tencent.com/</a></p>
+<p>国外的who.is：<a href="https://who.is/" target="_blank" rel="noopener">https://who.is/</a> </p>
+<p>微步：<a href="https://x.threatbook.cn/" target="_blank" rel="noopener">https://x.threatbook.cn/</a> </p>
+<p>Virus Total:<a href="https://www.virustotal.com" target="_blank" rel="noopener">https://www.virustotal.com</a></p>
+<p>还有Kali中自带的whois查询、一些集成工具等。</p>
+<p><a href="https://imgchr.com/i/dQg7ad" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/08/19/dQg7ad.png" alt=""></a></p>
+<ul>
+<li><p>2.备案信息查询</p>
+<p>网站备案信息是根据国家法律法规规定，由网站所有者向国家有关部门申请的备案，是国家信息产业部对网站的一种管理途径，是为了防止在网上从事非法网站经营活动，当然主要是针对国内网站。</p>
+</li>
+</ul>
+<p>备案查询我们主要关注的是：单位信息例如名称、备案编号、网站负责人、法人、电子邮箱、联系电话等。</p>
+<p>常见查询备案信息的网站如下：</p>
+<p>天眼查：<a href="https://www.tianyancha.com/" target="_blank" rel="noopener">https://www.tianyancha.com/</a> </p>
+<p>ICP备案查询网：<a href="http://www.beianbeian.com/" target="_blank" rel="noopener">http://www.beianbeian.com/</a> </p>
+<p>国家企业信用信息公示系统：<a href="http://www.gsxt.gov.cn/index.html" target="_blank" rel="noopener">http://www.gsxt.gov.cn/index.html</a></p>
+<p>爱站的备案查询：<a href="https://icp.aizhan.com" target="_blank" rel="noopener">https://icp.aizhan.com</a></p>
+<h3 id="二-收集子域名"><a href="#二-收集子域名" class="headerlink" title="二 收集子域名"></a>二 收集子域名</h3><p>子域名也就是二级域名，是指顶级域名下的域名。收集的子域名越多，我们测试的目标就越多，目标系统渗透成功的机率也越大。主站无懈可击的时候子域名是一个很好的突破口。常用的方法有4种</p>
+<ul>
+<li>1 .检测工具</li>
+</ul>
+<p>检测工具有很多，但重要的是需要日常完善字典，字典强大才是硬道理。常见的有</p>
+<p>layer子域名挖掘机、subDomainsBrute、K8、orangescan、DNSRecon、Sublist3r、dnsmaper、wydomain等等，重点推荐layer子域名挖掘机（使用简单，界面细致）、Sublist3r（列举多资源下查到的域名）和subDomainsBrute。（递归查询多级域名），此类工具github都有下载地址和使用方法。</p>
+<p>链接如下：</p>
+<p>SubDomainBrute：<a href="https://github.com/lijiejie/subDomainsBrute" target="_blank" rel="noopener">https://github.com/lijiejie/subDomainsBrute</a></p>
+<p>Sublist3r：<a href="https://github.com/aboul3la/Sublist3r" target="_blank" rel="noopener">https://github.com/aboul3la/Sublist3r</a></p>
+<p>Layer（5.0增强版）：<a href="https://pan.baidu.com/s/1Jja4QK5BsAXJ0i0Ax8Ve2Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1Jja4QK5BsAXJ0i0Ax8Ve2Q</a>  密码:aup5</p>
+<p><a href="https://d.chinacycc.com（大佬推荐的说好用的很，但是收费。）" target="_blank" rel="noopener">https://d.chinacycc.com（大佬推荐的说好用的很，但是收费。）</a></p>
+<ul>
+<li>2.搜索引擎</li>
+</ul>
+<p>可以利用Google、Bing 、shodan和百度这样的搜索引擎进行搜索查询（site:<a href="http://www.xxx.com）" target="_blank" rel="noopener">www.xxx.com）</a></p>
+<p><a href="https://imgchr.com/i/dQ2Ko9" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/08/19/dQ2Ko9.png" alt=""></a></p>
+<p><a href="https://imgchr.com/i/dQ2Roj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/08/19/dQ2Roj.png" alt=""></a></p>
+<p>Google搜索语法：<a href="https://blog.csdn.net/pan0yan/article/details/41807071" target="_blank" rel="noopener">https://blog.csdn.net/pan0yan/article/details/41807071</a></p>
+<p>Bing搜索语法：<a href="https://blog.csdn.net/hansel/article/details/53886828" target="_blank" rel="noopener">https://blog.csdn.net/hansel/article/details/53886828</a></p>
+<p>百度搜索语法：<a href="https://www.cnblogs.com/k0xx/p/12794452.html" target="_blank" rel="noopener">https://www.cnblogs.com/k0xx/p/12794452.html</a></p>
+<ul>
+<li>3.第三方聚合应用枚举</li>
+</ul>
+<p>第三方服务聚合了大量的DNS数据集，并通过它们来检索给定域名的子域名。</p>
+<p>（1）VirusTotal：<a href="https://www.virustotal.com/#/home/search" target="_blank" rel="noopener">https://www.virustotal.com/#/home/search</a></p>
+<p>（2）DNSdumpster：<a href="https://dnsdumpster.com/" target="_blank" rel="noopener">https://dnsdumpster.com/</a> </p>
+<p><a href="https://imgchr.com/i/dQ2zSx" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/08/19/dQ2zSx.png" alt=""></a></p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dQRYpq.png" alt=""></p>
+<ul>
+<li><ol start="4">
+<li>SSL证书查询</li>
+</ol>
+</li>
+</ul>
+<p>SSL/TLS证书通常包含域名、子域名和邮件地址，这些是我们需要获取的信息，通常CT是CA的一个项目，CA会把每个SSL/TLS证书发布到公共日志中，查找域名所属证书的最简单方法就是使用搜索引擎搜索一些公开CT日志。</p>
+<p>主要网站如下：</p>
+<p>（1）<a href="https://crt.sh/" target="_blank" rel="noopener">https://crt.sh/</a></p>
+<p>（2）<a href="https://censys.io/" target="_blank" rel="noopener">https://censys.io/</a></p>
+<p>（3）<a href="https://developers.facebook.com/tools/ct/" target="_blank" rel="noopener">https://developers.facebook.com/tools/ct/</a></p>
+<p>（4）<a href="https://google.com/transparencyreport/https/ct/" target="_blank" rel="noopener">https://google.com/transparencyreport/https/ct/</a></p>
+<ul>
+<li><ol start="5">
+<li>在线网站查询（使用相对较少了）</li>
+</ol>
+</li>
+</ul>
+<p>（1）<a href="https://phpinfo.me/domain/" target="_blank" rel="noopener">https://phpinfo.me/domain/</a></p>
+<p>（2）<a href="http://dns.aizhan.com" target="_blank" rel="noopener">http://dns.aizhan.com</a></p>
+<p>（3）<a href="http://z.zcjun.com/（响应很快,推荐）" target="_blank" rel="noopener">http://z.zcjun.com/（响应很快,推荐）</a></p>
+<p>（4）Github搜索子域名</p>
+<h3 id="三-真实IP收集"><a href="#三-真实IP收集" class="headerlink" title="三 真实IP收集"></a>三 真实IP收集</h3><p>信息收集工程中IP地址是必不可少的，在域名收集工程中我们已经对ip段收集，whois、ping测试、指纹网站都可以探测ip地址，但是很多目标服务器存在CDN，那什么是CDN，如果绕过查找真实IP呢？</p>
+<p>CDN的全称是Content Delivery Network，即内容分发网络。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，只有在实际数据交互时才会从远程web服务器响应，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
+<p>确定有无cdn</p>
+<p>（1）很简单，使用各种多地 ping 的服务，查看对应 IP 地址是否唯一，如果不唯一多半是使用了CDN， 多地 Ping 网站有：<br><a href="http://ping.chinaz.com/" target="_blank" rel="noopener">http://ping.chinaz.com/</a><br><a href="http://ping.aizhan.com/" target="_blank" rel="noopener">http://ping.aizhan.com/</a></p>
+<p>(2)使用 nslookup 进行检测，原理同上，如果返回域名解析对应多个 IP 地址多半是使用了 CDN。</p>
+<p>查询相关域名对应IP、别名记录等，判断出网站服务器所使用的服务商或服务器IP信息。</p>
+<p><a href="http://tool.chinaz.com/nslookup/" target="_blank" rel="noopener">在线nslookup查询1</a></p>
+<p><a href="http://tools.bugscaner.com/nslookup/" target="_blank" rel="noopener">在线nslookup查询2</a></p>
+<p>有 CDN 的示例：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3yJdzvkCnFsia3CR87T6U9uwV8ltzMTb240MQFzvd6x6hsmUfufpBBXw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>无 CDN 的示例：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3ZT6dsOV9qaYn528hfv35WLR01jxeCics2NibeE1720pI6pIEnSmGQCQQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>绕过cdn的方法有多种，参考链接如下：<a href="https://www.cnblogs.com/qiudabai/p/9763739.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiudabai/p/9763739.html</a></p>
+<p>提一点的是绕过云cdn，fofa的title搜索（查看源码获取title），可以发现很多cdn 缓存服务器的ip地址，部分cdn缓存服务器经过区域传送，数据库是同步的，如果可以直接访问，  即可绕过云waf进行一些扫描、注入等操作。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3gGHmBj3vDicicXPhFe8nOvtJqe3DYZVwEjsmNDmWib8Xb4KlftPIibJnPw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3GCum33aOaLE6d47elLo0bcZcgFHQ6PjpulwY5icx2yjVz2jicXCR1EIQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>这里推荐一些c端、旁站的扫描网站和工具：</p>
+<p><a href="http://www.webscan.cc/" target="_blank" rel="noopener">http://www.webscan.cc/</a></p>
+<p>神器：<a href="https://github.com/robertdavidgraham/masscan" target="_blank" rel="noopener">https://github.com/robertdavidgraham/masscan</a></p>
+<p>御剑1.5：<a href="https://download.csdn.net/download/peng119925/10722958" target="_blank" rel="noopener">https://download.csdn.net/download/peng119925/10722958</a></p>
+<p>C端查询：IIS PUT Scanner（扫描速度快，自定义端口，有banner信息）</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3CuqYoFtk70fZvvtz34XvhxITk0dq4axYcchzn8XzTDLBlBG4uDOmSw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="四-端口测试"><a href="#四-端口测试" class="headerlink" title="四 端口测试"></a>四 端口测试</h3><p>对网站域名对应的真实IP地址进行端口测试，很多有防护不能大批量扫描和漏洞测试，但是放在云上的网站如果cdn找到真实网站即可大批量扫描。</p>
+<p>常见工具就是nmap(功能强大)、masscan、zmap和御剑tcp端口高速扫描工具(较快)，还有一些在线的端口扫描。<a href="http://coolaf.com/tool/port、https://tool.lu/portscan/index.html" target="_blank" rel="noopener">http://coolaf.com/tool/port、https://tool.lu/portscan/index.html</a>  </p>
+<p>参考大神的思路：我们可以在收集子域对应的的ip后整理到txt中，然后nmap批量端口扫描、服务爆破和漏洞扫描，前提是不被封禁IP，可采用代理池。</p>
+<p>nmap -iL ip.txt –script=auth,vuln &gt; finalscan.txt 扫描导出常见端口和漏洞。</p>
+<p>常见端口说明和攻击方向根据web攻防这本书整理到个人博客：<a href="https://blog.csdn.net/qq_32434307/article/details/107248881" target="_blank" rel="noopener">https://blog.csdn.net/qq_32434307/article/details/107248881</a></p>
+<p>常见端口漏洞：</p>
+<table>
+<thead>
+<tr>
+<th align="center">端口</th>
+<th align="center">服务</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">21</td>
+<td align="center">FTP</td>
+<td align="center">主要看是否支持匿名，也可跑弱口令</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">SSH</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">telnet</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">80-90</td>
+<td align="center">WEB</td>
+<td align="center">常见WEB漏洞以及一些为管理后台</td>
+</tr>
+<tr>
+<td align="center">161</td>
+<td align="center">snmp</td>
+<td align="center">public弱口令</td>
+</tr>
+<tr>
+<td align="center">389</td>
+<td align="center">ldap</td>
+<td align="center">是否为匿名访问</td>
+</tr>
+<tr>
+<td align="center">443</td>
+<td align="center">openssl</td>
+<td align="center">心脏出血以及一些WEB漏洞测试</td>
+</tr>
+<tr>
+<td align="center">445</td>
+<td align="center">smb</td>
+<td align="center">跑弱口令，检测是否有ms_08067等溢出</td>
+</tr>
+<tr>
+<td align="center">873</td>
+<td align="center">rsync</td>
+<td align="center">是否为匿名访问，也可以跑弱口令</td>
+</tr>
+<tr>
+<td align="center">1025</td>
+<td align="center">RPC</td>
+<td align="center">NFS匿名访问</td>
+</tr>
+<tr>
+<td align="center">1099</td>
+<td align="center">java rmi</td>
+<td align="center">远程命令执行漏洞</td>
+</tr>
+<tr>
+<td align="center">1433</td>
+<td align="center">mssql</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">1521</td>
+<td align="center">oracle</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">2082/2083</td>
+<td align="center">cpanel主机管理系统登陆</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">2222</td>
+<td align="center">DA虚拟主机管理系统登陆</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">2601,2604</td>
+<td align="center">zebra路由器</td>
+<td align="center">默认密码zebra</td>
+</tr>
+<tr>
+<td align="center">3128</td>
+<td align="center">squid代理默认端口</td>
+<td align="center">如果没设置口令很可能就直接漫游内网</td>
+</tr>
+<tr>
+<td align="center">3306</td>
+<td align="center">mysql</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">3312/3311</td>
+<td align="center">kangle主机管理系统登陆</td>
+<td align="center">说明</td>
+</tr>
+<tr>
+<td align="center">3389</td>
+<td align="center">RDP</td>
+<td align="center">弱口令爆破，SHIFT后门，放大镜，输入法漏洞</td>
+</tr>
+<tr>
+<td align="center">4440</td>
+<td align="center">rundeck</td>
+<td align="center">web</td>
+</tr>
+<tr>
+<td align="center">4848</td>
+<td align="center">GlassFish web中间件</td>
+<td align="center">弱口令admin/adminadmin</td>
+</tr>
+<tr>
+<td align="center">5432</td>
+<td align="center">postgres</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">5560,7778</td>
+<td align="center">iSqlPlus</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5900,5901,5902</td>
+<td align="center">vnc</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">5984</td>
+<td align="center">CouchDB</td>
+<td align="center"><a href="http://xxx:5984/_utils/" target="_blank" rel="noopener">http://xxx:5984/_utils/</a></td>
+</tr>
+<tr>
+<td align="center">6082</td>
+<td align="center">varnish</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6379</td>
+<td align="center">redis</td>
+<td align="center">一般无验证，直接访问</td>
+</tr>
+<tr>
+<td align="center">7001,7002</td>
+<td align="center">weblogic</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">7778</td>
+<td align="center">Kloxo</td>
+<td align="center">主机控制面板登录</td>
+</tr>
+<tr>
+<td align="center">8080</td>
+<td align="center">tomcat\jboss</td>
+<td align="center">弱口令爆破，jboss后台可能不验证</td>
+</tr>
+<tr>
+<td align="center">8649</td>
+<td align="center">ganglia</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8080-8090</td>
+<td align="center">常见WEB端口</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8083</td>
+<td align="center">Vestacp主机管理系统 （国外用较多）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8649</td>
+<td align="center">ganglia</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8888</td>
+<td align="center">amh/LuManager</td>
+<td align="center">主机管理系统默认端口 说明</td>
+</tr>
+<tr>
+<td align="center">9000</td>
+<td align="center">fcgi</td>
+<td align="center">fcgi php命令执行漏洞</td>
+</tr>
+<tr>
+<td align="center">9200</td>
+<td align="center">elasticsearch</td>
+<td align="center">代码执行</td>
+</tr>
+<tr>
+<td align="center">9043</td>
+<td align="center">websphere</td>
+<td align="center">弱口令爆破</td>
+</tr>
+<tr>
+<td align="center">10000</td>
+<td align="center">Virtualmin/Webmin</td>
+<td align="center">服务器虚拟主机管理系统</td>
+</tr>
+<tr>
+<td align="center">11211</td>
+<td align="center">memcache</td>
+<td align="center">内存泄露</td>
+</tr>
+<tr>
+<td align="center">27017,28017</td>
+<td align="center">mongodb</td>
+<td align="center">未授权访问</td>
+</tr>
+<tr>
+<td align="center">50000</td>
+<td align="center">Upnp</td>
+<td align="center">SAP命令执行</td>
+</tr>
+<tr>
+<td align="center">50060,50030</td>
+<td align="center">hadoop</td>
+<td align="center">WEB 未授权访问</td>
+</tr>
+</tbody></table>
+<h3 id="五-网站信息收集"><a href="#五-网站信息收集" class="headerlink" title="五 网站信息收集"></a>五 网站信息收集</h3><p>网站信息信息收集主要是：操作系统，中间件，脚本语言，数据库，服务器，web容器、waf、cdn、cms、历史漏洞、dns区域传送等，可以使用以下方法查询。</p>
+<p>常见指纹工具：御剑web指纹识别、轻量级web指纹识别、whatweb等</p>
+<p>（1）常见网站信息识别网站：</p>
+<p><strong>将首页或者其他页面通过修改大小写辨别网站所使用的系统：</strong></p>
+<p>区分大小写（页面报错）–Linux</p>
+<p>不区分大小写（页面正常）–Windows</p>
+<p>潮汐指纹：<a href="http://finger.tidesec.net/（推荐）" target="_blank" rel="noopener">http://finger.tidesec.net/（推荐）</a></p>
+<p>云悉(现在需要邀请码)：<a href="http://www.yunsee.cn/info.html" target="_blank" rel="noopener">http://www.yunsee.cn/info.html</a></p>
+<p>CMS指纹识别：<a href="http://whatweb.bugscaner.com/look/" target="_blank" rel="noopener">http://whatweb.bugscaner.com/look/</a></p>
+<p>第三方历史漏洞库：乌云、seebug、CNVD等</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3qbAoyXml7Biba5636QTF3zeWPp1c9M94ebl2pQqcE34PSmNZj02yahw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>（2）Waf识别：<a href="https://github.com/EnableSecurity/wafw00f" target="_blank" rel="noopener">https://github.com/EnableSecurity/wafw00f</a>  </p>
+<p>kali上自带wafw00f，一条命令直接使用。建议最好在kali下使用，windows下的使用很麻烦。Nmap上也包含识别waf指纹的脚本模块。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq30ubR5PWya751PHQt4Ng1rYHXaRmP4l0Dr12FN92nnFZ8Eq7yzd9WCA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<pre><code>在搜索框中输入XSS弹窗代码&lt;script&gt;alert('XSS')&lt;/script&gt; ，WAF拦截后判断WAF。
+在可能存在的注入页面输入检测注入漏洞代码and 1=2，被WAF拦截后判断WAF。</code></pre><p><img src="https://secpulseoss.oss-cn-shanghai.aliyuncs.com/wp-content/uploads/2018/08/%E5%9B%BE%E7%89%8725-1024x506.png" alt=""></p>
+<p>（3）Dns区域传送漏洞，我们可以通过这个漏洞发现：</p>
+<p>1）网络的拓扑结构，服务器集中的IP地址段</p>
+<p>2）数据库服务器的IP地址，例如上述nwpudb2.nwpu.edu.cn</p>
+<p>3）测试服务器的IP地址，例如test.nwpu.edu.cn</p>
+<p>4）VPN服务器地址泄露</p>
+<p>5）其他敏感服务器</p>
+<p>  (4) 各端口对应数据库类型：</p>
+<p>1433–sql server 3306–mysql oracle–1521 postgresql–5432  access–默认不开放连接端口，数据库存储在FTP服务器上</p>
+<p>具体参考链接如下：</p>
+<p><a href="http://www.lijiejie.com/dns-zone-transfer-1" target="_blank" rel="noopener">http://www.lijiejie.com/dns-zone-transfer-1</a></p>
+<p><a href="https://blog.csdn.net/c465869935/article/details/53444117" target="_blank" rel="noopener">https://blog.csdn.net/c465869935/article/details/53444117</a></p>
+<h3 id="六-敏感目录文件收集"><a href="#六-敏感目录文件收集" class="headerlink" title="六 敏感目录文件收集"></a>六 敏感目录文件收集</h3><p>攻防测试中探测web目录和隐藏的敏感文件是很重要环境，从中可以获取网站后台管理页面、文件上传界面、备份文件、WEB-INF、robots、svn和源代码等。</p>
+<p>主要通过工具扫描，主要有</p>
+<p>（1）御剑(互联网有很多字典加强版)</p>
+<p>（2）7kbstorm <a href="https://github.com/7kbstorm/7kbscan-WebPathBrute" target="_blank" rel="noopener">https://github.com/7kbstorm/7kbscan-WebPathBrute</a></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3ckIibxsZfSQgnT58z8bpDMrGJ1ea1euGTyan462icIn1ln7dWsLvUELQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>（3）搜索引擎（Google、baidu、bing等），搜索引擎搜索敏感文件也较为常见，一般是这样：site:xxx.xxx filetype:xls。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3WrYyuyTUG17O7iac4SS1UWZIthcrBTCDib0jMkOibOEAiaic6oM8OCnKzfA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>（4）爬虫（AWVS、Burpsuite、北极熊等）</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3RyScPMLeiazVdtKVBcdkHDRRTwbvuUBkfYQqaPJuF1gFTBxXJWdCfNg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>（5）BBscan（lijiejie大佬的脚本：<a href="https://github.com/lijiejie/BBScastorn" target="_blank" rel="noopener">https://github.com/lijiejie/BBScastorn</a> ）</p>
+<p>（6）凌风云搜索：<a href="https://www.lingfengyun.com/（部分用户可能上传云盘被在线抓取）" target="_blank" rel="noopener">https://www.lingfengyun.com/（部分用户可能上传云盘被在线抓取）</a></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq3aibHWrmOrn0XZ8w6RKicY3uLdfcVboSiaBN67R7jGZ5ZSpNCx9zibugEbw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>（7）github搜索</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rTicZ9Hibb6RWs9h1sGntI5u6ia7kUbocq30fjCPdICA73g7F49JPuQuiaWgVOUFjGKDfAtfpBGDZ6rFDP4iaAjVdBQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="七-社会工程学收集"><a href="#七-社会工程学收集" class="headerlink" title="七 社会工程学收集"></a>七 社会工程学收集</h3><p>运用社会工程学进行信息收集和物理渗透，在近期</p>
+<p>奇安信的“攻守皆有道，百战护山河”中提及社会工程信息收集和物理渗透是他们重要攻击途径之一。</p>
+<p>社会工程学是一种通过对受害者心理弱点、本能反应、好奇心、信任、贪婪等心理陷阱进行诸如欺骗、伤害等危害手段；是一种黑客攻击方法，利用欺骗等手段骗取对方信任，获取机密情报；是一种利用人性脆弱点、贪婪等等的心理表现进行攻击。我们可以从社会工作人员和社工库入手，社工一家公司销售人、商务人员、门卫、前台人员来获得个人信息、邮箱、电话、内网地址、物理门禁；我们可以欺骗销售获得邮箱回复进而获取内网IP及服务器信息，我们可以欺骗客服申请重置密码、发送vpn账户等。</p>
+<p>我们可以通过社工库查询一些关键信息。对于很多社工库来说，存储达到T，数据量达到亿级别都是小case。内容方面包括帐号密码、邮箱地址、个人信息等等。</p>
+<p>互联网社工库，威力有多大，就看数据库的数量和质量了，理论上达到了一定的量，很多的东西都是可以查的出来的，特别是那些基本所有网站都一个密码的，只要一个社工库的收集的其中一个数据库有他的帐号密码，那么查出来的密码就可以直接登陆该用户的其他帐号了。</p>
+<h3 id="八-近源信息收集"><a href="#八-近源信息收集" class="headerlink" title="八  近源信息收集"></a>八  近源信息收集</h3><p>（1）外接无线网卡主要是用来配合kali破解无线密码的，现在一般是通过抓握手包然后跑包来破解，还可以通过伪造SSID钓鱼、中间人攻击等等，主要是获取无线网密码、网段信息等。</p>
+<p>（2）大菠萝可以捕获握手包并模仿目标AP。大菠萝可以完全模仿首选网络，从而实现中间人攻击，获取我们想要的无线网信息，为攻击目标系统收集信息。</p>
+<p>（3）当前电子设备和电路的工作频率不断提高，而工作电压却逐渐降低，因此对电磁脉冲（EMP）的敏感性和易损性也不断增加。同时，电子系统中的集成电路对电磁脉冲比较敏感，往往一个较大的电磁脉冲，就会使集成块产生误码、甚至电子元器件失效或烧毁，所以我们可以使用EMP干扰来打开部分电子门禁和电子密码锁。如果我们使用EMP无法打开门禁，那我们还有一个方法，但是需要我们稍微靠近一下目标，找合适的机会破解IC卡，或复制ID卡。进而突破门禁，实现物理攻击和信息收集。</p>
+<p>（4）当然我们也可由通过社工获取指纹信息，拓印出一个跟原指纹一模一样的指纹膜突破物理门禁、办公PC指纹识别等。</p>
+<p>（5）如果你能接触到目标主机，那你就可以将键盘记录器接入到主机和键盘之间，并配置连接WI-FI，将键盘敲击的数据实时传回远程服务器。</p>
+<p>（6）进入办公地点或者内网之后，可以在内网偷偷装一个PacketSquirrel，作为中间人攻击工具，PacketSquirrel可以捕获网络端点的数据包、并且可以使用VPN和反向shell获得远程访问权限，为攻击目标系统收集部分信息。</p>
+<p>（7） badusb是HID（人机接口）攻击的一种，也称为热插拔攻击。想象一下，你可以走到一台计算机上，插入看似无害的USB驱动器，然后安装后门，窃听文档，窃取相关密码.，收集目标系统相关信息。</p>
+<p>参考大佬链接：</p>
+<p><a href="https://www.freebuf.com/database/195169.html" target="_blank" rel="noopener">https://www.freebuf.com/database/195169.html</a></p>
+<p><a href="https://www.freebuf.com/articles/web/204883.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/204883.html</a></p>
+<p><a href="https://www.cnblogs.com/nul1/p/11311731.html" target="_blank" rel="noopener">https://www.cnblogs.com/nul1/p/11311731.html</a></p>
+<p><a href="https://mp.weixin.qq.com/s/XvcYaVMBkWiH2BW7kCWfNQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XvcYaVMBkWiH2BW7kCWfNQ</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/fccc.html" class="b-link-green">Web渗透信息收集</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/fccc.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Web渗透信息收集">
+                        
+                        <span class="card-title">Web渗透信息收集</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">“战争的胜利百分之九十取决于情报“ — — Napoléon Bonaparte
+信息收集主要是收集服务器的配置信息和网站的敏感信息，主要包括域名信息、子域名信息、目标网站信息、目标网站真实IP、目录文件、开放端口和服务、中间件信息、脚本语</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/信息收集/" class="post-category" target="_blank">
+                                    信息收集
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/22380.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Hexo 博客搭建指南">
+                        
+                        <span class="card-title">Hexo 博客搭建指南</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Hexo 博客搭建指南
+参照
+基于Hexo的matery主题搭建博客并优化
+
+安装hexoHexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+前</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hexo/" class="post-category" target="_blank">
+                                    Hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/" target="_blank">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">231k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+<style>
+    .github-badge {
+        display:inline-block;
+        border-radius:4px;
+        text-shadow:none;
+        font-size:13px;
+        color:#fff;
+        line-height:15px;
+        background-color:#ABBAC3;
+        margin-bottom:5px;
+    }
+    .github-badge .badge-subject {
+        display:inline-block;
+        background-color:#4D4D4D;
+        padding:4px 4px 4px 6px;
+        border-top-left-radius:4px;
+        border-bottom-left-radius:4px;
+    }
+    .github-badge .badge-value {
+        display:inline-block;
+        padding:4px 6px 4px 4px;
+        border-top-right-radius:4px;
+        border-bottom-right-radius:4px;
+    }
+    .github-badge .bg-brightgreen {
+        background-color:#4DC820 !important;
+    }
+    .github-badge .bg-orange {
+        background-color:#FFA500 !important;
+    }
+    .github-badge .bg-yellow {
+        background-color:#D8B024 !important;
+    }
+    .github-badge .bg-blueviolet {
+        background-color:#8833D7 !important;
+    }
+    .github-badge .bg-pink {
+        background-color:#F26BAE !important;
+    }
+    .github-badge .bg-red {
+        background-color:#e05d44 !important;
+    }
+    .github-badge .bg-blue {
+        background-color:#007EC6 !important;
+    }
+    .github-badge .bg-lightgrey {
+        background-color:#9F9F9F !important;
+    }
+    .github-badge .bg-grey, .github-badge .bg-gray {
+        background-color:#555 !important;
+    }
+    .github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+        background-color:#9f9f9f !important;
+    }
+</style>
+<center>
+<div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+            <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages 和 Gitee Pages">
+            <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub & Coding & Gitee</span></a>
+          </div>
+          <div class="github-badge">
+              <a style="color: #fff" rel="license" href="https://blinkfox.github.io/" target="_blank" title="站点使用 Matery主题">
+            <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Matery</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+            <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
+            <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">231k</span>
+          </div>
+</div>
+</center>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<script src="/js/snow.js"></script>
+
+</body>
+</html>
