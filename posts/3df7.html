@@ -1,0 +1,957 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux系统常用监控工具, yoyo，LHL001">
+    <meta name="description" content="[TOC]
+top 命令top 命令我想大家都挺熟悉吧！Linux 下的 top 命令有点类似于 Windows下的任务管理器，能够实时动态地监控并显示系统中各个进程的资源占用状况，是 Linux下常用的性能监控和分析工具。
+一个常见的to">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Linux系统常用监控工具 | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/book" class="waves-effect waves-light">
+            
+            <i class="fa fas fa-book"></i>
+            
+            <span>Book</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/book" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fas fa-book"></i>
+                
+                Book
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Linux系统常用监控工具
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux，Linux监控/" target="_blank">
+                                <span class="chip bg-color">Linux，Linux监控</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                Linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-08-20
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        4 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>[TOC]</p>
+<h2 id="top-命令"><a href="#top-命令" class="headerlink" title="top 命令"></a>top 命令</h2><p>top 命令我想大家都挺熟悉吧！Linux 下的 top 命令有点类似于 Windows下的任务管理器，能够实时动态地监控并显示系统中各个进程的资源占用状况，是 Linux下常用的性能监控和分析工具。</p>
+<p>一个常见的top命令的执行视图如下：</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d32XG9.png" alt=" top命令视图"></p>
+<p>​                                                                                    top命令视图</p>
+<p>下面我们详细在图中标注出每个指标的含义，认真看图对比理解吧（必要时可保存该图备查哦）：</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3RPaD.png" alt="top命令视图中各项指标详解">                                                                  top命令视图中各项指标详解</p>
+<p>怎么样，理解起来够直观了吧，至于 top命令的其他一些带参数用法自行help吧，太多了，不再赘述了！</p>
+<hr>
+<h2 id="htop-命令"><a href="#htop-命令" class="headerlink" title="htop 命令"></a>htop 命令</h2><p><code>htop</code> 是 Linux下一个交互式的进程浏览器，可以完全替代上一小节中所讲的 top命令，与 top命令对比，htop命令有如下优点：</p>
+<ul>
+<li>直接支持鼠标点击操作（ 就问你6不6！）</li>
+<li>画面可以水平垂直滚动，更像一个窗口</li>
+<li>可以跟踪进程，显示进程打开的文件</li>
+<li>支持进程的树状图显示</li>
+<li>支持按照名称查找进程</li>
+</ul>
+<p>总之可视化方面做得66的，我们来体验一下：</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3RMdS.png" alt="htop"></p>
+<p>​                                                                                                                htop</p>
+<p>就该图来说，分成三部分：</p>
+<ul>
+<li>顶部是资源使用情况概览，这进度条看着就挺酷炫</li>
+<li>中间是进程表，和top命令的类似</li>
+<li>下面是操作指引和快捷键清晰明了</li>
+</ul>
+<p>我们接下来再来看一些图形化的操作：</p>
+<ul>
+<li><p>进程树状图</p>
+<p>  <img src="https://s1.ax1x.com/2020/08/20/d3Rts0.png" alt="htop 进程树状图"></p>
+</li>
+</ul>
+<p>htop 进程树状图</p>
+<ul>
+<li>鼠标点击各种指标来排序</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3R4Fe.png" alt="htop 支持鼠标点击"></p>
+<p>htop 支持鼠标点击</p>
+<ul>
+<li>跟踪进程功能</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3RvFg.png" alt="htop 进程跟踪功能"></p>
+<p>htop 进程跟踪功能</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3WulR.png" alt="htop 进程跟踪功能"></p>
+<p>htop 进程跟踪功能</p>
+<hr>
+<h2 id="iotop-命令"><a href="#iotop-命令" class="headerlink" title="iotop 命令"></a>iotop 命令</h2><p><code>iotop</code> 是用来监控硬盘 IO的使用情况，UI 界面和 top类似，其中包括 PID、用户、I/O、进程 等相关信息。</p>
+<p>Linux 下系统自带的IO统计工具如 iostat，nmon等大多数是只能统计到 per设备的读写情况，如果你想知道每个进程是如何使用 IO的就比较麻烦，使用 iotop命令可以很方便的查看。</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3WLcR.png" alt="iotop命令"></p>
+<p>iotop命令</p>
+<hr>
+<h2 id="iftop-命令"><a href="#iftop-命令" class="headerlink" title="iftop 命令"></a>iftop 命令</h2><p>iftop 是Linux系统的流量和带宽监控工具，可用于查看实时的网络流量、监控TCP/IP连接等，也是非常有用的！</p>
+<p>我们来做一下实验，命令执行后效果如下：</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3ftET.png" alt="iftop 效果视图"></p>
+<p>iftop 效果视图</p>
+<p><img src="https://s1.ax1x.com/2020/08/20/d3fcVK.png" alt="iftop 效果视图"></p>
+<p>iftop 效果视图</p>
+<p><code>iftop</code> 命令常用的参数如下，这里做个小规模总结：</p>
+<ul>
+<li><code>-i</code> 设定监测的网卡，如：<code># iftop -i eth1</code></li>
+<li><code>-B</code> 以bytes为单位显示流量 (默认是bits)，如：<code># iftop -B</code></li>
+<li><code>-n</code> 使 host信息默认直接都显示 IP，如：<code># iftop -n</code></li>
+<li><code>-N</code> 使端口信息默认直接都显示端口号，如: <code># iftop -N</code></li>
+<li><code>-F</code> 显示特定网段的进出流量，如 <code># iftop -F 10.10.1.0/24</code> 或 <code># iftop -F 10.10.1.0/255.255.255.0</code></li>
+<li><code>-h</code>（display this message），帮助，显示参数信息</li>
+<li><code>-p</code> 使用这个参数后，中间的列表显示的本地主机信息，出现了本机以外的IP信息;</li>
+<li><code>-b</code> 使流量图形条默认就显示;</li>
+</ul>
+<p>再来总结一下，进入 iftop 视图画面后的一些操作命令 (注意大小写)：</p>
+<ul>
+<li>按 <code>h</code>切换是否显示帮助;</li>
+<li>按 <code>n</code>切换显示本机的IP或主机名;</li>
+<li>按 <code>s</code>切换是否显示本机的host信息;</li>
+<li>按 <code>d</code>切换是否显示远端目标主机的host信息;</li>
+<li>按 <code>t</code>切换显示格式为2行/1行/只显示发送流量/只显示接收流量;</li>
+<li>按 <code>N</code>切换显示端口号或端口服务名称;</li>
+<li>按 <code>S</code>切换是否显示本机的端口信息;</li>
+<li>按 <code>D</code>切换是否显示远端目标主机的端口信息;</li>
+<li>按 <code>p</code>切换是否显示端口信息;</li>
+<li>按 <code>P</code>切换暂停/继续显示;</li>
+<li>按 <code>b</code>切换是否显示平均流量图形条;</li>
+<li>按 <code>T</code>切换是否显示每个连接的总流量;</li>
+<li>按 <code>l</code>打开屏幕过滤功能，输入要过滤的字符，比如ip,按回车后，屏幕就只显示这个IP相关的流量信息;</li>
+<li>按 <code>L</code>切换显示画面上边的刻度;刻度不同，流量图形条会有变化;</li>
+<li>按 <code>j</code>或按<code>k</code>可以向上或向下滚动屏幕显示的连接记录;</li>
+<li>按 <code>1</code>或<code>2</code>或<code>3</code>可以根据右侧显示的三列流量数据进行排序;</li>
+<li>按<code>&lt;</code>根据左边的本机名或 IP排序;</li>
+<li>按<code>&gt;</code>根据远端目标主机的主机名或 IP排序;</li>
+<li>按<code>o</code>切换是否固定只显示当前的连接;</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/3df7.html" class="b-link-green">Linux系统常用监控工具</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/172f.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Linux面试题">
+                        
+                        <span class="card-title">Linux面试题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Java面试总结汇总，整理了包括Java基础知识，集合容器，并发编程，JVM，常用开源框架Spring，MyBatis，数据库，中间件等，包含了作为一个Java工程师在面试中需要用到或者可能用到的绝大部分知识。欢迎大家阅读，本人见识有限，写</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux-面试题/" target="_blank">
+                        <span class="chip bg-color">Linux,面试题</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2ea0.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="完整的渗透测试流程">
+                        
+                        <span class="card-title">完整的渗透测试流程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">[TOC]
+一次完整的渗透测试流程
+
+渗透测试渗透测试就是利用我们所掌握的渗透知识，对网站进行一步一步的渗透，发现其中存在的漏洞和隐藏的风险，然后撰写一篇测试报告，提供给我们的客户。客户根据我们撰写的测试报告，对网站进行漏洞修补，以防止黑客</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/渗透测试/" class="post-category" target="_blank">
+                                    渗透测试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/渗透测试流程/" target="_blank">
+                        <span class="chip bg-color">渗透测试流程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 yoyo. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">236.2k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+<style>
+    .github-badge {
+        display:inline-block;
+        border-radius:4px;
+        text-shadow:none;
+        font-size:13px;
+        color:#fff;
+        line-height:15px;
+        background-color:#ABBAC3;
+        margin-bottom:5px;
+    }
+    .github-badge .badge-subject {
+        display:inline-block;
+        background-color:#4D4D4D;
+        padding:4px 4px 4px 6px;
+        border-top-left-radius:4px;
+        border-bottom-left-radius:4px;
+    }
+    .github-badge .badge-value {
+        display:inline-block;
+        padding:4px 6px 4px 4px;
+        border-top-right-radius:4px;
+        border-bottom-right-radius:4px;
+    }
+    .github-badge .bg-brightgreen {
+        background-color:#4DC820 !important;
+    }
+    .github-badge .bg-orange {
+        background-color:#FFA500 !important;
+    }
+    .github-badge .bg-yellow {
+        background-color:#D8B024 !important;
+    }
+    .github-badge .bg-blueviolet {
+        background-color:#8833D7 !important;
+    }
+    .github-badge .bg-pink {
+        background-color:#F26BAE !important;
+    }
+    .github-badge .bg-red {
+        background-color:#e05d44 !important;
+    }
+    .github-badge .bg-blue {
+        background-color:#007EC6 !important;
+    }
+    .github-badge .bg-lightgrey {
+        background-color:#9F9F9F !important;
+    }
+    .github-badge .bg-grey, .github-badge .bg-gray {
+        background-color:#555 !important;
+    }
+    .github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+        background-color:#9f9f9f !important;
+    }
+</style>
+<center>
+<div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+            <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages 和 Gitee Pages">
+            <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub & Coding & Gitee</span></a>
+          </div>
+          <div class="github-badge">
+              <a style="color: #fff" rel="license" href="https://blinkfox.github.io/" target="_blank" title="站点使用 Matery主题">
+            <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Matery</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+            <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
+            <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">236.2k</span>
+          </div>
+</div>
+</center>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<script src="/js/snow.js"></script>
+
+</body>
+</html>
