@@ -39,7 +39,6 @@ vim 具有程序编辑的能力，可以主动的以字体颜色辨别语法的�
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
 
-
 <body>
 
 <header class="navbar-fixed">
@@ -1019,7 +1018,8 @@ DFDF命令</div>
                 人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
             </span>
             
-            
+             
+            <a href="https://tongji.baidu.com/">百度统计</a>
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -1227,7 +1227,19 @@ $(function () {
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+/* <!-- Global site tag (gtag.js) - Google Analytics -->
+ 
+*/
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d60ddcd5b3ab9f09e1716bc15829d70d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 
@@ -1248,6 +1260,22 @@ $(function () {
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
 <script type="text/javascript" src="/js/fireworks.js"></script>
 <script src="/js/snow.js"></script>
+
+<div id="tp-weather-widget"></div>
+<script>
+  (function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+  window.SeniverseWeatherWidget('show', {
+    flavor: "bubble",
+    location: "WMUKZRE888U6",
+    geolocation: true,
+    language: "zh-Hans",
+    unit: "c",
+    theme: "auto",
+    token: "7fab380b-06e6-4726-a0b6-c9a9542a8a01",
+    hover: "enabled",
+    container: "tp-weather-widget"
+  })
+</script>
 
 </body>
 </html>

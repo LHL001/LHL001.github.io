@@ -45,7 +45,6 @@ Web APIWeb API介绍API的概念API（Applica">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
 
-
 <body>
 
 <header class="navbar-fixed">
@@ -998,24 +997,30 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/24950.html">
+                <a href="/posts/752.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="01-JavaScript基础">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="03-jd">
                         
-                        <span class="card-title">01-JavaScript基础</span>
+                        <span class="card-title">03-jd</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary"> 本文非原创 学习目标:
 
-掌握编程的基本思维
-掌握编程的基本语法
+掌握京东项目流程体系
+掌握网站三大标签优化
+掌握京东头部和尾部制作
+掌握京导航栏制作
+掌握京东焦点图制作
+了解网站三大标签优化
+理解BFC
+了解渐进增强和优雅降级
 
 
-JavaScript基础HTML和CSS   京东
-网页、网站和应用程序网页：单独的一个页面网站：一些列相关的页面组成到一起应用程序：可以和用户产生交互，并实现某种功能</div>
+
+京东项目(一)京东项目介绍项目名称：京东网</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
@@ -1035,8 +1040,8 @@ JavaScript基础HTML和CSS   京东
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/" target="_blank">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/jd/" target="_blank">
+                        <span class="chip bg-color">jd</span>
                     </a>
                     
                 </div>
@@ -1128,7 +1133,8 @@ JavaScript基础HTML和CSS   京东
                 人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
             </span>
             
-            
+             
+            <a href="https://tongji.baidu.com/">百度统计</a>
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -1336,7 +1342,19 @@ $(function () {
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+/* <!-- Global site tag (gtag.js) - Google Analytics -->
+ 
+*/
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d60ddcd5b3ab9f09e1716bc15829d70d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 
@@ -1357,6 +1375,22 @@ $(function () {
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
 <script type="text/javascript" src="/js/fireworks.js"></script>
 <script src="/js/snow.js"></script>
+
+<div id="tp-weather-widget"></div>
+<script>
+  (function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+  window.SeniverseWeatherWidget('show', {
+    flavor: "bubble",
+    location: "WMUKZRE888U6",
+    geolocation: true,
+    language: "zh-Hans",
+    unit: "c",
+    theme: "auto",
+    token: "7fab380b-06e6-4726-a0b6-c9a9542a8a01",
+    hover: "enabled",
+    container: "tp-weather-widget"
+  })
+</script>
 
 </body>
 </html>
