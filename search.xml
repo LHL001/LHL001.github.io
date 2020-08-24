@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>kali修改更新源</title>
+      <link href="/posts/dbb9.html"/>
+      <url>/posts/dbb9.html</url>
+      
+        <content type="html"><![CDATA[<p>1、修改sources.list源文件：</p><pre><code>vim /etc/apt/sources.list</code></pre><pre><code>#aliyun 阿里云deb http://mirrors.aliyun.com/kali kali-rolling main non-free contribdeb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib#中科大源deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contribdeb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib#官方源deb http://http.kali.org/kali kali-rolling main non-free contribdeb-src http://http.kali.org/kali kali-rolling main non-free contrib</code></pre><p>2、常用更新命令：</p><pre><code>apt update    # 检测可更新的软件apt upgrade    # 自动更新并安装软件apt dist-upgrade    # 检测并进行系统升级</code></pre><p>3、清理安装包：</p><pre><code>apt-get clean    #删除所有已下载的包文件apt-get autoclean    #删除已下载的旧包文件apt-get autoremove    #卸载所有自动安装且不再使用的软件包</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> kali </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> kali </tag>
+            
+            <tag> kali更新源 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Web渗透信息收集</title>
       <link href="/posts/fccc.html"/>
       <url>/posts/fccc.html</url>

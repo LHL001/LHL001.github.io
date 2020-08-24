@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://LHL001.github.io/"/>
-  <updated>2020-08-20T01:14:35.389Z</updated>
+  <updated>2020-08-24T13:19:36.061Z</updated>
   <id>http://LHL001.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kali修改更新源</title>
+    <link href="http://LHL001.github.io/posts/dbb9.html"/>
+    <id>http://LHL001.github.io/posts/dbb9.html</id>
+    <published>2020-08-24T13:19:36.000Z</published>
+    <updated>2020-08-24T13:19:36.061Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1、修改sources.list源文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/apt/sources.list&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;#aliyun 阿里云
+deb http://mirrors.aliyun.com/kali
+        
+      
+    
+    </summary>
+    
+      <category term="kali" scheme="http://LHL001.github.io/categories/kali/"/>
+    
+    
+      <category term="kali" scheme="http://LHL001.github.io/tags/kali/"/>
+    
+      <category term="kali更新源" scheme="http://LHL001.github.io/tags/kali%E6%9B%B4%E6%96%B0%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Web渗透信息收集</title>
@@ -512,34 +542,6 @@
     
     
       <category term="Linux命令" scheme="http://LHL001.github.io/tags/Linux%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>02-Web API</title>
-    <link href="http://LHL001.github.io/posts/50686.html"/>
-    <id>http://LHL001.github.io/posts/50686.html</id>
-    <published>2019-08-12T13:33:08.000Z</published>
-    <updated>2020-08-17T09:20:26.126Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;本文非原创&quot;&gt;&lt;a href=&quot;#本文非原创&quot; class=&quot;headerlink&quot; title=&quot; 本文非原创 &quot;&gt;&lt;/a&gt;&lt;strong&gt; 本文非原创 &lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;学习目标:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;掌握API和Web
-        
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="http://LHL001.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="02-Web API" scheme="http://LHL001.github.io/tags/02-Web-API/"/>
     
   </entry>
   
