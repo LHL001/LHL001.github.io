@@ -1,0 +1,1066 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Python3 环境搭建, yoyo，LHL001">
+    <meta name="description" content="Python3 环境搭建本章节我们将向大家介绍如何在本地搭建 Python3 开发环境。
+Python3 可应用于多平台包括 Windows、Linux 和 Mac OS X。
+
+Unix (Solaris, Linux, FreeBSD,">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Python3 环境搭建 | yoyo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yoyo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/book" class="waves-effect waves-light">
+            
+            <i class="fa fas fa-book"></i>
+            
+            <span>Book</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yoyo</div>
+        <div class="logo-desc">
+            
+            当时间的主人，命运的主宰，灵魂的舵手。   ——罗斯福
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/book" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fas fa-book"></i>
+                
+                Book
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Python3 环境搭建
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python3/" target="_blank">
+                                <span class="chip bg-color">Python3</span>
+                            </a>
+                        
+                            <a href="/tags/环境搭建/" target="_blank">
+                                <span class="chip bg-color">环境搭建</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python3/" class="post-category" target="_blank">
+                                Python3
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-09-13
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        6 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Python3-环境搭建"><a href="#Python3-环境搭建" class="headerlink" title="Python3 环境搭建"></a>Python3 环境搭建</h1><p>本章节我们将向大家介绍如何在本地搭建 Python3 开发环境。</p>
+<p>Python3 可应用于多平台包括 Windows、Linux 和 Mac OS X。</p>
+<ul>
+<li>Unix (Solaris, Linux, FreeBSD, AIX, HP/UX, SunOS, IRIX, 等等。)</li>
+<li>Win 9x/NT/2000</li>
+<li>Macintosh (Intel, PPC, 68K)</li>
+<li>OS/2</li>
+<li>DOS (多个DOS版本)</li>
+<li>PalmOS</li>
+<li>Nokia 移动手机</li>
+<li>Windows CE</li>
+<li>Acorn/RISC OS</li>
+<li>BeOS</li>
+<li>Amiga</li>
+<li>VMS/OpenVMS</li>
+<li>QNX</li>
+<li>VxWorks</li>
+<li>Psion</li>
+<li>Python 同样可以移植到 Java 和 .NET 虚拟机上。</li>
+</ul>
+<hr>
+<h2 id="Python3-下载"><a href="#Python3-下载" class="headerlink" title="Python3 下载"></a>Python3 下载</h2><p>Python3 最新源码，二进制文档，新闻资讯等可以在 Python 的官网查看到：</p>
+<p>Python 官网：<a href="https://www.python.org/" target="_blank" rel="noopener">https://www.python.org/</a></p>
+<p>你可以在以下链接中下载 Python 的文档，你可以下载 HTML、PDF 和 PostScript 等格式的文档。</p>
+<p>Python文档下载地址：<a href="https://www.python.org/doc/" target="_blank" rel="noopener">https://www.python.org/doc/</a></p>
+<hr>
+<h2 id="Python-安装"><a href="#Python-安装" class="headerlink" title="Python 安装"></a>Python 安装</h2><p>Python 已经被移植在许多平台上（经过改动使它能够工作在不同平台上）。</p>
+<p>您需要下载适用于您使用平台的二进制代码，然后安装 Python。</p>
+<p>如果您平台的二进制代码是不可用的，你需要使用C编译器手动编译源代码。</p>
+<p>编译的源代码，功能上有更多的选择性， 为 Python 安装提供了更多的灵活性。</p>
+<p>以下是各个平台安装包的下载地址：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/07/F2135662-1078-4EE2-BEBB-353F8D8E521F.jpg" alt="img"></p>
+<p><strong>Source Code</strong> 可用于 Linux 上的安装。</p>
+<p>以下为不同平台上安装 Python3 的方法。</p>
+<h3 id="Unix-amp-Linux-平台安装-Python3"><a href="#Unix-amp-Linux-平台安装-Python3" class="headerlink" title="Unix &amp; Linux 平台安装 Python3:"></a>Unix &amp; Linux 平台安装 Python3:</h3><p>以下为在 Unix &amp; Linux 平台上安装 Python 的简单步骤：</p>
+<ul>
+<li>打开WEB浏览器访问 <a href="https://www.python.org/downloads/source/" target="_blank" rel="noopener">https://www.python.org/downloads/source/</a></li>
+<li>选择适用于 Unix/Linux 的源码压缩包。</li>
+<li>下载及解压压缩包 <strong>Python-3.x.x.tgz</strong>，<strong>3.x.x</strong> 为你下载的对应版本号。</li>
+<li>如果你需要自定义一些选项修改 <em>Modules/Setup</em></li>
+</ul>
+<p>以 <strong>Python3.6.1</strong> 版本为例：</p>
+<pre><code># tar -zxvf Python-3.6.1.tgz
+# cd Python-3.6.1
+# ./configure
+# make &amp;&amp; make install</code></pre><p>检查 Python3 是否正常可用：</p>
+<pre><code># python3 -V
+Python 3.6.1</code></pre><h3 id="Window-平台安装-Python"><a href="#Window-平台安装-Python" class="headerlink" title="Window 平台安装 Python:"></a>Window 平台安装 Python:</h3><p>以下为在 Window 平台上安装 Python 的简单步骤。</p>
+<p>打开 WEB 浏览器访问 <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">https://www.python.org/downloads/windows/</a> ，一般就下载 executable installer，x86 表示是 32 位机子的，x86-64 表示 64 位机子的。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/07/A0ADAB69-1DA6-409B-AF85-DA2FC7E0B57F.png" alt="img"></p>
+<p>记得勾选 <strong>Add Python 3.6 to PATH</strong>。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/07/20180226150011548.png" alt="img"></p>
+<p>按 <strong>Win+R</strong> 键，输入 cmd 调出命令提示符，输入 python:</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/07/20170707155742110.png" alt="img"></p>
+<p>也可以在开始菜单中搜索 <strong>IDLE</strong>：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/07/460F6DFB-3BBF-4683-BEA0-23BE8DF021B0.jpg" alt="img"></p>
+<h3 id="MAC-平台安装-Python"><a href="#MAC-平台安装-Python" class="headerlink" title="MAC 平台安装 Python:"></a>MAC 平台安装 Python:</h3><p>MAC 系统都自带有 Python2.7 环境，你可以在链接 <a href="https://www.python.org/downloads/mac-osx/" target="_blank" rel="noopener">https://www.python.org/downloads/mac-osx/</a> 上下载最新版安装 Python 3.x。</p>
+<p>你也可以参考源码安装的方式来安装。</p>
+<hr>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>程序和可执行文件可以在许多目录，而这些路径很可能不在操作系统提供可执行文件的搜索路径中。</p>
+<p>path(路径)存储在环境变量中，这是由操作系统维护的一个命名的字符串。这些变量包含可用的命令行解释器和其他程序的信息。</p>
+<p>Unix或Windows中路径变量为PATH（UNIX区分大小写，Windows不区分大小写）。</p>
+<p>在Mac OS中，安装程序过程中改变了python的安装路径。如果你需要在其他目录引用Python，你必须在path中添加Python目录。</p>
+<h3 id="在-Unix-Linux-设置环境变量"><a href="#在-Unix-Linux-设置环境变量" class="headerlink" title="在 Unix/Linux 设置环境变量"></a>在 Unix/Linux 设置环境变量</h3><ul>
+<li>在 csh shell:</li>
+</ul>
+<pre><code>输入
+
+```
+setenv PATH "$PATH:/usr/local/bin/python"
+```
+
+, 按下Enter。</code></pre><ul>
+<li><p>在 bash shell (Linux) 输入 :</p>
+<pre><code>  export PATH="$PATH:/usr/local/bin/python" </code></pre><p>  按下Enter。</p>
+</li>
+<li><p>在 sh 或者 ksh shell 输入:</p>
+<pre><code>  PATH="$PATH:/usr/local/bin/python" </code></pre><p>  按下 Enter。</p>
+</li>
+</ul>
+<p><strong>注意:</strong> /usr/local/bin/python 是 Python 的安装目录。</p>
+<h3 id="在-Windows-设置环境变量"><a href="#在-Windows-设置环境变量" class="headerlink" title="在 Windows 设置环境变量"></a>在 Windows 设置环境变量</h3><p>在环境变量中添加Python目录：</p>
+<p><strong>在命令提示框中(cmd) :</strong> 输入</p>
+<pre><code>path=%path%;C:\Python </code></pre><p>按下”Enter”。</p>
+<p><strong>注意:</strong> C:\Python 是Python的安装目录。</p>
+<p>也可以通过以下方式设置：</p>
+<ul>
+<li>右键点击”计算机”，然后点击”属性”</li>
+<li>然后点击”高级系统设置”</li>
+<li>选择”系统变量”窗口下面的”Path”,双击即可！</li>
+<li></li>
+<li>然后在”Path”行，添加python安装路径即可(我的D:\Python32)，所以在后面，添加该路径即可。 <strong>ps：记住，路径直接用分号”；”隔开！</strong></li>
+<li>最后设置成功以后，在cmd命令行，输入命令”python”，就可以有相关显示。</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/11/201209201707594792.png" alt="img"></p>
+<hr>
+<h2 id="Python-环境变量"><a href="#Python-环境变量" class="headerlink" title="Python 环境变量"></a>Python 环境变量</h2><p>下面几个重要的环境变量，它应用于Python：</p>
+<table>
+<thead>
+<tr>
+<th align="center">变量名</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PYTHONPATH</td>
+<td align="left">PYTHONPATH是Python搜索路径，默认我们import的模块都会从PYTHONPATH里面寻找。</td>
+</tr>
+<tr>
+<td align="center">PYTHONSTARTUP</td>
+<td align="left">Python启动后，先寻找PYTHONSTARTUP环境变量，然后执行此变量指定的文件中的代码。</td>
+</tr>
+<tr>
+<td align="center">PYTHONCASEOK</td>
+<td align="left">加入PYTHONCASEOK的环境变量, 就会使python导入模块的时候不区分大小写.</td>
+</tr>
+<tr>
+<td align="center">PYTHONHOME</td>
+<td align="left">另一种模块搜索路径。它通常内嵌于的PYTHONSTARTUP或PYTHONPATH目录中，使得两个模块库更容易切换。</td>
+</tr>
+</tbody></table>
+<h2 id="运行Python"><a href="#运行Python" class="headerlink" title="运行Python"></a>运行Python</h2><p>有三种方式可以运行Python：</p>
+<h3 id="1、交互式解释器："><a href="#1、交互式解释器：" class="headerlink" title="1、交互式解释器："></a>1、交互式解释器：</h3><p>你可以通过命令行窗口进入python并开在交互式解释器中开始编写Python代码。</p>
+<p>你可以在Unix，DOS或任何其他提供了命令行或者shell的系统进行python编码工作。</p>
+<p>$ python # Unix/Linux</p>
+<p>或者</p>
+<p>C:&gt;python # Windows/DOS</p>
+<p>以下为Python命令行参数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-d</td>
+<td align="left">在解析时显示调试信息</td>
+</tr>
+<tr>
+<td align="left">-O</td>
+<td align="left">生成优化代码 ( .pyo 文件 )</td>
+</tr>
+<tr>
+<td align="left">-S</td>
+<td align="left">启动时不引入查找Python路径的位置</td>
+</tr>
+<tr>
+<td align="left">-V</td>
+<td align="left">输出Python版本号</td>
+</tr>
+<tr>
+<td align="left">-X</td>
+<td align="left">从 1.6版本之后基于内建的异常（仅仅用于字符串）已过时。</td>
+</tr>
+<tr>
+<td align="left">-c cmd</td>
+<td align="left">执行 Python 脚本，并将运行结果作为 cmd 字符串。</td>
+</tr>
+<tr>
+<td align="left">file</td>
+<td align="left">在给定的python文件执行python脚本。</td>
+</tr>
+</tbody></table>
+<h3 id="2、命令行脚本"><a href="#2、命令行脚本" class="headerlink" title="2、命令行脚本"></a>2、命令行脚本</h3><p>在你的应用程序中通过引入解释器可以在命令行中执行Python脚本，如下所示：</p>
+<p>$ python script.py # Unix/Linux</p>
+<p>或者</p>
+<p>C:&gt;python script.py # Windows/DOS</p>
+<p><strong>注意：</strong>在执行脚本时，请检查脚本是否有可执行权限。</p>
+<h3 id="3、集成开发环境（IDE：Integrated-Development-Environment）-PyCharm"><a href="#3、集成开发环境（IDE：Integrated-Development-Environment）-PyCharm" class="headerlink" title="3、集成开发环境（IDE：Integrated Development Environment）: PyCharm"></a>3、集成开发环境（IDE：Integrated Development Environment）: PyCharm</h3><p>PyCharm 是由 JetBrains 打造的一款 Python IDE，支持 macOS、 Windows、 Linux 系统。</p>
+<p>PyCharm 功能 : 调试、语法高亮、Project管理、代码跳转、智能提示、自动完成、单元测试、版本控制……</p>
+<p>PyCharm 下载地址 : <a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/download/</a></p>
+<p>PyCharm 安装地址：<a href="https://www.runoob.com/w3cnote/pycharm-windows-install.html" target="_blank" rel="noopener">http://www.runoob.com/w3cnote/pycharm-windows-install.html</a></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/07/A3A7FAA5-61C5-4540-A265-B9FC1B1AE49C.jpg" alt="img"></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/06/pycharm_ui_darcula.png" alt="img"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://LHL001.github.io" class="b-link-green">yoyo</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/cc75.html" class="b-link-green">Python3 环境搭建</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC80NjA0MC8yMjU1MQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/f004.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Python3 基础语法">
+                        
+                        <span class="card-title">Python3 基础语法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Python3 基础语法编码默认情况下，Python 3 源码文件以 UTF-8 编码，所有字符串都是 unicode 字符串。 当然你也可以为源码文件指定不同的编码：
+# -*- coding: cp-1252 -*-上述定义允许在源文件</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python3/" class="post-category" target="_blank">
+                                    Python3
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python3/" target="_blank">
+                        <span class="chip bg-color">Python3</span>
+                    </a>
+                    
+                    <a href="/tags/语法/" target="_blank">
+                        <span class="chip bg-color">语法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/3886.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Python3 简介">
+                        
+                        <span class="card-title">Python3 简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Python3 简介Python 是一个高层次的结合了解释性、编译性、互动性和面向对象的脚本语言。
+Python 的设计具有很强的可读性，相比其他语言经常使用英文关键字，其他语言的一些标点符号，它具有比其他语言更有特色语法结构。
+
+Pyth</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python3/" class="post-category" target="_blank">
+                                    Python3
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python3/" target="_blank">
+                        <span class="chip bg-color">Python3</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2020 yoyo. All Rights Reserved.
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">276.1k</span>
+            
+            <br>
+            <span id="sitetime"></span>
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+             
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LHL001/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:koper007@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2025685938" class="tooltipped" data-tooltip="QQ联系我: 2025685938" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+<div class="progress-bar"></div>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 06, 24, 00, 00, 00); //北京时间2019-06-24 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已安全运行  " + diffYears + " 年 " +  diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+    </script>
+    <center>
+    <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+            <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages 和 Gitee Pages">
+            <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub & Coding & Gitee</span></a>
+          </div>
+          <div class="github-badge">
+              <a style="color: #fff" rel="license" href="https://blinkfox.github.io/" target="_blank" title="站点使用 Matery主题">
+            <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Matery</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+            <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+          </div>
+          <div class="github-badge">
+            <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
+            <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+          </div>
+          <div class="github-badge">
+            <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">276.1k</span>
+          </div>
+</div>
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279201124'%3E%3C/span%3E%3Cscript src='https://uweb.umeng.com/v1/login.php?siteid=1279201124' type='text/javascript'%3E%3C/script%3E"));</script>    
+<style>
+    .github-badge {
+        display:inline-block;
+        border-radius:4px;
+        text-shadow:none;
+        font-size:13px;
+        color:#fff;
+        line-height:15px;
+        background-color:#ABBAC3;
+        margin-bottom:5px;
+    }
+    .github-badge .badge-subject {
+        display:inline-block;
+        background-color:#4D4D4D;
+        padding:4px 4px 4px 6px;
+        border-top-left-radius:4px;
+        border-bottom-left-radius:4px;
+    }
+    .github-badge .badge-value {
+        display:inline-block;
+        padding:4px 6px 4px 4px;
+        border-top-right-radius:4px;
+        border-bottom-right-radius:4px;
+    }
+    .github-badge .bg-brightgreen {
+        background-color:#4DC820 !important;
+    }
+    .github-badge .bg-orange {
+        background-color:#FFA500 !important;
+    }
+    .github-badge .bg-yellow {
+        background-color:#D8B024 !important;
+    }
+    .github-badge .bg-blueviolet {
+        background-color:#8833D7 !important;
+    }
+    .github-badge .bg-pink {
+        background-color:#F26BAE !important;
+    }
+    .github-badge .bg-red {
+        background-color:#e05d44 !important;
+    }
+    .github-badge .bg-blue {
+        background-color:#007EC6 !important;
+    }
+    .github-badge .bg-lightgrey {
+        background-color:#9F9F9F !important;
+    }
+    .github-badge .bg-grey, .github-badge .bg-gray {
+        background-color:#555 !important;
+    }
+    .github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+        background-color:#9f9f9f !important;
+    }
+    </center>
+</style>
+</footer>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+      <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?96fa4d5b7ba7c25e9cea2e29e930d817";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript">
+    var OriginTitile = document.title,
+        st;
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+            "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+    })
+</script>
+<div id="tp-weather-widget"></div>
+<script>
+  (function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+  window.SeniverseWeatherWidget('show', {
+    flavor: "bubble",
+    location: "WMUKZRE888U6",
+    geolocation: true,
+    language: "zh-Hans",
+    unit: "c",
+    theme: "auto",
+    token: "7fab380b-06e6-4726-a0b6-c9a9542a8a01",
+    hover: "enabled",
+    container: "tp-weather-widget"
+  })
+</script>
+<script src="/js/cursor.js"></script>
+</body>
+</html>

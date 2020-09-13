@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://LHL001.github.io/"/>
-  <updated>2020-09-13T14:43:21.515Z</updated>
+  <updated>2020-09-13T15:48:29.823Z</updated>
   <id>http://LHL001.github.io/</id>
   
   <author>
@@ -17,11 +17,119 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python3 基本数据类型</title>
+    <link href="http://LHL001.github.io/posts/220b.html"/>
+    <id>http://LHL001.github.io/posts/220b.html</id>
+    <published>2020-09-13T15:17:24.000Z</published>
+    <updated>2020-09-13T15:48:29.823Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Python3-基本数据类型&quot;&gt;&lt;a href=&quot;#Python3-基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;Python3 基本数据类型&quot;&gt;&lt;/a&gt;Python3 基本数据类型&lt;/h1&gt;&lt;p&gt;Python
+        
+      
+    
+    </summary>
+    
+      <category term="Python3" scheme="http://LHL001.github.io/categories/Python3/"/>
+    
+    
+      <category term="Python3" scheme="http://LHL001.github.io/tags/Python3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python3 基础语法</title>
+    <link href="http://LHL001.github.io/posts/f004.html"/>
+    <id>http://LHL001.github.io/posts/f004.html</id>
+    <published>2020-09-13T15:10:03.000Z</published>
+    <updated>2020-09-13T15:16:53.096Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Python3-基础语法&quot;&gt;&lt;a href=&quot;#Python3-基础语法&quot; class=&quot;headerlink&quot; title=&quot;Python3 基础语法&quot;&gt;&lt;/a&gt;Python3 基础语法&lt;/h1&gt;&lt;h2 id=&quot;编码&quot;&gt;&lt;a href=&quot;#编码&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python3" scheme="http://LHL001.github.io/categories/Python3/"/>
+    
+    
+      <category term="Python3" scheme="http://LHL001.github.io/tags/Python3/"/>
+    
+      <category term="语法" scheme="http://LHL001.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python3 环境搭建</title>
+    <link href="http://LHL001.github.io/posts/cc75.html"/>
+    <id>http://LHL001.github.io/posts/cc75.html</id>
+    <published>2020-09-13T14:54:47.000Z</published>
+    <updated>2020-09-13T15:09:41.540Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Python3-环境搭建&quot;&gt;&lt;a href=&quot;#Python3-环境搭建&quot; class=&quot;headerlink&quot; title=&quot;Python3 环境搭建&quot;&gt;&lt;/a&gt;Python3 环境搭建&lt;/h1&gt;&lt;p&gt;本章节我们将向大家介绍如何在本地搭建 Python3
+        
+      
+    
+    </summary>
+    
+      <category term="Python3" scheme="http://LHL001.github.io/categories/Python3/"/>
+    
+    
+      <category term="Python3" scheme="http://LHL001.github.io/tags/Python3/"/>
+    
+      <category term="环境搭建" scheme="http://LHL001.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python3 简介</title>
+    <link href="http://LHL001.github.io/posts/3886.html"/>
+    <id>http://LHL001.github.io/posts/3886.html</id>
+    <published>2020-09-13T14:52:39.000Z</published>
+    <updated>2020-09-13T14:54:09.992Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Python3-简介&quot;&gt;&lt;a href=&quot;#Python3-简介&quot; class=&quot;headerlink&quot; title=&quot;Python3 简介&quot;&gt;&lt;/a&gt;Python3 简介&lt;/h1&gt;&lt;p&gt;Python
+        
+      
+    
+    </summary>
+    
+      <category term="Python3" scheme="http://LHL001.github.io/categories/Python3/"/>
+    
+    
+      <category term="Python3" scheme="http://LHL001.github.io/tags/Python3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python 3 教程</title>
     <link href="http://LHL001.github.io/posts/2514.html"/>
     <id>http://LHL001.github.io/posts/2514.html</id>
     <published>2020-09-13T14:42:37.000Z</published>
-    <updated>2020-09-13T14:43:21.515Z</updated>
+    <updated>2020-09-13T14:46:25.255Z</updated>
     
     <summary type="html">
     
@@ -433,110 +541,6 @@ var
     
     
       <category term="Kotlin" scheme="http://LHL001.github.io/tags/Kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kotlin Eclipse 环境搭建</title>
-    <link href="http://LHL001.github.io/posts/3282.html"/>
-    <id>http://LHL001.github.io/posts/3282.html</id>
-    <published>2020-09-13T10:09:24.000Z</published>
-    <updated>2020-09-13T14:34:23.255Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Kotlin-Eclipse-环境搭建&quot;&gt;&lt;a href=&quot;#Kotlin-Eclipse-环境搭建&quot; class=&quot;headerlink&quot; title=&quot;Kotlin Eclipse 环境搭建&quot;&gt;&lt;/a&gt;Kotlin Eclipse
-        
-      
-    
-    </summary>
-    
-      <category term="Kotlin" scheme="http://LHL001.github.io/categories/Kotlin/"/>
-    
-    
-      <category term="Kotlin" scheme="http://LHL001.github.io/tags/Kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kotlin IntelliJ IDEA环境搭建</title>
-    <link href="http://LHL001.github.io/posts/75f0.html"/>
-    <id>http://LHL001.github.io/posts/75f0.html</id>
-    <published>2020-09-13T09:45:50.000Z</published>
-    <updated>2020-09-13T14:34:23.253Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Kotlin-IntelliJ-IDEA环境搭建&quot;&gt;&lt;a href=&quot;#Kotlin-IntelliJ-IDEA环境搭建&quot; class=&quot;headerlink&quot; title=&quot;Kotlin IntelliJ IDEA环境搭建&quot;&gt;&lt;/a&gt;Kotlin
-        
-      
-    
-    </summary>
-    
-      <category term="Kotlin" scheme="http://LHL001.github.io/categories/Kotlin/"/>
-    
-    
-      <category term="Kotlin" scheme="http://LHL001.github.io/tags/Kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的第一个 Kotlin 程序</title>
-    <link href="http://LHL001.github.io/posts/e2dd.html"/>
-    <id>http://LHL001.github.io/posts/e2dd.html</id>
-    <published>2020-09-13T09:40:30.000Z</published>
-    <updated>2020-09-13T14:34:23.268Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://www.runoob.com/wp-content/uploads/2017/05/kotlin_250x250.png&quot; alt=&quot;&quot;&gt;Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android
-        
-      
-    
-    </summary>
-    
-      <category term="Kotlin" scheme="http://LHL001.github.io/categories/Kotlin/"/>
-    
-    
-      <category term="Kotlin" scheme="http://LHL001.github.io/tags/Kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python_01</title>
-    <link href="http://LHL001.github.io/posts/44b3.html"/>
-    <id>http://LHL001.github.io/posts/44b3.html</id>
-    <published>2020-09-12T09:11:10.000Z</published>
-    <updated>2020-09-13T14:34:23.268Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;每个程序员都应该学习使用Python或Ruby&lt;br&gt;如果你是个学生,你应该会C，C++和Java。还会一些VB，或C#/.NET。多少你还可能开发过一些Web网页，你知道一些HTML，CSS和JavaScript知识。总体上说，我们很难发现会有学生显露出掌握超出这几种语言
-        
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="http://LHL001.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://LHL001.github.io/tags/Python/"/>
     
   </entry>
   
